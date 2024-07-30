@@ -1,0 +1,126 @@
+---
+import '../styles/global.css'
+
+export interface Props {
+  title: string
+  description?: string
+  socialImage?: string
+}
+
+const {
+  title,
+  description = 'SUPERVOID is an animation, vfx and technical design studio based in Philadelphia. Our primary output is creating dynamic and interactive media packages for artists, agencies and brands.',
+  socialImage,
+} = Astro.props
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+// TODO: Add a default social image
+const socialImageURL = new URL(socialImage || 'images/home-page-hero.webp', canonicalURL)
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- SEO -->
+    <title>SUPERVOID | {title}</title>
+    <meta name="title" content={`SUPERVOID | ${title}`} />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Facebook -->
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`SUPERVOID | ${title}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:domain" content="supervoid.tv" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={`SUPERVOID | ${title}`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+
+    <!-- Favicon -->
+    <!-- TODO: replace with SUPERVOID logo -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Preload Fonts -->
+    <link
+      rel="preload"
+      href="/fonts/rotonto-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/sf-mono-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Umami Analytics -->
+
+    <title>SUPERVOID | {title}</title>
+  </head>
+  <body class="font-body bg-black text-white">
+    <!-- <Navigation /> -->
+    <slot />
+    <!-- <Footer /> -->
+  </body>
+</html>
+
+<script is:inline data-astro-rerun>
+  /**
+   * Animate sections with the class `lsa` when they come into view
+   */
+  function handleAnimations() {
+    if (!window.IntersectionObserver) {
+      return console.log('IntersectionObserver not supported')
+    }
+
+    // Grab all sections to be animated
+    const sections = document.querySelectorAll('.lsa')
+
+    // Configure observer options
+    if (sections.length !== 0) {
+      const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.25,
+      }
+
+      // Initialize observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const section = entry.target
+
+          // By default, animations repeat on scroll unless the section has the class `no-repeat`
+          if (entry.isIntersecting) {
+            section.classList.add('active')
+          } else if (!entry.isIntersecting && !section.classList.contains('no-repeat')) {
+            section.classList.remove('active')
+          }
+        })
+      }, options)
+
+      // Observe each section with the class `lsa`
+      sections.forEach((section) => observer.observe(section))
+    }
+  }
+
+  // Handle animations on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    handleAnimations()
+
+    // Handle animations on scroll
+    document.addEventListener('scroll', handleAnimations)
+  })
+</script>
