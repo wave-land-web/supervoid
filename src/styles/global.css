@@ -22,12 +22,48 @@
   }
 }
 
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Oklch colors with fallbacks */
+  --color-magenta-900: #ff00ff;
+  --color-magenta-900: oklch(70.17% 0.3518 328.36);
+  --color-magenta-500: #ff66ff;
+  --color-magenta-500: oklch(75.66% 0.2764 327.71);
+  --color-magenta-100: #ffccff;
+  --color-magenta-100: oklch(90.51% 0.0974 326.27);
+
+  /* Font sizes: source (https://fluid-type.tolin.ski/) */
+  --fs-xs: clamp(0.8rem, 0.941176vi + 0.56rem, 1.2rem);
+  --fs-base: clamp(1rem, 1.176471vi + 0.71rem, 1.5rem);
+  --fs-s: clamp(1.25rem, 1.482353vi + 0.88rem, 1.88rem);
+  --fs-m: clamp(1.56rem, 1.835294vi + 1.1rem, 2.34rem);
+  --fs-l: clamp(1.95rem, 2.305882vi + 1.37rem, 2.93rem);
+  --fs-xl: clamp(2.44rem, 2.870588vi + 1.72rem, 3.66rem);
+  --fs-xxl: clamp(3.05rem, 3.6vi + 2.15rem, 4.58rem);
+  --fs-xxxl: clamp(3.81rem, 4.494118vi + 2.69rem, 5.72rem);
+  --fs-xxxxl: clamp(4.77rem, 5.6vi + 3.37rem, 7.15rem);
+  --fs-xxxxxl: clamp(5.96rem, 7.011765vi + 4.21rem, 8.94rem);
+  --fs-xxxxxxl: clamp(7.45rem, 8.776471vi + 5.26rem, 11.18rem);
+  --fs-xxxxxxxl: clamp(9.31rem, 10.964706vi + 6.57rem, 13.97rem);
+  --fs-xxxxxxxxl: clamp(11.64rem, 13.694118vi + 8.22rem, 17.46rem);
+  --fs-xxxxxxxxxl: clamp(14.55rem, 17.129412vi + 10.27rem, 21.83rem);
+
+  --line-height: calc(2px + 2ex + 2px);
+}
+
 /* General */
 
 img,
 svg,
 video {
   @apply block w-full h-auto;
+}
+
+header,
+main {
+  @apply max-w-screen-2xl mx-auto p-4 md:p-8;
 }
 
 /* Typography */

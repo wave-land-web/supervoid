@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components'
 import '../styles/global.css'
 
 export interface Props {
@@ -71,56 +72,105 @@ const socialImageURL = new URL(socialImage || 'images/home-page-hero.webp', cano
     <title>SUPERVOID | {title}</title>
   </head>
   <body class="font-body bg-black text-white">
-    <!-- <Navigation /> -->
+    <header>
+      <nav class="flex justify-between items-center flex-wrap gap-10">
+        <a href="/" class="block w-full max-w-20"><Icon name="logo" /></a>
+        <!-- nav items -->
+        <ul class="flex gap-10 text-xs">
+          <li><a href="/work">Work</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/servers">Servers</a></li>
+          <li><a href="/press">Press</a></li>
+          <li><a href="/jobs">Jobs</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+
+        <!-- nav icons -->
+        <ul class="flex justify-center items-center gap-10">
+          <li>
+            <a
+              href="https://www.instagram.com/supervoidtv/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-magenta-900 size-10 rounded-full flex justify-center"
+            >
+              <Icon name="instagram" class="max-w-6" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/supervoidtv"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-magenta-900 size-10 rounded-full flex justify-center"
+            >
+              <Icon name="facebook" class="max-w-6" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:info@supervoid.tv"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-magenta-900 size-10 rounded-full flex justify-center"
+            >
+              <Icon name="mail" class="max-w-6" />
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <slot name="header-content" />
+    </header>
     <slot />
-    <!-- <Footer /> -->
+    <!-- TODO: <Footer /> -->
   </body>
-</html>
 
-<script is:inline data-astro-rerun>
-  /**
-   * Animate sections with the class `lsa` when they come into view
-   */
-  function handleAnimations() {
-    if (!window.IntersectionObserver) {
-      return console.log('IntersectionObserver not supported')
-    }
-
-    // Grab all sections to be animated
-    const sections = document.querySelectorAll('.lsa')
-
-    // Configure observer options
-    if (sections.length !== 0) {
-      const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.25,
+  <script is:inline data-astro-rerun>
+    /**
+     * Animate sections with the class `lsa` when they come into view
+     */
+    function handleAnimations() {
+      if (!window.IntersectionObserver) {
+        return console.log('IntersectionObserver not supported')
       }
 
-      // Initialize observer
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          const section = entry.target
+      // Grab all sections to be animated
+      const sections = document.querySelectorAll('.lsa')
 
-          // By default, animations repeat on scroll unless the section has the class `no-repeat`
-          if (entry.isIntersecting) {
-            section.classList.add('active')
-          } else if (!entry.isIntersecting && !section.classList.contains('no-repeat')) {
-            section.classList.remove('active')
-          }
-        })
-      }, options)
+      // Configure observer options
+      if (sections.length !== 0) {
+        const options = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.25,
+        }
 
-      // Observe each section with the class `lsa`
-      sections.forEach((section) => observer.observe(section))
+        // Initialize observer
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const section = entry.target
+
+            // By default, animations repeat on scroll unless the section has the class `no-repeat`
+            if (entry.isIntersecting) {
+              section.classList.add('active')
+            } else if (!entry.isIntersecting && !section.classList.contains('no-repeat')) {
+              section.classList.remove('active')
+            }
+          })
+        }, options)
+
+        // Observe each section with the class `lsa`
+        sections.forEach((section) => observer.observe(section))
+      }
     }
-  }
 
-  // Handle animations on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    handleAnimations()
+    // Handle animations on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      handleAnimations()
 
-    // Handle animations on scroll
-    document.addEventListener('scroll', handleAnimations)
-  })
-</script>
+      // Handle animations on scroll
+      document.addEventListener('scroll', handleAnimations)
+    })
+  </script>
+</html>
