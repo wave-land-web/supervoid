@@ -41,14 +41,14 @@
   --fs-m: clamp(1.56rem, 1.835294vi + 1.1rem, 2.34rem);
   --fs-l: clamp(1.95rem, 2.305882vi + 1.37rem, 2.93rem);
   --fs-xl: clamp(2.44rem, 2.870588vi + 1.72rem, 3.66rem);
-  --fs-xxl: clamp(3.05rem, 3.6vi + 2.15rem, 4.58rem);
-  --fs-xxxl: clamp(3.81rem, 4.494118vi + 2.69rem, 5.72rem);
-  --fs-xxxxl: clamp(4.77rem, 5.6vi + 3.37rem, 7.15rem);
-  --fs-xxxxxl: clamp(5.96rem, 7.011765vi + 4.21rem, 8.94rem);
-  --fs-xxxxxxl: clamp(7.45rem, 8.776471vi + 5.26rem, 11.18rem);
-  --fs-xxxxxxxl: clamp(9.31rem, 10.964706vi + 6.57rem, 13.97rem);
-  --fs-xxxxxxxxl: clamp(11.64rem, 13.694118vi + 8.22rem, 17.46rem);
-  --fs-xxxxxxxxxl: clamp(14.55rem, 17.129412vi + 10.27rem, 21.83rem);
+  --fs-2xl: clamp(3.05rem, 3.6vi + 2.15rem, 4.58rem);
+  --fs-3xl: clamp(3.81rem, 4.494118vi + 2.69rem, 5.72rem);
+  --fs-4xl: clamp(4.77rem, 5.6vi + 3.37rem, 7.15rem);
+  --fs-5xl: clamp(5.96rem, 7.011765vi + 4.21rem, 8.94rem);
+  --fs-6xl: clamp(7.45rem, 8.776471vi + 5.26rem, 11.18rem);
+  --fs-7xl: clamp(9.31rem, 10.964706vi + 6.57rem, 13.97rem);
+  --fs-8xl: clamp(11.64rem, 13.694118vi + 8.22rem, 17.46rem);
+  --fs-9xl: clamp(14.55rem, 17.129412vi + 10.27rem, 21.83rem);
 
   --line-height: calc(2px + 2ex + 2px);
 }
@@ -63,7 +63,7 @@ video {
 
 header,
 main {
-  @apply max-w-screen-2xl mx-auto p-4 md:p-8;
+  @apply max-w-screen-2xl mx-auto px-4 py-8 md:p-8;
 }
 
 /* Typography */
@@ -74,6 +74,10 @@ h3,
 h4,
 h5 {
   @apply font-header;
+}
+
+a:hover {
+  @apply text-magenta-900 transition;
 }
 
 /* Animations */

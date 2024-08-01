@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components'
 import '../styles/global.css'
+import Navigation from '../components/Navigation.astro'
 
 export interface Props {
   title: string
@@ -73,53 +73,7 @@ const socialImageURL = new URL(socialImage || 'images/home-page-hero.webp', cano
   </head>
   <body class="font-body bg-black text-white">
     <header>
-      <nav class="flex justify-between items-center flex-wrap gap-10">
-        <a href="/" class="block w-full max-w-20"><Icon name="logo" /></a>
-        <!-- nav items -->
-        <ul class="flex gap-10 text-xs">
-          <li><a href="/work">Work</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/servers">Servers</a></li>
-          <li><a href="/press">Press</a></li>
-          <li><a href="/jobs">Jobs</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-
-        <!-- nav icons -->
-        <ul class="flex justify-center items-center gap-10">
-          <li>
-            <a
-              href="https://www.instagram.com/supervoidtv/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-magenta-900 size-10 rounded-full flex justify-center"
-            >
-              <Icon name="instagram" class="max-w-6" />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.facebook.com/supervoidtv"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-magenta-900 size-10 rounded-full flex justify-center"
-            >
-              <Icon name="facebook" class="max-w-6" />
-            </a>
-          </li>
-          <li>
-            <a
-              href="mailto:info@supervoid.tv"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-magenta-900 size-10 rounded-full flex justify-center"
-            >
-              <Icon name="mail" class="max-w-6" />
-            </a>
-          </li>
-        </ul>
-      </nav>
-
+      <Navigation />
       <slot name="header-content" />
     </header>
     <slot />

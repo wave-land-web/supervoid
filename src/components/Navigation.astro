@@ -1,0 +1,174 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<nav>
+  <div id="desktop-nav" class="hidden lg:flex justify-between items-center flex-wrap gap-10">
+    <a href="/" class="block w-full max-w-20" aria-label="Home" title="Home"><Icon name="logo" /></a
+    >
+    <!-- nav items -->
+    <ul class="flex gap-10 text-xs">
+      <li><a href="/work" aria-label="Work" title="Work">Work</a></li>
+      <li><a href="/about" aria-label="About" title="About">About</a></li>
+      <li><a href="/servers" aria-label="Servers" title="Servers">Servers</a></li>
+      <li><a href="/press" aria-label="Press" title="Press">Press</a></li>
+      <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs</a></li>
+      <li><a href="/contact" aria-label="Contact" title="Contact">Contact</a></li>
+    </ul>
+
+    <!-- nav icons -->
+    <ul class="flex gap-10">
+      <li>
+        <a
+          href="https://www.instagram.com/supervoidtv/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-magenta-900 size-10 rounded-full flex justify-center"
+        >
+          <Icon name="instagram" class="max-w-6" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.facebook.com/supervoidtv"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-magenta-900 size-10 rounded-full flex justify-center"
+        >
+          <Icon name="facebook" class="max-w-6" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="mailto:info@supervoid.tv"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-magenta-900 size-10 rounded-full flex justify-center"
+        >
+          <Icon name="mail" class="max-w-6" />
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- mobile nav -->
+  <div id="mobile-nav" class="lg:hidden flex justify-between items-center">
+    <a href="/" class="block w-full max-w-20 z-20" aria-label="Home" title="Home"
+      ><Icon name="logo" /></a
+    >
+    <button
+      id="hamburger"
+      class="relative flex flex-col justify-center items-center size-8 z-20"
+      aria-expanded="false"
+      title="Menu"
+      aria-label="Menu"
+    >
+      <div id="top" class="h-[2px] w-6 bg-white rounded-md transition -translate-y-1"></div>
+      <div id="bottom" class="h-[2px] w-6 bg-white rounded-md transition translate-y-1"></div>
+    </button>
+
+    <div
+      id="mobile-nav-overlay"
+      class="absolute top-0 left-0 w-full h-screen opacity-0 invisible transition text-white bg-black z-10"
+    >
+      <!-- nav items -->
+      <ul class="flex flex-col gap-8 text-l px-4 pt-36 mb-16">
+        <li><a href="/work" aria-label="Work" title="Work">Work</a></li>
+        <li><a href="/about" aria-label="About" title="About">About</a></li>
+        <li><a href="/servers" aria-label="Servers" title="Servers">Servers</a></li>
+        <li><a href="/press" aria-label="Press" title="Press">Press</a></li>
+        <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs</a></li>
+        <li><a href="/contact" aria-label="Contact" title="Contact">Contact</a></li>
+      </ul>
+
+      <!-- nav icons -->
+      <ul class="flex gap-10 px-4">
+        <li>
+          <a
+            href="https://www.instagram.com/supervoidtv/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-magenta-900 size-10 rounded-full flex justify-center"
+          >
+            <Icon name="instagram" class="max-w-6" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.facebook.com/supervoidtv"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-magenta-900 size-10 rounded-full flex justify-center"
+          >
+            <Icon name="facebook" class="max-w-6" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="mailto:info@supervoid.tv"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-magenta-900 size-10 rounded-full flex justify-center"
+          >
+            <Icon name="mail" class="max-w-6" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const body = document.querySelector('body') as HTMLBodyElement
+  const hamburger = document.getElementById('hamburger') as HTMLButtonElement
+  const mobileNavOverlay = document.getElementById('mobile-nav-overlay') as HTMLDivElement
+  let overlayDisplayed = false
+
+  function handleMobileNavigationOnClick() {
+    overlayDisplayed = !overlayDisplayed
+    body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+
+    // Mobile nav overlay styles
+    mobileNavOverlay.classList.toggle('invisible')
+    mobileNavOverlay.classList.toggle('opacity-0')
+
+    // Hamburger styles
+    hamburger.setAttribute('aria-expanded', `${overlayDisplayed}`)
+    hamburger.querySelector('#top')?.classList.toggle('-translate-y-1')
+    hamburger.querySelector('#top')?.classList.toggle('translate-y-[1px]')
+    hamburger.querySelector('#top')?.classList.toggle('rotate-[135deg]')
+    hamburger.querySelector('#bottom')?.classList.toggle('translate-y-1')
+    hamburger.querySelector('#bottom')?.classList.toggle('-translate-y-[1px]')
+    hamburger.querySelector('#bottom')?.classList.toggle('rotate-[-135deg]')
+  }
+
+  function handleMobileNavigationOnResize() {
+    if (window.innerWidth >= 768) {
+      overlayDisplayed = false
+      body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+
+      // Reset mobile nav overlay styles
+      mobileNavOverlay.classList.add('invisible')
+      mobileNavOverlay.classList.add('opacity-0')
+
+      // Reset hamburger styles
+      hamburger.setAttribute('aria-expanded', `${overlayDisplayed}`)
+      hamburger.querySelector('#top')?.classList.add('-translate-y-1')
+      hamburger.querySelector('#top')?.classList.remove('translate-y-[1px]')
+      hamburger.querySelector('#top')?.classList.remove('rotate-[135deg]')
+      hamburger.querySelector('#bottom')?.classList.add('translate-y-1')
+      hamburger.querySelector('#bottom')?.classList.remove('-translate-y-[1px]')
+      hamburger.querySelector('#bottom')?.classList.remove('rotate-[-135deg]')
+    }
+  }
+
+  // Accessibility
+  hamburger.addEventListener('keyup', (event) => {
+    if (event.code === 'Escape' && overlayDisplayed) {
+      handleMobileNavigationOnClick()
+    }
+  })
+
+  hamburger.addEventListener('click', handleMobileNavigationOnClick)
+  window.addEventListener('resize', handleMobileNavigationOnResize)
+</script>
