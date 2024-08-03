@@ -3,7 +3,10 @@ import { Icon } from 'astro-icon/components'
 import SocialIcon from '../text/SocialIcon.astro'
 ---
 
-<nav>
+<nav
+  id="navigation"
+  class="fixed top-0 transition-all duration-500 z-20 bg-gradient-to-b from-black to-transparent"
+>
   <div id="desktop-nav" class="hidden lg:flex justify-between items-center flex-wrap gap-10">
     <a href="/" class="block w-full max-w-20" aria-label="Home" title="Home"><Icon name="logo" /></a
     >
@@ -33,12 +36,12 @@ import SocialIcon from '../text/SocialIcon.astro'
 
   <!-- mobile nav -->
   <div id="mobile-nav" class="lg:hidden flex justify-between items-center">
-    <a href="/" class="block w-full max-w-20 z-20" aria-label="Home" title="Home"
+    <a href="/" class="block w-full max-w-20 z-10" aria-label="Home" title="Home"
       ><Icon name="logo" /></a
     >
     <button
       id="hamburger"
-      class="relative flex flex-col justify-center items-center size-8 z-20"
+      class="relative flex flex-col justify-center items-center size-8 z-10"
       aria-expanded="false"
       title="Menu"
       aria-label="Menu"
@@ -49,7 +52,7 @@ import SocialIcon from '../text/SocialIcon.astro'
 
     <div
       id="mobile-nav-overlay"
-      class="absolute top-0 left-0 w-full h-screen opacity-0 invisible transition text-white bg-black z-10"
+      class="absolute top-0 left-0 w-full h-[100vi] opacity-0 invisible transition text-white bg-black"
     >
       <!-- nav items -->
       <ul class="flex flex-col gap-8 text-l px-4 pt-36 mb-16">
@@ -79,9 +82,11 @@ import SocialIcon from '../text/SocialIcon.astro'
 
 <script>
   const body = document.querySelector('body') as HTMLBodyElement
+  const navigation = document.getElementById('navigation')
   const hamburger = document.getElementById('hamburger') as HTMLButtonElement
   const mobileNavOverlay = document.getElementById('mobile-nav-overlay') as HTMLDivElement
   let overlayDisplayed = false
+  let prevScrollpos = window.scrollY
 
   function handleMobileNavigationOnClick() {
     overlayDisplayed = !overlayDisplayed
@@ -121,6 +126,20 @@ import SocialIcon from '../text/SocialIcon.astro'
     }
   }
 
+  function handleActiveNavigationOnScroll() {
+    let currentScrollPos = window.scrollY
+
+    if (prevScrollpos > currentScrollPos) {
+      navigation?.classList.add('top-0')
+      navigation?.classList.remove('-top-20')
+    } else {
+      navigation?.classList.remove('top-0')
+      navigation?.classList.add('-top-20')
+    }
+
+    prevScrollpos = currentScrollPos
+  }
+
   // Accessibility
   hamburger.addEventListener('keyup', (event) => {
     if (event.code === 'Escape' && overlayDisplayed) {
@@ -130,4 +149,5 @@ import SocialIcon from '../text/SocialIcon.astro'
 
   hamburger.addEventListener('click', handleMobileNavigationOnClick)
   window.addEventListener('resize', handleMobileNavigationOnResize)
+  window.addEventListener('scroll', handleActiveNavigationOnScroll)
 </script>

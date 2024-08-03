@@ -62,8 +62,9 @@ video {
 }
 
 header,
-main {
-  @apply max-w-screen-2xl mx-auto px-4 py-8 md:p-8;
+main,
+nav {
+  @apply w-full max-w-screen-2xl mx-auto px-4 py-8 md:p-8;
 }
 
 /* Typography */

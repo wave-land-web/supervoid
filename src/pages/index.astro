@@ -3,9 +3,26 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Animation, VFX, and Technical Design Studio">
-  <div class="mt-32" slot="header-content">
-    <h1 class="text-3xl md:text-4xl mb-4 drop-shadow-lg">SUPERVOID</h1>
-    <p class="text-base drop-shadow-lg">Psychedelic Dreams for Stage + Screen</p>
+  <div
+    slot="video-slot"
+    class="relative max-w-screen-2xl mx-auto pb-[56.25%] h-0 w-full after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-b after:from-transparent after:to-black"
+  >
+    <mux-player
+      playback-id="g6oY8q47moU8I00gfNyyj00egYW4400dTyAEs5CFa300RGc"
+      metadata-video-title="SuperVoid 2024 Reel"
+      metadata-viewer-user-id="12345"
+      accent-color="var(--color-magenta-900)"
+      class="w-full absolute top-0 left-0"
+      style="--controls: none;"
+      thumbnail-time="0"
+      poster=""
+      loop
+      muted
+      autoplay></mux-player>
+    <header class="absolute -bottom-12 md:top-1/2 left-0 md:-translate-y-1/2 z-10">
+      <h1 class="text-3xl md:text-4xl mb-4 drop-shadow-lg">SUPERVOID</h1>
+      <p class="text-sm md:text-base drop-shadow-lg">Psychedelic Dreams for Stage + Screen</p>
+    </header>
   </div>
   <main>
     <h2 class="text-l">Home page</h2>
