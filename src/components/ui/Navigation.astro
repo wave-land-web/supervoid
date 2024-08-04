@@ -5,9 +5,55 @@ import SocialIcon from '../text/SocialIcon.astro'
 
 <nav
   id="navigation"
-  class="fixed top-0 transition-all duration-500 z-20 bg-gradient-to-b from-black to-transparent"
+  class="fixed left-0 right-0 flex min-h-[var(--nav-height)] transition-all duration-500 z-20 bg-gradient-to-b from-black to-transparent"
 >
-  <div id="desktop-nav" class="hidden lg:flex justify-between items-center flex-wrap gap-10">
+  <!-- mobile nav -->
+  <div id="mobile-nav" class="lg:hidden w-full flex justify-between items-center">
+    <a href="/" class="block w-full max-w-16 md:max-w-20 z-10" aria-label="Home" title="Home"
+      ><Icon name="logo" /></a
+    >
+    <button
+      id="hamburger"
+      class="relative flex flex-col justify-center items-center size-8 z-10"
+      aria-expanded="false"
+      title="Menu"
+      aria-label="Menu"
+    >
+      <div id="top" class="h-[2px] w-6 bg-white rounded-md transition -translate-y-1"></div>
+      <div id="bottom" class="h-[2px] w-6 bg-white rounded-md transition translate-y-1"></div>
+    </button>
+
+    <div
+      id="mobile-nav-overlay"
+      class="absolute top-0 left-0 w-full h-[100vi] opacity-0 invisible transition text-white bg-black"
+    >
+      <!-- nav items -->
+      <ul class="flex flex-col gap-8 text-l px-4 md:px-8 pt-32 mb-16">
+        <li><a href="/work" aria-label="Work" title="Work">Work</a></li>
+        <li><a href="/about" aria-label="About" title="About">About</a></li>
+        <li><a href="/servers" aria-label="Servers" title="Servers">Servers</a></li>
+        <li><a href="/press" aria-label="Press" title="Press">Press</a></li>
+        <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs</a></li>
+        <li><a href="/contact" aria-label="Contact" title="Contact">Contact</a></li>
+      </ul>
+
+      <!-- nav icons -->
+      <ul class="flex gap-10 px-4 md:px-8">
+        <li>
+          <SocialIcon href="https://www.instagram.com/supervoidtv/" name="instagram" />
+        </li>
+        <li>
+          <SocialIcon href="https://www.facebook.com/supervoidtv" name="facebook" />
+        </li>
+        <li>
+          <SocialIcon href="mailto:info@supervoid.tv" name="mail" />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- desktop nav -->
+  <div id="desktop-nav" class="lg:flex hidden w-full justify-between items-center flex-wrap gap-10">
     <a href="/" class="block w-full max-w-20" aria-label="Home" title="Home"><Icon name="logo" /></a
     >
     <!-- nav items -->
@@ -32,51 +78,6 @@ import SocialIcon from '../text/SocialIcon.astro'
         <SocialIcon href="mailto:info@supervoid.tv" name="mail" />
       </li>
     </ul>
-  </div>
-
-  <!-- mobile nav -->
-  <div id="mobile-nav" class="lg:hidden flex justify-between items-center">
-    <a href="/" class="block w-full max-w-20 z-10" aria-label="Home" title="Home"
-      ><Icon name="logo" /></a
-    >
-    <button
-      id="hamburger"
-      class="relative flex flex-col justify-center items-center size-8 z-10"
-      aria-expanded="false"
-      title="Menu"
-      aria-label="Menu"
-    >
-      <div id="top" class="h-[2px] w-6 bg-white rounded-md transition -translate-y-1"></div>
-      <div id="bottom" class="h-[2px] w-6 bg-white rounded-md transition translate-y-1"></div>
-    </button>
-
-    <div
-      id="mobile-nav-overlay"
-      class="absolute top-0 left-0 w-full h-[100vi] opacity-0 invisible transition text-white bg-black"
-    >
-      <!-- nav items -->
-      <ul class="flex flex-col gap-8 text-l px-4 pt-36 mb-16">
-        <li><a href="/work" aria-label="Work" title="Work">Work</a></li>
-        <li><a href="/about" aria-label="About" title="About">About</a></li>
-        <li><a href="/servers" aria-label="Servers" title="Servers">Servers</a></li>
-        <li><a href="/press" aria-label="Press" title="Press">Press</a></li>
-        <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs</a></li>
-        <li><a href="/contact" aria-label="Contact" title="Contact">Contact</a></li>
-      </ul>
-
-      <!-- nav icons -->
-      <ul class="flex gap-10 px-4">
-        <li>
-          <SocialIcon href="https://www.instagram.com/supervoidtv/" name="instagram" />
-        </li>
-        <li>
-          <SocialIcon href="https://www.facebook.com/supervoidtv" name="facebook" />
-        </li>
-        <li>
-          <SocialIcon href="mailto:info@supervoid.tv" name="mail" />
-        </li>
-      </ul>
-    </div>
   </div>
 </nav>
 

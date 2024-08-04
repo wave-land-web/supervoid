@@ -51,6 +51,12 @@
   --fs-9xl: clamp(14.55rem, 17.129412vi + 10.27rem, 21.83rem);
 
   --line-height: calc(2px + 2ex + 2px);
+
+  --nav-height: 5rem;
+
+  @media (min-width: 768px) {
+    --nav-height: 6rem;
+  }
 }
 
 /* General */
@@ -64,7 +70,16 @@ video {
 header,
 main,
 nav {
-  @apply w-full max-w-screen-2xl mx-auto px-4 py-8 md:p-8;
+  @apply w-full max-w-screen-2xl mx-auto;
+}
+
+header,
+main {
+  @apply p-4 md:p-8;
+}
+
+nav {
+  @apply px-4 md:px-8;
 }
 
 /* Typography */
@@ -74,7 +89,11 @@ h2,
 h3,
 h4,
 h5 {
-  @apply font-header;
+  @apply font-header text-balance;
+}
+
+p {
+  @apply text-pretty;
 }
 
 a:hover {
