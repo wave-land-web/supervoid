@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components'
 import Layout from '../layouts/Layout.astro'
 ---
 
@@ -19,17 +20,69 @@ import Layout from '../layouts/Layout.astro'
       loop
       muted
       autoplay></mux-player>
-    <header class="absolute top-full md:top-1/2 left-0 md:-translate-y-1/2 z-10">
-      <!-- TODO: create header-content <div> for header content -->
-      <h1 class="text-2xl md:text-3xl lg:text-4xl mb-4 drop-shadow-lg">SUPERVOID</h1>
-      <p class="text-xs md:text-sm lg:text-base drop-shadow-lg">
-        Psychedelic Dreams for Stage + Screen
-      </p>
-      <!-- TODO: create video controls to be position bottom right -->
-      <!-- TODO: determine where controls should be on mobile: possibly on nav or underneath header-content -->
+
+    <header>
+      <div
+        id="header-content"
+        class="absolute top-full md:top-1/2 left-0 md:-translate-y-1/2 px-4 md:px-8 z-10"
+      >
+        <h1 class="text-2xl md:text-3xl lg:text-4xl mb-4 drop-shadow-lg">SUPERVOID</h1>
+        <p class="text-xs md:text-sm lg:text-base drop-shadow-lg">
+          Psychedelic Dreams for Stage + Screen
+        </p>
+      </div>
+      <div
+        id="video-controls"
+        class="absolute bottom-4 md:bottom-8 right-4 md:right-8 flex flex-col lg:flex-row gap-4 lg:gap-6 z-10"
+      >
+        <button id="play" class="hover:scale-110 transition-all active:scale-95">
+          <Icon name="player-play" class="w-6 lg:w-8" />
+        </button>
+
+        <button id="pause" class="hover:scale-110 transition-all active:scale-95">
+          <Icon name="player-pause" class="w-6 lg:w-8" />
+        </button>
+
+        <button id="volume-off" class="hover:scale-110 transition-all active:scale-95">
+          <Icon name="volume-off" class="w-6 lg:w-8" />
+        </button>
+
+        <button id="volume-on" class="hidden hover:scale-110 transition-all active:scale-95">
+          <Icon name="volume-on" class="w-6 lg:w-8" />
+        </button>
+      </div>
     </header>
   </div>
   <!-- <main>
-    <h2 class="text-l">Home page</h2>
+    Add GIFs here
   </main> -->
 </Layout>
+
+<script>
+  // TODO: Add event listeners for video controls
+  const player = document.querySelector('mux-player') as HTMLTemplateElement
+  const play = document.getElementById('play') as HTMLButtonElement
+  const pause = document.getElementById('pause') as HTMLButtonElement
+  const volumeOff = document.getElementById('volume-off') as HTMLButtonElement
+  const volumeOn = document.getElementById('volume-on') as HTMLButtonElement
+
+  play?.addEventListener('click', () => {
+    console.log('play')
+  })
+
+  pause?.addEventListener('click', () => {
+    console.log('pause')
+  })
+
+  volumeOff?.addEventListener('click', function () {
+    console.log('volume off')
+    this.classList.toggle('hidden')
+    volumeOn?.classList.toggle('hidden')
+  })
+
+  volumeOn?.addEventListener('click', function () {
+    console.log('volume on')
+    this.classList.toggle('hidden')
+    volumeOff?.classList.toggle('hidden')
+  })
+</script>
