@@ -11,6 +11,7 @@ export default {
       },
     },
     fontSize: {
+      '2xs': ['var(--fs-2xs)', { lineHeight: 'var(--line-height)' }],
       xs: ['var(--fs-xs)', { lineHeight: 'var(--line-height)' }],
       base: ['var(--fs-base)', { lineHeight: 'var(--line-height)' }],
       s: ['var(--fs-s)', { lineHeight: 'var(--line-height)' }],

@@ -1,0 +1,72 @@
+---
+export interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+---
+
+<div class={`${className} marquee border-t-[1px] border-b-[1px] py-4 bg-black`}>
+  <div class="marquee-container">
+    <p class="text-l">
+      Follow us on Instagram <a
+        href="https://www.instagram.com/supervoidtv/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="site-link">@supervoidtv</a
+      >
+    </p>
+  </div>
+
+  <div class="marquee-container">
+    <p class="text-l">
+      Follow us on Instagram <a
+        href="https://www.instagram.com/supervoidtv/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="site-link">@supervoidtv</a
+      >
+    </p>
+  </div>
+
+  <div class="marquee-container">
+    <p class="text-l">
+      Follow us on Instagram <a
+        href="https://www.instagram.com/supervoidtv/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="site-link">@supervoidtv</a
+      >
+    </p>
+  </div>
+</div>
+
+<style>
+  .marquee,
+  .marquee-container {
+    display: flex;
+    gap: clamp(1.5rem, 2vw, 2rem);
+  }
+
+  .marquee {
+    overflow: hidden;
+  }
+
+  .marquee-container {
+    flex: 0 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    animation: marquee 30s linear 0s infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* This prevents "skipping" on animation reset */
+      transform: translateX(calc(-100% - clamp(1.5rem, 2vw, 2rem)));
+    }
+  }
+</style>

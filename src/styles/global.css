@@ -35,6 +35,7 @@
   --color-magenta-100: oklch(90.51% 0.0974 326.27);
 
   /* Font sizes: source (https://fluid-type.tolin.ski/) */
+  --fs-2xs: clamp(0.64rem, 0.752941vi + 0.45rem, 0.96rem);
   --fs-xs: clamp(0.8rem, 0.941176vi + 0.56rem, 1.2rem);
   --fs-base: clamp(1rem, 1.176471vi + 0.71rem, 1.5rem);
   --fs-s: clamp(1.25rem, 1.482353vi + 0.88rem, 1.88rem);
@@ -60,6 +61,20 @@
 }
 
 /* General */
+
+html {
+  /* Scrollbar */
+  scrollbar-color: var(--color-white) var(--color-black);
+  scrollbar-width: thin;
+}
+
+body {
+  @apply overflow-auto;
+}
+
+body[data-overlay-displayed='true'] {
+  @apply overflow-hidden;
+}
 
 img,
 svg,
@@ -96,8 +111,16 @@ p {
   @apply text-pretty;
 }
 
+a {
+  @apply transition duration-200;
+}
+
 a:hover {
-  @apply text-magenta-900 transition;
+  @apply text-magenta-900;
+}
+
+.site-link {
+  @apply text-magenta-900 hover:text-magenta-100;
 }
 
 /* Animations */

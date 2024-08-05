@@ -1,11 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components'
-import SocialIcon from '../text/SocialIcon.astro'
+import SocialIcons from './SocialIcons.astro'
 ---
 
 <nav
   id="navigation"
-  class="fixed left-0 right-0 flex min-h-[var(--nav-height)] transition-all duration-500 z-20 bg-gradient-to-b from-black to-transparent"
+  class="fixed top-0 left-0 right-0 flex min-h-[var(--nav-height)] transition-all duration-500 z-20 bg-gradient-to-b from-black to-transparent"
 >
   <!-- mobile nav -->
   <div id="mobile-nav" class="lg:hidden w-full flex justify-between items-center">
@@ -19,16 +19,21 @@ import SocialIcon from '../text/SocialIcon.astro'
       title="Menu"
       aria-label="Menu"
     >
-      <div id="top" class="h-[2px] w-6 bg-white rounded-md transition -translate-y-1"></div>
-      <div id="bottom" class="h-[2px] w-6 bg-white rounded-md transition translate-y-1"></div>
+      <div id="top" class="h-[2px] w-6 bg-white rounded-md transition duration-200 -translate-y-1">
+      </div>
+      <div
+        id="bottom"
+        class="h-[2px] w-6 bg-white rounded-md transition duration-200 translate-y-1"
+      >
+      </div>
     </button>
 
     <div
       id="mobile-nav-overlay"
-      class="absolute top-0 left-0 w-full h-[100vi] opacity-0 invisible transition text-white bg-black"
+      class="absolute top-0 left-0 w-full h-screen px-4 md:px-8 opacity-0 invisible -z-10 transition duration-200 text-white bg-black"
     >
       <!-- nav items -->
-      <ul class="flex flex-col gap-8 text-l px-4 md:px-8 pt-32 mb-16">
+      <ul class="flex flex-col gap-8 text-l pt-32 mb-16">
         <li><a href="/work" aria-label="Work" title="Work">Work</a></li>
         <li><a href="/about" aria-label="About" title="About">About</a></li>
         <li><a href="/servers" aria-label="Servers" title="Servers">Servers</a></li>
@@ -36,19 +41,7 @@ import SocialIcon from '../text/SocialIcon.astro'
         <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs</a></li>
         <li><a href="/contact" aria-label="Contact" title="Contact">Contact</a></li>
       </ul>
-
-      <!-- nav icons -->
-      <ul class="flex gap-10 px-4 md:px-8">
-        <li>
-          <SocialIcon href="https://www.instagram.com/supervoidtv/" name="instagram" />
-        </li>
-        <li>
-          <SocialIcon href="https://www.facebook.com/supervoidtv" name="facebook" />
-        </li>
-        <li>
-          <SocialIcon href="mailto:info@supervoid.tv" name="mail" />
-        </li>
-      </ul>
+      <SocialIcons />
     </div>
   </div>
 
@@ -65,19 +58,7 @@ import SocialIcon from '../text/SocialIcon.astro'
       <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs</a></li>
       <li><a href="/contact" aria-label="Contact" title="Contact">Contact</a></li>
     </ul>
-
-    <!-- nav icons -->
-    <ul class="flex gap-10">
-      <li>
-        <SocialIcon href="https://www.instagram.com/supervoidtv/" name="instagram" />
-      </li>
-      <li>
-        <SocialIcon href="https://www.facebook.com/supervoidtv" name="facebook" />
-      </li>
-      <li>
-        <SocialIcon href="mailto:info@supervoid.tv" name="mail" />
-      </li>
-    </ul>
+    <SocialIcons />
   </div>
 </nav>
 
@@ -89,6 +70,7 @@ import SocialIcon from '../text/SocialIcon.astro'
   let overlayDisplayed = false
   let prevScrollpos = window.scrollY
 
+  // TODO: BUG - nav disappears when opening mobile nav near the footer (removing min-h-screen from main fixes it, check when there is more content)
   function handleMobileNavigationOnClick() {
     overlayDisplayed = !overlayDisplayed
     body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
