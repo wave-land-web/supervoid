@@ -34,7 +34,7 @@ import SocialIcons from './SocialIcons.astro'
     >
       <!-- nav items -->
       <ul class="flex flex-col gap-8 text-l pt-32 mb-16">
-        <li><a href="/work" aria-label="Work" title="Work">Work</a></li>
+        <li><a href="/#work" aria-label="Work" title="Work">Work</a></li>
         <li><a href="/about" aria-label="About" title="About">About</a></li>
         <li><a href="/servers" aria-label="Servers" title="Servers">Servers</a></li>
         <li><a href="/press" aria-label="Press" title="Press">Press</a></li>
@@ -51,7 +51,7 @@ import SocialIcons from './SocialIcons.astro'
     >
     <!-- nav items -->
     <ul class="flex gap-10 text-xs">
-      <li><a href="/work" aria-label="Work" title="Work">Work</a></li>
+      <li><a href="/#work" aria-label="Work" title="Work">Work</a></li>
       <li><a href="/about" aria-label="About" title="About">About</a></li>
       <li><a href="/servers" aria-label="Servers" title="Servers">Servers</a></li>
       <li><a href="/press" aria-label="Press" title="Press">Press</a></li>
@@ -65,6 +65,7 @@ import SocialIcons from './SocialIcons.astro'
 <script>
   const body = document.querySelector('body') as HTMLBodyElement
   const navigation = document.getElementById('navigation')
+  const mobileNavItems = document.querySelectorAll('#mobile-nav a')
   const hamburger = document.getElementById('hamburger') as HTMLButtonElement
   const mobileNavOverlay = document.getElementById('mobile-nav-overlay') as HTMLDivElement
   let overlayDisplayed = false
@@ -130,6 +131,7 @@ import SocialIcons from './SocialIcons.astro'
     }
   })
 
+  mobileNavItems.forEach((item) => item.addEventListener('click', handleMobileNavigationOnClick))
   hamburger.addEventListener('click', handleMobileNavigationOnClick)
   window.addEventListener('resize', handleMobileNavigationOnResize)
   window.addEventListener('scroll', handleActiveNavigationOnScroll)

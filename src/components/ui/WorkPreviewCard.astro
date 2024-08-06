@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+export interface Props {
+  work: CollectionEntry<'work'>
+}
+
+const { work } = Astro.props
+---
+
+<article
+  class="relative max-w-screen-2xl mx-auto pb-[56.25%] h-0 w-full rounded-xl overflow-hidden"
+>
+  <a href={`/work/${work.slug}`}>
+    <mux-player
+      playback-id={work.data.gifs.hero}
+      metadata-video-title={work.data.title}
+      metadata-viewer-user-id={work.data.id}
+      accent-color="var(--color-magenta-900)"
+      style="--controls: none;"
+      class="w-full absolute top-0 left-0"
+      thumbnail-time="0"
+      loop
+      muted
+      autoplay></mux-player>
+  </a>
+</article>

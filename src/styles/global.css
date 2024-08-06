@@ -66,6 +66,9 @@ html {
   /* Scrollbar */
   scrollbar-color: var(--color-white) var(--color-black);
   scrollbar-width: thin;
+
+  /* Smooth Scrolling */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -95,6 +98,10 @@ main {
 
 nav {
   @apply px-4 md:px-8;
+}
+
+section {
+  @apply py-16 md:py-24;
 }
 
 /* Typography */
