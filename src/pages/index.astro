@@ -8,20 +8,18 @@ const workData = await getCollection('work')
 ---
 
 <Layout title="Animation, VFX, and Technical Design Studio">
-  <!-- TODO: adjust margin bottom on video slot when there is content -->
   <div
     slot="video-slot"
     class="relative max-w-screen-2xl mx-auto pb-[56.25%] h-0 w-full after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-b after:from-transparent after:to-black mb-36 md:mb-0"
   >
+    <!-- TODO: Replace with correct reel when available -->
     <mux-player
-      playback-id="g6oY8q47moU8I00gfNyyj00egYW4400dTyAEs5CFa300RGc"
-      metadata-video-title="SuperVoid 2024 Reel"
-      metadata-viewer-user-id="12345"
+      playback-id="4D65uHdj3Bo23cixitmQoQKAn93hrpCRXmC01SvBSmG8"
+      metadata-video-title="Supervoid Hero Player: Reel"
       accent-color="var(--color-magenta-900)"
       class="w-full absolute top-0 left-0"
       style="--controls: none;"
       thumbnail-time="0"
-      poster=""
       loop
       muted
       autoplay></mux-player>
@@ -73,34 +71,36 @@ const workData = await getCollection('work')
 </Layout>
 
 <script>
-  // TODO: Add event listeners for video controls
-  const player = document.querySelector('mux-player') as HTMLTemplateElement
+  const muxPlayer = document.querySelector('mux-player') as HTMLVideoElement
   const play = document.getElementById('play') as HTMLButtonElement
   const pause = document.getElementById('pause') as HTMLButtonElement
   const volumeOff = document.getElementById('volume-off') as HTMLButtonElement
   const volumeOn = document.getElementById('volume-on') as HTMLButtonElement
 
-  play?.addEventListener('click', function () {
-    console.log('play')
+  // Play
+  function playVideo(this: HTMLButtonElement) {
+    muxPlayer.play()
     this.classList.toggle('hidden')
     pause?.classList.toggle('hidden')
-  })
+  }
 
-  pause?.addEventListener('click', function () {
-    console.log('pause')
+  // Pause
+  function pauseVideo(this: HTMLButtonElement) {
+    muxPlayer.pause()
     this.classList.toggle('hidden')
     play?.classList.toggle('hidden')
-  })
+  }
 
-  volumeOff?.addEventListener('click', function () {
-    console.log('volume off')
-    this.classList.toggle('hidden')
-    volumeOn?.classList.toggle('hidden')
-  })
-
-  volumeOn?.addEventListener('click', function () {
-    console.log('volume on')
-    this.classList.toggle('hidden')
+  // Volume on/off
+  function toggleVolume() {
+    muxPlayer.muted = !muxPlayer.muted
     volumeOff?.classList.toggle('hidden')
-  })
+    volumeOn?.classList.toggle('hidden')
+  }
+
+  // Event listeners
+  play.addEventListener('click', playVideo)
+  pause?.addEventListener('click', pauseVideo)
+  volumeOff?.addEventListener('click', toggleVolume)
+  volumeOn?.addEventListener('click', toggleVolume)
 </script>

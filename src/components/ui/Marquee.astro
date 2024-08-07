@@ -6,7 +6,9 @@ export interface Props {
 const { class: className } = Astro.props
 ---
 
-<div class={`${className} marquee border-t-[1px] border-b-[1px] py-4 bg-black`}>
+<div
+  class={`${className} marquee max-w-screen-2xl mx-auto border-t-[1px] border-b-[1px] py-4 bg-black`}
+>
   <div class="marquee-container">
     <p class="text-l">
       Follow us on Instagram <a

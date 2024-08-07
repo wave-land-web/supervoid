@@ -1,4 +1,5 @@
 ---
+// TODO: add title and animation on hover
 import type { CollectionEntry } from 'astro:content'
 
 export interface Props {
@@ -6,27 +7,71 @@ export interface Props {
 }
 
 const { work } = Astro.props
+const { slug } = work
+const playbackId = work.data.gifs.hero
+const videoTitle = work.data.title
 ---
 
 <article
-  class="relative max-w-screen-2xl mx-auto pb-[56.25%] h-0 w-full rounded-xl overflow-hidden"
+  class="relative max-w-screen-2xl mx-auto pb-[56.25%] h-0 w-full rounded-xl overflow-hidden lsa lsa-slide-up no-repeat"
 >
-  <a href={`/work/${work.slug}`}>
+  <a href={`/work/${slug}`}>
     <mux-player
-      playback-id={work.data.gifs.hero}
-      metadata-video-title={work.data.title}
-      metadata-viewer-user-id={work.data.id}
+      playback-id={playbackId}
+      metadata-video-title={videoTitle}
       accent-color="var(--color-magenta-900)"
       style="--controls: none;"
       class="w-full absolute top-0 left-0"
-      thumbnail-time="0"
       loop
       muted
-      autoplay></mux-player>
+      paused></mux-player>
   </a>
 </article>
 
-<script>
-  // TODO: Pause videos by default
-  // TODO: On hover, play the video
+<script define:vars={{ playbackId }}>
+  // TODO: Handle behavior if user resizes window
+
+  const muxPlayers = document.querySelectorAll(`mux-player[playback-id="${playbackId}"]`)
+
+  function handlePlayOnScroll() {
+    if (!window.IntersectionObserver) {
+      return console.log('IntersectionObserver not supported')
+    }
+
+    // Configure observer options
+    if (muxPlayers.length !== 0) {
+      const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.25,
+      }
+
+      // Initialize observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const player = entry.target
+
+          if (entry.isIntersecting) {
+            player.play()
+          } else if (!entry.isIntersecting) {
+            player.pause()
+          }
+        })
+      }, options)
+
+      muxPlayers.forEach((section) => observer.observe(section))
+    }
+  }
+
+  // Mobile: ON SCROLL > play video
+  // Desktop: ON HOVER > play video
+  // Desktop: ON HOVER OUT > pause video
+  if (window.innerWidth < 768) {
+    document.addEventListener('scroll', handlePlayOnScroll)
+  } else if (window.innerWidth >= 768) {
+    muxPlayers.forEach((player) => {
+      player.addEventListener('mouseover', () => player.play())
+      player.addEventListener('mouseout', () => player.pause())
+    })
+  }
 </script>
