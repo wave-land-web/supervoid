@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import Navigation from '../components/ui/Navigation.astro'
+import Marquee from '../components/ui/Marquee.astro'
 import Footer from '../components/ui/Footer.astro'
 
 export interface Props {
@@ -82,6 +83,7 @@ const socialImageURL = new URL(socialImage || 'images/home-page-hero.webp', cano
       <slot name="video-slot" />
     </div>
     <slot />
+    <Marquee class="mb-96" />
     <Footer />
   </body>
 </html>

@@ -71,8 +71,7 @@ import SocialIcons from './SocialIcons.astro'
   let overlayDisplayed = false
   let prevScrollpos = window.scrollY
 
-  // TODO: BUG - nav disappears when opening mobile nav near the footer (removing min-h-screen from main fixes it, check when there is more content)
-  function handleMobileNavigationOnClick() {
+  function handleMobileNavigationOverlayOnClick() {
     overlayDisplayed = !overlayDisplayed
     body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
 
@@ -90,7 +89,7 @@ import SocialIcons from './SocialIcons.astro'
     hamburger.querySelector('#bottom')?.classList.toggle('rotate-[-135deg]')
   }
 
-  function handleMobileNavigationOnResize() {
+  function handleMobileNavigationOverlayOnResize() {
     if (window.innerWidth >= 768) {
       overlayDisplayed = false
       body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
@@ -110,15 +109,26 @@ import SocialIcons from './SocialIcons.astro'
     }
   }
 
+  function showNavbar() {
+    navigation?.classList.add('top-0')
+    navigation?.classList.remove('-top-20')
+  }
+
+  function hideNavbar() {
+    navigation?.classList.remove('top-0')
+    navigation?.classList.add('-top-20')
+  }
+
   function handleActiveNavigationOnScroll() {
     let currentScrollPos = window.scrollY
 
-    if (prevScrollpos > currentScrollPos) {
-      navigation?.classList.add('top-0')
-      navigation?.classList.remove('-top-20')
-    } else {
-      navigation?.classList.remove('top-0')
-      navigation?.classList.add('-top-20')
+    // Show nav when scrolling up or at the top of the page
+    if (prevScrollpos > currentScrollPos || currentScrollPos < 20) {
+      showNavbar()
+      // Chrome bug: nav disappears when opening mobile nav near the footer
+      // Checking if the overlay is displayed prevents the nav from disappearing
+    } else if (prevScrollpos < currentScrollPos && !overlayDisplayed) {
+      hideNavbar()
     }
 
     prevScrollpos = currentScrollPos
@@ -127,12 +137,14 @@ import SocialIcons from './SocialIcons.astro'
   // Accessibility
   hamburger.addEventListener('keyup', (event) => {
     if (event.code === 'Escape' && overlayDisplayed) {
-      handleMobileNavigationOnClick()
+      handleMobileNavigationOverlayOnClick()
     }
   })
 
-  mobileNavItems.forEach((item) => item.addEventListener('click', handleMobileNavigationOnClick))
-  hamburger.addEventListener('click', handleMobileNavigationOnClick)
-  window.addEventListener('resize', handleMobileNavigationOnResize)
+  mobileNavItems.forEach((item) =>
+    item.addEventListener('click', handleMobileNavigationOverlayOnClick)
+  )
+  hamburger.addEventListener('click', handleMobileNavigationOverlayOnClick)
+  window.addEventListener('resize', handleMobileNavigationOverlayOnResize)
   window.addEventListener('scroll', handleActiveNavigationOnScroll)
 </script>

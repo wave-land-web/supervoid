@@ -72,11 +72,11 @@ html {
 }
 
 body {
-  @apply overflow-auto;
+  @apply overflow-y-auto;
 }
 
 body[data-overlay-displayed='true'] {
-  @apply overflow-hidden;
+  @apply overflow-y-hidden;
 }
 
 img,

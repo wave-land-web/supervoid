@@ -1,32 +1,29 @@
 ---
 import { Icon } from 'astro-icon/components'
-import Marquee from './Marquee.astro'
 import SocialIcons from './SocialIcons.astro'
 ---
 
-<footer class="w-full max-w-screen-2xl m-auto">
-  <Marquee class="mb-96" />
-  <div class="p-8 fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-screen-2xl -z-10">
-    <div id="footer-contact" class="flex flex-col items-center gap-4 mb-28 text-base">
-      <p>info@supervoid.tv</p>
-      <SocialIcons />
-    </div>
-    <div
-      id="footer-info"
-      class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs"
-    >
-      <p>Supervoid © {new Date().getFullYear()}</p>
-      <p>
-        Website by{' '}
-        <a
-          href="https://wavelandweb.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="site-link inline-flex items-center gap-1"
-        >
-          Wave Land Web <Icon name="tabler:arrow-up-right" class="w-[clamp(1rem,2vw,1.5rem)]" />
-        </a>
-      </p>
-    </div>
+<footer
+  class="w-full max-w-screen-2xl m-auto p-8 fixed bottom-0 left-1/2 transform -translate-x-1/2 -z-10"
+>
+  <div id="footer-contact" class="flex flex-col items-center gap-4 mb-28 text-base">
+    <p>info@supervoid.tv</p>
+    <SocialIcons />
+  </div>
+  <div
+    id="footer-info"
+    class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs"
+  >
+    <p>Supervoid © {new Date().getFullYear()}</p>
+    <p>
+      Website by <a
+        href="https://wavelandweb.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="site-link inline-flex items-center gap-1"
+      >
+        Wave Land Web <Icon name="tabler:arrow-up-right" class="w-[clamp(1rem,2vw,1.5rem)]" />
+      </a>
+    </p>
   </div>
 </footer>
