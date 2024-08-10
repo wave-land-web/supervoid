@@ -1,5 +1,5 @@
 ---
-// TODO: add title and animation on hover
+import { Icon } from 'astro-icon/components'
 import type { CollectionEntry } from 'astro:content'
 
 export interface Props {
@@ -13,7 +13,8 @@ const videoTitle = work.data.title
 ---
 
 <article
-  class="relative max-w-screen-2xl mx-auto pb-[56.25%] h-0 w-full rounded-xl overflow-hidden lsa lsa-slide-up no-repeat"
+  id={`work-preview-card-${playbackId}`}
+  class="work-preview-card relative max-w-screen-2xl mx-auto pb-[56.25%] h-0 w-full rounded-xl overflow-hidden group lsa lsa-slide-up no-repeat"
 >
   <a href={`/work/${slug}`}>
     <mux-player
@@ -21,18 +22,101 @@ const videoTitle = work.data.title
       metadata-video-title={videoTitle}
       accent-color="var(--color-magenta-900)"
       style="--controls: none;"
-      class="w-full absolute top-0 left-0"
+      class="w-full absolute top-0 left-0 brightness-75 group-[.playing]:brightness-100 group-[.playing]:scale-105 transition duration-500"
       loop
       muted
       paused></mux-player>
+
+    <div id="title" class="absolute bottom-0 flex items-center gap-3 w-full">
+      <Icon
+        name="tabler:eye-closed"
+        class="group-[.playing]:hidden w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 transition"
+      />
+      <Icon
+        name="tabler:eye"
+        class="hidden group-[.playing]:block w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 transition"
+      />
+
+      <h2
+        id="title-marquee"
+        class="title-marquee relative bg-magenta-900 text-xs uppercase text-white rounded-full overflow-hidden px-4 py-1"
+      >
+        <span data-name={videoTitle} class="block whitespace-nowrap">
+          {videoTitle}
+        </span>
+      </h2>
+    </div>
   </a>
 </article>
 
+<style>
+  /* Marquee Styles */
+
+  .work-preview-card.playing span {
+    animation: marquee 4s linear 0s infinite;
+  }
+
+  .title-marquee {
+    display: flex;
+  }
+
+  .title-marquee:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    background: var(--color-magenta-900);
+  }
+
+  .title-marquee span:after {
+    content: attr(data-name);
+    position: absolute;
+    top: 0;
+    left: 102%;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* This prevents "skipping" on animation reset */
+      transform: translateX(-102%);
+    }
+  }
+</style>
+
 <script define:vars={{ playbackId }}>
-  // TODO: Handle behavior if user resizes window
+  const workPreviewCard = document.querySelector(`#work-preview-card-${playbackId}`)
+  const muxPlayers = document.querySelectorAll(`#work-preview-card-${playbackId} mux-player`)
+  const player = workPreviewCard.querySelector('mux-player')
 
-  const muxPlayers = document.querySelectorAll(`mux-player[playback-id="${playbackId}"]`)
+  // Play/pause video functions
+  async function playVideo() {
+    try {
+      await player.play()
+      workPreviewCard.classList.add('playing')
+    } catch (err) {
+      workPreviewCard.classList.remove('playing')
+    }
+  }
 
+  function handlePlayVideo() {
+    if (player.paused) {
+      playVideo()
+    }
+  }
+
+  function handlePauseVideo() {
+    player.pause()
+    workPreviewCard.classList.remove('playing')
+  }
+
+  // Play video on scroll
   function handlePlayOnScroll() {
     if (!window.IntersectionObserver) {
       return console.log('IntersectionObserver not supported')
@@ -43,18 +127,16 @@ const videoTitle = work.data.title
       const options = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.25,
+        threshold: 0.85,
       }
 
       // Initialize observer
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          const player = entry.target
-
           if (entry.isIntersecting) {
-            player.play()
+            handlePlayVideo()
           } else if (!entry.isIntersecting) {
-            player.pause()
+            handlePauseVideo()
           }
         })
       }, options)
@@ -63,15 +145,13 @@ const videoTitle = work.data.title
     }
   }
 
-  // Mobile: ON SCROLL > play video
-  // Desktop: ON HOVER > play video
-  // Desktop: ON HOVER OUT > pause video
+  // Event listeners
   if (window.innerWidth < 768) {
+    // Mobile
     document.addEventListener('scroll', handlePlayOnScroll)
-  } else if (window.innerWidth >= 768) {
-    muxPlayers.forEach((player) => {
-      player.addEventListener('mouseover', () => player.play())
-      player.addEventListener('mouseout', () => player.pause())
-    })
+  } else {
+    // Desktop
+    workPreviewCard.addEventListener('mouseover', handlePlayVideo)
+    workPreviewCard.addEventListener('mouseout', handlePauseVideo)
   }
 </script>

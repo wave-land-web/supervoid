@@ -78,12 +78,14 @@ const socialImageURL = new URL(socialImage || 'images/home-page-hero.webp', cano
   </head>
 
   <body class="font-body bg-black text-white">
-    <div class="max-w-screen-2xl mx-auto">
-      <Navigation />
-      <slot name="video-slot" />
+    <div id="wrapper" class="z-10 bg-black">
+      <div class="max-w-screen-2xl mx-auto">
+        <Navigation />
+        <slot name="video-slot" />
+      </div>
+      <slot />
+      <Marquee class="mb-96" />
     </div>
-    <slot />
-    <Marquee class="mb-96" />
     <Footer />
   </body>
 </html>
