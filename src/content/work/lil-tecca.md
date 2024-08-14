@@ -7,7 +7,7 @@ info:
     "Supervoid was brought on to create visuals for Lil Tecca's HVN ON EARTH tour in early 2024, our mission was to craft a tripped out cyberpunk aesthetic with glitchy analog video synths and 16-bit inspired 3D visuals.",
     'Drawing inspiration from 90s anime, video games, and modern internet culture, we developed multiple looks for each song, which VJ Katie With The Blue Hair manipulated live during performances. After many sold-out shows and a standout set at Rolling Loud, the HVN ON EARTH tour concluded as a major success.',
   ]
-credits: ['']
+credits: []
 # gifs are MUX playback IDs
 gifs:
   {

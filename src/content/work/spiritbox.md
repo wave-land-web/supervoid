@@ -8,7 +8,7 @@ info:
     'We used cutting-edge tools like Unreal Engine 5 and Notch to develop real-time animations that could be quickly adapted as the arrangements evolved.',
     "Working with a band like Spiritbox that's always pushing the boundaries of their music, we sought to capture their bleeding-edge mentality and create visuals that pushed the boundaries of what's previously been seen at a metal show into something that felt stadium-sized and as massive as the band's music.",
   ]
-credits: ['']
+credits: []
 # gifs are MUX playback IDs
 gifs:
   {

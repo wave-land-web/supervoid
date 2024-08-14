@@ -7,7 +7,7 @@ info:
     "Supervoid was hired by Voyage Productions to produce visuals for San Holo's EXISTENTIAL DANCE MUSIC tour. We drew inspiration from San's longtime friend and creative director Thorwald van den Akker's hand-drawn aesthetic, which defines San Holo's visual world. By blending Thor's hand-drawn imagery, like flocks of birds and unique lettering, with our computer-based techniques, including Notch particle systems and live camera effects, we created visuals that beautifully blurred the lines between traditional art and CG.",
     "In addition to the show content, we developed various Notch effects that captured live camera feeds of San and his audience, adding otherworldly auras and colors. These subtle enhancements elevated the emotional depth of San's music, transforming the highs and lows of life into an immersive audiovisual experience.",
   ]
-credits: ['']
+credits: []
 # gifs are MUX playback IDs
 gifs:
   {

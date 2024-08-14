@@ -8,7 +8,7 @@ info:
     "For They're Only Chasing Safety, one of the band's earliest and most beloved albums, we used live cameras to capture the band and their audience, uniting them on screen. This footage was heavily treated with Notch and cut to timecode, creating a dynamic and immersive experience.",
     'The variety of visuals in the show highlighted the many eras of Underoath, each bringing its own strengths and character from a long career of powerful heavy music.',
   ]
-credits: ['']
+credits: []
 # gifs are MUX playback IDs
 gifs:
   {

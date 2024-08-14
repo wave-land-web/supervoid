@@ -8,7 +8,7 @@ info:
     'In addition to producing content, we also produced a wide range of Notch effects.  Every song had a dedicated Notch look, ranging from subtle film grain overlays to absolutely wild psychedelic rock treatments that pulsed with the music and evolved from song to song.  Media server programmer Larry Barnes worked with video operator Adam Skapple to expose key parameters within each look so that Adam could improvise and make the show unique for each performance.',
     "With a setlist that's different every night and no timecode to sync visuals to, we had to develop the visuals in  a way that made sure all the big moments were highlighted while keeping things flexible enough to make room for improvisation.  It was a big challenge, but we put our heads together and ended up with an amazing show that's received rave reviews from audiences all over the country.",
   ]
-credits: ['']
+credits: []
 # gifs are MUX playback IDs
 gifs:
   {

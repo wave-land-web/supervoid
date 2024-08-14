@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
+import { Icon } from 'astro-icon/components'
 
 export async function getStaticPaths() {
   const posts = await getCollection('work')
@@ -17,10 +18,10 @@ const { post } = Astro.props
 
 <Layout title={post.data.title}>
   <header class="pt-[var(--nav-height)]">
-    <div class="relative pb-[56.25%] mb-36 h-0 rounded-xl overflow-hidden lsa no-repeat">
+    <div class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa no-repeat">
       <mux-player
         playback-id={post.data.gifs.hero}
-        metadata-video-title="Supervoid Hero Player: Reel"
+        metadata-video-title={`Supervoid Work Page: ${post.data.title}`}
         accent-color="var(--color-magenta-900)"
         class="w-full"
         muted></mux-player>
@@ -32,27 +33,114 @@ const { post } = Astro.props
       </h1>
     </div>
   </header>
+
+  <main>
+    <section id="work-details">
+      <div
+        id="info-title"
+        class="grid md:grid-cols-[250px,1fr] items-start justify-start gap-4 border-t-[1px] border-b-[1px] py-6 cursor-pointer"
+      >
+        <div id="title" class="flex items-center gap-3">
+          <Icon
+            data-info-icon
+            name="tabler:plus"
+            class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 rotate-45 transition duration-300"
+          />
+          <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">info</h2>
+        </div>
+
+        <div id="info-content" class="flex-col gap-4 hidden">
+          {post.data.info.map((item: string) => <p>{item}</p>)}
+        </div>
+      </div>
+
+      {
+        post.data.credits.length ? (
+          <div
+            id="credits-title"
+            class="grid md:grid-cols-[250px,1fr] items-start gap-4 border-b-[1px] py-6 cursor-pointer"
+          >
+            <div id="title" class="flex items-center gap-3">
+              <Icon
+                data-credits-icon
+                name="tabler:plus"
+                class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 rotate-45 transition duration-300"
+              />
+              <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">
+                credits
+              </h2>
+            </div>
+
+            <div id="credits-content" class="flex-col gap-4 hidden">
+              {post.data.credits.map((item: string) => (
+                <p>{item}</p>
+              ))}
+            </div>
+          </div>
+        ) : null
+      }
+    </section>
+
+    <section id="work-gifs" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {
+        post.data.gifs.gallery.map((gif: string) => (
+          <div class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa no-repeat">
+            <mux-player
+              playback-id={gif}
+              metadata-video-title="Supervoid Work Page Gallery"
+              accent-color="var(--color-magenta-900)"
+              class="w-full"
+              style="--controls: none;"
+              loop
+              muted
+              autoplay
+            />
+          </div>
+        ))
+      }
+    </section>
+  </main>
+
+  <style>
+    mux-player {
+      --volume-range: none;
+      --mute-button: none;
+    }
+  </style>
+
+  <script>
+    const muxPlayer = document.querySelector(`mux-player`) as HTMLVideoElement
+    const title = document.querySelector(`[data-page-title]`)
+    const infoTitle = document.querySelector(`#info-title`)
+    const infoContent = document.querySelector(`#info-content`)
+    const infoIcon = document.querySelector(`[data-info-icon]`)
+    const creditsTitle = document.querySelector(`#credits-title`)
+    const creditsContent = document.querySelector(`#credits-content`)
+    const creditsIcon = document.querySelector(`[data-credits-icon]`)
+
+    function handlePlayVideo() {
+      title?.classList.add('hidden')
+    }
+
+    function handlePauseVideo() {
+      title?.classList.remove('hidden')
+    }
+
+    function handleShowHideInfo() {
+      infoContent?.classList.toggle('hidden')
+      infoContent?.classList.toggle('grid')
+      infoIcon?.classList.toggle('rotate-45')
+    }
+
+    function handleShowHideCredits() {
+      creditsIcon?.classList.toggle('rotate-45')
+      creditsContent?.classList.toggle('hidden')
+      creditsContent?.classList.toggle('grid')
+    }
+
+    creditsTitle?.addEventListener('click', handleShowHideCredits)
+    infoTitle?.addEventListener('click', handleShowHideInfo)
+    muxPlayer.addEventListener('play', handlePlayVideo)
+    muxPlayer.addEventListener('pause', handlePauseVideo)
+  </script>
 </Layout>
-
-<style>
-  mux-player {
-    --volume-range: none;
-    --mute-button: none;
-  }
-</style>
-
-<script>
-  const muxPlayer = document.querySelector(`mux-player`) as HTMLVideoElement
-  const title = document.querySelector(`[data-page-title]`)
-
-  function handlePlayVideo() {
-    title?.classList.add('hidden')
-  }
-
-  function handlePauseVideo() {
-    title?.classList.remove('hidden')
-  }
-
-  muxPlayer.addEventListener('play', handlePlayVideo)
-  muxPlayer.addEventListener('pause', handlePauseVideo)
-</script>

@@ -9,7 +9,7 @@ info:
     "The stage design featured three vertical pillars of video walls, allowing us to transform the stage from symmetrical to an asymmetrical shape just by adjusting the video content and lighting angles. We designed the video content to play out as triptychs, with each pillar acting as something between a doorway and a mirror, a window into the band's mind and also a reflection of where they came from.",
     'Our collaboration with Taking Back Sunday resulted in a visually engaging and emotionally resonant experience, aiming to capture the essence of their music and their journey back to their roots.',
   ]
-credits: ['']
+credits: []
 # gifs are MUX playback IDs
 gifs:
   {
