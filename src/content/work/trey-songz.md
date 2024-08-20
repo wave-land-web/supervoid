@@ -4,9 +4,15 @@ title: Trey Songz, LOVE HARD Tour
 slug: trey-songz
 info:
   [
-    "Supervoid was hired to produce visuals for Trey Songz' set on the LOVE HARD tour by production manager Daniel Arbelaez.  We brought on our frequent collaborators Planet 10 to help pull this together on a tight timeline.  With less than two weeks to produce a creative deck, direction, animation and final edits, it was a marathon project that pushed us to work efficiently and not second guess our instincts.  It was quite a journey but the end result was great!",
+    "Supervoid was hired to produce visuals for Trey Songz' set on the LOVE HARD tour by production manager Daniel Arbelaez. We brought on our frequent collaborators Planet 10 to help pull this together on a tight timeline. With less than two weeks to produce a creative deck, direction, animation and final edits, it was a marathon project that pushed us to work efficiently and not second guess our instincts. It was quite a journey but the end result was great!",
   ]
-credits: ['Supervoid Team: Drew Mercedante, Planet 10 - George Murphy & Kenn Koubeck']
+credits: [
+    '<h3 class="mb-4 uppercase text-s">Supervoid Team:</h3>
+    <ul class="text-xs">
+    <li>Drew Mercedante</li>
+    <li>Planet 10 - George Murphy & Kenn Koubeck</li>
+    </ul>',
+  ]
 # gifs are MUX playback IDs
 gifs:
   {

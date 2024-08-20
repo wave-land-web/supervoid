@@ -25,6 +25,7 @@
 :root {
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-grey-100: #f0f0f0;
 
   /* Oklch colors with fallbacks */
   --color-magenta-900: #ff00ff;
@@ -51,7 +52,7 @@
   --fs-8xl: clamp(11.64rem, 13.694118vi + 8.22rem, 17.46rem);
   --fs-9xl: clamp(14.55rem, 17.129412vi + 10.27rem, 21.83rem);
 
-  --line-height: calc(2px + 2ex + 2px);
+  --line-height: calc(8px + 2ex);
 
   --nav-height: 5rem;
 

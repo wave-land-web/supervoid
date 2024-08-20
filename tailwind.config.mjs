@@ -36,6 +36,9 @@ export default {
         500: 'var(--color-magenta-500)',
         100: 'var(--color-magenta-100)',
       },
+      grey: {
+        100: 'var(--color-grey-100)',
+      },
     },
   },
 }

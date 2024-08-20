@@ -63,7 +63,6 @@ const workData = await getCollection('work')
     </header>
   </div>
   <main class="relative w-full bg-black">
-    <!-- TODO: Add all projects and style WorkPreviewCard -->
     <section id="work" class="grid md:grid-cols-2 gap-x-10 gap-y-12">
       {workData.map((work) => <WorkPreviewCard work={work} />)}
     </section>

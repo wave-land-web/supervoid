@@ -41,9 +41,11 @@ const videoTitle = work.data.title
         id="title-marquee"
         class="title-marquee relative bg-magenta-900 text-xs uppercase text-white rounded-full overflow-hidden px-4 py-1"
       >
-        <span data-name={videoTitle} class="block whitespace-nowrap">
-          {videoTitle}
-        </span>
+        <div class="wrapper">
+          <span data-name={videoTitle} class="block whitespace-nowrap">
+            {videoTitle}
+          </span>
+        </div>
       </h2>
     </div>
   </a>
@@ -56,6 +58,30 @@ const videoTitle = work.data.title
     animation: marquee 4s linear 0s infinite;
   }
 
+  .work-preview-card.playing .title-marquee .wrapper {
+    opacity: 1;
+    overflow-x: hidden;
+    mask-image: linear-gradient(
+      to right,
+      hsl(0 0% 0% / 0),
+      hsl(0 0% 0% / 1) 2%,
+      hsl(0 0% 0% / 1) 98%,
+      hsl(0 0% 0% / 0)
+    );
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .work-preview-card.playing .title-marquee .wrapper {
+      mask-image: linear-gradient(
+        to right,
+        hsl(0 0% 0% / 0),
+        hsl(0 0% 0% / 1) 4%,
+        hsl(0 0% 0% / 1) 96%,
+        hsl(0 0% 0% / 0)
+      );
+    }
+  }
   .title-marquee {
     display: flex;
   }

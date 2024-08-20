@@ -44,43 +44,47 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
   <main>
     <section id="work-details">
       <div
-        id="info-title"
-        class="grid md:grid-cols-[250px,1fr] items-start justify-start gap-4 border-t-[1px] border-b-[1px] py-6 cursor-pointer"
+        id="info-details"
+        class="md:grid md:grid-cols-[250px,1fr] items-start justify-start gap-4 border-t-[1px] border-b-[1px] py-6 cursor-pointer"
       >
         <div id="title" class="flex items-center gap-3">
           <Icon
             data-info-icon
             name="tabler:plus"
-            class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 rotate-45 transition duration-300"
+            class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 rotate-45 hover:scale-105 active:scale-95 hover:bg-grey-100 transition duration-300"
           />
           <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">info</h2>
         </div>
 
-        <div id="info-content" class="flex-col gap-4 hidden">
-          {post.data.info.map((item: string) => <p>{item}</p>)}
+        <div
+          id="info-content"
+          class="opacity-0 h-0 overflow-hidden text-xs"
+          set:html={post.data.info}
+        >
+          {post.data.info.map((item: string) => <p class="mb-4" set:html={item} />)}
         </div>
       </div>
 
       {
         post.data.credits.length ? (
           <div
-            id="credits-title"
-            class="grid md:grid-cols-[250px,1fr] items-start gap-4 border-b-[1px] py-6 cursor-pointer"
+            id="credits-details"
+            class="md:grid md:grid-cols-[250px,1fr] items-start gap-4 border-b-[1px] py-6 cursor-pointer"
           >
             <div id="title" class="flex items-center gap-3">
               <Icon
                 data-credits-icon
                 name="tabler:plus"
-                class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 rotate-45 transition duration-300"
+                class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 rotate-45 hover:scale-105 active:scale-95 hover:bg-grey-100 transition duration-300"
               />
               <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">
                 credits
               </h2>
             </div>
 
-            <div id="credits-content" class="flex-col gap-4 hidden">
+            <div id="credits-content" class="opacity-0 h-0 overflow-hidden">
               {post.data.credits.map((item: string) => (
-                <p>{item}</p>
+                <div set:html={item} />
               ))}
             </div>
           </div>
@@ -199,10 +203,10 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
   <script>
     const muxPlayer = document.querySelector(`mux-player`) as HTMLVideoElement
     const title = document.querySelector(`[data-page-title]`)
-    const infoTitle = document.querySelector(`#info-title`)
+    const infoDetails = document.querySelector(`#info-details`)
     const infoContent = document.querySelector(`#info-content`)
     const infoIcon = document.querySelector(`[data-info-icon]`)
-    const creditsTitle = document.querySelector(`#credits-title`)
+    const creditsDetails = document.querySelector(`#credits-details`)
     const creditsContent = document.querySelector(`#credits-content`)
     const creditsIcon = document.querySelector(`[data-credits-icon]`)
 
@@ -215,19 +219,35 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
     }
 
     function handleShowHideInfo() {
-      infoContent?.classList.toggle('hidden')
-      infoContent?.classList.toggle('grid')
+      // icon styles
       infoIcon?.classList.toggle('rotate-45')
+
+      // content styles
+      infoContent?.classList.toggle('h-0')
+      infoContent?.classList.toggle('opacity-0')
+      infoContent?.classList.toggle('opacity-100')
+      infoContent?.classList.toggle('transition')
+      infoContent?.classList.toggle('duration-300')
+      infoContent?.classList.toggle('mt-4')
+      infoContent?.classList.toggle('md:mt-0')
     }
 
     function handleShowHideCredits() {
+      // icon styles
       creditsIcon?.classList.toggle('rotate-45')
-      creditsContent?.classList.toggle('hidden')
-      creditsContent?.classList.toggle('grid')
+
+      // content styles
+      creditsContent?.classList.toggle('h-0')
+      creditsContent?.classList.toggle('opacity-0')
+      creditsContent?.classList.toggle('opacity-100')
+      creditsContent?.classList.toggle('transition')
+      creditsContent?.classList.toggle('duration-300')
+      creditsContent?.classList.toggle('mt-4')
+      creditsContent?.classList.toggle('md:mt-0')
     }
 
-    creditsTitle?.addEventListener('click', handleShowHideCredits)
-    infoTitle?.addEventListener('click', handleShowHideInfo)
+    infoDetails?.addEventListener('click', handleShowHideInfo)
+    creditsDetails?.addEventListener('click', handleShowHideCredits)
     muxPlayer.addEventListener('play', handlePlayVideo)
     muxPlayer.addEventListener('pause', handlePauseVideo)
   </script>

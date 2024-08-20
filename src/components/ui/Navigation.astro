@@ -37,12 +37,24 @@ const currentPath = Astro.url.pathname
     >
       <!-- nav items -->
       <ul class="flex flex-col gap-8 text-l pt-32 mb-16">
-        <li><a href="/#work" aria-label="Work" title="Work">Work</a></li>
-        <li><a href="/about" aria-label="About" title="About">About</a></li>
-        <li><a href="/servers" aria-label="Servers" title="Servers">Servers</a></li>
-        <li><a href="/press" aria-label="Press" title="Press">Press</a></li>
-        <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs</a></li>
-        <li><a href="/contact" aria-label="Contact" title="Contact">Contact</a></li>
+        <li><a href="/#work" aria-label="Work" title="Work">Work<Icon name="underline" /></a></li>
+        <li>
+          <a href="/about" aria-label="About" title="About">About<Icon name="underline" /></a>
+        </li>
+        <li>
+          <a href="/servers" aria-label="Servers" title="Servers"
+            >Servers<Icon name="underline" /></a
+          >
+        </li>
+        <li>
+          <a href="/press" aria-label="Press" title="Press">Press<Icon name="underline" /></a>
+        </li>
+        <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs<Icon name="underline" /></a></li>
+        <li>
+          <a href="/contact" aria-label="Contact" title="Contact"
+            >Contact<Icon name="underline" /></a
+          >
+        </li>
       </ul>
       <SocialIcons />
     </div>
@@ -54,32 +66,49 @@ const currentPath = Astro.url.pathname
     >
     <!-- nav items -->
     <ul class="flex gap-10 text-xs">
-      <li><a href="/#work" aria-label="Work" title="Work">Work</a></li>
-      <li><a href="/about" aria-label="About" title="About">About</a></li>
-      <li><a href="/servers" aria-label="Servers" title="Servers">Servers</a></li>
-      <li><a href="/press" aria-label="Press" title="Press">Press</a></li>
-      <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs</a></li>
-      <li><a href="/contact" aria-label="Contact" title="Contact">Contact</a></li>
+      <li>
+        <a href="/#work" aria-label="Work" title="Work"
+          >Work
+          <Icon name="underline" />
+        </a>
+      </li>
+      <li>
+        <a href="/about" aria-label="About" title="About"
+          >About
+          <Icon name="underline" /></a
+        >
+      </li>
+      <li>
+        <a href="/servers" aria-label="Servers" title="Servers">Servers<Icon name="underline" /></a>
+      </li>
+      <li><a href="/press" aria-label="Press" title="Press">Press<Icon name="underline" /></a></li>
+      <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs<Icon name="underline" /></a></li>
+      <li>
+        <a href="/contact" aria-label="Contact" title="Contact">Contact<Icon name="underline" /></a>
+      </li>
     </ul>
     <SocialIcons />
   </div>
 </nav>
 
 <style>
-  /* TODO: can SVG be full width? */
   #navigation li a {
     position: relative;
   }
 
-  #navigation[data-current-url^='/work'] [aria-label='Work']::after,
-  #navigation[data-current-url^='/about'] [aria-label='About']::after,
-  #navigation[data-current-url^='/servers'] [aria-label='Servers']::after,
-  #navigation[data-current-url^='/press'] [aria-label='Press']::after,
-  #navigation[data-current-url^='/jobs'] [aria-label='Jobs']::after,
-  #navigation[data-current-url^='/contact'] [aria-label='Contact']::after {
-    content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NiIgaGVpZ2h0PSI5IiBmaWxsPSJub25lIj48ZyBmaWxsPSIjRjBGIiBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGQ9Ik01My4yMDcgMi4wNzJhLjU5Ny41OTcgMCAwIDEtLjI0OCAwYy0uMDg1IDAtLjIwMi4wOTEtLjI4NS4xMTMtLjE1NC4wNDItLjMwNS4xMzMtLjQ2Mi4xNjJsLS42NTYuMTEyLTEuMDAzLjEyNy0xLjE2Ny4xMzRoLS4xMjVsLTEuNTk3LjE0MWMtLjMwMi4wNDMtMS4wNDQuMTQxLTEuMTEyLjEzNC0uMDY5LS4wMDctLjc3OS4xNDEtLjg5My4xNTUtLjA0NSAwLS4zNS4xMDYtLjYwMS4xNDggMCAuNzA1LjA3NCAxLjI4My4wNzQgMS45NTMuNzkzLS4xMiAxLjU4OC0uMjQgMi4zNi0uMzUzbDQuNDUtLjU3OGMuMzk4IDAgLjgwMy4yMTkgMS4xOTEuMTkuMTAxLS4wMS4yLS4wODYuMjg1LS4yMTguMDg2LS4xNDguMTE0LS4xMTMuMTQzLS4yMThhMiAyIDAgMCAwIC4wMzQtLjU3MWMtLjAyMy0uNjQyLS4xOTQtMS41MDktLjM4OC0xLjQzMU00MS4wMDYgMy42NzlsLS44MzYuMDkxaC0uMTExYy0uMTc0IDAtLjM3NC4wNDMtLjU3LjA3OC0yLjI4Mi4yNTQtNC41NC40NDQtNi44MS43MDUtLjc5NS4wOTEtMS41OC4yMDQtMi4zODQuMjMyLTEuNDI1LjA1Ny0yLjg1MS4xNjMtNC4yNzcuMjYxLS42NzYuMDQzLTEuMTIuMTc2LTIuMDI0LjE0OGgtMS41MmMtLjcxNi4wNzgtMS4wNzUuMTEzLTEuNzk0LjE5LTEuNjA4LjE4NC0zLjIwNS4yOTctNC43OTkuNDIzaC0xLjI1OGMtLjY4NCAwLTEuMjc0LS4wMzUtMS45MjQuMDg1LS42LjExMy0xLjExOC4xOTctMS43ODUuMTgzLTEuMDc1LS4wMzUtMi4xNDIuMDg1LTMuMjI1LjEyLS44NTYgMC0xLjY2Ni4wNTctMi40NzUuMDg1aC0yLjA4YTEuODY3IDEuODY3IDAgMCAwLS41NS0uMDc4IDQuNTYgNC41NiAwIDAgMS0xLjMzNy0uMDc3Yy0uMTk3LS4wMDctLjY3LjI2LS43MjcuNTkyLS4wMi4xODMuMDIuNDE2LS4wMi42MDZDLjQ0MyA3Ljc2Ljc0IDguNSAxLjAwNSA4LjVzLjU3LS4wNzguODQtLjA5MmMuMjcyLS4wMTQuNTg4IDAgLjg4MiAwIC4xMTQgMCAuMjMxLS4wNy4zNDUtLjExMi4wNiAwIC4xMTctLjA1LjE3NC0uMDY0aC4yMzFjLjY1IDAgMS4yOC0uMDk5IDEuOTc5LS4wNDIgMS4wMDQuMDI4IDIuMDczLS4xMiAzLjExNC0uMTQ4IDIuMjk1LS4wOTIgNC42MzQtLjE4MyA2LjkzOC0uMjQ3IDEuNDY1LS4wNTYgMi45NTctLjI2IDQuMzgyLS4zNiAzLjk5Mi0uMjg4IDcuOTYyLS41NSAxMS45NC0uOTcyLjk4OS0uMDk5IDEuOTk1LS4xOSAyLjk3NC0uMjgyIDEuMzQ2LS4xMjcgMi4zNTUtLjI5NiAzLjY3NS0uMjk2aC4yMzFjLjM5IDAgLjgxMy0uMDUgMS4yMzItLjA5MmEyNy43OTUgMjcuNzk1IDAgMCAxIDIuNDA3LS4yNjcgOS4zMSA5LjMxIDAgMCAwIC4yNC0yLjAzYy0uMjE4IDAtLjQxNC4wMzUtLjY1NC4wNzctLjI5NC4wNS0uNjEzLjA5Mi0uOTMuMTA2Ii8+PHBhdGggZD0iTTUyLjExMiAyLjQ3NGExLjAxIDEuMDEgMCAwIDEtLjMzIDBjLS4xNDYgMC0uNDIzLS4wNDMtLjU3MSAwbC0xLjU4My4yNjdjLTEuNTc1LjIwNy0zLjE2Mi40MTQtNC43NTkuNjItLjQxOS4wNS0uODQuMDY0LTEuMjU3LjA3OC0uNjg1IDAtMS4yNzUgMC0xLjkyNS4xOS0uNTk2LjE0OS0xLjExNS4yNjEtMS43ODIuMjc1LTEuMDc1IDAtMi4xNDIuMjA1LTMuMjIyLjMwMy0uOTI0LjA3OC0xLjc5NC4xNTYtMi42NjYuMjI2YTI3Ljk1IDI3Ljk1IDAgMCAxLTIuMTk2LjI4OWMuMTg1LjQzNC4zMzYuOTUuNDQ1IDEuNTIzaDIuMjAxYzEuMDA3IDAgMi4wNy0uMTcgMy4xMTEtLjI2OCAyLjI5NS0uMjEyIDQuNjMtLjQzIDYuOTM1LS42NDIgMS40NjUtLjExMyAyLjk1MS0uNDAyIDQuMzgtLjU3bDMuMjItLjQxYTcuMDUgNy4wNSAwIDAgMSAwLTEuODgxbTcuMzc0LS41NzFjLjA1Mi4xMzguMDg2LjMwOC4xLjQ5M2EyLjQxIDIuNDEgMCAwIDEtLjAyLjU1IDIuNzkzIDIuNzkzIDAgMCAxLS4yMDguNjljLS4wOS4xOS0uMTk1LjMyNy0uMzA4LjQwMi0uMjg1LjA5OS0uNjA4LS4zMDMtLjkxLS4zMDMtLjQyMiAwLS44NDEuMjA1LTEuMjYuMjktLjI4NS4wNDktLjU1IDAtLjgxOS4xMDVhMS44NTIgMS44NTIgMCAwIDEtLjczMi4wNy43NTkuNzU5IDAgMCAwLS4zMzQgMGMtLjEuMTA0LS4yMDguMTU2LS4zMTcuMTU2LS4yODUtLjEyNy0uMzctMS41NjUtLjIwMi0yLjA1Mi4xMjgtLjM3My40NDUtLjI2LjYyMi0uMjYuMjUzIDAgLjUwNy4wNDIuNzU4IDAgLjYxLS4wOTIgMS4yMiAwIDEuODMtLjA3OC4yNiAwIC41MTEtLjE3Ljc2OC0uMjQ3LjI1Ny0uMDc3LjQ4Ny0uMTEyLjczLS4xNDguMDU3LS4wMDcuMTE0LjAxOS4xNjcuMDc3YS43MTQuNzE0IDAgMCAxIC4xMzUuMjU1bTMuODY3LjAwN2MuMDE1LjI0Ny4wMTUuNSAwIC43NDdhMS42IDEuNiAwIDAgMS0uMTE0LjUyMWMtLjA3OC4xOTItLjE3NS4zMjgtLjI4MS4zOTdhLjI3My4yNzMgMCAwIDEtLjMyNC0uMDA5IDEuMDk0IDEuMDk0IDAgMCAwLS44MTggMGMtLjI5Mi4xMjMtLjU5LjEyMy0uODgxIDAtLjEzMi0uMDctLjI1LS4yNDYtLjMzNy0uNS0uMTM0LS40MjMtLjE3Ny0uOTU5LjAzNy0xLjI3Ni4yNTktLjMwMi41NDctLjQxMi44My0uMzE3LjM4Mi4wODQuNzg0LS4zOCAxLjE4LS41NTcuMTMxLS4wNjIuMjY2LS4wMS4zODMuMTQ4LjE0My4xODQuMjU4LjQ4Mi4zMjUuODQ2bTIuMTYxLjA1NmE0Ljc1IDQuNzUgMCAwIDEtLjA5Ny41OTIgMS42NyAxLjY3IDAgMCAxLS4xODMuNTE2Yy0uMDc4LjEzLS4xNjguMjA4LS4yNjEuMjI3LS4wOTQuMDItLjE4OC0uMDIxLS4yNzQtLjExOGExLjE2IDEuMTYgMCAwIDEtLjIxNC0uNDM1Yy0uMTU0LS40MzctLjE4LTEuNTg1LjA0LTEuOTE3QS44OTIuODkyIDAgMCAxIDY0LjkuNTE0Yy4zMDItLjA3Ny41Ny4xNDguNjEzIDEuNDUyIi8+PC9nPjxkZWZzPjxjbGlwUGF0aCBpZD0iYSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTS41IDguNXYtOGg2NXY4eiIvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPg==');
+  #navigation [data-icon='underline'] {
+    display: none;
+  }
+
+  #navigation[data-current-url^='/work'] [aria-label='Work'] [data-icon='underline'],
+  #navigation[data-current-url^='/about'] [aria-label='About'] [data-icon='underline'],
+  #navigation[data-current-url^='/servers'] [aria-label='Servers'] [data-icon='underline'],
+  #navigation[data-current-url^='/press'] [aria-label='Press'] [data-icon='underline'],
+  #navigation[data-current-url^='/jobs'] [aria-label='Jobs'] [data-icon='underline'],
+  #navigation[data-current-url^='/contact'] [aria-label='Contact'] [data-icon='underline'] {
+    display: block;
     position: absolute;
-    bottom: -0.75rem;
+    bottom: -0.5rem;
     left: 0;
   }
 </style>
