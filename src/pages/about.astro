@@ -1,11 +1,15 @@
 ---
+import aboutHeroImage from '../assets/about-hero.png'
+import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="About">
-  <header class="pt-[calc(var(--nav-height)+6rem)]">
-    <h1 class="text-2xl mb-4 drop-shadow-lg text-center uppercase">About page</h1>
-  </header>
+  <ImageHeader
+    title="Crafting Visual Experiences"
+    imageSrc={aboutHeroImage}
+    imageAlt="Tyler Childers concert showing screens, lights, and a crowd of people"
+  />
 
   <main>
     <section>

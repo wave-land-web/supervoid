@@ -1,11 +1,15 @@
 ---
+import jobsHeroImage from '../assets/jobs-hero.png'
+import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Jobs">
-  <header class="pt-[calc(var(--nav-height)+6rem)]">
-    <h1 class="text-2xl mb-4 drop-shadow-lg text-center uppercase">Jobs page</h1>
-  </header>
+  <ImageHeader
+    title="Join Our Team"
+    imageSrc={jobsHeroImage}
+    imageAlt="Rage Against the Machine concert with Supervoid screen displaying 'Fear is Your Only God' quote"
+  />
 
   <main>
     <section>

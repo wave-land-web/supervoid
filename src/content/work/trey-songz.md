@@ -8,7 +8,7 @@ info:
   ]
 credits: [
     '<h3 class="mb-4 uppercase text-s">Supervoid Team:</h3>
-    <ul class="text-xs">
+    <ul>
     <li>Drew Mercedante</li>
     <li>Planet 10 - George Murphy & Kenn Koubeck</li>
     </ul>',

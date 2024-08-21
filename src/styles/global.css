@@ -86,6 +86,10 @@ video {
   @apply block w-full h-auto;
 }
 
+img {
+  @apply rounded-xl;
+}
+
 header,
 main,
 nav {
@@ -115,8 +119,9 @@ h5 {
   @apply font-header text-balance;
 }
 
-p {
-  @apply text-pretty;
+p,
+li {
+  @apply text-xs text-pretty;
 }
 
 a {

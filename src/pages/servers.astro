@@ -1,11 +1,15 @@
 ---
+import serversHeroImage from '../assets/servers-hero.webp'
+import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Servers">
-  <header class="pt-[calc(var(--nav-height)+6rem)]">
-    <h1 class="text-2xl mb-4 drop-shadow-lg text-center uppercase">Servers page</h1>
-  </header>
+  <ImageHeader
+    title="Powering Your Performance"
+    imageSrc={serversHeroImage}
+    imageAlt="Stage setup with instruments and a screen displaying Supervoid server testing"
+  />
 
   <main>
     <section>

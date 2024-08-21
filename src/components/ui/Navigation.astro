@@ -36,22 +36,34 @@ const currentPath = Astro.url.pathname
       class="absolute top-0 left-0 w-full h-screen px-4 md:px-8 opacity-0 invisible -z-10 transition duration-200 text-white bg-black"
     >
       <!-- nav items -->
-      <ul class="flex flex-col gap-8 text-l pt-32 mb-16">
-        <li><a href="/#work" aria-label="Work" title="Work">Work<Icon name="underline" /></a></li>
+      <ul class="flex flex-col gap-8 pt-32 mb-16">
         <li>
-          <a href="/about" aria-label="About" title="About">About<Icon name="underline" /></a>
+          <a href="/#work" aria-label="Work" title="Work" class="text-l"
+            >Work<Icon name="underline" /></a
+          >
         </li>
         <li>
-          <a href="/servers" aria-label="Servers" title="Servers"
+          <a href="/about" aria-label="About" title="About" class="text-l"
+            >About<Icon name="underline" /></a
+          >
+        </li>
+        <li>
+          <a href="/servers" aria-label="Servers" title="Servers" class="text-l"
             >Servers<Icon name="underline" /></a
           >
         </li>
         <li>
-          <a href="/press" aria-label="Press" title="Press">Press<Icon name="underline" /></a>
+          <a href="/press" aria-label="Press" title="Press" class="text-l"
+            >Press<Icon name="underline" /></a
+          >
         </li>
-        <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs<Icon name="underline" /></a></li>
         <li>
-          <a href="/contact" aria-label="Contact" title="Contact"
+          <a href="/jobs" aria-label="Jobs" title="Jobs" class="text-l"
+            >Jobs<Icon name="underline" /></a
+          >
+        </li>
+        <li>
+          <a href="/contact" aria-label="Contact" title="Contact" class="text-l"
             >Contact<Icon name="underline" /></a
           >
         </li>

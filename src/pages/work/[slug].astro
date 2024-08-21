@@ -55,11 +55,7 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
           <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">info</h2>
         </button>
 
-        <div
-          id="info-content"
-          class="opacity-0 h-0 overflow-hidden text-xs"
-          set:html={post.data.info}
-        >
+        <div id="info-content" class="opacity-0 h-0 overflow-hidden" set:html={post.data.info}>
           {post.data.info.map((item: string) => <p class="mb-4" set:html={item} />)}
         </div>
       </div>
