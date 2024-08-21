@@ -24,4 +24,7 @@ export default defineConfig({
     imageCDN: false,
     cacheOnDemandPages: true,
   }),
+  devToolbar: {
+    enabled: false,
+  },
 })

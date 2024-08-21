@@ -1,7 +1,7 @@
 ---
+import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
-import { Icon } from 'astro-icon/components'
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('work')
@@ -30,8 +30,7 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
         playback-id={post.data.gifs.hero}
         metadata-video-title={`Supervoid Work Page: ${post.data.title}`}
         accent-color="var(--color-magenta-900)"
-        class="w-full"
-        muted></mux-player>
+        class="w-full"></mux-player>
       <h1
         data-page-title
         class="absolute left-1 bottom-1 z-50 mr-1 px-4 py-1 bg-magenta-900 text-xs md:text-base lg:text-s uppercase text-white rounded-full"
@@ -42,19 +41,19 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
   </header>
 
   <main>
-    <section id="work-details">
+    <section id="work-details" class="lsa no-repeat">
       <div
         id="info-details"
         class="md:grid md:grid-cols-[250px,1fr] items-start justify-start gap-4 border-t-[1px] border-b-[1px] py-6 cursor-pointer"
       >
-        <div id="title" class="flex items-center gap-3">
+        <button id="title" class="flex items-center gap-3">
           <Icon
             data-info-icon
             name="tabler:plus"
             class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 rotate-45 hover:scale-105 active:scale-95 hover:bg-grey-100 transition duration-300"
           />
           <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">info</h2>
-        </div>
+        </button>
 
         <div
           id="info-content"
@@ -71,7 +70,7 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
             id="credits-details"
             class="md:grid md:grid-cols-[250px,1fr] items-start gap-4 border-b-[1px] py-6 cursor-pointer"
           >
-            <div id="title" class="flex items-center gap-3">
+            <button id="title" class="flex items-center gap-3">
               <Icon
                 data-credits-icon
                 name="tabler:plus"
@@ -80,7 +79,7 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
               <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">
                 credits
               </h2>
-            </div>
+            </button>
 
             <div id="credits-content" class="opacity-0 h-0 overflow-hidden">
               {post.data.credits.map((item: string) => (
@@ -98,7 +97,7 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
     >
       {
         post.data.gifs.gallery.map((gif: string) => (
-          <article class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa no-repeat">
+          <article class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa lsa-slide-up no-repeat">
             <mux-player
               playback-id={gif}
               metadata-video-title="Supervoid Work Page Gallery"
@@ -180,75 +179,70 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
       }
     </section>
   </main>
-
-  <style>
-    mux-player {
-      --volume-range: none;
-      --mute-button: none;
-    }
-
-    .circle-path {
-      stroke: var(--color-magenta-900);
-      stroke-width: 4;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      transition: stroke-dashoffset 0.5s ease;
-    }
-
-    .pagination a:hover .circle-path {
-      stroke-dashoffset: 0;
-    }
-  </style>
-
-  <script>
-    const muxPlayer = document.querySelector(`mux-player`) as HTMLVideoElement
-    const title = document.querySelector(`[data-page-title]`)
-    const infoDetails = document.querySelector(`#info-details`)
-    const infoContent = document.querySelector(`#info-content`)
-    const infoIcon = document.querySelector(`[data-info-icon]`)
-    const creditsDetails = document.querySelector(`#credits-details`)
-    const creditsContent = document.querySelector(`#credits-content`)
-    const creditsIcon = document.querySelector(`[data-credits-icon]`)
-
-    function handlePlayVideo() {
-      title?.classList.add('hidden')
-    }
-
-    function handlePauseVideo() {
-      title?.classList.remove('hidden')
-    }
-
-    function handleShowHideInfo() {
-      // icon styles
-      infoIcon?.classList.toggle('rotate-45')
-
-      // content styles
-      infoContent?.classList.toggle('h-0')
-      infoContent?.classList.toggle('opacity-0')
-      infoContent?.classList.toggle('opacity-100')
-      infoContent?.classList.toggle('transition')
-      infoContent?.classList.toggle('duration-300')
-      infoContent?.classList.toggle('mt-4')
-      infoContent?.classList.toggle('md:mt-0')
-    }
-
-    function handleShowHideCredits() {
-      // icon styles
-      creditsIcon?.classList.toggle('rotate-45')
-
-      // content styles
-      creditsContent?.classList.toggle('h-0')
-      creditsContent?.classList.toggle('opacity-0')
-      creditsContent?.classList.toggle('opacity-100')
-      creditsContent?.classList.toggle('transition')
-      creditsContent?.classList.toggle('duration-300')
-      creditsContent?.classList.toggle('mt-4')
-      creditsContent?.classList.toggle('md:mt-0')
-    }
-
-    infoDetails?.addEventListener('click', handleShowHideInfo)
-    creditsDetails?.addEventListener('click', handleShowHideCredits)
-    muxPlayer.addEventListener('play', handlePlayVideo)
-    muxPlayer.addEventListener('pause', handlePauseVideo)
-  </script>
 </Layout>
+
+<style>
+  .circle-path {
+    stroke: var(--color-magenta-900);
+    stroke-width: 4;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 0.5s ease-in-out;
+  }
+
+  .pagination a:hover .circle-path {
+    stroke-dashoffset: 0;
+  }
+</style>
+
+<script>
+  const muxPlayer = document.querySelector(`mux-player`) as HTMLVideoElement
+  const title = document.querySelector(`[data-page-title]`)
+  const infoDetails = document.querySelector(`#info-details`)
+  const infoContent = document.querySelector(`#info-content`)
+  const infoIcon = document.querySelector(`[data-info-icon]`)
+  const creditsDetails = document.querySelector(`#credits-details`)
+  const creditsContent = document.querySelector(`#credits-content`)
+  const creditsIcon = document.querySelector(`[data-credits-icon]`)
+
+  function handlePlayVideo() {
+    title?.classList.add('hidden')
+  }
+
+  function handlePauseVideo() {
+    title?.classList.remove('hidden')
+  }
+
+  function handleShowHideInfo() {
+    // icon styles
+    infoIcon?.classList.toggle('rotate-45')
+
+    // content styles
+    infoContent?.classList.toggle('h-0')
+    infoContent?.classList.toggle('opacity-0')
+    infoContent?.classList.toggle('opacity-100')
+    infoContent?.classList.toggle('transition')
+    infoContent?.classList.toggle('duration-300')
+    infoContent?.classList.toggle('mt-4')
+    infoContent?.classList.toggle('md:mt-0')
+  }
+
+  function handleShowHideCredits() {
+    // icon styles
+    creditsIcon?.classList.toggle('rotate-45')
+
+    // content styles
+    creditsContent?.classList.toggle('h-0')
+    creditsContent?.classList.toggle('opacity-0')
+    creditsContent?.classList.toggle('opacity-100')
+    creditsContent?.classList.toggle('transition')
+    creditsContent?.classList.toggle('duration-300')
+    creditsContent?.classList.toggle('mt-4')
+    creditsContent?.classList.toggle('md:mt-0')
+  }
+
+  infoDetails?.addEventListener('click', handleShowHideInfo)
+  creditsDetails?.addEventListener('click', handleShowHideCredits)
+  muxPlayer.addEventListener('play', handlePlayVideo)
+  muxPlayer.addEventListener('pause', handlePauseVideo)
+</script>
