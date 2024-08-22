@@ -55,7 +55,9 @@ import Layout from '../layouts/Layout.astro'
     <section class="flex flex-col items-center gap-16 lg:gap-24 lsa lsa-slide-up no-repeat">
       <h2 class="text-l text-center uppercase">SVX SERIES SERVERS QUICK SPECS</h2>
 
-      <div class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 gap-24 md:gap-32">
+      <div
+        class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 items-start gap-24 md:gap-32"
+      >
         <Carousel
           images={[
             { src: serversFrontImage, alt: 'Front of SVX Series server' },
@@ -64,38 +66,65 @@ import Layout from '../layouts/Layout.astro'
         />
 
         <div class="flex flex-col justify-center gap-8">
-          <p class="text-grey-100">
-            Our 2RU Fly Rack Kits contain everything you need to run your show. Rentals start as low
-            as $500/week, with 24/7 tech support and SUPERVOID exclusive VJ loops and visual content
-            included in every rental.
-          </p>
-          <ul class="flex flex-col gap-4">
-            <li class="flex items-center gap-8">
-              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
-              Run up to 12 HD screens, 3 4K screens, or even a single 8K screen, with a dedicated GUI
-              for controlling the software
-            </li>
-            <li class="flex items-center gap-8">
-              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
-              Capture up to 4 HD inputs or one 4K input over SDI or HDMI
-            </li>
-            <li class="flex items-center gap-8">
-              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
-              Real-time low latency visual effects with Notch built into each server
-            </li>
-            <li class="flex items-center gap-8">
-              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
-              Pixel map and control hundreds of universes of lights over artnet
-            </li>
-            <li class="flex items-center gap-8">
-              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
-              Control via your lighting desk with artnet or from MIDI or OSC
-            </li>
-            <li class="flex items-center gap-8">
-              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
-              Remote control over LAN/Wifi from any Windows or Mac computer
-            </li>
-          </ul>
+          <nav id="specs-navigation" class="flex p-0 text-xs">
+            <button id="description-tab" class="bg-magenta-900 py-4 px-8">Description</button>
+            <button id="specifications-tab" class="py-4 px-8">Specifications</button>
+          </nav>
+
+          <div id="description" class="flex flex-col gap-8">
+            <p class="text-grey-100">
+              Our 2RU Fly Rack Kits contain everything you need to run your show. Rentals start as
+              low as $500/week, with 24/7 tech support and SUPERVOID exclusive VJ loops and visual
+              content included in every rental.
+            </p>
+            <ul class="flex flex-col gap-4">
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                Run up to 12 HD screens, 3 4K screens, or even a single 8K screen, with a dedicated GUI
+                for controlling the software
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                Capture up to 4 HD inputs or one 4K input over SDI or HDMI
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                Real-time low latency visual effects with Notch built into each server
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                Pixel map and control hundreds of universes of lights over artnet
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                Control via your lighting desk with artnet or from MIDI or OSC
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                Remote control over LAN/Wifi from any Windows or Mac computer
+              </li>
+            </ul>
+          </div>
+
+          <div id="specifications" class="hidden flex-col gap-8">
+            <p class="text-grey-100">
+              9th Gen Intel i7 8-core processor, 32GB DDR4 RAM, 1TB NVMe SSD, 2TB SATA SSD, 4x HDMI
+            </p>
+            <ul class="flex flex-col gap-4">
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                2x 10G Ethernet ports for high-speed data transfer
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                4x USB 3.0 ports for peripherals and external storage devices
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                2x DisplayPort outputs for GUI and additional screens or projectors
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -107,3 +136,35 @@ import Layout from '../layouts/Layout.astro'
     </section>
   </main>
 </Layout>
+
+<script>
+  const descriptionTab = document.getElementById('description-tab') as HTMLButtonElement
+  const specificationsTab = document.getElementById('specifications-tab') as HTMLButtonElement
+  const description = document.getElementById('description') as HTMLDivElement
+  const specifications = document.getElementById('specifications') as HTMLDivElement
+
+  function showDescription() {
+    // Tab styles
+    descriptionTab.classList.add('bg-magenta-900')
+    specificationsTab.classList.remove('bg-magenta-900')
+
+    // Content styles
+    description.classList.remove('hidden')
+    description.classList.add('flex')
+    specifications.classList.add('hidden')
+  }
+
+  function showSpecifications() {
+    // Tab styles
+    descriptionTab.classList.remove('bg-magenta-900')
+    specificationsTab.classList.add('bg-magenta-900')
+
+    // Content styles
+    specifications.classList.remove('hidden')
+    specifications.classList.add('flex')
+    description.classList.add('hidden')
+  }
+
+  descriptionTab.addEventListener('click', showDescription)
+  specificationsTab.addEventListener('click', showSpecifications)
+</script>

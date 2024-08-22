@@ -13,7 +13,7 @@ export interface Props {
 const { images, class: className } = Astro.props
 ---
 
-<div class={`swiper min-w-0 max-w-full self-center ${className}`}>
+<div class={`swiper min-w-0 max-w-full ${className}`}>
   <div class="swiper-wrapper mb-8">
     {
       images.map((image) => (
@@ -40,12 +40,15 @@ const { images, class: className } = Astro.props
   import 'swiper/css/bundle'
   import { EffectCards } from 'swiper/modules'
 
-  const leftButton = document.getElementById('left')
-  const rightButton = document.getElementById('right')
+  const leftButton = document.getElementById('left') as HTMLButtonElement
+  const rightButton = document.getElementById('right') as HTMLButtonElement
+
+  // Track page to determine carousel effect
+  const { pathname } = new URL(window.location.href)
 
   // init Swiper:
   const swiper = new Swiper('.swiper', {
-    effect: 'cards',
+    effect: pathname !== '/servers' ? 'cards' : 'slide',
     grabCursor: true,
     modules: [EffectCards],
     speed: 300,
@@ -56,6 +59,6 @@ const { images, class: className } = Astro.props
     },
   })
 
-  leftButton?.addEventListener('click', () => swiper.slidePrev())
-  rightButton?.addEventListener('click', () => swiper.slideNext())
+  leftButton.addEventListener('click', () => swiper.slidePrev())
+  rightButton.addEventListener('click', () => swiper.slideNext())
 </script>
