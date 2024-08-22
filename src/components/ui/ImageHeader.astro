@@ -11,7 +11,9 @@ export interface Props {
 const { title, imageSrc, imageAlt } = Astro.props
 ---
 
-<header class="relative pt-[calc(var(--nav-height)+4rem)] md:pt-[calc(var(--nav-height)+6rem)]">
+<header
+  class="relative pt-[calc(var(--nav-height)+4rem)] md:pt-[calc(var(--nav-height)+6rem)] lsa lsa-slide-up no-repeat"
+>
   {
     title && (
       <h1 class="absolute w-full top-[calc(var(--nav-height)+2rem)] md:top-[calc(var(--nav-height)+4rem)] left-1/2 -translate-x-1/2 text-l drop-shadow-lg text-center uppercase">

@@ -27,7 +27,7 @@
 :root {
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-grey-100: #f0f0f0;
+  --color-grey-100: #9b9b9b;
 
   /* Oklch colors with fallbacks */
   --color-magenta-900: #ff00ff;

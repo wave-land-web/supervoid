@@ -1,12 +1,11 @@
 ---
-import { Picture } from 'astro:assets'
+import aboutCarouselOneImage from '../assets/about-carousel-1.png'
+import aboutCarouselTwoImage from '../assets/about-carousel-2.png'
+import aboutCarouselThreeImage from '../assets/about-carousel-3.png'
 import aboutHeroImage from '../assets/about-hero.png'
+import Carousel from '../components/ui/Carousel.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
-import swiperOneImage from '../assets/swiper-1.png'
-import swiperTwoImage from '../assets/swiper-2.png'
-import swiperThreeImage from '../assets/swiper-3.png'
-import { Icon } from 'astro-icon/components'
 ---
 
 <Layout title="About">
@@ -17,7 +16,7 @@ import { Icon } from 'astro-icon/components'
   />
 
   <main class="mb-32">
-    <section>
+    <section class="lsa lsa-slide-up no-repeat">
       <div class="grid md:grid-cols-[250px,1fr] gap-4 md:gap-16 lg:gap-32 py-6 border-t-[1px]">
         <h2 class="text-base uppercase">Who We Are</h2>
 
@@ -38,32 +37,16 @@ import { Icon } from 'astro-icon/components'
 
     <section
       id="join-our-team"
-      class="max-w-screen-md xl:max-w-screen-xl m-auto grid xl:grid-cols-2 gap-8 xl:gap-0"
+      class="max-w-screen-md xl:max-w-screen-xl m-auto grid xl:grid-cols-2 gap-16 xl:gap-0 lsa lsa-slide-up no-repeat"
     >
-      <!-- Swiper -->
-      <div class="swiper xl:-translate-y-12 xl:translate-x-4">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide rounded-xl">
-            <Picture src={swiperOneImage} alt="Taking Back Sunday" />
-          </div>
-          <div class="swiper-slide rounded-xl">
-            <Picture src={swiperTwoImage} alt="Spiritbox" />
-          </div>
-          <div class="swiper-slide rounded-xl">
-            <Picture src={swiperThreeImage} alt="Rage Against the Machine" />
-          </div>
-        </div>
-
-        <div id="pagination" class="max-w-80 mx-auto xl:mx-0 my-8 flex justify-between">
-          <button id="left" class="transition hover:rotate-2 active:rotate-0">
-            <Icon name="left" class="w-32" />
-          </button>
-
-          <button id="right" class="transition hover:-rotate-2 active:rotate-0">
-            <Icon name="right" class="w-32" />
-          </button>
-        </div>
-      </div>
+      <Carousel
+        images={[
+          { src: aboutCarouselOneImage, alt: 'Taking Back Sunday' },
+          { src: aboutCarouselTwoImage, alt: 'Spiritbox' },
+          { src: aboutCarouselThreeImage, alt: 'Rage Against the Machine' },
+        ]}
+        class="xl:-translate-y-12 xl:translate-x-4"
+      />
 
       <div
         class="flex flex-col justify-center gap-8 p-8 xl:p-12 rounded-xl xl:translate-y-12 lg:-translate-x-4 z-10 bg-magenta-900 text-center xl:text-left"
@@ -83,46 +66,3 @@ import { Icon } from 'astro-icon/components'
     </section>
   </main>
 </Layout>
-
-<style>
-  /* Swiper */
-
-  .swiper {
-    min-width: 0;
-    max-width: 100%;
-    align-self: center;
-
-    --swiper-pagination-color: var(--color-white);
-    --swiper-pagination-bullet-size: 1rem;
-    --swiper-pagination-bullet-width: 1rem;
-    --swiper-pagination-bullet-height: 1rem;
-    --swiper-pagination-bullet-inactive-color: var(--color-black);
-    --swiper-pagination-bullet-inactive-opacity: 0.75;
-    --swiper-pagination-bullet-horizontal-gap: 0.5rem;
-  }
-</style>
-
-<script>
-  import Swiper from 'swiper'
-  import 'swiper/css/bundle'
-  import { EffectCards } from 'swiper/modules'
-
-  const leftButton = document.getElementById('left')
-  const rightButton = document.getElementById('right')
-
-  // init Swiper:
-  const swiper = new Swiper('.swiper', {
-    effect: 'cards',
-    grabCursor: true,
-    modules: [EffectCards],
-    speed: 300,
-    loop: true,
-    cardsEffect: {
-      rotate: false,
-      slideShadows: true,
-    },
-  })
-
-  leftButton?.addEventListener('click', () => swiper.slidePrev())
-  rightButton?.addEventListener('click', () => swiper.slideNext())
-</script>

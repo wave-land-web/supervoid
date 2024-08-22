@@ -1,5 +1,10 @@
 ---
+import { Icon } from 'astro-icon/components'
+import jobsCarouselOneImage from '../assets/jobs-carousel-1.png'
+import jobsCarouselTwoImage from '../assets/jobs-carousel-2.png'
+import jobsCarouselThreeImage from '../assets/jobs-carousel-3.png'
 import jobsHeroImage from '../assets/jobs-hero.png'
+import Carousel from '../components/ui/Carousel.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
@@ -12,7 +17,7 @@ import Layout from '../layouts/Layout.astro'
   />
 
   <main>
-    <section>
+    <section class="lsa lsa-slide-up no-repeat">
       <div class="grid md:grid-cols-[250px,1fr] gap-4 md:gap-16 lg:gap-32 py-6 border-t-[1px]">
         <h2 class="text-base uppercase">OUR PHILOSOPHY</h2>
 
@@ -29,6 +34,61 @@ import Layout from '../layouts/Layout.astro'
           </p>
         </div>
       </div>
+    </section>
+
+    <section
+      class="max-w-screen-md xl:max-w-screen-xl m-auto grid xl:grid-cols-2 gap-24 md:gap-32 lsa lsa-slide-up no-repeat"
+    >
+      <Carousel
+        images={[
+          { src: jobsCarouselOneImage, alt: 'Drew working the lighting console at a concert' },
+          { src: jobsCarouselTwoImage, alt: 'Drew working the lighting console at a concert' },
+          { src: jobsCarouselThreeImage, alt: 'Taking Back Sunday' },
+        ]}
+      />
+
+      <div class="flex flex-col justify-center gap-8">
+        <h2 class="text-l uppercase">Who We're Looking For</h2>
+        <p class="text-grey-100">
+          We're always on the lookout for passionate and innovative individuals who:
+        </p>
+        <ul>
+          <li class="flex items-center gap-8">
+            <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+            Have a strong portfolio demonstrating their skills and creativity.
+          </li>
+          <li class="flex items-center gap-8">
+            <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+            Are team players who thrive in a collaborative environment.
+          </li>
+          <li class="flex items-center gap-8">
+            <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+            Are eager to learn and push the limits of what's possible in animation and VFX.
+          </li>
+          <li class="flex items-center gap-8">
+            <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+            Bring unique perspectives and ideas to the table.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section
+      class="max-w-xl m-auto flex flex-col items-center gap-8 text-center lsa lsa-slide-up no-repeat"
+    >
+      <h2 class="text-l uppercase">Join Our Team</h2>
+      <p>
+        If you're excited about creating groundbreaking work and contributing to innovative
+        projects, we'd love to hear from you. Please submit your resume to <a
+          href="mailto:info@supervoid.tv?subject=Job Application"
+          class="site-link">info@supervoid.tv</a
+        >, and we'll reach out if there's a fit.
+      </p>
+      <a
+        href="mailto:info@supervoid.tv?subject=Job Application"
+        class="mx-auto xl:mx-0 py-4 px-8 text-center text-magenta-900 max-w-fit border-2 border-magenta-900 rounded-full hover:shadow-[4px_4px_0_var(--color-magenta-900)] hover:text-magenta-900 active:translate-x-1 active:translate-y-1 active:shadow-none text-stroke text-m"
+        >Apply Now</a
+      >
     </section>
   </main>
 </Layout>
