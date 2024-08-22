@@ -1,5 +1,11 @@
 ---
+import { Icon } from 'astro-icon/components'
+import { Picture } from 'astro:assets'
+import serversBackImage from '../assets/servers-back.png'
+import serversFrontImage from '../assets/servers-front.png'
 import serversHeroImage from '../assets/servers-hero.webp'
+import tateMcraeImage from '../assets/tate-mcrae.png'
+import Carousel from '../components/ui/Carousel.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
@@ -22,6 +28,82 @@ import Layout from '../layouts/Layout.astro'
           and small. Our SVX series media servers pack a big punch in a small footprint.
         </p>
       </div>
+    </section>
+
+    <section
+      id="join-our-team"
+      class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 gap-16 lg:gap-0 lsa lsa-slide-up no-repeat"
+    >
+      <figure class="lg:translate-x-2">
+        <Picture src={tateMcraeImage} alt="Tate McRae" />
+        <figcaption>
+          <p class="text-center mt-4 text-grey-100">Tate McRae performing at MIA Festival</p>
+        </figcaption>
+      </figure>
+
+      <div
+        class="self-center h-fit p-8 lg:p-12 lg:-translate-x-2 rounded-xl z-10 bg-magenta-900 text-center lg:text-left"
+      >
+        <p>
+          After spending years programming top tier media servers like Disguise and Hippo, which can
+          be prohibitively expensive to rent, we wanted to create a solution for our clients that
+          could still be powerful enough to run big shows without breaking the bank.
+        </p>
+      </div>
+    </section>
+
+    <section class="flex flex-col items-center gap-16 lg:gap-24 lsa lsa-slide-up no-repeat">
+      <h2 class="text-l text-center uppercase">SVX SERIES SERVERS QUICK SPECS</h2>
+
+      <div class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 gap-24 md:gap-32">
+        <Carousel
+          images={[
+            { src: serversFrontImage, alt: 'Front of SVX Series server' },
+            { src: serversBackImage, alt: 'Back of SVX Series server' },
+          ]}
+        />
+
+        <div class="flex flex-col justify-center gap-8">
+          <p class="text-grey-100">
+            Our 2RU Fly Rack Kits contain everything you need to run your show. Rentals start as low
+            as $500/week, with 24/7 tech support and SUPERVOID exclusive VJ loops and visual content
+            included in every rental.
+          </p>
+          <ul class="flex flex-col gap-4">
+            <li class="flex items-center gap-8">
+              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+              Run up to 12 HD screens, 3 4K screens, or even a single 8K screen, with a dedicated GUI
+              for controlling the software
+            </li>
+            <li class="flex items-center gap-8">
+              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+              Capture up to 4 HD inputs or one 4K input over SDI or HDMI
+            </li>
+            <li class="flex items-center gap-8">
+              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+              Real-time low latency visual effects with Notch built into each server
+            </li>
+            <li class="flex items-center gap-8">
+              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+              Pixel map and control hundreds of universes of lights over artnet
+            </li>
+            <li class="flex items-center gap-8">
+              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+              Control via your lighting desk with artnet or from MIDI or OSC
+            </li>
+            <li class="flex items-center gap-8">
+              <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+              Remote control over LAN/Wifi from any Windows or Mac computer
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <a
+        href="mailto:info@supervoid.tv?subject=SVX%20Series%20Rental"
+        class="mx-auto lg:mx-0 py-4 px-8 text-center text-magenta-900 max-w-fit border-2 border-magenta-900 rounded-full hover:shadow-[4px_4px_0_var(--color-magenta-900)] hover:text-magenta-900 active:translate-x-1 active:translate-y-1 active:shadow-none text-stroke text-m"
+        >Rent Now</a
+      >
     </section>
   </main>
 </Layout>
