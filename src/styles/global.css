@@ -5,7 +5,8 @@
 @layer base {
   @font-face {
     font-family: 'Rotonto Regular';
-    src: url('/fonts/rotonto-regular.woff2') format('woff2'),
+    src:
+      url('/fonts/rotonto-regular.woff2') format('woff2'),
       url('/fonts/rotonto-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -14,7 +15,8 @@
 
   @font-face {
     font-family: 'SF Mono Regular';
-    src: url('/fonts/sf-mono-regular.woff2') format('woff2'),
+    src:
+      url('/fonts/sf-mono-regular.woff2') format('woff2'),
       url('/fonts/sf-mono-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -134,6 +136,14 @@ a:hover {
 
 .site-link {
   @apply text-magenta-900 hover:text-magenta-100;
+}
+
+.text-stroke {
+  text-shadow:
+    -1px -1px 0 var(--color-black),
+    1px -1px 0 var(--color-black),
+    -1px 1px 0 var(--color-black),
+    1px 1px 0 var(--color-black);
 }
 
 /* Animations */

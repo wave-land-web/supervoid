@@ -1,7 +1,12 @@
 ---
+import { Picture } from 'astro:assets'
 import aboutHeroImage from '../assets/about-hero.png'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
+import swiperOneImage from '../assets/swiper-1.png'
+import swiperTwoImage from '../assets/swiper-2.png'
+import swiperThreeImage from '../assets/swiper-3.png'
+import { Icon } from 'astro-icon/components'
 ---
 
 <Layout title="About">
@@ -11,7 +16,7 @@ import Layout from '../layouts/Layout.astro'
     imageAlt="Tyler Childers concert showing screens, lights, and a crowd of people"
   />
 
-  <main>
+  <main class="mb-32">
     <section>
       <div class="grid md:grid-cols-[250px,1fr] gap-4 md:gap-16 lg:gap-32 py-6 border-t-[1px]">
         <h2 class="text-base uppercase">Who We Are</h2>
@@ -30,5 +35,94 @@ import Layout from '../layouts/Layout.astro'
         </div>
       </div>
     </section>
+
+    <section
+      id="join-our-team"
+      class="max-w-screen-md xl:max-w-screen-xl m-auto grid xl:grid-cols-2 gap-8 xl:gap-0"
+    >
+      <!-- Swiper -->
+      <div class="swiper xl:-translate-y-12 xl:translate-x-4">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide rounded-xl">
+            <Picture src={swiperOneImage} alt="Taking Back Sunday" />
+          </div>
+          <div class="swiper-slide rounded-xl">
+            <Picture src={swiperTwoImage} alt="Spiritbox" />
+          </div>
+          <div class="swiper-slide rounded-xl">
+            <Picture src={swiperThreeImage} alt="Rage Against the Machine" />
+          </div>
+        </div>
+
+        <div id="pagination" class="max-w-80 mx-auto xl:mx-0 my-8 flex justify-between">
+          <button id="left" class="transition hover:rotate-2 active:rotate-0">
+            <Icon name="left" class="w-32" />
+          </button>
+
+          <button id="right" class="transition hover:-rotate-2 active:rotate-0">
+            <Icon name="right" class="w-32" />
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col justify-center gap-8 p-8 xl:p-12 rounded-xl xl:translate-y-12 lg:-translate-x-4 z-10 bg-magenta-900 text-center xl:text-left"
+      >
+        <h2 class="text-l text-stroke">Join Our Team</h2>
+        <p>
+          We're always on the lookout for talented individuals to join our team. If you're
+          passionate about animation, VFX, and design, and want to work on exciting projects, check
+          out our current openings and become part of the Supervoid family.
+        </p>
+        <a
+          href="/jobs"
+          class="mx-auto xl:mx-0 py-4 px-8 text-center max-w-fit border-2 border-black rounded-full hover:shadow-[4px_4px_0_var(--color-black)] hover:text-white active:translate-x-1 active:translate-y-1 active:shadow-none text-stroke text-m"
+          >Explore Careers</a
+        >
+      </div>
+    </section>
   </main>
 </Layout>
+
+<style>
+  /* Swiper */
+
+  .swiper {
+    min-width: 0;
+    max-width: 100%;
+    align-self: center;
+
+    --swiper-pagination-color: var(--color-white);
+    --swiper-pagination-bullet-size: 1rem;
+    --swiper-pagination-bullet-width: 1rem;
+    --swiper-pagination-bullet-height: 1rem;
+    --swiper-pagination-bullet-inactive-color: var(--color-black);
+    --swiper-pagination-bullet-inactive-opacity: 0.75;
+    --swiper-pagination-bullet-horizontal-gap: 0.5rem;
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper'
+  import 'swiper/css/bundle'
+  import { EffectCards } from 'swiper/modules'
+
+  const leftButton = document.getElementById('left')
+  const rightButton = document.getElementById('right')
+
+  // init Swiper:
+  const swiper = new Swiper('.swiper', {
+    effect: 'cards',
+    grabCursor: true,
+    modules: [EffectCards],
+    speed: 300,
+    loop: true,
+    cardsEffect: {
+      rotate: false,
+      slideShadows: true,
+    },
+  })
+
+  leftButton?.addEventListener('click', () => swiper.slidePrev())
+  rightButton?.addEventListener('click', () => swiper.slideNext())
+</script>
