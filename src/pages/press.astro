@@ -1,15 +1,20 @@
 ---
+import { getCollection } from 'astro:content'
+import PostPreviewCard from '../components/ui/PostPreviewCard.astro'
 import Layout from '../layouts/Layout.astro'
+
+// TODO: get type for allPressPosts (replace any)
+const allPressPosts = await getCollection('press')
 ---
 
 <Layout title="Press">
-  <header class="pt-[calc(var(--nav-height)+6rem)]">
-    <h1 class="text-2xl mb-4 drop-shadow-lg text-center uppercase">Press page</h1>
+  <header class="pt-[calc(var(--nav-height)+6rem)] lsa lsa-slide-up no-repeat">
+    <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">Press & Media</h1>
   </header>
 
   <main>
-    <section>
-      <!-- Content goes here -->
+    <section class="grid md:grid-cols-2 gap-x-10 gap-y-12">
+      {allPressPosts.map((post: any) => <PostPreviewCard post={post} />)}
     </section>
   </main>
 </Layout>

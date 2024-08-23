@@ -202,3 +202,65 @@ mux-player {
     }
   }
 }
+
+/* Press Styles */
+
+#press-layout {
+  & h2 {
+    @apply text-xl;
+  }
+
+  & h3 {
+    @apply text-l;
+  }
+
+  & h4 {
+    @apply text-m;
+  }
+
+  & a:not(#back-to-press) {
+    @apply text-magenta-900 hover:text-magenta-100;
+  }
+
+  & #back-to-press {
+    @apply text-m;
+  }
+
+  & p,
+  & ul,
+  & ol,
+  & pre,
+  & a {
+    @apply text-xs;
+  }
+
+  & img,
+  & pre {
+    @apply block my-[1lh];
+  }
+
+  & img {
+    @apply block rounded-lg;
+  }
+
+  & ul,
+  & ol {
+    padding-inline-start: 2rem;
+  }
+
+  & ul li {
+    @apply list-disc;
+  }
+
+  & ol li {
+    @apply list-decimal;
+  }
+
+  & em {
+    @apply italic;
+  }
+
+  & strong {
+    @apply font-bold;
+  }
+}

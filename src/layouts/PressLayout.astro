@@ -1,0 +1,23 @@
+---
+import { Icon } from 'astro-icon/components'
+import Layout from './Layout.astro'
+
+const { frontmatter } = Astro.props
+---
+
+<Layout
+  title={`Supervoid | ${frontmatter.title}`}
+  description={frontmatter.description}
+  socialImage={frontmatter.socialImage}
+>
+  <main id="press-layout" class="max-w-4xl flex flex-col gap-[1lh] mb-16 md:mb-24 lsa no-repeat">
+    <slot />
+    <a
+      id="back-to-press"
+      class="flex items-center gap-4 max-w-fit mt-8 mx-auto xl:mx-0 py-4 px-8 text-center text-magenta-900 border-2
+        border-magenta-900 rounded-full hover:shadow-[4px_4px_0_var(--color-magenta-900)]
+        hover:text-magenta-900 active:translate-x-1 active:translate-y-1 active:shadow-none transition duration-300"
+      href="/press"><Icon name="tabler:arrow-narrow-left" class="size-10" />Back to press</a
+    >
+  </main>
+</Layout>
