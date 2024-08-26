@@ -240,7 +240,7 @@ mux-player {
   }
 
   & img {
-    @apply block rounded-lg;
+    @apply rounded-lg;
   }
 
   & ul,
