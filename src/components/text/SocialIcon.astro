@@ -5,9 +5,10 @@ export interface Props {
   href: string
   name: string
   openInNewTab?: boolean
+  ariaLabel: string
 }
 
-const { href, name, openInNewTab = true } = Astro.props
+const { href, name, openInNewTab = true, ariaLabel } = Astro.props
 ---
 
 <a
@@ -15,6 +16,7 @@ const { href, name, openInNewTab = true } = Astro.props
   target={openInNewTab ? '_blank' : '_self'}
   rel={openInNewTab ? 'noopener noreferrer' : ''}
   class="flex justify-center size-10 scale-100 before:content-[''] before:absolute before:left-1/2 before:top-1/2 before:transform before:-translate-x-1/2 before:-translate-y-1/2 before:bg-magenta-900 before:size-10 before:rounded-full before:flex before:justify-center hover:before:scale-110 active:before:scale-95 before:transition-all before:duration-200 hover:text-white"
+  aria-label={ariaLabel}
 >
   <Icon name={name} class="max-w-6 relative" />
 </a>

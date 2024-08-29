@@ -5,11 +5,106 @@ import Layout from '../layouts/Layout.astro'
 
 <Layout title="Contact">
   <header class="pt-[calc(var(--nav-height)+6rem)] lsa lsa-slide-up no-repeat">
-    <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">Get In Touch</h1>
+    <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">Contact Us</h1>
   </header>
 
   <main>
-    <section id="contact-info" class="text-center mb-24 lsa lsa-slide-up no-repeat delay-300">
+    <section class="text-center lsa lsa-slide-up no-repeat delay-300">
+      <h2 class="text-l uppercase text-center mb-8">Let's Get Started</h2>
+
+      <form
+        method="POST"
+        name="contactForm"
+        action="/success/"
+        data-netlify="true"
+        class="max-w-2xl mx-auto flex flex-col gap-8"
+      >
+        <div class="w-full flex flex-col md:flex-row gap-8 justify-between">
+          <div class="w-full">
+            <label for="first-name" class="sr-only">First Name</label>
+            <input
+              type="text"
+              name="first-name"
+              id="first-name"
+              autocomplete="given-name"
+              placeholder="First Name"
+              required
+              class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-300 outline-none text-xs"
+            />
+          </div>
+
+          <div class="w-full">
+            <label for="last-name" class="sr-only">Last Name</label>
+            <input
+              type="text"
+              name="last-name"
+              id="last-name"
+              autocomplete="family-name"
+              placeholder="Last Name (Optional)"
+              class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-300 outline-none text-xs"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="email" class="sr-only">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            autocomplete="email"
+            placeholder="Email"
+            required
+            class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-300 outline-none text-xs"
+          />
+        </div>
+
+        <div class="relative">
+          <label for="timeline" class="sr-only">Project Timeline</label>
+
+          <select
+            name="project-timeline"
+            id="project-timeline"
+            required
+            class="block w-full px-4 py-3 bg-black focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 outline-none text-xs rounded-lg transition duration-300 appearance-none"
+            onchange="this.classList.toggle('text-grey-100', this.value === 'Timeline')"
+          >
+            <option selected hidden>Project Timeline</option>
+            <option value="1-3 months">1-3 months</option>
+            <option value="3-6 months">3-6 months</option>
+            <option value="6-12 months">6-12 months</option>
+            <option value="1 year+">1 year+</option>
+          </select>
+
+          <Icon
+            name="tabler:chevron-down"
+            class="size-8 pointer-events-none text-grey-100 absolute right-3 top-1/2 transform -translate-y-1/2"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="sr-only">Describe Your Project</label>
+          <textarea
+            name="message"
+            id="message"
+            rows="4"
+            placeholder="Describe your project"
+            required
+            class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-300 outline-none text-xs"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="mx-auto py-4 px-8 text-center text-magenta-900 max-w-fit border-2
+        border-magenta-900 rounded-full hover:shadow-[4px_4px_0_var(--color-magenta-900)]
+        hover:text-magenta-900 active:translate-x-1 active:translate-y-1 active:shadow-none
+        text-stroke text-m transition duration-300"
+          >Send Message</button
+        >
+      </form>
+    </section>
+
+    <section id="general-inquiries" class="text-center lsa lsa-slide-up no-repeat delay-300">
       <h2 class="text-l uppercase text-center mb-4">General Inquiries</h2>
       <a
         href="mailto:info@supervoid.tv?subject=General%20Inquiry"
