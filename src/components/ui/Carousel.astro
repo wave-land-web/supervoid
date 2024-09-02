@@ -19,7 +19,7 @@ const { images, class: className } = Astro.props
     {
       images.map((image) => (
         <div class="swiper-slide rounded-xl">
-          <Picture src={image.src} alt={image.alt} />
+          <Picture src={image.src} formats={['avif', 'webp']} alt={image.alt} />
         </div>
       ))
     }

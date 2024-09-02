@@ -6,9 +6,10 @@ export interface Props {
   title?: string
   imageSrc?: ImageMetadata
   imageAlt?: string
+  imageCaption?: string
 }
 
-const { title, imageSrc, imageAlt } = Astro.props
+const { title, imageSrc, imageAlt, imageCaption } = Astro.props
 ---
 
 <header
@@ -22,5 +23,14 @@ const { title, imageSrc, imageAlt } = Astro.props
     )
   }
 
-  {imageSrc && imageAlt && <Picture src={imageSrc} alt={imageAlt} loading="eager" />}
+  {
+    imageSrc && imageAlt && (
+      <figure>
+        <Picture src={imageSrc} formats={['avif', 'webp']} alt={imageAlt} loading="eager" />
+        {imageCaption && (
+          <figcaption class="py-4 text-2xs text-grey-100">{imageCaption}</figcaption>
+        )}
+      </figure>
+    )
+  }
 </header>

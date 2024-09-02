@@ -2,10 +2,8 @@
 import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets'
 import serversBackImage from '../assets/servers-back.png'
-import serversFrontImage from '../assets/servers-front.png'
-import serversHeroImage from '../assets/servers-hero.webp'
-import tateMcraeImage from '../assets/servers-tate-mcrae.png'
-import Carousel from '../components/ui/Carousel.astro'
+import serversHeroImage from '../assets/servers-hero.jpg'
+import willowImage from '../assets/servers-willow.webp'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
@@ -19,14 +17,27 @@ import Layout from '../layouts/Layout.astro'
 
   <main>
     <section class="pt-4 pb-8">
-      <div
-        class="grid md:grid-cols-[250px,1fr] gap-4 md:gap-16 lg:gap-32 py-6 border-t-[1px] lsa lsa-slide-up no-repeat"
-      >
-        <h2 class="text-base uppercase">CUSTOM MEDIA SERVER SOLUTIONS</h2>
-        <p>
-          We design and build custom media server racks in house to meet the needs of shows large
-          and small. Our SVX series media servers pack a big punch in a small footprint.
-        </p>
+      <div class="">
+        <div
+          class="grid md:grid-cols-[250px,1fr] gap-4 md:gap-16 lg:gap-32 py-6 border-t-[1px] lsa lsa-slide-up no-repeat"
+        >
+          <h2 class="text-base uppercase">Trusted by</h2>
+          <p class="mb-4 text-m">
+            <span class="text-magenta-900">Paramore.</span> Tate McRae. Jane's Addiction. Dan + Shay.
+            Willow. Elle King. All Time Low. Cuco. Underoath. Taking Back Sunday. Wage War. Motion City
+            Soundtrack. Love and Rockets. Spiritbox. San Holo.
+          </p>
+        </div>
+
+        <div
+          class="grid md:grid-cols-[250px,1fr] gap-4 md:gap-16 lg:gap-32 py-6 border-t-[1px] lsa lsa-slide-up no-repeat"
+        >
+          <h2 class="text-base uppercase">CUSTOM MEDIA SERVER SOLUTIONS</h2>
+          <p>
+            We design and build custom media server racks in house to meet the needs of shows large
+            and small. Our SVX series media servers pack a big punch in a small footprint.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -35,9 +46,9 @@ import Layout from '../layouts/Layout.astro'
       class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 gap-16 lg:gap-0 lsa lsa-slide-up no-repeat"
     >
       <figure class="lg:translate-x-2">
-        <Picture src={tateMcraeImage} alt="Tate McRae" />
-        <figcaption>
-          <p class="text-center mt-4 text-grey-100">Tate McRae performing at MIA Festival</p>
+        <Picture src={willowImage} formats={['avif', 'webp']} alt="Willow at Camp Flog Gnaw" />
+        <figcaption class="text-center mt-4 text-2xs text-grey-100">
+          Willow at Camp Flog Gnaw
         </figcaption>
       </figure>
 
@@ -45,9 +56,10 @@ import Layout from '../layouts/Layout.astro'
         class="self-center h-fit p-8 lg:p-12 lg:-translate-x-2 rounded-xl z-10 bg-magenta-900 text-center lg:text-left"
       >
         <p>
-          After spending years programming top tier media servers like Disguise and Hippo, which can
-          be prohibitively expensive to rent, we wanted to create a solution for our clients that
-          could still be powerful enough to run big shows without breaking the bank.
+          For years we programmed media servers that cost several thousands of dollars per week to
+          rent, which prohibited some of our clients from bringing them on their tours, so we made
+          our own solution. Our SVX series servers are powerful enough to run big shows without
+          breaking the bank.
         </p>
       </div>
     </section>
@@ -58,20 +70,14 @@ import Layout from '../layouts/Layout.astro'
       <div
         class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 items-start gap-24 md:gap-32"
       >
-        <Carousel
-          images={[
-            { src: serversFrontImage, alt: 'Front of SVX Series server' },
-            { src: serversBackImage, alt: 'Back of SVX Series server' },
-          ]}
-          class="!overflow-hidden"
+        <Picture
+          src={serversBackImage}
+          formats={['avif', 'webp']}
+          alt="SVX Series Servers - Back"
         />
 
         <div class="flex flex-col justify-center gap-8">
-          <nav id="specs-navigation" class="flex p-0 text-xs">
-            <button id="description-tab" class="bg-magenta-900 py-4 px-8">Description</button>
-            <button id="specifications-tab" class="py-4 px-8">Specifications</button>
-          </nav>
-
+          <h3 class="text-base uppercase">Description</h3>
           <div id="description" class="flex flex-col gap-8">
             <p class="text-grey-100">
               Our 2RU Fly Rack Kits contain everything you need to run your show. Rentals start as
@@ -137,35 +143,3 @@ import Layout from '../layouts/Layout.astro'
     </section>
   </main>
 </Layout>
-
-<script>
-  const descriptionTab = document.getElementById('description-tab') as HTMLButtonElement
-  const specificationsTab = document.getElementById('specifications-tab') as HTMLButtonElement
-  const description = document.getElementById('description') as HTMLDivElement
-  const specifications = document.getElementById('specifications') as HTMLDivElement
-
-  function showDescription() {
-    // Tab styles
-    descriptionTab.classList.add('bg-magenta-900')
-    specificationsTab.classList.remove('bg-magenta-900')
-
-    // Content styles
-    description.classList.remove('hidden')
-    description.classList.add('flex')
-    specifications.classList.add('hidden')
-  }
-
-  function showSpecifications() {
-    // Tab styles
-    descriptionTab.classList.remove('bg-magenta-900')
-    specificationsTab.classList.add('bg-magenta-900')
-
-    // Content styles
-    specifications.classList.remove('hidden')
-    specifications.classList.add('flex')
-    description.classList.add('hidden')
-  }
-
-  descriptionTab.addEventListener('click', showDescription)
-  specificationsTab.addEventListener('click', showSpecifications)
-</script>
