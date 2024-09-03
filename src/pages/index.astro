@@ -67,9 +67,21 @@ const sortedWorkData = [...workData].sort((a, b) => b.data.id - a.data.id)
       </div>
     </header>
   </div>
+
   <main class="relative w-full bg-black">
-    <section id="work" class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-      {sortedWorkData.map((work) => <WorkPreviewCard work={work} />)}
+    <section id="work">
+      <h2 class="sr-only">Recent Work</h2>
+      <p
+        class="max-w-screen-lg m-auto pt-6 md:pt-0 pb-16 md:pb-24 text-m md:text-center lsa lsa-slide-up no-repeat delay-700 md:delay-0"
+      >
+        <span class="text-magenta-900">SUPERVOID</span> is a visual design studio specializing in video
+        content and production design for touring artists, festivals, art installations, narrative films,
+        and beyond.
+      </p>
+
+      <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+        {sortedWorkData.map((work) => <WorkPreviewCard work={work} />)}
+      </div>
     </section>
   </main>
 </Layout>
