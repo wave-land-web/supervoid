@@ -5,6 +5,8 @@ import WorkPreviewCard from '../components/ui/WorkPreviewCard.astro'
 import { getCollection } from 'astro:content'
 
 const workData = await getCollection('work')
+// Chronological order - sort by id in descending order
+const sortedWorkData = [...workData].sort((a, b) => b.data.id - a.data.id)
 ---
 
 <Layout title="Animation, VFX, and Technical Design Studio">
@@ -67,7 +69,7 @@ const workData = await getCollection('work')
   </div>
   <main class="relative w-full bg-black">
     <section id="work" class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-      {workData.map((work) => <WorkPreviewCard work={work} />)}
+      {sortedWorkData.map((work) => <WorkPreviewCard work={work} />)}
     </section>
   </main>
 </Layout>
