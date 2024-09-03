@@ -19,8 +19,8 @@ export async function getStaticPaths() {
 
 const { post, allPosts } = Astro.props
 const currentPostID = +post.data.id
-const prevPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
-const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
+const prevPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
+const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
 ---
 
 <Layout title={post.data.title}>
@@ -213,7 +213,6 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
     // content styles
     content.classList.toggle('h-0')
     content.classList.toggle('opacity-0')
-    content.classList.toggle('opacity-100')
     content.classList.toggle('transition')
     content.classList.toggle('duration-300')
     content.classList.toggle('mt-4')
