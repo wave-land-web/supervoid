@@ -219,7 +219,7 @@ mux-player {
     @apply text-m;
   }
 
-  & a:not(#back-to-press) {
+  & a:not(#pagination a) {
     @apply text-magenta-900 hover:text-magenta-100;
   }
 
@@ -231,7 +231,7 @@ mux-player {
   & ul,
   & ol,
   & pre,
-  & a {
+  & a:not(#pagination a) {
     @apply text-xs;
   }
 
@@ -255,6 +255,10 @@ mux-player {
 
   & ol li {
     @apply list-decimal;
+  }
+
+  & blockquote {
+    @apply relative my-[1lh] p-[1lh] border-l-4 border-magenta-900;
   }
 
   & em {

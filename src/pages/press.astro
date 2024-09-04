@@ -1,10 +1,12 @@
 ---
+import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
 import PostPreviewCard from '../components/ui/PostPreviewCard.astro'
 import Layout from '../layouts/Layout.astro'
 
-// TODO: get type for allPressPosts (replace any)
-const allPressPosts = await getCollection('press')
+const allPressPosts = (await getCollection('press')) as CollectionEntry<'press'>[]
+// Chronological order - sort by id in descending order
+const sortedPressPosts = [...allPressPosts].sort((a, b) => +b.data.id - +a.data.id)
 ---
 
 <Layout title="Press">
@@ -14,7 +16,7 @@ const allPressPosts = await getCollection('press')
 
   <main>
     <section class="grid md:grid-cols-2 gap-x-10 gap-y-12">
-      {allPressPosts.map((post: any) => <PostPreviewCard post={post} />)}
+      {sortedPressPosts.map((post) => <PostPreviewCard post={post} />)}
     </section>
   </main>
 </Layout>

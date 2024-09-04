@@ -17,14 +17,5 @@ const { post } = Astro.props
     <h2 class="mb-2 text-s">
       {post.data.title}
     </h2>
-    <p class="text-grey-100">
-      {
-        new Date(post.data.published).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })
-      }
-    </p>
   </a>
 </article>
