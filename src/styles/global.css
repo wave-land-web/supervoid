@@ -127,8 +127,9 @@ h5 {
 }
 
 p,
-li {
-  @apply text-xs text-pretty;
+li,
+figcaption {
+  @apply text-xs text-pretty max-w-[65ch];
 }
 
 a {

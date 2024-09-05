@@ -45,7 +45,7 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
     <section id="work-details" class="lsa no-repeat pt-4 pb-8">
       <div
         id="info-details"
-        class="md:grid md:grid-cols-[250px,1fr] items-start justify-start gap-4 border-t-[1px] border-b-[1px] py-4 md:py-6 cursor-pointer"
+        class="md:grid md:grid-cols-[250px,1fr] items-start gap-4 border-t-[1px] border-b-[1px] py-4 md:py-6 cursor-pointer"
       >
         <button id="title" class="flex items-center gap-3">
           <Icon
@@ -65,7 +65,7 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
         post.data.credits?.length ? (
           <div
             id="credits-details"
-            class="md:grid md:grid-cols-[250px,1fr] items-start gap-4 border-b-[1px] py-6 cursor-pointer"
+            class="md:grid md:grid-cols-[250px,1fr] items-start gap-4 border-b-[1px] py-4 md:py-6 cursor-pointer"
           >
             <button id="title" class="flex items-center gap-3">
               <Icon
@@ -80,7 +80,7 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
 
             <div id="credits-content" class="opacity-0 h-0 overflow-hidden">
               {post.data.credits?.map((item: string) => (
-                <div set:html={item} />
+                <div set:html={item} class="mb-4" />
               ))}
             </div>
           </div>

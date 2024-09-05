@@ -26,11 +26,17 @@ const { images, class: className } = Astro.props
   </div>
 
   <div id="pagination" class="max-w-80 mx-auto flex justify-between">
-    <button id="left" class="transition hover:rotate-2 active:rotate-0">
+    <button
+      id="left"
+      class="hover:rotate-2 active:scale-95 active:rotate-0 transition duration-300"
+    >
       <Icon name="left" class="w-32" />
     </button>
 
-    <button id="right" class="transition hover:-rotate-2 active:rotate-0">
+    <button
+      id="right"
+      class="hover:-rotate-2 active:scale-95 active:rotate-0 transition duration-300"
+    >
       <Icon name="right" class="w-32" />
     </button>
   </div>
