@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content'
 
 const workCollection = defineCollection({
   type: 'content',
-  schema: () =>
+  schema: ({ image }) =>
     z.object({
       id: z.number(),
       title: z.string(),
@@ -12,6 +12,7 @@ const workCollection = defineCollection({
         hero: z.string(),
         gallery: z.array(z.string()),
       }),
+      images: z.array(image()).optional(),
     }),
 })
 
