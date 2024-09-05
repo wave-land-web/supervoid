@@ -19,7 +19,10 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostId - 1)
   description={frontmatter.description}
   socialImage={frontmatter.socialImage}
 >
-  <main id="press-layout" class="max-w-4xl flex flex-col gap-[1lh] mb-16 md:mb-24 lsa no-repeat">
+  <main
+    id="press-layout"
+    class="pt-0 max-w-4xl flex flex-col gap-[1lh] mb-16 md:mb-24 lsa no-repeat"
+  >
     <slot />
 
     <Pagination

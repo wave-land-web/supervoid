@@ -6,18 +6,14 @@ const { title, imageAlt } = frontmatter
 ---
 
 <header
-  class="relative px-0 pt-[calc(var(--nav-height)+4rem)] md:pt-[calc(var(--nav-height)+6rem)] lsa lsa-slide-up no-repeat"
+  class="px-0 pt-[calc(var(--nav-height)+4rem)] md:pt-[calc(var(--nav-height)+6rem)] lsa lsa-slide-up no-repeat"
 >
-  <h1
-    class="absolute w-full top-[calc(var(--nav-height)+2rem)] md:top-[calc(var(--nav-height)+4rem)] left-1/2 -translate-x-1/2 text-l drop-shadow-lg text-center uppercase"
-  >
-    {title}
-  </h1>
-  <Picture
-    src={image}
-    formats={['avif', 'webp']}
-    alt={imageAlt}
-    loading="eager"
-    class="mb-4 w-full"
-  />
+  <div class="relative">
+    <h1
+      class="absolute w-full -top-[0.5lh] left-1/2 -translate-x-1/2 text-l drop-shadow-lg text-center uppercase"
+    >
+      {title}
+    </h1>
+    <Picture src={image} formats={['avif', 'webp']} alt={imageAlt} loading="eager" />
+  </div>
 </header>
