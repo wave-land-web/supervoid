@@ -25,7 +25,7 @@ const prevPost = allPosts.find((p) => +p.data.id === currentPostID + 1)
 const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
 ---
 
-<Layout title={post.data.title}>
+<Layout title={`Work - ${post.data.title}`} description={post.data.info[0]}>
   <header class="pt-[var(--nav-height)]">
     <div class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa no-repeat">
       <mux-player

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://supervoid.tv/sitemap-index.xml

@@ -12,12 +12,11 @@ export interface Props {
 
 const {
   title,
-  description = 'SUPERVOID is an animation, vfx and technical design studio based in Philadelphia. Our primary output is creating dynamic and interactive media packages for artists, agencies and brands.',
+  description = 'SUPERVOID is a visual design studio specializing in dynamic, interactive media for live performances, narrative film, and brand identity. We blend creativity with technical expertise to push the boundaries of visual storytelling and captivate audiences.',
   socialImage,
 } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-// TODO: Add a default social image
-const socialImageURL = new URL(socialImage || 'images/home-page-hero.webp', canonicalURL)
+const socialImageURL = new URL(socialImage || 'images/og-image.png', canonicalURL)
 ---
 
 <!doctype html>
@@ -50,8 +49,13 @@ const socialImageURL = new URL(socialImage || 'images/home-page-hero.webp', cano
     <meta name="twitter:image" content={socialImageURL} />
 
     <!-- Favicon -->
-    <!-- TODO: replace with SUPERVOID logo -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="theme-color" content="#000000" />
 
     <!-- Preload Fonts -->
     <link
@@ -69,7 +73,7 @@ const socialImageURL = new URL(socialImage || 'images/home-page-hero.webp', cano
       crossorigin
     />
 
-    <!-- Umami Analytics -->
+    <!-- TODO: Umami Analytics -->
 
     <!-- MUX script -->
     <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>

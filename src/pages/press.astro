@@ -9,7 +9,7 @@ const allPressPosts = (await getCollection('press')) as CollectionEntry<'press'>
 const sortedPressPosts = [...allPressPosts].sort((a, b) => +b.data.id - +a.data.id)
 ---
 
-<Layout title="Press">
+<Layout title="Press" description="SUPERVOID press and media coverage.">
   <header class="pt-[calc(var(--nav-height)+6rem)] lsa lsa-slide-up no-repeat">
     <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">Press & Media</h1>
   </header>
