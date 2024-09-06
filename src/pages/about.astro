@@ -3,6 +3,7 @@ import aboutCarouselOneImage from '../assets/about-carousel-1.png'
 import aboutCarouselTwoImage from '../assets/about-carousel-2.png'
 import aboutCarouselThreeImage from '../assets/about-carousel-3.png'
 import aboutHeroImage from '../assets/about-hero.jpg'
+import CTA from '../components/text/CTA.astro'
 import Carousel from '../components/ui/Carousel.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
@@ -56,11 +57,8 @@ import Layout from '../layouts/Layout.astro'
           passionate about animation, VFX, and design, and want to work on exciting projects, check
           out our current openings and become part of the Supervoid family.
         </p>
-        <a
-          href="/jobs"
-          class="mx-auto xl:mx-0 py-4 px-8 text-center max-w-fit border-2 border-black rounded-full hover:shadow-[4px_4px_0_var(--color-black)] hover:text-white active:translate-x-1 active:translate-y-1 active:shadow-none text-stroke text-m transition duration-300"
-          >Explore Careers</a
-        >
+
+        <CTA href="/jobs" text="Explore Careers" lightMode={true} class="mx-auto xl:mx-0" />
       </div>
     </section>
   </main>

@@ -4,6 +4,7 @@ import { Picture } from 'astro:assets'
 import serversBackImage from '../assets/servers-back.png'
 import serversHeroImage from '../assets/servers-hero.jpg'
 import willowImage from '../assets/servers-willow.webp'
+import CTA from '../components/text/CTA.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
@@ -134,11 +135,7 @@ import Layout from '../layouts/Layout.astro'
         </div>
       </div>
 
-      <a
-        href="mailto:info@supervoid.tv?subject=SVX%20Series%20Rental"
-        class="mx-auto lg:mx-0 py-4 px-8 text-center text-magenta-900 max-w-fit border-2 border-magenta-900 rounded-full hover:shadow-[4px_4px_0_var(--color-magenta-900)] hover:text-magenta-900 active:translate-x-1 active:translate-y-1 active:shadow-none text-stroke text-m transition duration-300"
-        >Rent Now</a
-      >
+      <CTA href="mailto:info@supervoid.tv?subject=SVX%20Series%20Rental" text="Apply Now" />
     </section>
   </main>
 </Layout>

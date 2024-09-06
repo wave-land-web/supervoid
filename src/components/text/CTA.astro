@@ -1,0 +1,39 @@
+---
+export interface Props {
+  text: string
+  href: string
+  lightMode?: boolean
+  newWindow?: boolean
+  class?: string
+}
+
+const { text, href, lightMode, newWindow, class: className } = Astro.props
+---
+
+{
+  lightMode ? (
+    <a
+      href={href}
+      class={`${className} block py-4 px-8 max-w-fit border-2
+    border-black rounded-full hover:shadow-[4px_4px_0_var(--color-black)] text-white
+    hover:text-white active:translate-x-1 active:translate-y-1 active:shadow-none
+    text-stroke text-m transition duration-300`}
+      target={newWindow ? '_blank' : '_self'}
+      rel={newWindow ? 'noopener noreferrer' : ''}
+    >
+      {text}
+    </a>
+  ) : (
+    <a
+      href={href}
+      class={`${className} block py-4 px-8 max-w-fit border-2
+    border-magenta-900 rounded-full hover:shadow-[4px_4px_0_var(--color-magenta-900)] text-magenta-900 
+    hover:text-magenta-900 active:translate-x-1 active:translate-y-1 active:shadow-none
+    text-m transition duration-300`}
+      target={newWindow ? '_blank' : '_self'}
+      rel={newWindow ? 'noopener noreferrer' : ''}
+    >
+      {text}
+    </a>
+  )
+}

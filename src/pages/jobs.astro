@@ -4,6 +4,7 @@ import jobsCarouselOneImage from '../assets/jobs-carousel-1.png'
 import jobsCarouselTwoImage from '../assets/jobs-carousel-2.png'
 import jobsCarouselThreeImage from '../assets/jobs-carousel-3.png'
 import jobsHeroImage from '../assets/jobs-hero.png'
+import CTA from '../components/text/CTA.astro'
 import Carousel from '../components/ui/Carousel.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
@@ -88,14 +89,8 @@ import Layout from '../layouts/Layout.astro'
           class="site-link">info@supervoid.tv</a
         >, and we'll reach out if there's a fit.
       </p>
-      <a
-        href="mailto:info@supervoid.tv?subject=Supervoid%20Job%20Application"
-        class="mx-auto xl:mx-0 py-4 px-8 text-center text-magenta-900 max-w-fit border-2
-        border-magenta-900 rounded-full hover:shadow-[4px_4px_0_var(--color-magenta-900)]
-        hover:text-magenta-900 active:translate-x-1 active:translate-y-1 active:shadow-none
-        text-stroke text-m transition duration-300"
-        >Apply Now</a
-      >
+
+      <CTA href="mailto:info@supervoid.tv?subject=Supervoid%20Job%20Application" text="Apply Now" />
     </section>
   </main>
 </Layout>
