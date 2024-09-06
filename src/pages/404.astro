@@ -1,0 +1,17 @@
+---
+import CTA from '../components/text/CTA.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="404">
+  <header class="pt-[calc(var(--nav-height)+6rem)] lsa lsa-slide-up no-repeat">
+    <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">404</h1>
+  </header>
+
+  <main>
+    <section class="max-w-xl m-auto pt-0 text-center lsa lsa-slide-up no-repeat delay-300">
+      <p class="mb-8 text-base">Oops! Looks like you've stumbled upon a page that doesn't exist.</p>
+      <CTA text="Back to Home" href="/" class="mx-auto" />
+    </section>
+  </main>
+</Layout>
