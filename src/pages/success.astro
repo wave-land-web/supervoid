@@ -1,0 +1,19 @@
+---
+import CTA from '../components/text/CTA.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Success">
+  <header class="pt-[calc(var(--nav-height)+6rem)] lsa lsa-slide-up no-repeat">
+    <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">Success!</h1>
+  </header>
+
+  <main>
+    <section class="max-w-xl m-auto pt-0 text-center lsa lsa-slide-up no-repeat delay-300">
+      <p class="mb-8 text-base">
+        Your message has been sent. We'll get back to you as soon as possible.
+      </p>
+      <CTA text="Back to Home" href="/" class="mx-auto" />
+    </section>
+  </main>
+</Layout>
