@@ -87,8 +87,6 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
       defer
       src="https://cloud.umami.is/script.js"
       data-website-id="50a25800-0106-435f-b0ae-27a89f5ef36b"></script> -->
-
-    <title>SUPERVOID | {title}</title>
   </head>
 
   <body class="font-body bg-black text-white">
@@ -102,7 +100,6 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
     </div>
     {!Astro.url.pathname.includes('/reel') && <Footer />}
 
-    <!-- MUX script -->
     <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
   </body>
 </html>
