@@ -1,7 +1,13 @@
 ---
 import { Picture } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
 
-const { post } = Astro.props
+export interface Props {
+  post: CollectionEntry<'press'>
+  isAboveTheFold: boolean
+}
+
+const { post, isAboveTheFold } = Astro.props
 ---
 
 <article class="lsa lsa-slide-up no-repeat group">
@@ -11,6 +17,7 @@ const { post } = Astro.props
         src={post.data.image}
         alt={post.data.imageAlt}
         formats={['avif', 'webp']}
+        loading={isAboveTheFold ? 'eager' : 'lazy'}
         class="brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-500 w-full h-full object-cover"
       />
     </div>

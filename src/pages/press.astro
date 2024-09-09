@@ -7,6 +7,8 @@ import Layout from '../layouts/Layout.astro'
 const allPressPosts = (await getCollection('press')) as CollectionEntry<'press'>[]
 // Chronological order - sort by id in descending order
 const sortedPressPosts = [...allPressPosts].sort((a, b) => +b.data.id - +a.data.id)
+// Get newest two posts (above the fold)
+const latestPosts = sortedPressPosts.slice(0, 2)
 ---
 
 <Layout title="Press" description="SUPERVOID press and media coverage.">
@@ -16,7 +18,13 @@ const sortedPressPosts = [...allPressPosts].sort((a, b) => +b.data.id - +a.data.
 
   <main>
     <section class="grid md:grid-cols-2 gap-x-10 gap-y-12">
-      {sortedPressPosts.map((post) => <PostPreviewCard post={post} />)}
+      {
+        sortedPressPosts.map((post) => {
+          const isLatestPost = latestPosts.some((latestPost) => latestPost.data.id === post.data.id)
+
+          return <PostPreviewCard post={post} isAboveTheFold={isLatestPost} />
+        })
+      }
     </section>
   </main>
 </Layout>

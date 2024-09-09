@@ -27,6 +27,6 @@ export default defineConfig({
     cacheOnDemandPages: true,
   }),
   devToolbar: {
-    enabled: false,
+    enabled: true,
   },
 })

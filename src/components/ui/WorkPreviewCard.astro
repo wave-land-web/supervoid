@@ -14,7 +14,7 @@ const videoTitle = work.data.title
 
 <article
   id={`work-preview-card-${playbackId}`}
-  class="work-preview-card relative max-w-screen-2xl mx-auto pb-[56.25%] h-0 w-full rounded-xl overflow-hidden group lsa lsa-slide-up no-repeat"
+  class="work-preview-card relative w-full h-0 max-w-screen-2xl mx-auto pb-[56.25%] rounded-xl overflow-hidden group lsa lsa-slide-up no-repeat"
 >
   <a href={`/work/${slug}`}>
     <mux-player
@@ -22,7 +22,7 @@ const videoTitle = work.data.title
       metadata-video-title={videoTitle}
       accent-color="var(--color-magenta-900)"
       style="--controls: none;"
-      class="w-full absolute top-0 left-0 brightness-75 group-[.playing]:brightness-100 group-[.playing]:scale-105 transition duration-500"
+      class="w-full brightness-75 group-[.playing]:brightness-100 group-[.playing]:scale-105 transition duration-500"
       loop
       muted
       paused></mux-player>
