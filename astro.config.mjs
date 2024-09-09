@@ -1,5 +1,6 @@
 import mdx from '@astrojs/mdx'
 import netlify from '@astrojs/netlify'
+import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import icon from 'astro-icon'
@@ -21,6 +22,7 @@ export default defineConfig({
       lastmod: new Date(),
     }),
     mdx(),
+    partytown(),
   ],
   adapter: netlify({
     imageCDN: false,
