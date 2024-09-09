@@ -73,6 +73,13 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
       crossorigin
     />
 
+    <!-- Preload video poster image -->
+    <link
+      rel="preload"
+      href="https://image.mux.com/pT6AeEe1Ieg00SZB00igR3n01jnD97AZSwaHZWqpRs1EXk/thumbnail.webp?time=0"
+      as="image"
+    />
+
     <!-- TODO: Umami Analytics -->
 
     <title>SUPERVOID | {title}</title>
