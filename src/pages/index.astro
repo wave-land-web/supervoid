@@ -46,21 +46,35 @@ const sortedWorkData = [...workData].sort((a, b) => b.data.id - a.data.id)
         <button
           id="play"
           class="hidden hover:scale-110 transition-all duration-200 active:scale-95"
+          aria-label="Play"
+          title="Play"
         >
           <Icon name="tabler:player-play" class="w-6 lg:w-8 text-magenta-900" />
         </button>
 
-        <button id="pause" class="hover:scale-110 transition-all duration-200 active:scale-95">
+        <button
+          id="pause"
+          class="hover:scale-110 transition-all duration-200 active:scale-95"
+          aria-label="Pause"
+          title="Pause"
+        >
           <Icon name="tabler:player-pause" class="w-6 lg:w-8 text-magenta-900" />
         </button>
 
-        <button id="volume-off" class="hover:scale-110 transition-all duration-200 active:scale-95">
+        <button
+          id="volume-off"
+          class="hover:scale-110 transition-all duration-200 active:scale-95"
+          aria-label="Volume Off"
+          title="Volume Off"
+        >
           <Icon name="tabler:volume-off" class="w-6 lg:w-8 text-magenta-900" />
         </button>
 
         <button
           id="volume-on"
           class="hidden hover:scale-110 transition-all duration-200 active:scale-95"
+          aria-label="Volume On"
+          title="Volume On"
         >
           <Icon name="tabler:volume" class="w-6 lg:w-8 text-magenta-900" />
         </button>

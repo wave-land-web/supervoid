@@ -75,9 +75,6 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
 
     <!-- TODO: Umami Analytics -->
 
-    <!-- MUX script -->
-    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
-
     <title>SUPERVOID | {title}</title>
   </head>
 
@@ -91,6 +88,9 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
       {!Astro.url.pathname.includes('/reel') && <Marquee class="mb-96" />}
     </div>
     {!Astro.url.pathname.includes('/reel') && <Footer />}
+
+    <!-- MUX script -->
+    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
   </body>
 </html>
 
