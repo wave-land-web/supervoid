@@ -90,13 +90,13 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
   </head>
 
   <body class="font-body bg-black text-white">
-    <div id="wrapper" class="z-10 bg-black">
+    <div id="wrapper" class="relative z-10 mb-96 bg-black">
       <div class="max-w-screen-2xl mx-auto">
         {!Astro.url.pathname.includes('/reel') && <Navigation />}
         <slot name="video-slot" />
       </div>
       <slot />
-      {!Astro.url.pathname.includes('/reel') && <Marquee class="mb-96" />}
+      {!Astro.url.pathname.includes('/reel') && <Marquee />}
     </div>
     {!Astro.url.pathname.includes('/reel') && <Footer />}
 
