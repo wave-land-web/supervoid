@@ -152,16 +152,16 @@ a:hover {
     1px 1px 0 var(--color-black);
 }
 
-/* Animations */
-
-@view-transition {
-  navigation: auto;
-}
-
 /* MUX player */
 
 mux-player {
   aspect-ratio: 16 / 9;
+}
+
+/* Animations */
+
+@view-transition {
+  navigation: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {

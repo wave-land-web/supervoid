@@ -52,45 +52,42 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
           <Icon
             data-info-icon
             name="tabler:plus"
-            class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 hover:scale-105 active:scale-95 hover:bg-grey-100 transition duration-300"
+            class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 hover:scale-105 active:scale-95 hover:bg-magenta-100 transition duration-300"
           />
           <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">info</h2>
         </button>
 
-        <div id="info-content" class="overflow-hidden transition duration-300 mt-4 md:mt-0">
+        <div id="info-content" class="active">
           {post.data.info.map((item: string) => <p class="mb-4" set:html={item} />)}
         </div>
       </div>
 
-      {
-        post.data.credits?.length ? (
-          <div
-            id="credits-details"
-            class="md:grid md:grid-cols-[250px,1fr] items-start gap-4 border-b-[1px] py-4 md:py-6 cursor-pointer"
-          >
-            <button
-              class="flex items-center gap-3"
-              aria-label="Show/Hide Credits"
-              title="Show/Hide Credits"
-            >
-              <Icon
-                data-credits-icon
-                name="tabler:plus"
-                class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 rotate-45 hover:scale-105 active:scale-95 hover:bg-grey-100 transition duration-300"
-              />
-              <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">
-                credits
-              </h2>
-            </button>
+      <div
+        id="credits-details"
+        class="md:grid md:grid-cols-[250px,1fr] items-start gap-4 border-b-[1px] py-4 md:py-6 cursor-pointer"
+      >
+        <button
+          class="flex items-center gap-3"
+          aria-label="Show/Hide Credits"
+          title="Show/Hide Credits"
+        >
+          <Icon
+            data-credits-icon
+            name="tabler:plus"
+            class="w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 rotate-45 hover:scale-105 active:scale-95 hover:bg-magenta-100 transition duration-300"
+          />
+          <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">
+            credits
+          </h2>
+        </button>
 
-            <div id="credits-content" class="opacity-0 h-0 overflow-hidden">
-              {post.data.credits?.map((item: string) => (
-                <div set:html={item} class="mb-4" />
-              ))}
-            </div>
-          </div>
-        ) : null
-      }
+        <div id="credits-content">
+          <div
+            set:html={post.data.credits && post.data.credits[0]}
+            class="flex flex-col gap-8 mb-4"
+          />
+        </div>
+      </div>
     </section>
 
     <section id="work-gifs" class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
@@ -134,6 +131,18 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
   </main>
 </Layout>
 
+<style>
+  #credits-content,
+  #info-content {
+    @apply h-0 opacity-0 overflow-hidden;
+  }
+
+  #credits-content.active,
+  #info-content.active {
+    @apply h-auto mt-4 md:mt-0 opacity-100 transition duration-300;
+  }
+</style>
+
 <script>
   const muxPlayer = document.querySelector(`mux-player`) as HTMLVideoElement
   const title = document.querySelector(`[data-page-title]`) as HTMLElement
@@ -152,17 +161,10 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
     title?.classList.remove('hidden')
   }
 
+  // Show/hide details and handle icon rotation
   function handleShowHideDetails(icon: Element, content: HTMLElement) {
-    // icon styles
     icon.classList.toggle('rotate-45')
-
-    // content styles
-    content.classList.toggle('h-0')
-    content.classList.toggle('opacity-0')
-    content.classList.toggle('transition')
-    content.classList.toggle('duration-300')
-    content.classList.toggle('mt-4')
-    content.classList.toggle('md:mt-0')
+    content.classList.toggle('active')
   }
 
   infoDetails!.addEventListener('click', () => handleShowHideDetails(infoIcon, infoContent))
