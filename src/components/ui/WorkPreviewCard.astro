@@ -54,7 +54,7 @@ const videoTitle = work.data.title
   /* Marquee Styles */
 
   .work-preview-card.playing span {
-    animation: marquee 4s linear 0s infinite;
+    animation: titleMarquee 4s linear 0s infinite;
   }
 
   .work-preview-card.playing .title-marquee .wrapper {
@@ -108,7 +108,7 @@ const videoTitle = work.data.title
     left: 102%;
   }
 
-  @keyframes marquee {
+  @keyframes titleMarquee {
     from {
       transform: translateX(0);
     }
