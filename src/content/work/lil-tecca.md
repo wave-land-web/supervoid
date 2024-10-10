@@ -1,6 +1,6 @@
 ---
 id: 7
-title: 'Lil Tecca, HVN ON EARTH Tour'
+title: 'Lil Tecca'
 info:
   [
     "Supervoid was brought on to create visuals for Lil Tecca's HVN ON EARTH tour in early 2024, our mission was to craft a tripped out cyberpunk aesthetic with glitchy analog video synths and 16-bit inspired 3D visuals.",
