@@ -93,9 +93,12 @@ const sortedWorkData = [...workData].sort((a, b) => b.data.id - a.data.id)
         and beyond.
       </p>
 
-      <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+      <div id="video" class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
         {sortedWorkData.map((work) => <WorkPreviewCard work={work} />)}
       </div>
+
+      <!-- TODO: add lighting projects -->
+      <div id="lighting"></div>
     </section>
   </main>
 </Layout>

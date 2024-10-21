@@ -5,8 +5,7 @@
 @layer base {
   @font-face {
     font-family: 'Rotonto Regular';
-    src:
-      url('/fonts/rotonto-regular.woff2') format('woff2'),
+    src: url('/fonts/rotonto-regular.woff2') format('woff2'),
       url('/fonts/rotonto-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -15,8 +14,7 @@
 
   @font-face {
     font-family: 'SF Mono Regular';
-    src:
-      url('/fonts/sf-mono-regular.woff2') format('woff2'),
+    src: url('/fonts/sf-mono-regular.woff2') format('woff2'),
       url('/fonts/sf-mono-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -27,6 +25,7 @@
 :root {
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-black-transparent: #00000080;
   --color-grey-100: #9b9b9b;
 
   /* Oklch colors with fallbacks */
@@ -145,11 +144,8 @@ a:hover {
 }
 
 .text-stroke {
-  text-shadow:
-    -1px -1px 0 var(--color-black),
-    1px -1px 0 var(--color-black),
-    -1px 1px 0 var(--color-black),
-    1px 1px 0 var(--color-black);
+  text-shadow: -1px -1px 0 var(--color-black), 1px -1px 0 var(--color-black),
+    -1px 1px 0 var(--color-black), 1px 1px 0 var(--color-black);
 }
 
 /* MUX player */

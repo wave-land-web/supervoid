@@ -1,22 +1,22 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets'
-import serversBackImage from '../assets/servers-back.png'
-import serversHeroImage from '../assets/servers-hero.webp'
-import willowImage from '../assets/servers-willow.webp'
+import rentalsBackImage from '../assets/rentals-back.png'
+import rentalsHeroImage from '../assets/rentals-hero.webp'
+import willowImage from '../assets/rentals-willow.webp'
 import CTA from '../components/text/CTA.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  title="Servers"
+  title="Rentals"
   description="We design and build custom media server racks in house to meet the needs of shows large and small. Our SVX series media servers pack a big punch in a small footprint."
-  socialImage="/images/servers-hero.png"
+  socialImage="/images/rentals-hero.png"
 >
   <ImageHeader
     title="Powering Your Performance"
-    imageSrc={serversHeroImage}
+    imageSrc={rentalsHeroImage}
     imageAlt="Paramore on the Eras tour"
     imageCaption="Paramore at 2024 iHeartRadio Music Festival - Visuals powered by SUPERVOID SVX-1 Series Servers."
   />
@@ -76,7 +76,7 @@ import Layout from '../layouts/Layout.astro'
         class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 items-start gap-24 md:gap-32"
       >
         <Picture
-          src={serversBackImage}
+          src={rentalsBackImage}
           formats={['avif', 'webp']}
           alt="SVX Series Servers - Back"
         />
