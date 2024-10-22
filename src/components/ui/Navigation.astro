@@ -41,6 +41,7 @@ const currentPath = Astro.url.pathname
     >
       <!-- nav items -->
       <ul class="flex flex-col gap-8 pt-32 mb-16">
+        <!-- dropdown -->
         <li class="dropdown group">
           <button
             aria-label="Work"
@@ -53,42 +54,69 @@ const currentPath = Astro.url.pathname
             />
           </button>
 
-          <!-- Dropdown menu -->
-          <ul class="hidden group-[.active]:flex flex-col gap-6 p-6">
+          <ul
+            class="invisible h-0 opacity-0 group-[.active]:visible group-[.active]:h-auto group-[.active]:opacity-100 transition-opacity duration-300"
+          >
             <li class="transition-transform hover:translate-x-1 duration-200 text-m">
-              <a href="/#video" aria-label="Video" title="Video">Video</a>
+              <a
+                href="/#video"
+                aria-label="Video"
+                title="Video"
+                class="block w-full h-full pt-6 pb-3 px-6">Video</a
+              >
             </li>
             <li class="transition-transform hover:translate-x-1 duration-200 text-m">
-              <a href="/#lighting" aria-label="Lighting" title="Lighting">Lighting</a>
+              <a
+                href="/#lighting"
+                aria-label="Lighting"
+                title="Lighting"
+                class="block w-full h-full py-3 px-6">Lighting</a
+              >
             </li>
           </ul>
         </li>
         <li>
           <a href="/about" aria-label="About" title="About" class="text-l">About</a>
         </li>
+        <!-- dropdown -->
         <li class="dropdown group">
           <button
             aria-label="Rentals"
             title="Rentals"
             class="flex gap-2 items-center text-l hover:text-magenta-900 transition duration-200"
             >Rentals
-
             <Icon
               name="tabler:chevron-down"
               class="max-w-8 group-[.active]:rotate-180 transition-transform duration-200"
             />
           </button>
 
-          <!-- Dropdown menu -->
-          <ul class="hidden group-[.active]:flex flex-col gap-6 p-6">
+          <ul
+            class="invisible h-0 opacity-0 group-[.active]:visible group-[.active]:h-auto group-[.active]:opacity-100 transition-opacity duration-300"
+          >
             <li class="transition-transform hover:translate-x-1 duration-200 text-m">
-              <a href="/rentals#servers" aria-label="Servers" title="Servers">Servers</a>
+              <a
+                href="/rentals#servers"
+                aria-label="Servers"
+                title="Servers"
+                class="block w-full h-full pt-6 pb-3 px-6">Servers</a
+              >
             </li>
             <li class="transition-transform hover:translate-x-1 duration-200 text-m">
-              <a href="/rentals#lighting" aria-label="Lighting" title="Lighting">Lighting</a>
+              <a
+                href="/rentals#lighting"
+                aria-label="Lighting"
+                title="Lighting"
+                class="block w-full h-full py-3 px-6">Lighting</a
+              >
             </li>
             <li class="transition-transform hover:translate-x-1 duration-200 text-m">
-              <a href="/rentals" aria-label="Rentals Main" title="Rentals Main">Rentals Main</a>
+              <a
+                href="/rentals"
+                aria-label="Rentals Main"
+                title="Rentals Main"
+                class="block w-full h-full py-3 px-6">Rentals Main</a
+              >
             </li>
           </ul>
         </li>
@@ -113,7 +141,7 @@ const currentPath = Astro.url.pathname
     >
     <!-- nav items -->
     <ul class="flex gap-10 text-xs">
-      <!-- Dropdown -->
+      <!-- dropdown -->
       <li class="dropdown group">
         <button
           aria-label="Work"
@@ -125,16 +153,24 @@ const currentPath = Astro.url.pathname
             class="max-w-6 group-[.active]:rotate-180 transition-transform duration-200"
           />
         </button>
-
-        <!-- Dropdown menu -->
         <ul
-          class="absolute pointer-events-none -z-10 opacity-0 scale-95 group-[.active]:opacity-100 group-[.active]:z-10 group-[.active]:scale-100 group-[.active]:pointer-events-auto bg-blackTransparent backdrop-blur-lg rounded-xl flex flex-col gap-6 p-6 transition-all shadow-lg"
+          class="absolute pointer-events-none -z-10 opacity-0 scale-95 group-[.active]:opacity-100 group-[.active]:z-10 group-[.active]:scale-100 group-[.active]:pointer-events-auto bg-blackTransparent backdrop-blur-lg rounded-xl transition-all shadow-lg"
         >
           <li class="transition-transform hover:translate-x-1 duration-200">
-            <a href="/#video" aria-label="Video" title="Video">Video</a>
+            <a
+              href="/#video"
+              aria-label="Video"
+              title="Video"
+              class="block w-full h-full pt-6 pb-3 px-6">Video</a
+            >
           </li>
           <li class="transition-transform hover:translate-x-1 duration-200">
-            <a href="/#lighting" aria-label="Lighting" title="Lighting">Lighting</a>
+            <a
+              href="/#lighting"
+              aria-label="Lighting"
+              title="Lighting"
+              class="block w-full h-full pt-3 pb-6 px-6">Lighting</a
+            >
           </li>
         </ul>
       </li>
@@ -144,7 +180,7 @@ const currentPath = Astro.url.pathname
           <Icon name="underline" /></a
         >
       </li>
-      <!-- Dropdown -->
+      <!-- dropdown -->
       <li class="dropdown group">
         <button
           aria-label="Rentals"
@@ -157,19 +193,32 @@ const currentPath = Astro.url.pathname
             class="max-w-6 group-[.active]:rotate-180 transition-transform duration-200"
           />
         </button>
-
-        <!-- Dropdown menu -->
         <ul
-          class="absolute pointer-events-none -z-10 opacity-0 scale-95 group-[.active]:opacity-100 group-[.active]:z-10 group-[.active]:scale-100 group-[.active]:pointer-events-auto bg-blackTransparent backdrop-blur-lg rounded-xl flex flex-col gap-6 p-6 transition-all shadow-lg"
+          class="absolute pointer-events-none -z-10 opacity-0 scale-95 group-[.active]:opacity-100 group-[.active]:z-10 group-[.active]:scale-100 group-[.active]:pointer-events-auto bg-blackTransparent backdrop-blur-lg rounded-xl transition-all shadow-lg"
         >
           <li class="transition-transform hover:translate-x-1">
-            <a href="/rentals#servers" aria-label="Servers" title="Servers">Servers</a>
+            <a
+              href="/rentals#servers"
+              aria-label="Servers"
+              title="Servers"
+              class="block w-full h-full pt-6 pb-3 px-6">Servers</a
+            >
           </li>
           <li class="transition-transform hover:translate-x-1">
-            <a href="/rentals#lighting" aria-label="Lighting" title="Lighting">Lighting</a>
+            <a
+              href="/rentals#lighting"
+              aria-label="Lighting"
+              title="Lighting"
+              class="block w-full h-full py-3 px-6">Lighting</a
+            >
           </li>
           <li class="transition-transform hover:translate-x-1">
-            <a href="/rentals" aria-label="Rentals Main" title="Rentals Main">Rentals Main</a>
+            <a
+              href="/rentals"
+              aria-label="Rentals Main"
+              title="Rentals Main"
+              class="block w-full h-full pt-3 pb-6 px-6">Rentals Main</a
+            >
           </li>
         </ul>
       </li>
