@@ -30,7 +30,19 @@ const pressCollection = defineCollection({
     }),
 })
 
+const lightingCollection = defineCollection({
+  type: 'content',
+  schema: ({ image }) =>
+    z.object({
+      id: z.number(),
+      title: z.string(),
+      youtubeId: z.string(),
+      poster: image(),
+    }),
+})
+
 export const collections = {
   work: workCollection,
   press: pressCollection,
+  lighting: lightingCollection,
 }
