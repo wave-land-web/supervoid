@@ -1,9 +1,10 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets'
-import rentalsBackImage from '../assets/rentals-back.png'
+import grandma3CompactImage from '../assets/grandma3-compact.png'
 import rentalsHeroImage from '../assets/rentals-hero.webp'
 import willowImage from '../assets/rentals-willow.webp'
+import svxSeriesServerBackImage from '../assets/svx-series-server-back.png'
 import CTA from '../components/text/CTA.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
@@ -30,24 +31,41 @@ import Layout from '../layouts/Layout.astro'
         <p class="mb-4 text-m">
           Paramore. Tate McRae. Jane's Addiction. Dan + Shay. Willow. Elle King. All Time Low. Cuco.
           Underoath. Taking Back Sunday. Wage War. Motion City Soundtrack. Love and Rockets.
-          Spiritbox. San Holo. Five Finger Death Punch. Trans-Siberian Orchestra.
+          Spiritbox. San Holo. Five Finger Death Punch. Trans-Siberian Orchestra. Poppy.
         </p>
       </div>
 
       <div
         class="grid md:grid-cols-[250px,1fr] gap-4 md:gap-16 lg:gap-32 py-6 border-t-[1px] lsa lsa-slide-up no-repeat"
       >
-        <h2 class="text-base uppercase">SUPERVOID SVX-1 MEDIA SERVER</h2>
-        <p class="text-grey-100">
-          We've designed the SUPERVOID SVX-1 media server to meet the needs of shows large and
-          small. Our media servers pack a big punch in a small footprint at a price that won't break
-          your budget.
-        </p>
+        <h2 class="text-base uppercase">Show Control Solutions</h2>
+        <div class="flex flex-col gap-4">
+          <p class="text-grey-100">
+            Custom video content and beautiful lighting design don't do much for a show without
+            elegant solutions for playback and control.
+          </p>
+          <p class="text-grey-100">
+            For video playback and IMAG FX, we've designed the SUPERVOID SVX-1 Media Server to meet
+            the needs of shows large and small. Our media servers are tremendously powerful and can
+            run the biggest shows without needing the biggest budgets.
+          </p>
+          <p class="text-grey-100">
+            For lighting control, we've invested in MA Lighting's GrandMA3 Compact console. These
+            are the most cost-efficient of the MA3 series, enabling our clients to run shows from
+            arenas to clubs. They empower Lighting Directors with the powerful MA3 platform in a
+            package that's small enough to fly with and budget-friendly for the smaller tours. The
+            MA3 compact perfectly fits with the philosophy we've aligned ourselves with in our media
+            server platform - meet the needs of shows large and small, without compromising artistic
+            value.
+          </p>
+        </div>
       </div>
     </section>
 
+    <!-- Servers -->
+
     <section
-      id="join-our-team"
+      id="servers"
       class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 gap-16 lg:gap-0 lsa lsa-slide-up no-repeat"
     >
       <figure class="lg:translate-x-2">
@@ -70,15 +88,16 @@ import Layout from '../layouts/Layout.astro'
     </section>
 
     <section class="flex flex-col items-center gap-16 lg:gap-24 lsa lsa-slide-up no-repeat">
-      <h2 class="text-l text-center uppercase">SVX SERIES SERVERS QUICK SPECS</h2>
+      <h2 class="text-l text-center uppercase">SVX Series Servers Quick Specs</h2>
 
       <div
-        class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 items-start gap-24 md:gap-32"
+        class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 items-start justify-items-center gap-24 md:gap-32"
       >
         <Picture
-          src={rentalsBackImage}
+          src={svxSeriesServerBackImage}
           formats={['avif', 'webp']}
           alt="SVX Series Servers - Back"
+          class="px-16 py-12 max-w-lg"
         />
 
         <div class="flex flex-col justify-center gap-8">
@@ -139,8 +158,84 @@ import Layout from '../layouts/Layout.astro'
           </div>
         </div>
       </div>
+    </section>
 
-      <CTA href="mailto:info@supervoid.tv?subject=SVX%20Series%20Rental" text="Rent Now" />
+    <!-- Lighting -->
+
+    <section
+      id="lighting"
+      class="flex flex-col items-center gap-16 lg:gap-24 lsa lsa-slide-up no-repeat"
+    >
+      <h2 class="text-l text-center uppercase">GrandMA3 Compact Quick Specs</h2>
+
+      <div
+        class="max-w-screen-md lg:max-w-screen-xl m-auto grid lg:grid-cols-2 items-start justify-items-center gap-24 md:gap-32"
+      >
+        <Picture
+          src={grandma3CompactImage}
+          formats={['avif', 'webp']}
+          alt="GrandMA3 Compact Lighting Console"
+          class="px-16 py-12 max-w-lg"
+        />
+
+        <div class="flex flex-col justify-center gap-8">
+          <h3 class="text-base uppercase">Description</h3>
+          <div id="description" class="flex flex-col gap-8">
+            <p class="text-grey-100">
+              The grandMA3 compact console is a portable, professional lighting control system,
+              ideal for small to medium events. It offers customizable features, intuitive dual
+              encoders, and seamless compatibility with grandMA2 and grandMA3 software.
+            </p>
+            <ul class="flex flex-col gap-4">
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                Control up to 250,000 parameters with grandMA3 processing units.
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                6 DMX outputs, 1 DMX input, and 3 etherCON connectors.
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                Foldable internal multi-touch screen with external screen support.
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                29 backlit rotary encoders, 5 dual encoders, and 40 playbacks.
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                10 motorized 60 mm faders and 2 motorized A/B faders (100 mm).
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                Silent, backlit keys and 16 assignable x-keys for smooth control.
+              </li>
+            </ul>
+          </div>
+
+          <div id="specifications" class="hidden flex-col gap-8">
+            <p class="text-grey-100">
+              9th Gen Intel i7 8-core processor, 32GB DDR4 RAM, 1TB NVMe SSD, 2TB SATA SSD, 4x HDMI
+            </p>
+            <ul class="flex flex-col gap-4">
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                2x 10G Ethernet ports for high-speed data transfer
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                4x USB 3.0 ports for peripherals and external storage devices
+              </li>
+              <li class="flex items-center gap-8">
+                <Icon name="tabler:check" class="size-8 flex-shrink-0 text-magenta-900" />
+                2x DisplayPort outputs for GUI and additional screens or projectors
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <CTA href="mailto:info@supervoid.tv?subject=Rentals Inquiry" text="Rent Now" />
     </section>
   </main>
 </Layout>
