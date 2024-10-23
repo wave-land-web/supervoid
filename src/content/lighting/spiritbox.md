@@ -1,6 +1,6 @@
 ---
 id: 5
 title: 'Spiritbox'
-youtubeId: 'https://www.youtube-nocookie.com/embed/PGGbeRuyVv0?si=y-fJhGIN3YlVvoab'
+youtubeId: 'PGGbeRuyVv0'
 poster: './images/spiritbox.jpg'
 ---

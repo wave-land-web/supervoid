@@ -1,6 +1,6 @@
 ---
 id: 2
 title: 'Janes Addiction'
-youtubeId: 'https://www.youtube-nocookie.com/embed/lG0xlR3f_zU?si=yamGtVaDie2OqV7k'
+youtubeId: 'lG0xlR3f_zU'
 poster: './images/janes-addiction.jpg'
 ---

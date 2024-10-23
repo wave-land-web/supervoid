@@ -1,6 +1,6 @@
 ---
 id: 8
 title: 'Underoath'
-youtubeId: 'https://www.youtube-nocookie.com/embed/5A2GtAe9YfE?si=ymhj7vcxVhQYRIRG'
+youtubeId: '5A2GtAe9YfE'
 poster: './images/underoath.jpg'
 ---

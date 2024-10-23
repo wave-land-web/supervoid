@@ -1,6 +1,6 @@
 ---
 id: 6
 title: 'Keshi'
-youtubeId: 'https://www.youtube-nocookie.com/embed/xUIK6qOznZU?si=IitAMvNoBPav_wty'
+youtubeId: 'xUIK6qOznZU'
 poster: './images/keshi.jpg'
 ---

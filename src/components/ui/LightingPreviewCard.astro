@@ -8,25 +8,18 @@ export interface Props {
 }
 
 const { work } = Astro.props
-const cardId = work.data.title.split(' ').join('-').toLowerCase()
+const youtubeId = work.data.youtubeId
 ---
 
 <div
-  id={`lighting-preview-card-${cardId}`}
+  id={`lighting-preview-card-${youtubeId}`}
   class="lighting-preview-card group relative pb-[56.25%] h-0 overflow-hidden w-full lsa lsa-slide-up no-repeat rounded-xl"
 >
-  <iframe
-    id={`player-${cardId}`}
-    src={work.data.youtubeId}
-    class="absolute top-0 left-0 w-full h-full border-0"
-    title="Video player"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    loading="lazy"
-    allowfullscreen></iframe>
+  <!-- YouTube embed inserted here via YouTube API -->
+  <div id={`player-${youtubeId}`} class="absolute top-0 left-0 w-full h-full"></div>
 
   <!-- Overlay: image, play button, and project title -->
-  <div id={`image-${cardId}`} class="absolute top-0 left-0 w-full h-full">
+  <div data-image id={`image-${youtubeId}`} class="absolute top-0 left-0 w-full h-full">
     <Picture
       class="w-full brightness-75 group-[.playing]:brightness-100 group-[.playing]:scale-105 transition duration-500"
       src={work.data.poster}
@@ -34,7 +27,7 @@ const cardId = work.data.title.split(' ').join('-').toLowerCase()
     />
 
     <button
-      id={`play-button-${cardId}`}
+      id={`play-button-${youtubeId}`}
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     >
       <Icon
@@ -136,23 +129,34 @@ const cardId = work.data.title.split(' ').join('-').toLowerCase()
   }
 </style>
 
-<script define:vars={{ cardId }}>
-  const lightingPreviewCard = document.querySelector(`#lighting-preview-card-${cardId}`)
-  const cards = document.querySelectorAll('.lighting-preview-card')
-  const image = document.querySelector(`#image-${cardId}`)
-  const playButton = document.querySelector(`#play-button-${cardId}`)
+<script define:vars={{ youtubeId }}>
+  const previewCards = document.querySelectorAll('.lighting-preview-card')
+  const activePreviewCard = document.querySelector(`#lighting-preview-card-${youtubeId}`)
+  const posterImage = document.querySelector(`#image-${youtubeId}`)
+  const playButton = document.querySelector(`#play-button-${youtubeId}`)
+  let player
 
-  // Play video
-  function playVideo() {
-    image.classList.add('hidden')
+  // Initialize YouTube Player
+  function onPlayerReady(event) {
+    event.target.playVideo()
+    posterImage.classList.add('hidden')
   }
 
-  // Activate card animations
+  function playYouTubeVideo() {
+    player = new YT.Player(`player-${youtubeId}`, {
+      videoId: youtubeId,
+      events: {
+        onReady: onPlayerReady,
+      },
+    })
+  }
+
+  // Card animation helpers
   function playCard() {
-    lightingPreviewCard.classList.add('playing')
+    activePreviewCard.classList.add('playing')
   }
   function stopCard() {
-    lightingPreviewCard.classList.remove('playing')
+    activePreviewCard.classList.remove('playing')
   }
 
   // Activate card on scroll
@@ -162,7 +166,7 @@ const cardId = work.data.title.split(' ').join('-').toLowerCase()
     }
 
     // Configure observer options
-    if (cards.length !== 0) {
+    if (previewCards.length !== 0) {
       const options = {
         root: null,
         rootMargin: '0px',
@@ -180,7 +184,7 @@ const cardId = work.data.title.split(' ').join('-').toLowerCase()
         })
       }, options)
 
-      cards.forEach((section) => observer.observe(section))
+      previewCards.forEach((card) => observer.observe(card))
     }
   }
 
@@ -190,10 +194,10 @@ const cardId = work.data.title.split(' ').join('-').toLowerCase()
     document.addEventListener('scroll', handlePlayOnScroll)
   } else {
     // Desktop
-    lightingPreviewCard.addEventListener('mouseover', playCard)
-    lightingPreviewCard.addEventListener('mouseout', stopCard)
+    activePreviewCard.addEventListener('mouseover', playCard)
+    activePreviewCard.addEventListener('mouseout', stopCard)
   }
 
   // Play video on click
-  playButton.addEventListener('click', playVideo)
+  playButton.addEventListener('click', playYouTubeVideo)
 </script>
