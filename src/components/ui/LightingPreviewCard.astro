@@ -145,6 +145,7 @@ const youtubeId = work.data.youtubeId
   function playYouTubeVideo() {
     player = new YT.Player(`player-${youtubeId}`, {
       videoId: youtubeId,
+      host: 'https://www.youtube-nocookie.com',
       events: {
         onReady: onPlayerReady,
       },
