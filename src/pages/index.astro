@@ -3,10 +3,15 @@ import { Icon } from 'astro-icon/components'
 import Layout from '../layouts/Layout.astro'
 import WorkPreviewCard from '../components/ui/WorkPreviewCard.astro'
 import { getCollection } from 'astro:content'
+import LightingPreviewCard from '../components/ui/LightingPreviewCard.astro'
 
-const workData = await getCollection('work')
+// Get the video and lighting work data
+const videoWorkData = await getCollection('work')
+const lightingWorkData = await getCollection('lighting')
+
 // Chronological order - sort by id in descending order
-const sortedWorkData = [...workData].sort((a, b) => b.data.id - a.data.id)
+const sortedVideoWorkData = [...videoWorkData].sort((a, b) => b.data.id - a.data.id)
+const sortedLightingWorkData = [...lightingWorkData].sort((a, b) => b.data.id - a.data.id)
 ---
 
 <Layout title="Animation, VFX, and Technical Design Studio">
@@ -83,18 +88,35 @@ const sortedWorkData = [...workData].sort((a, b) => b.data.id - a.data.id)
   </div>
 
   <main class="relative w-full bg-black">
-    <section id="work">
-      <h2 class="sr-only">Recent Work</h2>
-      <p
-        class="max-w-screen-lg m-auto pt-6 md:pt-0 pb-16 md:pb-24 text-m md:text-center lsa lsa-slide-up no-repeat delay-700 md:delay-0"
-      >
+    <article
+      class="max-w-screen-lg m-auto pt-[5.5rem] pb-16 md:py-24 lsa lsa-slide-up no-repeat delay-700 md:delay-0"
+    >
+      <p class="text-m md:text-center">
         <span class="text-magenta-900">SUPERVOID</span> is a visual design studio specializing in video
         content and production design for touring artists, festivals, art installations, narrative films,
         and beyond.
       </p>
+    </article>
 
+    <section id="video">
+      <h2
+        class="max-w-fit md:mx-auto mb-8 md:mb-12 pt-6 text-s text-center uppercase border-t-[1px] lsa lsa-slide-left no-repeat"
+      >
+        Recent <span class="text-magenta-900">Video</span> Work
+      </h2>
       <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-        {sortedWorkData.map((work) => <WorkPreviewCard work={work} />)}
+        {sortedVideoWorkData.map((work) => <WorkPreviewCard work={work} />)}
+      </div>
+    </section>
+
+    <section id="lighting">
+      <h2
+        class="max-w-fit md:mx-auto mb-8 md:mb-12 pt-6 text-s text-center uppercase border-t-[1px] lsa lsa-slide-left no-repeat"
+      >
+        Recent <span class="text-magenta-900">Lighting</span> Work
+      </h2>
+      <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+        {sortedLightingWorkData.map((work) => <LightingPreviewCard work={work} />)}
       </div>
     </section>
   </main>

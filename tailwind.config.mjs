@@ -31,6 +31,7 @@ export default {
       transparent: 'transparent',
       white: 'var(--color-white)',
       black: 'var(--color-black)',
+      blackTransparent: 'var(--color-black-transparent)',
       magenta: {
         900: 'var(--color-magenta-900)',
         500: 'var(--color-magenta-500)',

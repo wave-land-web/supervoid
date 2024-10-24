@@ -1,4 +1,9 @@
 ---
+/**
+ * TODO: astro-icon displays logo weird on Safari
+ * Using inline SVG for logo icon, need to fix
+ */
+
 import { Icon } from 'astro-icon/components'
 import SocialIcons from './SocialIcons.astro'
 
@@ -10,79 +15,224 @@ const currentPath = Astro.url.pathname
   class="fixed top-0 left-0 right-0 flex min-h-[var(--nav-height)] transition-all duration-500 z-20 bg-gradient-to-b from-black to-transparent"
   data-current-url={currentPath}
 >
-  <!-- mobile nav -->
+  <!-- Mobile Navigation -->
+
   <div id="mobile-nav" class="lg:hidden w-full flex justify-between items-center">
-    <a href="/" class="block w-full max-w-16 md:max-w-20 z-10" aria-label="Home" title="Home"
-      ><Icon name="logo" /></a
-    >
+    <a href="/" class="block w-full max-w-16 z-10" aria-label="Home" title="Home">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100"
+        height="58"
+        fill="none"
+        viewBox="0 0 100 58"
+        ><g clip-path="url(#a)"
+          ><path
+            fill="var(--color-white)"
+            d="M4.413 0c-.107.698-.22 1.332-.298 1.97-.246 1.98-.257 3.963-.102 5.952.217 2.784 1.004 5.44 1.826 8.089.232.747.472 1.493.724 2.235a20.898 20.898 0 0 0 2.301 4.705c1.107 1.695 2.216 3.39 3.379 5.05.668.954.974 1.992 1.064 3.122.047.585.095 1.17.176 1.751.228 1.616 1.06 2.45 2.695 2.746 1.183.215 2.37.154 3.556.05.914-.08 1.81-.242 2.676-.555 1.324-.48 2.47-1.238 3.509-2.163.52-.464 1.016-.955 1.53-1.426.314-.286.623-.584.972-.821a1.22 1.22 0 0 0 .51-.705c1.194-3.9 3.335-7.212 6.41-9.924 3.309-2.917 7.172-4.703 11.565-5.303 11.053-1.51 21.056 5.203 24.126 15.235.084.274.213.464.455.633.384.268.733.587 1.082.901.608.548 1.192 1.123 1.81 1.66 1.753 1.528 3.803 2.357 6.14 2.496 1.096.066 2.193.132 3.282-.077.224-.043.445-.1.663-.168 1.069-.328 1.75-1.028 1.96-2.115.133-.692.179-1.401.266-2.102.049-.389.092-.777.155-1.163.112-.68.392-1.29.781-1.861 1.022-1.499 2.027-3.009 3.041-4.512a24.469 24.469 0 0 0 3.208-6.76c.573-1.935 1.234-3.846 1.64-5.826.572-2.793.737-5.61.44-8.446-.085-.808-.227-1.609-.34-2.414-.01-.069-.002-.14-.002-.23.296.03.466.213.586.414.24.4.475.808.657 1.236.535 1.252.868 2.567 1.175 3.887.634 2.73 1.096 5.491 1.479 8.266.164 1.192.32 2.387.435 3.585.173 1.803-.092 3.569-.473 5.331a304.45 304.45 0 0 0-1.56 7.7c-.224 1.182-.357 2.382-.495 3.578-.308 2.67-1.383 4.999-3.114 7.057-1.359 1.615-2.881 3.068-4.47 4.457-.616.539-1.245 1.064-1.872 1.592a18.712 18.712 0 0 0-3.443 3.786c-.264.387-.537.768-.803 1.154-.71 1.03-1.686 1.7-2.908 1.973-.874.196-1.764.345-2.655.445-.922.103-1.855.124-2.784.178a2.12 2.12 0 0 1-.365.003c-.282-.032-.383-.157-.317-.426a2.04 2.04 0 0 1 .218-.542c.306-.52.619-1.038.948-1.545 1.375-2.12 2.641-4.297 3.644-6.617a32.928 32.928 0 0 0 1.666-4.775c.128-.49.21-1.008.21-1.512-.002-.967-.606-1.502-1.584-1.448a3.602 3.602 0 0 0-.936.188 5.274 5.274 0 0 0-2.35 1.584c-.361.42-.617.889-.72 1.44a3.255 3.255 0 0 1-.805 1.6c-.528.582-1.064 1.167-1.663 1.674-1.539 1.303-3.112 2.568-4.678 3.84-.344.28-.636.596-.903.95-3.49 4.62-8.098 7.516-13.84 8.563a22.066 22.066 0 0 1-21.835-8.77 3.975 3.975 0 0 0-.681-.721c-1.358-1.12-2.74-2.211-4.088-3.341a27.602 27.602 0 0 1-1.93-1.795c-.602-.613-1.023-1.333-1.194-2.197-.067-.341-.251-.685-.462-.97a5.06 5.06 0 0 0-3.15-2.01 2.39 2.39 0 0 0-.591-.037c-.691.035-1.13.402-1.29 1.071-.132.56-.038 1.108.102 1.651.81 3.143 2.07 6.104 3.705 8.91.624 1.069 1.303 2.106 1.954 3.16.246.399.487.8.716 1.207.08.143.139.304.172.464.052.246-.044.362-.3.402a1.167 1.167 0 0 1-.227.005c-1.6-.079-3.202-.121-4.777-.435a12.5 12.5 0 0 1-1.323-.347 4.388 4.388 0 0 1-2.226-1.587 30.05 30.05 0 0 1-.892-1.258c-1.014-1.501-2.244-2.806-3.617-3.995-1.48-1.28-2.953-2.569-4.36-3.925-.89-.86-1.691-1.818-2.464-2.786-1.43-1.792-2.255-3.855-2.517-6.115-.451-3.878-1.21-7.7-2.09-11.501-.402-1.742-.645-3.499-.472-5.286.124-1.288.264-2.576.468-3.854.36-2.259.749-4.514 1.174-6.762.302-1.597.69-3.179 1.274-4.703.21-.546.488-1.068.765-1.585A.972.972 0 0 1 4.413 0m45.561 55.443c10.727 0 19.418-8.572 19.421-19.153.004-10.588-8.676-19.178-19.39-19.19-10.74-.013-19.44 8.573-19.437 19.182.003 10.592 8.681 19.161 19.406 19.16"
+          ></path><path
+            fill="transparent"
+            d="M49.975 55.443c-10.726 0-19.404-8.569-19.407-19.161-.003-10.61 8.697-19.195 19.438-19.182 10.713.012 19.393 8.602 19.39 19.19-.004 10.58-8.695 19.152-19.421 19.153m17.402-19.504c-.48-.672-.894-1.305-1.36-1.897a64.79 64.79 0 0 0-7.546-8.037c-.981-.884-2.028-1.69-3.2-2.318-3.516-1.885-7.041-1.89-10.562-.014-1.133.605-2.143 1.383-3.102 2.224-2.032 1.782-3.884 3.74-5.678 5.752-1.079 1.21-2.112 2.455-3.005 3.808-.106.16-.203.327-.31.5.308.447.582.881.892 1.29 2.486 3.276 5.304 6.25 8.393 8.974.82.723 1.704 1.37 2.666 1.898 3.596 1.974 7.201 1.978 10.803.014 1.031-.562 1.966-1.265 2.843-2.039a64.53 64.53 0 0 0 7.678-8.099c.518-.647.974-1.343 1.488-2.056"
+          ></path><path
+            fill="var(--color-white)"
+            d="M67.378 35.939c-.514.713-.97 1.408-1.488 2.056a64.566 64.566 0 0 1-7.679 8.099c-.876.774-1.811 1.476-2.843 2.039-3.601 1.964-7.206 1.96-10.802-.014A14.83 14.83 0 0 1 41.9 46.22c-3.09-2.724-5.908-5.699-8.393-8.975-.31-.408-.585-.843-.892-1.289.107-.173.204-.34.31-.5.893-1.353 1.926-2.6 3.004-3.809 1.794-2.011 3.646-3.97 5.678-5.752.96-.84 1.97-1.619 3.102-2.223 3.521-1.878 7.047-1.871 10.563.013 1.172.628 2.218 1.434 3.2 2.319a64.788 64.788 0 0 1 7.545 8.037c.467.592.881 1.224 1.361 1.896m-2.317-.019c-.478-.69-.902-1.37-1.393-2-1.552-1.994-3.388-3.707-5.41-5.228-1.181-.887-2.434-1.657-3.804-2.23-2.18-.912-4.43-1.17-6.756-.688-1.538.32-2.953.942-4.282 1.76-2.361 1.451-4.405 3.271-6.245 5.32a18.283 18.283 0 0 0-2.007 2.685c-.17.277-.204.5-.006.774.434.6.815 1.238 1.275 1.817 1.477 1.856 3.2 3.47 5.089 4.912 1.124.859 2.313 1.617 3.608 2.204 2.119.96 4.327 1.317 6.639.942 1.6-.26 3.082-.842 4.46-1.669 3.033-1.819 5.595-4.158 7.73-6.95.385-.503.706-1.052 1.102-1.649"
+          ></path><path
+            fill="transparent"
+            d="M65.06 35.92c-.396.597-.717 1.147-1.1 1.65-2.136 2.791-4.698 5.13-7.73 6.95-1.379.827-2.861 1.409-4.461 1.668-2.312.376-4.52.019-6.64-.942-1.294-.586-2.483-1.345-3.607-2.204-1.89-1.442-3.612-3.055-5.089-4.912-.46-.578-.841-1.216-1.275-1.816-.198-.274-.164-.497.006-.775a18.325 18.325 0 0 1 2.007-2.685c1.84-2.049 3.884-3.868 6.245-5.32 1.329-.817 2.744-1.44 4.282-1.76 2.326-.482 4.575-.223 6.756.689 1.37.572 2.623 1.342 3.803 2.23 2.023 1.52 3.859 3.234 5.411 5.227.49.63.915 1.31 1.393 2m-15.088-6.122c-3.432.007-6.19 2.735-6.19 6.122 0 3.377 2.78 6.116 6.202 6.113 3.426-.004 6.19-2.74 6.187-6.125-.003-3.388-2.77-6.116-6.2-6.11"
+          ></path><path
+            fill="var(--color-white)"
+            d="M49.972 29.798c3.428-.006 6.196 2.721 6.2 6.11.003 3.384-2.762 6.12-6.188 6.124-3.422.004-6.202-2.736-6.202-6.112 0-3.387 2.758-6.116 6.19-6.122"
+          ></path></g
+        ><defs
+          ><clipPath id="a"><path fill="var(--color-white)" d="M0 0h100v58H0z"></path></clipPath
+          ></defs
+        ></svg
+      >
+    </a>
     <button
       id="hamburger"
-      class="relative flex flex-col justify-center items-center size-8 z-10"
+      class="relative flex flex-col justify-center items-center size-8 z-10 group"
       aria-expanded="false"
       title="Menu"
       aria-label="Menu"
     >
-      <span id="top" class="h-[2px] w-6 bg-white rounded-md transition duration-200 -translate-y-1">
+      <span
+        id="top"
+        class="h-[2px] w-6 bg-white rounded-md transition duration-200 -translate-y-1 group-[.active]:rotate-[135deg] group-[.active]:translate-y-[1px]"
+      >
       </span>
       <span
         id="bottom"
-        class="h-[2px] w-6 bg-white rounded-md transition duration-200 translate-y-1"
+        class="h-[2px] w-6 bg-white rounded-md transition duration-200 translate-y-1 group-[.active]:rotate-[-135deg] group-[.active]:-translate-y-[1px]"
       >
       </span>
     </button>
 
     <div
       id="mobile-nav-overlay"
-      class="absolute top-0 left-0 w-full h-dvh px-4 md:px-8 opacity-0 invisible -z-10 transition duration-200 text-white bg-black"
+      class="absolute top-0 left-0 w-full h-dvh overflow-y-auto px-4 md:px-8 opacity-0 invisible -z-10 transition duration-200 text-white bg-black"
     >
       <!-- nav items -->
       <ul class="flex flex-col gap-8 pt-32 mb-16">
-        <li>
-          <a href="/#work" aria-label="Work" title="Work" class="text-l"
-            >Work<Icon name="underline" /></a
+        <!-- dropdown -->
+        <li class="dropdown group">
+          <button
+            aria-label="Work"
+            title="Work"
+            class="flex gap-2 items-center text-l hover:text-magenta-900 transition duration-200"
+            >Work
+            <Icon
+              name="tabler:chevron-down"
+              class="max-w-8 group-[.active]:rotate-180 transition-transform duration-200"
+            />
+          </button>
+
+          <ul
+            class="invisible h-0 opacity-0 group-[.active]:visible group-[.active]:h-auto group-[.active]:opacity-100 transition-opacity duration-300"
           >
+            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+              <a
+                href="/#video"
+                aria-label="Video"
+                title="Video"
+                class="block w-full h-full pt-6 pb-3 px-6">Video</a
+              >
+            </li>
+            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+              <a
+                href="/#lighting"
+                aria-label="Lighting"
+                title="Lighting"
+                class="block w-full h-full py-3 px-6">Lighting</a
+              >
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="/about" aria-label="About" title="About" class="text-l"
-            >About<Icon name="underline" /></a
+          <a href="/about" aria-label="About" title="About" class="text-l">About</a>
+        </li>
+        <!-- dropdown -->
+        <li class="dropdown group">
+          <button
+            aria-label="Rentals"
+            title="Rentals"
+            class="flex gap-2 items-center text-l hover:text-magenta-900 transition duration-200"
+            >Rentals
+            <Icon
+              name="tabler:chevron-down"
+              class="max-w-8 group-[.active]:rotate-180 transition-transform duration-200"
+            />
+          </button>
+
+          <ul
+            class="invisible h-0 opacity-0 group-[.active]:visible group-[.active]:h-auto group-[.active]:opacity-100 transition-opacity duration-300"
           >
+            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+              <a
+                href="/rentals#servers"
+                aria-label="Servers"
+                title="Servers"
+                class="block w-full h-full pt-6 pb-3 px-6">Servers</a
+              >
+            </li>
+            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+              <a
+                href="/rentals#lighting"
+                aria-label="Lighting"
+                title="Lighting"
+                class="block w-full h-full py-3 px-6">Lighting</a
+              >
+            </li>
+            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+              <a
+                href="/rentals"
+                aria-label="Rentals Main"
+                title="Rentals Main"
+                class="block w-full h-full py-3 px-6">Rentals Main</a
+              >
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="/servers" aria-label="Servers" title="Servers" class="text-l"
-            >Servers<Icon name="underline" /></a
-          >
+          <a href="/press" aria-label="Press" title="Press" class="text-l">Press</a>
         </li>
         <li>
-          <a href="/press" aria-label="Press" title="Press" class="text-l"
-            >Press<Icon name="underline" /></a
-          >
+          <a href="/jobs" aria-label="Jobs" title="Jobs" class="text-l">Jobs</a>
         </li>
         <li>
-          <a href="/jobs" aria-label="Jobs" title="Jobs" class="text-l"
-            >Jobs<Icon name="underline" /></a
-          >
-        </li>
-        <li>
-          <a href="/contact" aria-label="Contact" title="Contact" class="text-l"
-            >Contact<Icon name="underline" /></a
-          >
+          <a href="/contact" aria-label="Contact" title="Contact" class="text-l">Contact</a>
         </li>
       </ul>
       <SocialIcons />
     </div>
   </div>
 
-  <!-- desktop nav -->
+  <!-- Desktop Navigation -->
+
   <div id="desktop-nav" class="lg:flex hidden w-full justify-between items-center flex-wrap gap-10">
-    <a href="/" class="block w-full max-w-20" aria-label="Home" title="Home"><Icon name="logo" /></a
-    >
+    <a href="/" class="block w-full max-w-20" aria-label="Home" title="Home">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100"
+        height="58"
+        fill="none"
+        viewBox="0 0 100 58"
+        ><g clip-path="url(#a)"
+          ><path
+            fill="var(--color-white)"
+            d="M4.413 0c-.107.698-.22 1.332-.298 1.97-.246 1.98-.257 3.963-.102 5.952.217 2.784 1.004 5.44 1.826 8.089.232.747.472 1.493.724 2.235a20.898 20.898 0 0 0 2.301 4.705c1.107 1.695 2.216 3.39 3.379 5.05.668.954.974 1.992 1.064 3.122.047.585.095 1.17.176 1.751.228 1.616 1.06 2.45 2.695 2.746 1.183.215 2.37.154 3.556.05.914-.08 1.81-.242 2.676-.555 1.324-.48 2.47-1.238 3.509-2.163.52-.464 1.016-.955 1.53-1.426.314-.286.623-.584.972-.821a1.22 1.22 0 0 0 .51-.705c1.194-3.9 3.335-7.212 6.41-9.924 3.309-2.917 7.172-4.703 11.565-5.303 11.053-1.51 21.056 5.203 24.126 15.235.084.274.213.464.455.633.384.268.733.587 1.082.901.608.548 1.192 1.123 1.81 1.66 1.753 1.528 3.803 2.357 6.14 2.496 1.096.066 2.193.132 3.282-.077.224-.043.445-.1.663-.168 1.069-.328 1.75-1.028 1.96-2.115.133-.692.179-1.401.266-2.102.049-.389.092-.777.155-1.163.112-.68.392-1.29.781-1.861 1.022-1.499 2.027-3.009 3.041-4.512a24.469 24.469 0 0 0 3.208-6.76c.573-1.935 1.234-3.846 1.64-5.826.572-2.793.737-5.61.44-8.446-.085-.808-.227-1.609-.34-2.414-.01-.069-.002-.14-.002-.23.296.03.466.213.586.414.24.4.475.808.657 1.236.535 1.252.868 2.567 1.175 3.887.634 2.73 1.096 5.491 1.479 8.266.164 1.192.32 2.387.435 3.585.173 1.803-.092 3.569-.473 5.331a304.45 304.45 0 0 0-1.56 7.7c-.224 1.182-.357 2.382-.495 3.578-.308 2.67-1.383 4.999-3.114 7.057-1.359 1.615-2.881 3.068-4.47 4.457-.616.539-1.245 1.064-1.872 1.592a18.712 18.712 0 0 0-3.443 3.786c-.264.387-.537.768-.803 1.154-.71 1.03-1.686 1.7-2.908 1.973-.874.196-1.764.345-2.655.445-.922.103-1.855.124-2.784.178a2.12 2.12 0 0 1-.365.003c-.282-.032-.383-.157-.317-.426a2.04 2.04 0 0 1 .218-.542c.306-.52.619-1.038.948-1.545 1.375-2.12 2.641-4.297 3.644-6.617a32.928 32.928 0 0 0 1.666-4.775c.128-.49.21-1.008.21-1.512-.002-.967-.606-1.502-1.584-1.448a3.602 3.602 0 0 0-.936.188 5.274 5.274 0 0 0-2.35 1.584c-.361.42-.617.889-.72 1.44a3.255 3.255 0 0 1-.805 1.6c-.528.582-1.064 1.167-1.663 1.674-1.539 1.303-3.112 2.568-4.678 3.84-.344.28-.636.596-.903.95-3.49 4.62-8.098 7.516-13.84 8.563a22.066 22.066 0 0 1-21.835-8.77 3.975 3.975 0 0 0-.681-.721c-1.358-1.12-2.74-2.211-4.088-3.341a27.602 27.602 0 0 1-1.93-1.795c-.602-.613-1.023-1.333-1.194-2.197-.067-.341-.251-.685-.462-.97a5.06 5.06 0 0 0-3.15-2.01 2.39 2.39 0 0 0-.591-.037c-.691.035-1.13.402-1.29 1.071-.132.56-.038 1.108.102 1.651.81 3.143 2.07 6.104 3.705 8.91.624 1.069 1.303 2.106 1.954 3.16.246.399.487.8.716 1.207.08.143.139.304.172.464.052.246-.044.362-.3.402a1.167 1.167 0 0 1-.227.005c-1.6-.079-3.202-.121-4.777-.435a12.5 12.5 0 0 1-1.323-.347 4.388 4.388 0 0 1-2.226-1.587 30.05 30.05 0 0 1-.892-1.258c-1.014-1.501-2.244-2.806-3.617-3.995-1.48-1.28-2.953-2.569-4.36-3.925-.89-.86-1.691-1.818-2.464-2.786-1.43-1.792-2.255-3.855-2.517-6.115-.451-3.878-1.21-7.7-2.09-11.501-.402-1.742-.645-3.499-.472-5.286.124-1.288.264-2.576.468-3.854.36-2.259.749-4.514 1.174-6.762.302-1.597.69-3.179 1.274-4.703.21-.546.488-1.068.765-1.585A.972.972 0 0 1 4.413 0m45.561 55.443c10.727 0 19.418-8.572 19.421-19.153.004-10.588-8.676-19.178-19.39-19.19-10.74-.013-19.44 8.573-19.437 19.182.003 10.592 8.681 19.161 19.406 19.16"
+          ></path><path
+            fill="transparent"
+            d="M49.975 55.443c-10.726 0-19.404-8.569-19.407-19.161-.003-10.61 8.697-19.195 19.438-19.182 10.713.012 19.393 8.602 19.39 19.19-.004 10.58-8.695 19.152-19.421 19.153m17.402-19.504c-.48-.672-.894-1.305-1.36-1.897a64.79 64.79 0 0 0-7.546-8.037c-.981-.884-2.028-1.69-3.2-2.318-3.516-1.885-7.041-1.89-10.562-.014-1.133.605-2.143 1.383-3.102 2.224-2.032 1.782-3.884 3.74-5.678 5.752-1.079 1.21-2.112 2.455-3.005 3.808-.106.16-.203.327-.31.5.308.447.582.881.892 1.29 2.486 3.276 5.304 6.25 8.393 8.974.82.723 1.704 1.37 2.666 1.898 3.596 1.974 7.201 1.978 10.803.014 1.031-.562 1.966-1.265 2.843-2.039a64.53 64.53 0 0 0 7.678-8.099c.518-.647.974-1.343 1.488-2.056"
+          ></path><path
+            fill="var(--color-white)"
+            d="M67.378 35.939c-.514.713-.97 1.408-1.488 2.056a64.566 64.566 0 0 1-7.679 8.099c-.876.774-1.811 1.476-2.843 2.039-3.601 1.964-7.206 1.96-10.802-.014A14.83 14.83 0 0 1 41.9 46.22c-3.09-2.724-5.908-5.699-8.393-8.975-.31-.408-.585-.843-.892-1.289.107-.173.204-.34.31-.5.893-1.353 1.926-2.6 3.004-3.809 1.794-2.011 3.646-3.97 5.678-5.752.96-.84 1.97-1.619 3.102-2.223 3.521-1.878 7.047-1.871 10.563.013 1.172.628 2.218 1.434 3.2 2.319a64.788 64.788 0 0 1 7.545 8.037c.467.592.881 1.224 1.361 1.896m-2.317-.019c-.478-.69-.902-1.37-1.393-2-1.552-1.994-3.388-3.707-5.41-5.228-1.181-.887-2.434-1.657-3.804-2.23-2.18-.912-4.43-1.17-6.756-.688-1.538.32-2.953.942-4.282 1.76-2.361 1.451-4.405 3.271-6.245 5.32a18.283 18.283 0 0 0-2.007 2.685c-.17.277-.204.5-.006.774.434.6.815 1.238 1.275 1.817 1.477 1.856 3.2 3.47 5.089 4.912 1.124.859 2.313 1.617 3.608 2.204 2.119.96 4.327 1.317 6.639.942 1.6-.26 3.082-.842 4.46-1.669 3.033-1.819 5.595-4.158 7.73-6.95.385-.503.706-1.052 1.102-1.649"
+          ></path><path
+            fill="transparent"
+            d="M65.06 35.92c-.396.597-.717 1.147-1.1 1.65-2.136 2.791-4.698 5.13-7.73 6.95-1.379.827-2.861 1.409-4.461 1.668-2.312.376-4.52.019-6.64-.942-1.294-.586-2.483-1.345-3.607-2.204-1.89-1.442-3.612-3.055-5.089-4.912-.46-.578-.841-1.216-1.275-1.816-.198-.274-.164-.497.006-.775a18.325 18.325 0 0 1 2.007-2.685c1.84-2.049 3.884-3.868 6.245-5.32 1.329-.817 2.744-1.44 4.282-1.76 2.326-.482 4.575-.223 6.756.689 1.37.572 2.623 1.342 3.803 2.23 2.023 1.52 3.859 3.234 5.411 5.227.49.63.915 1.31 1.393 2m-15.088-6.122c-3.432.007-6.19 2.735-6.19 6.122 0 3.377 2.78 6.116 6.202 6.113 3.426-.004 6.19-2.74 6.187-6.125-.003-3.388-2.77-6.116-6.2-6.11"
+          ></path><path
+            fill="var(--color-white)"
+            d="M49.972 29.798c3.428-.006 6.196 2.721 6.2 6.11.003 3.384-2.762 6.12-6.188 6.124-3.422.004-6.202-2.736-6.202-6.112 0-3.387 2.758-6.116 6.19-6.122"
+          ></path></g
+        ><defs
+          ><clipPath id="a"><path fill="var(--color-white)" d="M0 0h100v58H0z"></path></clipPath
+          ></defs
+        ></svg
+      >
+    </a>
     <!-- nav items -->
     <ul class="flex gap-10 text-xs">
-      <li>
-        <a href="/#work" aria-label="Work" title="Work"
+      <!-- dropdown -->
+      <li class="dropdown group">
+        <button
+          aria-label="Work"
+          title="Work"
+          class="flex gap-2 items-center hover:text-magenta-900 transition duration-200"
           >Work
-          <Icon name="underline" />
-        </a>
+          <Icon
+            name="tabler:chevron-down"
+            class="max-w-6 group-[.active]:rotate-180 transition-transform duration-200"
+          />
+        </button>
+        <ul
+          class="absolute pointer-events-none -z-10 opacity-0 scale-95 group-[.active]:opacity-100 group-[.active]:z-10 group-[.active]:scale-100 group-[.active]:pointer-events-auto bg-blackTransparent backdrop-blur-lg rounded-xl transition-all shadow-lg"
+        >
+          <li class="transition-transform hover:translate-x-1 duration-200">
+            <a
+              href="/#video"
+              aria-label="Video"
+              title="Video"
+              class="block w-full h-full pt-6 pb-3 px-6">Video</a
+            >
+          </li>
+          <li class="transition-transform hover:translate-x-1 duration-200">
+            <a
+              href="/#lighting"
+              aria-label="Lighting"
+              title="Lighting"
+              class="block w-full h-full pt-3 pb-6 px-6">Lighting</a
+            >
+          </li>
+        </ul>
       </li>
       <li>
         <a href="/about" aria-label="About" title="About"
@@ -90,8 +240,47 @@ const currentPath = Astro.url.pathname
           <Icon name="underline" /></a
         >
       </li>
-      <li>
-        <a href="/servers" aria-label="Servers" title="Servers">Servers<Icon name="underline" /></a>
+      <!-- dropdown -->
+      <li class="dropdown group">
+        <button
+          aria-label="Rentals"
+          title="Rentals"
+          class="flex gap-2 items-center hover:text-magenta-900 transition duration-200"
+          >Rentals
+          <Icon name="underline" />
+          <Icon
+            name="tabler:chevron-down"
+            class="max-w-6 group-[.active]:rotate-180 transition-transform duration-200"
+          />
+        </button>
+        <ul
+          class="absolute pointer-events-none -z-10 opacity-0 scale-95 group-[.active]:opacity-100 group-[.active]:z-10 group-[.active]:scale-100 group-[.active]:pointer-events-auto bg-blackTransparent backdrop-blur-lg rounded-xl transition-all shadow-lg"
+        >
+          <li class="transition-transform hover:translate-x-1">
+            <a
+              href="/rentals#servers"
+              aria-label="Servers"
+              title="Servers"
+              class="block w-full h-full pt-6 pb-3 px-6">Servers</a
+            >
+          </li>
+          <li class="transition-transform hover:translate-x-1">
+            <a
+              href="/rentals#lighting"
+              aria-label="Lighting"
+              title="Lighting"
+              class="block w-full h-full py-3 px-6">Lighting</a
+            >
+          </li>
+          <li class="transition-transform hover:translate-x-1">
+            <a
+              href="/rentals"
+              aria-label="Rentals Main"
+              title="Rentals Main"
+              class="block w-full h-full pt-3 pb-6 px-6">Rentals Main</a
+            >
+          </li>
+        </ul>
       </li>
       <li><a href="/press" aria-label="Press" title="Press">Press<Icon name="underline" /></a></li>
       <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs<Icon name="underline" /></a></li>
@@ -101,113 +290,163 @@ const currentPath = Astro.url.pathname
     </ul>
     <SocialIcons />
   </div>
-</nav>
 
-<style>
-  #navigation li a {
-    position: relative;
-  }
+  <style>
+    /* Active nav item styles */
 
-  #navigation [data-icon='underline'] {
-    display: none;
-  }
+    #navigation li a,
+    #navigation button {
+      position: relative;
+    }
 
-  #navigation[data-current-url^='/work'] [aria-label='Work'] [data-icon='underline'],
-  #navigation[data-current-url^='/about'] [aria-label='About'] [data-icon='underline'],
-  #navigation[data-current-url^='/servers'] [aria-label='Servers'] [data-icon='underline'],
-  #navigation[data-current-url^='/press'] [aria-label='Press'] [data-icon='underline'],
-  #navigation[data-current-url^='/jobs'] [aria-label='Jobs'] [data-icon='underline'],
-  #navigation[data-current-url^='/contact'] [aria-label='Contact'] [data-icon='underline'] {
-    display: block;
-    position: absolute;
-    bottom: -0.5rem;
-    left: 0;
-  }
-</style>
+    #navigation [data-icon='underline'] {
+      display: none;
+    }
 
-<script>
-  const body = document.querySelector('body') as HTMLBodyElement
-  const navigation = document.getElementById('navigation')
-  const mobileNavItems = document.querySelectorAll('#mobile-nav a')
-  const hamburger = document.getElementById('hamburger') as HTMLButtonElement
-  const mobileNavOverlay = document.getElementById('mobile-nav-overlay') as HTMLDivElement
-  let overlayDisplayed = false
-  let prevScrollpos = window.scrollY
+    /* Mobile */
 
-  function handleMobileNavigationOverlayOnClick() {
-    overlayDisplayed = !overlayDisplayed
-    body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+    #navigation[data-current-url^='/about'] [aria-label='About'],
+    #navigation[data-current-url^='/rentals'] [aria-label='Rentals'],
+    #navigation[data-current-url^='/press'] [aria-label='Press'],
+    #navigation[data-current-url^='/jobs'] [aria-label='Jobs'],
+    #navigation[data-current-url^='/contact'] [aria-label='Contact'] {
+      color: var(--color-magenta-900);
 
-    // Mobile nav overlay styles
-    mobileNavOverlay.classList.toggle('invisible')
-    mobileNavOverlay.classList.toggle('opacity-0')
+      @media (min-width: 1024px) {
+        &:not(:hover) {
+          color: var(--color-white);
+        }
+      }
+    }
 
-    // Hamburger styles
-    hamburger.setAttribute('aria-expanded', `${overlayDisplayed}`)
-    hamburger.querySelector('#top')?.classList.toggle('-translate-y-1')
-    hamburger.querySelector('#top')?.classList.toggle('translate-y-[1px]')
-    hamburger.querySelector('#top')?.classList.toggle('rotate-[135deg]')
-    hamburger.querySelector('#bottom')?.classList.toggle('translate-y-1')
-    hamburger.querySelector('#bottom')?.classList.toggle('-translate-y-[1px]')
-    hamburger.querySelector('#bottom')?.classList.toggle('rotate-[-135deg]')
-  }
+    /* Desktop */
 
-  function handleMobileNavigationOverlayOnResize() {
-    if (window.innerWidth >= 768) {
-      overlayDisplayed = false
+    @media (min-width: 1024px) {
+      #navigation[data-current-url^='/about'] [aria-label='About'] [data-icon='underline'],
+      #navigation[data-current-url^='/rentals'] [aria-label='Rentals'] [data-icon='underline'],
+      #navigation[data-current-url^='/press'] [aria-label='Press'] [data-icon='underline'],
+      #navigation[data-current-url^='/jobs'] [aria-label='Jobs'] [data-icon='underline'],
+      #navigation[data-current-url^='/contact'] [aria-label='Contact'] [data-icon='underline'] {
+        display: block;
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        max-width: 82px;
+      }
+    }
+  </style>
+
+  <script>
+    const body = document.querySelector('body') as HTMLBodyElement
+    const navigation = document.getElementById('navigation')
+    const mobileDropdowns = document.querySelectorAll('#mobile-nav .dropdown')
+    const desktopDropdowns = document.querySelectorAll('#desktop-nav .dropdown')
+    const mobileNavItems = document.querySelectorAll('#mobile-nav a')
+    const hamburger = document.getElementById('hamburger') as HTMLButtonElement
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay') as HTMLDivElement
+    let overlayDisplayed = false
+    let prevScrollpos = window.scrollY
+
+    /**
+     * Mobile navigation overlay helpers
+     */
+
+    function handleMobileNavigationOverlayOnClick() {
+      overlayDisplayed = !overlayDisplayed
       body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
 
-      // Reset mobile nav overlay styles
-      mobileNavOverlay.classList.add('invisible')
-      mobileNavOverlay.classList.add('opacity-0')
+      // Mobile nav overlay styles
+      mobileNavOverlay.classList.toggle('invisible')
+      mobileNavOverlay.classList.toggle('opacity-0')
 
-      // Reset hamburger styles
+      // Hamburger styles
       hamburger.setAttribute('aria-expanded', `${overlayDisplayed}`)
-      hamburger.querySelector('#top')?.classList.add('-translate-y-1')
-      hamburger.querySelector('#top')?.classList.remove('translate-y-[1px]')
-      hamburger.querySelector('#top')?.classList.remove('rotate-[135deg]')
-      hamburger.querySelector('#bottom')?.classList.add('translate-y-1')
-      hamburger.querySelector('#bottom')?.classList.remove('-translate-y-[1px]')
-      hamburger.querySelector('#bottom')?.classList.remove('rotate-[-135deg]')
-    }
-  }
-
-  function showNavbar() {
-    navigation?.classList.add('top-0')
-    navigation?.classList.remove('-top-20')
-  }
-
-  function hideNavbar() {
-    navigation?.classList.remove('top-0')
-    navigation?.classList.add('-top-20')
-  }
-
-  function handleActiveNavigationOnScroll() {
-    let currentScrollPos = window.scrollY
-
-    // Show nav when scrolling up or at the top of the page
-    if (prevScrollpos > currentScrollPos || currentScrollPos < 20) {
-      showNavbar()
-      // Chrome bug: nav disappears when opening mobile nav near the footer
-      // Checking if the overlay is displayed prevents the nav from disappearing
-    } else if (prevScrollpos < currentScrollPos && !overlayDisplayed) {
-      hideNavbar()
+      hamburger.classList.toggle('active')
     }
 
-    prevScrollpos = currentScrollPos
-  }
+    function handleMobileNavigationOverlayOnResize() {
+      if (window.innerWidth >= 768) {
+        overlayDisplayed = false
+        body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
 
-  // Accessibility
-  hamburger.addEventListener('keyup', (event) => {
-    if (event.code === 'Escape' && overlayDisplayed) {
-      handleMobileNavigationOverlayOnClick()
+        // Reset mobile nav overlay styles
+        mobileNavOverlay.classList.add('invisible')
+        mobileNavOverlay.classList.add('opacity-0')
+
+        // Reset hamburger styles
+        hamburger.setAttribute('aria-expanded', `${overlayDisplayed}`)
+        hamburger.classList.remove('active')
+      }
     }
-  })
 
-  mobileNavItems.forEach((item) =>
-    item.addEventListener('click', handleMobileNavigationOverlayOnClick)
-  )
-  hamburger.addEventListener('click', handleMobileNavigationOverlayOnClick)
-  window.addEventListener('resize', handleMobileNavigationOverlayOnResize)
-  window.addEventListener('scroll', handleActiveNavigationOnScroll)
-</script>
+    /**
+     * Dropdown menu helpers
+     */
+
+    function toggleDropdown(e: Event) {
+      const dropdown = e.currentTarget as HTMLElement
+      dropdown.classList.toggle('active')
+    }
+
+    function showDropdown(e: Event) {
+      const dropdown = e.currentTarget as HTMLElement
+      dropdown.classList.add('active')
+    }
+
+    function hideDropdown(e: Event) {
+      const dropdown = e.currentTarget as HTMLElement
+
+      if (dropdown.classList.contains('active')) {
+        dropdown.classList.remove('active')
+      }
+    }
+
+    /**
+     * Navbar visibility helpers
+     */
+
+    function showNavbar() {
+      navigation?.classList.add('top-0')
+      navigation?.classList.remove('-top-20')
+    }
+
+    function hideNavbar() {
+      navigation?.classList.remove('top-0')
+      navigation?.classList.add('-top-20')
+    }
+
+    function handleActiveNavigationOnScroll() {
+      let currentScrollPos = window.scrollY
+
+      // Show nav when scrolling up or at the top of the page
+      if (prevScrollpos > currentScrollPos || currentScrollPos < 20) {
+        showNavbar()
+        // Chrome bug: nav disappears when opening mobile nav near the footer
+        // Checking if the overlay is displayed prevents the nav from disappearing
+      } else if (prevScrollpos < currentScrollPos && !overlayDisplayed) {
+        hideNavbar()
+      }
+
+      prevScrollpos = currentScrollPos
+    }
+
+    // Accessibility
+    hamburger.addEventListener('keyup', (event) => {
+      if (event.code === 'Escape' && overlayDisplayed) {
+        handleMobileNavigationOverlayOnClick()
+      }
+    })
+
+    // Event listeners
+    mobileDropdowns.forEach((d) => d.addEventListener('click', toggleDropdown))
+    desktopDropdowns.forEach((d) => {
+      d.addEventListener('click', toggleDropdown)
+      d.addEventListener('mouseenter', showDropdown)
+      d.addEventListener('mouseleave', hideDropdown)
+    })
+    mobileNavItems.forEach((i) => i.addEventListener('click', handleMobileNavigationOverlayOnClick))
+    hamburger.addEventListener('click', handleMobileNavigationOverlayOnClick)
+    window.addEventListener('resize', handleMobileNavigationOverlayOnResize)
+    window.addEventListener('scroll', handleActiveNavigationOnScroll)
+  </script>
+</nav>
