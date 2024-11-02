@@ -83,6 +83,9 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
     <!-- YouTube API -->
     <script src="https://www.youtube.com/iframe_api" is:inline async></script>
 
+    <!-- Mux -->
+    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" is:inline async></script>
+
     <!-- Umami Analytics -->
     <script
       type="text/partytown"
@@ -102,8 +105,6 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
       {!Astro.url.pathname.includes('/reel') && <Marquee />}
     </div>
     {!Astro.url.pathname.includes('/reel') && <Footer />}
-
-    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
   </body>
 </html>
 
