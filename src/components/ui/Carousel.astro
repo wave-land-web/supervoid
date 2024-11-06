@@ -13,8 +13,7 @@ export interface Props {
 const { images, class: className } = Astro.props
 ---
 
-<!-- TODO: can horizonal scrolling bug on mobile be fixed without overflow-hidden? -->
-<div class={`swiper min-w-0 max-w-full ${className} overflow-hidden md:overflow-visible`}>
+<div class={`swiper min-w-0 max-w-full ${className}`}>
   <div class="swiper-wrapper mb-8">
     {
       images.map((image) => (
@@ -45,6 +44,20 @@ const { images, class: className } = Astro.props
     </button>
   </div>
 </div>
+
+<style>
+  /* TODO: can horizonal scrolling bug on mobile be fixed without overflow-hidden? */
+
+  .swiper.swiper-cards {
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .swiper.swiper-cards {
+      overflow-x: visible;
+    }
+  }
+</style>
 
 <script>
   import Swiper from 'swiper'

@@ -11,9 +11,16 @@ const sortedPressPosts = [...allPressPosts].sort((a, b) => +b.data.id - +a.data.
 const latestPosts = sortedPressPosts.slice(0, 2)
 ---
 
-<Layout title="Press" description="SUPERVOID press and media coverage.">
+<Layout
+  title="Press"
+  description="Get a quick look at our latest projects, artist collabs, and highlights."
+>
   <header class="pt-[calc(var(--nav-height)+6rem)] lsa lsa-slide-up no-repeat">
     <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">Press & Media</h1>
+    <p class="mx-auto text-center text-grey-100">
+      Get a quick look at our latest projects, artist collabs, and highlights. Click an image to
+      learn more.
+    </p>
   </header>
 
   <main>
