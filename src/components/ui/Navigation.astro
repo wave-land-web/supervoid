@@ -16,7 +16,6 @@ const currentPath = Astro.url.pathname
   data-current-url={currentPath}
 >
   <!-- Mobile Navigation -->
-
   <div id="mobile-nav" class="lg:hidden w-full flex justify-between items-center">
     <a href="/" class="block w-full max-w-16 z-10" aria-label="Home" title="Home">
       <svg
@@ -128,10 +127,18 @@ const currentPath = Astro.url.pathname
           >
             <li class="transition-transform hover:translate-x-1 duration-200 text-m">
               <a
+                href="/rentals"
+                aria-label="Rentals Main"
+                title="Rentals Main"
+                class="block w-full h-full pt-6 pb-3 px-6">Rentals Main</a
+              >
+            </li>
+            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+              <a
                 href="/rentals#servers"
                 aria-label="Servers"
                 title="Servers"
-                class="block w-full h-full pt-6 pb-3 px-6">Servers</a
+                class="block w-full h-full py-3 px-6">Servers</a
               >
             </li>
             <li class="transition-transform hover:translate-x-1 duration-200 text-m">
@@ -140,14 +147,6 @@ const currentPath = Astro.url.pathname
                 aria-label="Lighting"
                 title="Lighting"
                 class="block w-full h-full py-3 px-6">Lighting</a
-              >
-            </li>
-            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
-              <a
-                href="/rentals"
-                aria-label="Rentals Main"
-                title="Rentals Main"
-                class="block w-full h-full py-3 px-6">Rentals Main</a
               >
             </li>
           </ul>
@@ -167,7 +166,6 @@ const currentPath = Astro.url.pathname
   </div>
 
   <!-- Desktop Navigation -->
-
   <div id="desktop-nav" class="lg:flex hidden w-full justify-between items-center flex-wrap gap-10">
     <a href="/" class="block w-full max-w-20" aria-label="Home" title="Home">
       <svg
@@ -258,10 +256,18 @@ const currentPath = Astro.url.pathname
         >
           <li class="transition-transform hover:translate-x-1">
             <a
+              href="/rentals"
+              aria-label="Rentals Main"
+              title="Rentals Main"
+              class="block w-full h-full pt-6 pb-3 px-6">Rentals Main</a
+            >
+          </li>
+          <li class="transition-transform hover:translate-x-1">
+            <a
               href="/rentals#servers"
               aria-label="Servers"
               title="Servers"
-              class="block w-full h-full pt-6 pb-3 px-6">Servers</a
+              class="block w-full h-full py-3 px-6">Servers</a
             >
           </li>
           <li class="transition-transform hover:translate-x-1">
@@ -269,15 +275,7 @@ const currentPath = Astro.url.pathname
               href="/rentals#lighting"
               aria-label="Lighting"
               title="Lighting"
-              class="block w-full h-full py-3 px-6">Lighting</a
-            >
-          </li>
-          <li class="transition-transform hover:translate-x-1">
-            <a
-              href="/rentals"
-              aria-label="Rentals Main"
-              title="Rentals Main"
-              class="block w-full h-full pt-3 pb-6 px-6">Rentals Main</a
+              class="block w-full h-full pt-3 pb-6 px-6">Lighting</a
             >
           </li>
         </ul>
