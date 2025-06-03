@@ -1,11 +1,10 @@
 ---
-id: 9
+id: 14
 title: 'Tyler Childers'
 info:
   [
-    "Supervoid worked with Voyage Productions and Formation to produce visuals for Tyler Childers' MULE PULL tour. Working under the creative direction of Emily Cox and art director Jamie Issuh, we developed landscapes, abstract animations, and visual effects that brought the audience into Tyler's world, a celebration of all things Appalachia layered with tinges of psychedelia and spiritual imagery.",
-    'In addition to producing content, we also produced a wide range of Notch effects. Every song had a dedicated Notch look, ranging from subtle film grain overlays to absolutely wild psychedelic rock treatments that pulsed with the music and evolved from song to song. Media server programmer Larry Barnes worked with video operator Adam Skapple to expose key parameters within each look so that Adam could improvise and make the show unique for each performance.',
-    "With a setlist that's different every night and no timecode to sync visuals to, we had to develop the visuals in a way that made sure all the big moments were highlighted while keeping things flexible enough to make room for improvisation. It was a big challenge, but we put our heads together and ended up with an amazing show that's received rave reviews from audiences all over the country.",
+    "Since 2024, Supervoid has worked with Voyage Productions and Formation to produce visuals for Tyler Childers' live show.  Working under the creative direction of Emily Cox and art director Jamie Issuh, we've developed content and Notch effects that bring the audience into Tyler's world, a celebration of all things Appalachia layered with tinges of psychedelia and spiritual imagery.",
+    'With a setlist that’s different every night and no timecode to sync visuals to, we develop the visuals in a way that makes sure all the big moments are highlighted while keeping things flexible enough to make room for improvisation.',
   ]
 credits: [
     '<div class="flex flex-col gap-4">
@@ -26,11 +25,11 @@ credits: [
     </div>
     <div class="flex flex-col gap-4">
     <h3 class="uppercase text-s">Notch/D3 Programmer:</h3>
-    <p class="text-grey-100">Larry Barnes</p>
+    <p class="text-grey-100">Larry Barnes, Ciara Hegli</p>
     </div>
     <div class="flex flex-col gap-4">
     <h3 class="uppercase text-s">Animators:</h3>
-    <p class="text-grey-100">Drew Mercadante, Nick Schoener, Marco Cardenas, Karl Fekete, Matt Keppler</p>
+    <p class="text-grey-100">Drew Mercadante, Nick Schoener, Marco Cardenas, Karl Fekete, Matt Keppler, Olivia Sebesky, Spencer Haley, Katie Kirschner, Hanbi Sung</p>
     </div>
     <div class="flex flex-col gap-4">
     <h3 class="uppercase text-s">Lighting Director:</h3>
@@ -48,21 +47,21 @@ credits: [
 # gifs are MUX playback IDs
 gifs:
   {
-    hero: 'Exh1mvEgg9q3bmcAKGG9K2IfFnc3vQ02xREf1qfMizW8',
+    hero: 'aAvwK2LmeASqnAbLkHBeKf01WktbyP02svO984hkrJH1g',
     gallery:
       [
-        'DQc3gvA02B02AwjWLcDqMb02rYV02OBFaYiu01gJ28rT8Kuk',
-        '00yUquO6UWOt6HJz3QMTUhYtPC9Z4QgRCMnczMrSyXLs',
-        'jmcKVon6JiW8j93ztytqvlELqmSCew7OzBzHsV5Wu7c',
-        'myd001Y7g5GilcFREqR72WH1QGaHwfL1nVshIPSCxJMA',
-        '4N8SX8fLn88SvwmqGZ8PEwpgY8p2ra4luwlHUWXvaE8',
-        '01uqc02bth4n00YAjaUhfqEjdUOMs5kYGvLikO1AQwCRLI',
-        'ZAi6rJ6SEOiWjEDf003wmGPZjji3G12sDfGZN3PDfRNg',
-        'hAa4Abvmon4saR5t01mI01M01iSmRGMBX1xVhU3JoqtlOw',
-        'bOV001AJdCepKcNO1CeAs01ifltpeD02eC5TCWIbpWofJY',
-        'YGiRcb00nfaTJIHNoaJCsACGoBd1ZrYhv00H3QXvIjIRw',
-        'Vinntsxu8p1gBNMYKnfD002ktH39DgqTGUYyuYKE7D6w',
-        'Ws28x5IylaDcvi00bBn4alvE6d2uKyDh2cBE51OYws2o',
+        'G2qEVBkUEmtDVfqbeRb6m3qRSnmZR01FH6tlWTZ6ZARM',
+        '1BADOd8k8iToLvtnealew00U01CDSIM2cF3pIjKGMrBZ4',
+        'IrY01D5U6tIQ5024g3emdIhs4t02lbBoj800n62vm015hQ2c',
+        'x13Xba1mE8Egdl6NAAXTqPcGsAnZARt77LHZDF2k023I',
+        'Pl6HToB6KF8KRyURJv9dEAvrVU8rOYBB3RsOHf02ovis',
+        'kVo02xHxQYYJsDqZb6T4XBIiCgABQR7J5OR559YCRrKo',
+        'SikJJqypEAac1MDjFfoyQ02V8rXcSZYddNdTH8RKLvTc',
+        'o1lLk01NCobBNvHGIokBbx01pUP0059iy3DXDmGD1TztFA',
+        'WWs5b5p5AUWKaRzjKB6SFOn017iOWCo4nIDqtJ5eL4c4',
+        'oXq01u6c57QLUHcHBnrUkIhzt6cJtvPW9YFmzZklT1WU',
+        'sDhy52PjaBxfUuzvcW3DGdWpHXXJOrGFO45NP017KvBQ',
+        'QZ6X8100oDGdkjYX5xcvr2E9qiptJ5rDWU4K024bodh58',
       ],
   }
 ---

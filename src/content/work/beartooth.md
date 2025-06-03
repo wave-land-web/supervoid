@@ -1,5 +1,5 @@
 ---
-id: 12
+id: 7
 title: 'Beartooth'
 info:
   [
@@ -20,8 +20,7 @@ credits: [
     </div>
     <div class="flex flex-col gap-4">
     <h3 class="uppercase text-s">CAMERA OPERATORS:</h3>
-    <p class="text-grey-100">Steve Garfinkel</p>
-    <p class="text-grey-100">Nick Centore</p>
+    <p class="text-grey-100">Steve Garfinkel, Nick Centore</p>
     </div>
     <div class="flex flex-col gap-4">
     <h3 class="uppercase text-s">LIGHTING DESIGNER:</h3>
