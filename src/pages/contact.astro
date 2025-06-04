@@ -32,7 +32,7 @@ import Layout from '../layouts/Layout.astro'
               autocomplete="given-name"
               placeholder="First Name"
               required
-              class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-300 outline-none text-xs"
+              class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-(--transition) outline-none text-xs"
             />
           </div>
 
@@ -44,7 +44,7 @@ import Layout from '../layouts/Layout.astro'
               id="last-name"
               autocomplete="family-name"
               placeholder="Last Name (Optional)"
-              class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-300 outline-none text-xs"
+              class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-(--transition) outline-none text-xs"
             />
           </div>
         </div>
@@ -57,7 +57,7 @@ import Layout from '../layouts/Layout.astro'
             autocomplete="email"
             placeholder="Email"
             required
-            class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-300 outline-none text-xs"
+            class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-(--transition) outline-none text-xs"
           />
         </div>
 
@@ -68,7 +68,7 @@ import Layout from '../layouts/Layout.astro'
             name="project-timeline"
             id="project-timeline"
             required
-            class="block w-full px-4 py-3 bg-black focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 outline-none text-xs rounded-lg transition duration-300 appearance-none"
+            class="block w-full px-4 py-3 bg-black focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 outline-none text-xs rounded-lg transition duration-(--transition) appearance-none"
             onchange="this.classList.toggle('text-grey-100', this.value === 'Timeline')"
           >
             <option selected hidden>Project Timeline</option>
@@ -92,7 +92,7 @@ import Layout from '../layouts/Layout.astro'
             rows="4"
             placeholder="Describe your project"
             required
-            class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-300 outline-none text-xs"
+            class="w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white placeholder:text-grey-100 focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-(--transition) outline-none text-xs"
           ></textarea>
         </div>
 
@@ -101,7 +101,7 @@ import Layout from '../layouts/Layout.astro'
           class="mx-auto py-4 px-8 text-center text-magenta-900 max-w-fit border-2
         border-magenta-900 rounded-full hover:shadow-[4px_4px_0_var(--color-magenta-900)]
         hover:text-magenta-900 active:translate-x-1 active:translate-y-1 active:shadow-none
-        text-stroke text-m transition duration-300"
+        text-stroke text-m transition duration-(--transition)"
           aria-label="Send Message"
           title="Send Message">Send Message</button
         >

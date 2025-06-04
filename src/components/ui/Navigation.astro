@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname
 
 <nav
   id="navigation"
-  class="fixed top-0 left-0 right-0 flex min-h-[var(--nav-height)] transition-all duration-500 z-20 bg-gradient-to-b from-black to-transparent"
+  class="fixed top-0 left-0 right-0 flex min-h-[var(--nav-height)] transition-all duration-(--transition) z-20 bg-gradient-to-b from-black to-transparent"
   data-current-url={currentPath}
 >
   <!-- Mobile Navigation -->
@@ -56,19 +56,19 @@ const currentPath = Astro.url.pathname
     >
       <span
         id="top"
-        class="h-[2px] w-6 bg-white rounded-md transition duration-200 -translate-y-1 group-[.active]:rotate-[135deg] group-[.active]:translate-y-[1px]"
+        class="h-[2px] w-6 bg-white rounded-md transition duration-(--transition) -translate-y-1 group-[.active]:rotate-[135deg] group-[.active]:translate-y-[1px]"
       >
       </span>
       <span
         id="bottom"
-        class="h-[2px] w-6 bg-white rounded-md transition duration-200 translate-y-1 group-[.active]:rotate-[-135deg] group-[.active]:-translate-y-[1px]"
+        class="h-[2px] w-6 bg-white rounded-md transition duration-(--transition) translate-y-1 group-[.active]:rotate-[-135deg] group-[.active]:-translate-y-[1px]"
       >
       </span>
     </button>
 
     <div
       id="mobile-nav-overlay"
-      class="absolute top-0 left-0 w-full h-dvh overflow-y-auto px-4 md:px-8 opacity-0 invisible -z-10 transition duration-200 text-white bg-black"
+      class="absolute top-0 left-0 w-full h-dvh overflow-y-auto px-4 md:px-8 opacity-0 invisible -z-10 transition duration-(--transition) text-white bg-black"
     >
       <!-- nav items -->
       <ul class="flex flex-col gap-8 pt-32 mb-16">
@@ -77,18 +77,18 @@ const currentPath = Astro.url.pathname
           <button
             aria-label="Work"
             title="Work"
-            class="flex gap-2 items-center text-l hover:text-magenta-900 transition duration-200"
+            class="flex gap-2 items-center text-l hover:text-magenta-900 transition duration-(--transition)"
             >Work
             <Icon
               name="tabler:chevron-down"
-              class="max-w-8 group-[.active]:rotate-180 transition-transform duration-200"
+              class="max-w-8 group-[.active]:rotate-180 transition-transform duration-(--transition)"
             />
           </button>
 
           <ul
-            class="invisible h-0 opacity-0 group-[.active]:visible group-[.active]:h-auto group-[.active]:opacity-100 transition-opacity duration-300"
+            class="invisible h-0 opacity-0 group-[.active]:visible group-[.active]:h-auto group-[.active]:opacity-100 transition-opacity duration-(--transition)"
           >
-            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+            <li class="transition-transform hover:translate-x-1 duration-(--transition) text-m">
               <a
                 href="/#video"
                 aria-label="Video"
@@ -96,7 +96,7 @@ const currentPath = Astro.url.pathname
                 class="block w-full h-full pt-6 pb-3 px-6">Video</a
               >
             </li>
-            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+            <li class="transition-transform hover:translate-x-1 duration-(--transition) text-m">
               <a
                 href="/#lighting"
                 aria-label="Lighting"
@@ -114,18 +114,18 @@ const currentPath = Astro.url.pathname
           <button
             aria-label="Rentals"
             title="Rentals"
-            class="flex gap-2 items-center text-l hover:text-magenta-900 transition duration-200"
+            class="flex gap-2 items-center text-l hover:text-magenta-900 transition duration-(--transition)"
             >Rentals
             <Icon
               name="tabler:chevron-down"
-              class="max-w-8 group-[.active]:rotate-180 transition-transform duration-200"
+              class="max-w-8 group-[.active]:rotate-180 transition-transform duration-(--transition)"
             />
           </button>
 
           <ul
-            class="invisible h-0 opacity-0 group-[.active]:visible group-[.active]:h-auto group-[.active]:opacity-100 transition-opacity duration-300"
+            class="invisible h-0 opacity-0 group-[.active]:visible group-[.active]:h-auto group-[.active]:opacity-100 transition-opacity duration-(--transition)"
           >
-            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+            <li class="transition-transform hover:translate-x-1 duration-(--transition) text-m">
               <a
                 href="/rentals"
                 aria-label="Rentals Main"
@@ -133,7 +133,7 @@ const currentPath = Astro.url.pathname
                 class="block w-full h-full pt-6 pb-3 px-6">Rentals Main</a
               >
             </li>
-            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+            <li class="transition-transform hover:translate-x-1 duration-(--transition) text-m">
               <a
                 href="/rentals#servers"
                 aria-label="Servers"
@@ -141,7 +141,7 @@ const currentPath = Astro.url.pathname
                 class="block w-full h-full py-3 px-6">Servers</a
               >
             </li>
-            <li class="transition-transform hover:translate-x-1 duration-200 text-m">
+            <li class="transition-transform hover:translate-x-1 duration-(--transition) text-m">
               <a
                 href="/rentals#lighting"
                 aria-label="Lighting"
@@ -204,17 +204,17 @@ const currentPath = Astro.url.pathname
         <button
           aria-label="Work"
           title="Work"
-          class="flex gap-2 items-center hover:text-magenta-900 transition duration-200"
+          class="flex gap-2 items-center hover:text-magenta-900 transition duration-(--transition)"
           >Work
           <Icon
             name="tabler:chevron-down"
-            class="max-w-6 group-[.active]:rotate-180 transition-transform duration-200"
+            class="max-w-6 group-[.active]:rotate-180 transition-transform duration-(--transition)"
           />
         </button>
         <ul
           class="absolute pointer-events-none -z-10 opacity-0 scale-95 group-[.active]:opacity-100 group-[.active]:z-10 group-[.active]:scale-100 group-[.active]:pointer-events-auto bg-blackTransparent backdrop-blur-lg rounded-xl transition-all shadow-lg"
         >
-          <li class="transition-transform hover:translate-x-1 duration-200">
+          <li class="transition-transform hover:translate-x-1 duration-(--transition)">
             <a
               href="/#video"
               aria-label="Video"
@@ -222,7 +222,7 @@ const currentPath = Astro.url.pathname
               class="block w-full h-full pt-6 pb-3 px-6">Video</a
             >
           </li>
-          <li class="transition-transform hover:translate-x-1 duration-200">
+          <li class="transition-transform hover:translate-x-1 duration-(--transition)">
             <a
               href="/#lighting"
               aria-label="Lighting"
@@ -243,12 +243,12 @@ const currentPath = Astro.url.pathname
         <button
           aria-label="Rentals"
           title="Rentals"
-          class="flex gap-2 items-center hover:text-magenta-900 transition duration-200"
+          class="flex gap-2 items-center hover:text-magenta-900 transition duration-(--transition)"
           >Rentals
           <Icon name="underline" />
           <Icon
             name="tabler:chevron-down"
-            class="max-w-6 group-[.active]:rotate-180 transition-transform duration-200"
+            class="max-w-6 group-[.active]:rotate-180 transition-transform duration-(--transition)"
           />
         </button>
         <ul

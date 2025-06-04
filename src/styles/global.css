@@ -1,28 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer base {
-  @font-face {
-    font-family: 'Rotonto Regular';
-    src: url('/fonts/rotonto-regular.woff2') format('woff2'),
-      url('/fonts/rotonto-regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-  }
-
-  @font-face {
-    font-family: 'SF Mono Regular';
-    src: url('/fonts/sf-mono-regular.woff2') format('woff2'),
-      url('/fonts/sf-mono-regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-  }
-}
-
-:root {
+@theme {
   --color-white: #ffffff;
   --color-black: #000000;
   --color-black-transparent: #00000080;
@@ -37,121 +15,30 @@
   --color-magenta-100: oklch(90.51% 0.0974 326.27);
 
   /* Font sizes: source (https://fluid-type.tolin.ski/) */
-  --fs-2xs: clamp(0.64rem, 0.752941vi + 0.45rem, 0.96rem);
-  --fs-xs: clamp(0.8rem, 0.941176vi + 0.56rem, 1.2rem);
-  --fs-base: clamp(1rem, 1.176471vi + 0.71rem, 1.5rem);
-  --fs-s: clamp(1.25rem, 1.482353vi + 0.88rem, 1.88rem);
-  --fs-m: clamp(1.56rem, 1.835294vi + 1.1rem, 2.34rem);
-  --fs-l: clamp(1.95rem, 2.305882vi + 1.37rem, 2.93rem);
-  --fs-xl: clamp(2.44rem, 2.870588vi + 1.72rem, 3.66rem);
-  --fs-2xl: clamp(3.05rem, 3.6vi + 2.15rem, 4.58rem);
-  --fs-3xl: clamp(3.81rem, 4.494118vi + 2.69rem, 5.72rem);
-  --fs-4xl: clamp(4.77rem, 5.6vi + 3.37rem, 7.15rem);
-  --fs-5xl: clamp(5.96rem, 7.011765vi + 4.21rem, 8.94rem);
-  --fs-6xl: clamp(7.45rem, 8.776471vi + 5.26rem, 11.18rem);
-  --fs-7xl: clamp(9.31rem, 10.964706vi + 6.57rem, 13.97rem);
-  --fs-8xl: clamp(11.64rem, 13.694118vi + 8.22rem, 17.46rem);
-  --fs-9xl: clamp(14.55rem, 17.129412vi + 10.27rem, 21.83rem);
+  --text-2xs: clamp(0.64rem, 0.752941vi + 0.45rem, 0.96rem);
+  --text-xs: clamp(0.8rem, 0.941176vi + 0.56rem, 1.2rem);
+  --text-base: clamp(1rem, 1.176471vi + 0.71rem, 1.5rem);
+  --text-s: clamp(1.25rem, 1.482353vi + 0.88rem, 1.88rem);
+  --text-m: clamp(1.56rem, 1.835294vi + 1.1rem, 2.34rem);
+  --text-l: clamp(1.95rem, 2.305882vi + 1.37rem, 2.93rem);
+  --text-xl: clamp(2.44rem, 2.870588vi + 1.72rem, 3.66rem);
+  --text-2xl: clamp(3.05rem, 3.6vi + 2.15rem, 4.58rem);
+  --text-3xl: clamp(3.81rem, 4.494118vi + 2.69rem, 5.72rem);
+  --text-4xl: clamp(4.77rem, 5.6vi + 3.37rem, 7.15rem);
+  --text-5xl: clamp(5.96rem, 7.011765vi + 4.21rem, 8.94rem);
+  --text-6xl: clamp(7.45rem, 8.776471vi + 5.26rem, 11.18rem);
+  --text-7xl: clamp(9.31rem, 10.964706vi + 6.57rem, 13.97rem);
+  --text-8xl: clamp(11.64rem, 13.694118vi + 8.22rem, 17.46rem);
+  --text-9xl: clamp(14.55rem, 17.129412vi + 10.27rem, 21.83rem);
 
   --line-height: calc(8px + 2ex);
 
-  --nav-height: 5rem;
+  --nav-height: clamp(5rem, 10vw, 6rem);
 
-  @media (min-width: 768px) {
-    --nav-height: 6rem;
-  }
-}
+  --font-header: 'Rotonto Regular', sans-serif;
+  --font-body: 'SF Mono Regular', monospace;
 
-/* General */
-
-html {
-  /* Scrollbar */
-  scrollbar-color: var(--color-white) var(--color-black);
-  scrollbar-width: thin;
-
-  /* Smooth Scrolling */
-  scroll-behavior: smooth;
-  scroll-padding-top: 0;
-}
-
-body {
-  @apply overflow-y-auto overflow-x-hidden;
-}
-
-body[data-overlay-displayed='true'] {
-  @apply overflow-y-hidden;
-}
-
-img,
-svg,
-video {
-  @apply block w-full h-auto;
-}
-
-img {
-  @apply rounded-xl;
-}
-
-header,
-main,
-nav {
-  @apply w-full max-w-screen-2xl mx-auto;
-}
-
-header,
-main {
-  @apply p-4 md:p-8;
-}
-
-main {
-  @apply pb-16 md:pb-24;
-}
-
-nav {
-  @apply px-4 md:px-8;
-}
-
-section {
-  @apply py-16 md:py-24;
-}
-
-/* Typography */
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  @apply font-header text-balance;
-}
-
-p,
-li,
-figcaption {
-  @apply text-xs text-pretty max-w-[65ch];
-}
-
-a {
-  @apply transition duration-200;
-}
-
-a:hover {
-  @apply text-magenta-900;
-}
-
-.site-link {
-  @apply text-magenta-900 hover:text-magenta-100;
-}
-
-.text-stroke {
-  text-shadow: -1px -1px 0 var(--color-black), 1px -1px 0 var(--color-black),
-    -1px 1px 0 var(--color-black), 1px 1px 0 var(--color-black);
-}
-
-/* MUX player */
-
-mux-player {
-  aspect-ratio: 16 / 9;
+  --transition: 300ms;
 }
 
 /* Animations */
@@ -166,7 +53,7 @@ mux-player {
     * Note: Add `no-repeat` class to prevent animations from repeating on scroll
     */
   .lsa {
-    @apply opacity-0 transform transition-[opacity,transform] duration-700;
+    @apply opacity-0 transform transition duration-700;
 
     /* Slide animations */
     &.lsa-slide-up {
@@ -201,68 +88,169 @@ mux-player {
   }
 }
 
-/* Press Styles */
+/* General */
 
-#press-layout {
-  & h2 {
-    @apply text-xl;
+@layer base {
+  html {
+    /* Scrollbar */
+    scrollbar-color: var(--color-white) var(--color-black);
+    scrollbar-width: thin;
+
+    /* Smooth Scrolling */
+    scroll-behavior: smooth;
+    scroll-padding-top: 0;
   }
 
-  & h3 {
-    @apply text-l;
+  body {
+    @apply overflow-y-auto overflow-x-hidden;
   }
 
-  & h4 {
-    @apply text-m;
+  body[data-overlay-displayed='true'] {
+    @apply overflow-y-hidden;
   }
 
-  & a:not(#pagination a) {
+  img,
+  svg,
+  video {
+    @apply block w-full h-auto;
+  }
+
+  img {
+    @apply rounded-xl;
+  }
+
+  header,
+  main,
+  nav {
+    @apply w-full max-w-screen-2xl mx-auto;
+  }
+
+  header,
+  main {
+    @apply p-4 md:p-8;
+  }
+
+  main {
+    @apply pb-16 md:pb-24;
+  }
+
+  nav {
+    @apply px-4 md:px-8;
+  }
+
+  section {
+    @apply py-16 md:py-24;
+  }
+
+  /* Typography */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-header text-balance;
+  }
+
+  p,
+  li,
+  figcaption {
+    @apply text-xs text-pretty max-w-[65ch];
+  }
+
+  a {
+    @apply transition duration-(--transition);
+  }
+
+  a:hover {
+    @apply text-magenta-900;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  .site-link {
     @apply text-magenta-900 hover:text-magenta-100;
   }
 
-  & #back-to-press {
-    @apply text-m;
+  .text-stroke {
+    text-shadow:
+      -1px -1px 0 var(--color-black),
+      1px -1px 0 var(--color-black),
+      -1px 1px 0 var(--color-black),
+      1px 1px 0 var(--color-black);
   }
 
-  & p,
-  & ul,
-  & ol,
-  & pre,
-  & a:not(#pagination a) {
-    @apply text-xs;
+  /* MUX player */
+
+  mux-player {
+    aspect-ratio: 16 / 9;
   }
 
-  & img,
-  & pre {
-    @apply block my-[1lh];
-  }
+  /* Press Styles */
 
-  & img {
-    @apply rounded-lg;
-  }
+  #press-layout {
+    & h2 {
+      @apply text-xl;
+    }
 
-  & ul,
-  & ol {
-    padding-inline-start: 2rem;
-  }
+    & h3 {
+      @apply text-l;
+    }
 
-  & ul li {
-    @apply list-disc;
-  }
+    & h4 {
+      @apply text-m;
+    }
 
-  & ol li {
-    @apply list-decimal;
-  }
+    & a:not(#pagination a) {
+      @apply text-magenta-900 hover:text-magenta-100;
+    }
 
-  & blockquote {
-    @apply relative my-[1lh] p-[1lh] border-l-4 border-magenta-900;
-  }
+    & #back-to-press {
+      @apply text-m;
+    }
 
-  & em {
-    @apply italic;
-  }
+    & p,
+    & ul,
+    & ol,
+    & pre,
+    & a:not(#pagination a) {
+      @apply text-xs;
+    }
 
-  & strong {
-    @apply font-bold;
+    & img,
+    & pre {
+      @apply block my-[1lh];
+    }
+
+    & img {
+      @apply rounded-lg;
+    }
+
+    & ul,
+    & ol {
+      padding-inline-start: 2rem;
+    }
+
+    & ul li {
+      @apply list-disc;
+    }
+
+    & ol li {
+      @apply list-decimal;
+    }
+
+    & blockquote {
+      @apply relative my-[1lh] p-[1lh] border-l-4 border-magenta-900;
+    }
+
+    & em {
+      @apply italic;
+    }
+
+    & strong {
+      @apply font-bold;
+    }
   }
 }

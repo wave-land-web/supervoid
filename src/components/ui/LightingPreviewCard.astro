@@ -21,7 +21,7 @@ const youtubeId = work.data.youtubeId
   <!-- Overlay: image, play button, and project title -->
   <div data-image id={`image-${youtubeId}`} class="absolute top-0 left-0 w-full h-full">
     <Picture
-      class="w-full brightness-75 group-[.playing]:brightness-100 group-[.playing]:scale-105 transition duration-500"
+      class="w-full brightness-75 group-[.playing]:brightness-100 group-[.playing]:scale-105 transition duration-(--transition)"
       src={work.data.poster}
       alt={work.data.title}
     />

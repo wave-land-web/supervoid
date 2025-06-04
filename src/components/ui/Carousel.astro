@@ -27,7 +27,7 @@ const { images, class: className } = Astro.props
   <div id="pagination" class="max-w-80 mx-auto flex justify-between">
     <button
       id="left"
-      class="hover:rotate-2 active:scale-95 active:rotate-0 transition duration-300"
+      class="hover:rotate-2 active:scale-95 active:rotate-0 transition duration-(--transition)"
       aria-label="Previous"
       title="Previous"
     >
@@ -36,7 +36,7 @@ const { images, class: className } = Astro.props
 
     <button
       id="right"
-      class="hover:-rotate-2 active:scale-95 active:rotate-0 transition duration-300"
+      class="hover:-rotate-2 active:scale-95 active:rotate-0 transition duration-(--transition)"
       aria-label="Next"
       title="Next"
     >
@@ -76,7 +76,6 @@ const { images, class: className } = Astro.props
     grabCursor: true,
     modules: [EffectCards],
     speed: 300,
-    loop: true,
     cardsEffect: {
       rotate: false,
       slideShadows: true,
