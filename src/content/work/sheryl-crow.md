@@ -19,10 +19,6 @@ credits: [
     <p class="text-grey-100">Drew Mercadante</p>
     </div>
     <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Notch Designer:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
     <h3 class="uppercase text-s">IMAG SYSTEM DESIGN:</h3>
     <p class="text-grey-100">Drew Mercadante, Cole Lofink</p>
     </div>
