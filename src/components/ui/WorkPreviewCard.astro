@@ -186,8 +186,7 @@ const videoTitle = work.data.title
 
   // Event listeners
   if (window.innerWidth < 768) {
-    // Mobile
-    document.addEventListener('scroll', handlePlayOnScroll)
+    handlePlayOnScroll()
   } else {
     // Desktop
     workPreviewCard.addEventListener('mouseover', handlePlayVideo)
