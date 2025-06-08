@@ -47,88 +47,12 @@ const youtubeId = work.data.youtubeId
         class="hidden group-[.playing]:block w-10 h-10 p-2 flex-shrink-0 bg-white text-black rounded-full transition"
       />
 
-      <h2
-        class="title-marquee relative overflow-hidden px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full"
-      >
-        <div class="wrapper">
-          <span data-name={work.data.title} class="block whitespace-nowrap">
-            {work.data.title}
-          </span>
-        </div>
+      <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">
+        {work.data.title}
       </h2>
     </div>
   </div>
 </div>
-
-<style>
-  /* Marquee Styles */
-
-  .lighting-preview-card.playing span {
-    animation: lightingTitleMarquee 4s linear 0s infinite;
-  }
-
-  .lighting-preview-card.playing .title-marquee .wrapper {
-    opacity: 1;
-    overflow-x: hidden;
-    mask-image: linear-gradient(
-      to right,
-      hsl(0 0% 0% / 0),
-      hsl(0 0% 0% / 1) 2%,
-      hsl(0 0% 0% / 1) 98%,
-      hsl(0 0% 0% / 0)
-    );
-    user-select: none;
-  }
-
-  @media (min-width: 768px) {
-    .lighting-preview-card.playing .title-marquee .wrapper {
-      mask-image: linear-gradient(
-        to right,
-        hsl(0 0% 0% / 0),
-        hsl(0 0% 0% / 1) 4%,
-        hsl(0 0% 0% / 1) 96%,
-        hsl(0 0% 0% / 0)
-      );
-    }
-  }
-
-  .title-marquee {
-    display: flex;
-  }
-
-  .title-marquee:before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    background: var(--color-magenta-900);
-  }
-
-  .title-marquee span {
-    display: inline-block;
-  }
-
-  .title-marquee span:after {
-    content: attr(data-name);
-    position: absolute;
-    top: 0;
-    left: 102%;
-  }
-
-  @keyframes lightingTitleMarquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      /* This prevents "skipping" on animation reset */
-      transform: translateX(-102%);
-    }
-  }
-</style>
 
 <script define:vars={{ youtubeId }}>
   const previewCards = document.querySelectorAll('.lighting-preview-card')
@@ -192,7 +116,7 @@ const youtubeId = work.data.youtubeId
   // Event listeners
   if (window.innerWidth < 768) {
     // Mobile
-    document.addEventListener('scroll', handlePlayOnScroll)
+    handlePlayOnScroll()
   } else {
     // Desktop
     activePreviewCard.addEventListener('mouseover', playCard)
