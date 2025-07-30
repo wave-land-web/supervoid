@@ -16,6 +16,8 @@ export default defineConfig({
     icon(),
     sitemap({
       lastmod: new Date(),
+      filter: (page) =>
+        page !== 'https://www.supervoid.tv/404' && page !== 'https://www.supervoid.tv/success',
     }),
     mdx(),
     partytown(),
