@@ -103,24 +103,11 @@ const sortedLightingWorkData = [...lightingWorkData].sort((a, b) => b.data.id - 
       </p>
     </article>
 
-    <section id="video">
-      <h2
-        class="max-w-fit md:mx-auto mb-8 md:mb-12 pt-4 text-s text-center uppercase border-t-[1px] border-grey-100 lsa lsa-slide-left no-repeat"
-      >
-        Recent <span class="text-magenta-900">Video</span> Work
-      </h2>
+    <section id="video-and-lighting">
       <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+        <h2 class="sr-only">Recent Video Work</h2>
         {sortedVideoWorkData.map((work) => <WorkPreviewCard work={work} />)}
-      </div>
-    </section>
-
-    <section id="lighting">
-      <h2
-        class="max-w-fit md:mx-auto mb-8 md:mb-12 pt-4 text-s text-center uppercase border-t-[1px] border-grey-100 lsa lsa-slide-left no-repeat"
-      >
-        Recent <span class="text-magenta-900">Lighting</span> Work
-      </h2>
-      <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+        <h2 class="sr-only">Recent Lighting Work</h2>
         {sortedLightingWorkData.map((work) => <LightingPreviewCard work={work} />)}
       </div>
     </section>
