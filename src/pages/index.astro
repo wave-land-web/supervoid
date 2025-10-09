@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro'
 import WorkPreviewCard from '../components/ui/WorkPreviewCard.astro'
 import { getCollection } from 'astro:content'
 import LightingPreviewCard from '../components/ui/LightingPreviewCard.astro'
+import CTA from '../components/text/CTA.astro'
 
 // Get the video and lighting work data
 const videoWorkData = await getCollection('work')
@@ -89,7 +90,7 @@ const sortedLightingWorkData = [...lightingWorkData].sort((a, b) => b.data.id - 
 
   <main class="relative w-full bg-black">
     <article
-      class="max-w-screen-lg m-auto pt-[5.5rem] pb-16 md:py-24 lsa lsa-slide-up no-repeat delay-[250ms] md:delay-0"
+      class="flex flex-col md:items-center gap-8 max-w-screen-lg m-auto pt-[5.5rem] pb-16 md:py-24 lsa lsa-slide-up no-repeat delay-[250ms] md:delay-0"
     >
       <p class="text-m md:text-center">
         <span class="text-magenta-900 inline-block lsa lsa-slide-up no-repeat delay-100"
@@ -101,6 +102,10 @@ const sortedLightingWorkData = [...lightingWorkData].sort((a, b) => b.data.id - 
           >for touring artists.</span
         >
       </p>
+
+      <div class="lsa lsa-slide-up no-repeat delay-400">
+        <CTA text="Contact Us Today" href="/contact" />
+      </div>
     </article>
 
     <section id="video-and-lighting">
