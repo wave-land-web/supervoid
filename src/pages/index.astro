@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components'
 import Layout from '../layouts/Layout.astro'
 import WorkPreviewCard from '../components/ui/WorkPreviewCard.astro'
 import { getCollection } from 'astro:content'
@@ -16,99 +15,27 @@ const sortedLightingWorkData = [...lightingWorkData].sort((a, b) => b.data.id - 
 ---
 
 <Layout title="Animation, VFX, and Technical Design Studio">
-  <div
-    slot="video-slot"
-    class="relative max-w-screen-2xl mx-auto pb-[56.25%] h-0 w-full after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-b after:from-transparent after:to-black mb-36 md:mb-0"
-  >
-    <mux-player
-      playback-id="EqmrnE02pPK2GXjhft00qYcMAi3PkfLWjUSm45SgPOimw"
-      metadata-video-title="Supervoid Hero Player: Reel"
-      accent-color="var(--color-magenta-900)"
-      class="w-full h-full absolute top-0 left-0"
-      style="--controls: none;"
-      thumbnail-time="0"
-      loop
-      muted
-      autoplay></mux-player>
+  <header class="pt-[calc(var(--nav-height)+2rem)]">
+    <div id="header-content" class="flex flex-col gap-6">
+      <h1 class="text-xl md:text-2xl lg:text-3xl lsa lsa-slide-up no-repeat">SUPERVOID</h1>
 
-    <header>
-      <div
-        id="header-content"
-        class="absolute top-[110%] md:top-1/2 left-0 md:-translate-y-1/2 px-4 md:px-8 z-10"
-      >
-        <h1
-          class="text-2xl md:text-3xl lg:text-4xl mb-2 lg:mb-4 drop-shadow-lg lsa lsa-slide-up no-repeat"
-        >
-          SUPERVOID
-        </h1>
-        <p class="text-base lg:text-s drop-shadow-lg lsa lsa-slide-up no-repeat delay-200">
-          Live Design at the Edge of Dream & Machine
-        </p>
-      </div>
-      <div
-        id="video-controls"
-        class="absolute bottom-4 md:bottom-8 right-4 md:right-8 flex flex-col lg:flex-row gap-4 lg:gap-6 z-10"
-      >
-        <button
-          id="play"
-          class="hidden hover:scale-110 transition-all duration-(--transition) active:scale-95"
-          aria-label="Play"
-          title="Play"
-        >
-          <Icon name="tabler:player-play" class="w-6 lg:w-8 text-magenta-900" />
-        </button>
-
-        <button
-          id="pause"
-          class="hover:scale-110 transition-all duration-(--transition) active:scale-95"
-          aria-label="Pause"
-          title="Pause"
-        >
-          <Icon name="tabler:player-pause" class="w-6 lg:w-8 text-magenta-900" />
-        </button>
-
-        <button
-          id="volume-off"
-          class="hover:scale-110 transition-all duration-(--transition) active:scale-95"
-          aria-label="Volume Off"
-          title="Volume Off"
-        >
-          <Icon name="tabler:volume-off" class="w-6 lg:w-8 text-magenta-900" />
-        </button>
-
-        <button
-          id="volume-on"
-          class="hidden hover:scale-110 transition-all duration-(--transition) active:scale-95"
-          aria-label="Volume On"
-          title="Volume On"
-        >
-          <Icon name="tabler:volume" class="w-6 lg:w-8 text-magenta-900" />
-        </button>
-      </div>
-    </header>
-  </div>
-
-  <main class="relative w-full bg-black">
-    <article
-      class="flex flex-col md:items-center gap-8 max-w-screen-lg m-auto pt-[5.5rem] pb-16 md:py-24 lsa lsa-slide-up no-repeat delay-[250ms] md:delay-0"
-    >
-      <p class="text-m md:text-center">
-        <span class="text-magenta-900 inline-block lsa lsa-slide-up no-repeat delay-100"
-          >SUPERVOID</span
-        > is a <span class="text-magenta-900 inline-block lsa lsa-slide-up no-repeat delay-200"
+      <p class="max-w-3xl text-base lsa lsa-slide-up no-repeat delay-100">
+        <span class="text-magenta-900 lsa no-repeat delay-200">SUPERVOID</span> is a <span
+          class="text-magenta-900 lsa no-repeat delay-300"
           >creative and technical design studio</span
         > specializing in screen visuals, lighting, lasers, scenic design and custom control setups <span
-          class="text-magenta-900 inline-block lsa lsa-slide-up no-repeat delay-300"
-          >for touring artists.</span
+          class="text-magenta-900 lsa no-repeat delay-400">for touring artists.</span
         >
       </p>
 
-      <div class="lsa lsa-slide-up no-repeat delay-400">
+      <div class="lsa lsa-slide-up no-repeat delay-500">
         <CTA text="Contact Us Today" href="/contact" />
       </div>
-    </article>
+    </div>
+  </header>
 
-    <section id="video-and-lighting">
+  <main class="relative w-full">
+    <section id="work" class="pt-0">
       <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
         <h2 class="sr-only">Recent Video Work</h2>
         {sortedVideoWorkData.map((work) => <WorkPreviewCard work={work} />)}
@@ -118,38 +45,3 @@ const sortedLightingWorkData = [...lightingWorkData].sort((a, b) => b.data.id - 
     </section>
   </main>
 </Layout>
-
-<script>
-  const muxPlayer = document.querySelector('mux-player') as HTMLVideoElement
-  const play = document.getElementById('play') as HTMLButtonElement
-  const pause = document.getElementById('pause') as HTMLButtonElement
-  const volumeOff = document.getElementById('volume-off') as HTMLButtonElement
-  const volumeOn = document.getElementById('volume-on') as HTMLButtonElement
-
-  // Play
-  function playVideo(this: HTMLButtonElement) {
-    muxPlayer.play()
-    this.classList.toggle('hidden')
-    pause?.classList.toggle('hidden')
-  }
-
-  // Pause
-  function pauseVideo(this: HTMLButtonElement) {
-    muxPlayer.pause()
-    this.classList.toggle('hidden')
-    play?.classList.toggle('hidden')
-  }
-
-  // Volume on/off
-  function toggleVolume() {
-    muxPlayer.muted = !muxPlayer.muted
-    volumeOff?.classList.toggle('hidden')
-    volumeOn?.classList.toggle('hidden')
-  }
-
-  // Event listeners
-  play.addEventListener('click', playVideo)
-  pause?.addEventListener('click', pauseVideo)
-  volumeOff?.addEventListener('click', toggleVolume)
-  volumeOn?.addEventListener('click', toggleVolume)
-</script>
