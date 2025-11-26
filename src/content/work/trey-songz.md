@@ -1,6 +1,7 @@
 ---
 id: 3
 title: 'Trey Songz'
+year: '2024'
 info:
   [
     "Supervoid was hired to produce visuals for Trey Songz' set on the LOVE HARD tour by production manager Daniel Arbelaez. We brought on our frequent collaborators Planet 10 to help pull this together on a tight timeline. With less than two weeks to produce a creative deck, direction, animation and final edits, it was a marathon project that pushed us to work efficiently and not second guess our instincts. It was quite a journey but the end result was great!",
@@ -22,7 +23,7 @@ credits: [
 # gifs are MUX playback IDs
 gifs:
   {
-    hero: 'tajE5Ubj9gmrjoeNDow4fdOy5zk1Kb6XyJ00UJsa01uqs',
+    videoHero: 'tajE5Ubj9gmrjoeNDow4fdOy5zk1Kb6XyJ00UJsa01uqs',
     gallery:
       [
         'LYGO5mzR8bcw6N00YcFI88G8kU026CAtzub2xPEesSy7A',

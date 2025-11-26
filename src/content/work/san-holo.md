@@ -1,6 +1,7 @@
 ---
 id: 8
 title: 'San Holo'
+year: '2023'
 info:
   [
     "Supervoid was hired by Voyage Productions to produce visuals for San Holo's EXISTENTIAL DANCE MUSIC tour. We drew inspiration from San's longtime friend and creative director Thorwald van den Akker's hand-drawn aesthetic, which defines San Holo's visual world. By blending Thor's hand-drawn imagery, like flocks of birds and unique lettering, with our computer-based techniques, including Notch particle systems and live camera effects, we created visuals that beautifully blurred the lines between traditional art and CG.",
@@ -39,7 +40,7 @@ credits: [
 # gifs are MUX playback IDs
 gifs:
   {
-    hero: 'XeU41SkcYFp4rtyfbRWOPXkjGDG005SFLqWrhZPmJdao',
+    videoHero: 'XeU41SkcYFp4rtyfbRWOPXkjGDG005SFLqWrhZPmJdao',
     gallery:
       [
         'IJM72XU4AH023tDZj8pxQqpTzuff01waJCQ00CPYRoFOQY',

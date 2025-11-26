@@ -1,6 +1,7 @@
 ---
 id: 16
 title: 'Alex Warren'
+year: '2025'
 info:
   [
     'Supervoid partnered with breakout pop sensation Alex Warren to design a full visual package for his rapidly escalating headline shows. Going from 300-cap rooms to 10,000-seat venues in just a matter of months, Alex needed a stage production that could scale with his meteoric rise—and fast.',
@@ -28,7 +29,7 @@ credits: [
 # gifs are MUX playback IDs
 gifs:
   {
-    hero: 'RnGnKNEGfIM8yv1hxON1OPoZKTAKYnu2oIqUmo7pAe8',
+    videoHero: 'RnGnKNEGfIM8yv1hxON1OPoZKTAKYnu2oIqUmo7pAe8',
     gallery:
       [
         'E6tQkVSmp01gixSO4OnHEQjVD77O5loRzavxBrVkGqn4',

@@ -1,6 +1,7 @@
 ---
 id: 11
 title: 'Rage Against the Machine'
+year: '2022'
 info:
   [
     "In 2022, Drew Mercadante of Supervoid joined Rage Against The Machine's highly anticipated reunion tour as their Notch and media server programmer/operator. Collaborating with an elite creative team—including Creative Director Todd Tourso (Beyoncé, Pharrell), Content Designers Good Company (Taylor Swift, Kendrick Lamar), and Lighting Designer Cory Fitzgerald (Jay-Z, Beyoncé)—Supervoid seamlessly integrated dynamic visual effects into each night's powerhouse performance. Live IMAG footage was enhanced with impactful Notch effects designed by Brett Bolton, creating a visually arresting experience. The fusion of cutting-edge visuals and the band's electrifying energy resulted in a tour de force that captivated audiences nationwide.",
@@ -39,7 +40,7 @@ credits: [
 # gifs are MUX playback IDs
 gifs:
   {
-    hero: 'dUG021vTGWqHtXZ7NrQoH02wrExA3fs2lHVOAEVcTmXsY',
+    videoHero: 'dUG021vTGWqHtXZ7NrQoH02wrExA3fs2lHVOAEVcTmXsY',
     gallery:
       [
         '8MJ9tifAVbohl5x8N97ZeFU01Ka2hQ2WyBxlF4KblpFc',

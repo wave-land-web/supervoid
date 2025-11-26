@@ -72,84 +72,14 @@ const currentPath = Astro.url.pathname
     >
       <!-- nav items -->
       <ul class="flex flex-col gap-8 pt-32 mb-16">
-        <!-- dropdown -->
-        <li class="dropdown group">
-          <button
-            aria-label="Work"
-            title="Work"
-            class="flex gap-2 items-center text-l hover:text-magenta-900 transition duration-(--transition)"
-            >Work
-            <Icon
-              name="tabler:chevron-down"
-              class="max-w-8 group-[.active]:rotate-180 transition-transform duration-(--transition)"
-            />
-          </button>
-
-          <ul
-            class="invisible h-0 opacity-0 group-[.active]:visible group-[.active]:h-auto group-[.active]:opacity-100 transition-opacity duration-(--transition)"
-          >
-            <li class="transition-transform hover:translate-x-1 duration-(--transition) text-m">
-              <a
-                href="/#video"
-                aria-label="Video"
-                title="Video"
-                class="block w-full h-full pt-6 pb-3 px-6">Video</a
-              >
-            </li>
-            <li class="transition-transform hover:translate-x-1 duration-(--transition) text-m">
-              <a
-                href="/#lighting"
-                aria-label="Lighting"
-                title="Lighting"
-                class="block w-full h-full py-3 px-6">Lighting</a
-              >
-            </li>
-          </ul>
+        <li>
+          <a href="/#work" aria-label="Work" title="Work" class="text-l">Work </a>
         </li>
         <li>
           <a href="/about" aria-label="About" title="About" class="text-l">About</a>
         </li>
-        <!-- dropdown -->
-        <li class="dropdown group">
-          <button
-            aria-label="Rentals"
-            title="Rentals"
-            class="flex gap-2 items-center text-l hover:text-magenta-900 transition duration-(--transition)"
-            >Rentals
-            <Icon
-              name="tabler:chevron-down"
-              class="max-w-8 group-[.active]:rotate-180 transition-transform duration-(--transition)"
-            />
-          </button>
-
-          <ul
-            class="invisible h-0 opacity-0 group-[.active]:visible group-[.active]:h-auto group-[.active]:opacity-100 transition-opacity duration-(--transition)"
-          >
-            <li class="transition-transform hover:translate-x-1 duration-(--transition) text-m">
-              <a
-                href="/rentals"
-                aria-label="Rentals Main"
-                title="Rentals Main"
-                class="block w-full h-full pt-6 pb-3 px-6">Rentals Main</a
-              >
-            </li>
-            <li class="transition-transform hover:translate-x-1 duration-(--transition) text-m">
-              <a
-                href="/rentals#servers"
-                aria-label="Servers"
-                title="Servers"
-                class="block w-full h-full py-3 px-6">Servers</a
-              >
-            </li>
-            <li class="transition-transform hover:translate-x-1 duration-(--transition) text-m">
-              <a
-                href="/rentals#lighting"
-                aria-label="Lighting"
-                title="Lighting"
-                class="block w-full h-full py-3 px-6">Lighting</a
-              >
-            </li>
-          </ul>
+        <li>
+          <a href="/rentals" aria-label="Rentals" title="Rentals" class="text-l">Rentals</a>
         </li>
         <li>
           <a href="/press" aria-label="Press" title="Press" class="text-l">Press</a>
@@ -199,86 +129,12 @@ const currentPath = Astro.url.pathname
     </a>
     <!-- nav items -->
     <ul class="flex gap-10 text-xs">
-      <!-- dropdown -->
-      <li class="dropdown group">
-        <button
-          aria-label="Work"
-          title="Work"
-          class="flex gap-2 items-center hover:text-magenta-900 transition duration-(--transition)"
-          >Work
-          <Icon
-            name="tabler:chevron-down"
-            class="max-w-6 group-[.active]:rotate-180 transition-transform duration-(--transition)"
-          />
-        </button>
-        <ul
-          class="absolute pointer-events-none -z-10 opacity-0 scale-95 group-[.active]:opacity-100 group-[.active]:z-10 group-[.active]:scale-100 group-[.active]:pointer-events-auto bg-blackTransparent backdrop-blur-lg rounded-xl transition-all shadow-lg"
-        >
-          <li class="transition-transform hover:translate-x-1 duration-(--transition)">
-            <a
-              href="/#video"
-              aria-label="Video"
-              title="Video"
-              class="block w-full h-full pt-6 pb-3 px-6">Video</a
-            >
-          </li>
-          <li class="transition-transform hover:translate-x-1 duration-(--transition)">
-            <a
-              href="/#lighting"
-              aria-label="Lighting"
-              title="Lighting"
-              class="block w-full h-full pt-3 pb-6 px-6">Lighting</a
-            >
-          </li>
-        </ul>
-      </li>
       <li>
-        <a href="/about" aria-label="About" title="About"
-          >About
-          <Icon name="underline" /></a
-        >
+        <a href="/#work" aria-label="Work" title="Work">Work<Icon name="underline" /></a>
       </li>
-      <!-- dropdown -->
-      <li class="dropdown group">
-        <button
-          aria-label="Rentals"
-          title="Rentals"
-          class="flex gap-2 items-center hover:text-magenta-900 transition duration-(--transition)"
-          >Rentals
-          <Icon name="underline" />
-          <Icon
-            name="tabler:chevron-down"
-            class="max-w-6 group-[.active]:rotate-180 transition-transform duration-(--transition)"
-          />
-        </button>
-        <ul
-          class="absolute pointer-events-none -z-10 opacity-0 scale-95 group-[.active]:opacity-100 group-[.active]:z-10 group-[.active]:scale-100 group-[.active]:pointer-events-auto bg-blackTransparent backdrop-blur-lg rounded-xl transition-all shadow-lg"
-        >
-          <li class="transition-transform hover:translate-x-1">
-            <a
-              href="/rentals"
-              aria-label="Rentals Main"
-              title="Rentals Main"
-              class="block w-full h-full pt-6 pb-3 px-6">Rentals Main</a
-            >
-          </li>
-          <li class="transition-transform hover:translate-x-1">
-            <a
-              href="/rentals#servers"
-              aria-label="Servers"
-              title="Servers"
-              class="block w-full h-full py-3 px-6">Servers</a
-            >
-          </li>
-          <li class="transition-transform hover:translate-x-1">
-            <a
-              href="/rentals#lighting"
-              aria-label="Lighting"
-              title="Lighting"
-              class="block w-full h-full pt-3 pb-6 px-6">Lighting</a
-            >
-          </li>
-        </ul>
+      <li><a href="/about" aria-label="About" title="About">About<Icon name="underline" /></a></li>
+      <li>
+        <a href="/rentals" aria-label="Rentals" title="Rentals">Rentals<Icon name="underline" /></a>
       </li>
       <li><a href="/press" aria-label="Press" title="Press">Press<Icon name="underline" /></a></li>
       <li><a href="/jobs" aria-label="Jobs" title="Jobs">Jobs<Icon name="underline" /></a></li>
@@ -337,8 +193,6 @@ const currentPath = Astro.url.pathname
   <script>
     const body = document.querySelector('body') as HTMLBodyElement
     const navigation = document.getElementById('navigation')
-    const mobileDropdowns = document.querySelectorAll('#mobile-nav .dropdown')
-    const desktopDropdowns = document.querySelectorAll('#desktop-nav .dropdown')
     const mobileNavItems = document.querySelectorAll('#mobile-nav a')
     const hamburger = document.getElementById('hamburger') as HTMLButtonElement
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay') as HTMLDivElement
@@ -374,28 +228,6 @@ const currentPath = Astro.url.pathname
         // Reset hamburger styles
         hamburger.setAttribute('aria-expanded', `${overlayDisplayed}`)
         hamburger.classList.remove('active')
-      }
-    }
-
-    /**
-     * Dropdown menu helpers
-     */
-
-    function toggleDropdown(e: Event) {
-      const dropdown = e.currentTarget as HTMLElement
-      dropdown.classList.toggle('active')
-    }
-
-    function showDropdown(e: Event) {
-      const dropdown = e.currentTarget as HTMLElement
-      dropdown.classList.add('active')
-    }
-
-    function hideDropdown(e: Event) {
-      const dropdown = e.currentTarget as HTMLElement
-
-      if (dropdown.classList.contains('active')) {
-        dropdown.classList.remove('active')
       }
     }
 
@@ -436,12 +268,6 @@ const currentPath = Astro.url.pathname
     })
 
     // Event listeners
-    mobileDropdowns.forEach((d) => d.addEventListener('click', toggleDropdown))
-    desktopDropdowns.forEach((d) => {
-      d.addEventListener('click', toggleDropdown)
-      d.addEventListener('mouseenter', showDropdown)
-      d.addEventListener('mouseleave', hideDropdown)
-    })
     mobileNavItems.forEach((i) => i.addEventListener('click', handleMobileNavigationOverlayOnClick))
     hamburger.addEventListener('click', handleMobileNavigationOverlayOnClick)
     window.addEventListener('resize', handleMobileNavigationOverlayOnResize)

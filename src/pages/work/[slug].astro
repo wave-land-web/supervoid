@@ -28,11 +28,22 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
 <Layout title={`Work - ${post.data.title}`} description={post.data.info[0]}>
   <header class="pt-[var(--nav-height)]">
     <div class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa no-repeat">
-      <mux-player
-        playback-id={post.data.gifs.hero}
-        metadata-video-title={`Supervoid Work Page: ${post.data.title}`}
-        accent-color="var(--color-magenta-900)"
-        class="w-full"></mux-player>
+      {
+        post.data.gifs.videoHero ? (
+          <mux-player
+            playback-id={post.data.gifs.videoHero}
+            metadata-video-title={`Supervoid Work Page: ${post.data.title}`}
+            accent-color="var(--color-magenta-900)"
+            class="w-full hero-mux-player"
+          />
+        ) : post.data.gifs.imageHero ? (
+          <Picture
+            src={post.data.gifs.imageHero}
+            alt={post.data.title}
+            class="absolute top-0 left-0 w-full h-full object-cover"
+          />
+        ) : null
+      }
       <h1
         data-page-title
         class="absolute left-1 bottom-1 z-50 mr-1 px-4 py-1 bg-magenta-900 text-xs md:text-base lg:text-s uppercase text-white rounded-full"
@@ -98,7 +109,7 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
 
     <section id="work-gifs" class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
       {
-        post.data.gifs.gallery.map((gif: string) => (
+        post.data.gifs.gallery?.map((gif: string) => (
           <article class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa lsa-slide-up no-repeat">
             <mux-player
               playback-id={gif}
@@ -138,7 +149,7 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
 </Layout>
 
 <script>
-  const muxPlayer = document.querySelector(`mux-player`) as HTMLVideoElement
+  const muxPlayer = document.querySelector(`.hero-mux-player`) as HTMLVideoElement
   const title = document.querySelector(`[data-page-title]`) as HTMLElement
   const infoDetails = document.querySelector(`#info-details`) as Element
   const infoContent = document.querySelector(`#info-content`) as HTMLElement
@@ -165,6 +176,8 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostID - 1)
   creditsDetails?.addEventListener('click', () =>
     handleShowHideDetails(creditsIcon, creditsContent)
   )
-  muxPlayer.addEventListener('play', handlePlayVideo)
-  muxPlayer.addEventListener('pause', handlePauseVideo)
+  if (muxPlayer) {
+    muxPlayer.addEventListener('play', handlePlayVideo)
+    muxPlayer.addEventListener('pause', handlePauseVideo)
+  }
 </script>

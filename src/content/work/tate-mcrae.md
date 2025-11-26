@@ -1,6 +1,7 @@
 ---
 id: 4
 title: 'Tate McRae'
+year: '2022'
 info:
   [
     "Supervoid was hired to create visuals for Tate McRae's performance at Made In America Festival 2022. Our aim was to craft moody and atmospheric content, punctuated with bursts of passion and energy. We blended modern motion graphics with grungy textures and 70s-era psychedelic visual art styles like liquid light shows and analog video synthesis. The result was a dynamic and immersive experience that perfectly complemented Tate's powerful performance.",
@@ -23,7 +24,7 @@ credits: [
 # gifs are MUX playback IDs
 gifs:
   {
-    hero: 'd101mQTV5mntavFvJyr8Jligd2JhOvQuSjr9mSPjYnes',
+    videoHero: 'd101mQTV5mntavFvJyr8Jligd2JhOvQuSjr9mSPjYnes',
     gallery:
       [
         '7DnzdcprcAY9Fcn2cZ94y5cwXz4K4SO6RIRRWh024zvk',

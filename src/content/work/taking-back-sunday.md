@@ -1,6 +1,7 @@
 ---
 id: 0
 title: 'Taking Back Sunday'
+year: '2023'
 info:
   [
     'Supervoid was hired by Taking Back Sunday to create visuals for their 152 album release shows in Nashville, Los Angeles, and New York. The band wanted imagery that evoked a sense of homecoming, reflecting their Long Island roots.',
@@ -21,7 +22,7 @@ credits: [
 # gifs are MUX playback IDs
 gifs:
   {
-    hero: 'vfH8N1jYCV1Xj02AuuGqiLbXlY8VjfsWkO3xcuJ00d0202k',
+    videoHero: 'vfH8N1jYCV1Xj02AuuGqiLbXlY8VjfsWkO3xcuJ00d0202k',
     gallery:
       [
         'geUwU4XNO00pWBJaaLRcaOgkISWkarhSvq6avlQ5MQb4',

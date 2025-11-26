@@ -1,6 +1,7 @@
 ---
 id: 6
 title: 'Love and Rockets'
+year: '2023'
 info:
   [
     "Supervoid collaborated with Production Designer Martin Phillips to create visuals for Love and Rockets' highly anticipated 2023 Reunion tour. With this being the band's first tour in 15 years, our goal was to blend their iconic 80s aesthetic with cutting-edge technology like Notch, resulting in a visual experience that's both nostalgic and futuristic.",
@@ -23,7 +24,7 @@ credits: [
 # gifs are MUX playback IDs
 gifs:
   {
-    hero: '55LP7ffbViR2z6ojl01YTEDJy3bwFc01Fdmb1J6Bt9BCI',
+    videoHero: '55LP7ffbViR2z6ojl01YTEDJy3bwFc01Fdmb1J6Bt9BCI',
     gallery:
       [
         'HFUYuSSwmaYSaP8xU5n4B01Nh4rJYi6vA009CIECF98ug',

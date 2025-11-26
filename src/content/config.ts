@@ -6,11 +6,13 @@ const workCollection = defineCollection({
     z.object({
       id: z.number(),
       title: z.string(),
+      year: z.string().optional(),
       info: z.array(z.string()),
       credits: z.array(z.string()).optional(),
       gifs: z.object({
-        hero: z.string(),
-        gallery: z.array(z.string()),
+        videoHero: z.string().optional(),
+        imageHero: image().optional(),
+        gallery: z.array(z.string()).optional(),
       }),
       images: z.array(image()).optional(),
     }),
@@ -36,6 +38,7 @@ const lightingCollection = defineCollection({
     z.object({
       id: z.number(),
       title: z.string(),
+      year: z.string().optional(),
       youtubeId: z.string(),
       poster: image(),
     }),

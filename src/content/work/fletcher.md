@@ -1,6 +1,7 @@
 ---
 id: 1
 title: 'Fletcher'
+year: '2024'
 info:
   [
     "SUPERVOID worked with Datum Creative to produce Notch looks for Fletcher's IN SEARCH OF THE ANTIDOTE tour. Drawing inspiration from Creative Director Tess Bijere's visual palette and Production Designer Dave Singleton's lights, we created Notch treatments that varied from blissful hazy filters to grungy punk CRT noise that took the camera feed and mangled it like a guitar plugged into a fuzzbox cranked to 11. It was amazing to see Fletcher and her fans having so much fun at every show, and we're so happy we got to play a part in it.",
@@ -36,7 +37,7 @@ credits: [
 # gifs are MUX playback IDs
 gifs:
   {
-    hero: 'Dtsh2l1QJOeGOWVvSUIuWu201MA1muc2Q7exXOadtGEs',
+    videoHero: 'Dtsh2l1QJOeGOWVvSUIuWu201MA1muc2Q7exXOadtGEs',
     gallery:
       [
         'bipfDEWtHjsxrwAngD3Ru8wwf01xT88bEsJwO1VzOR400',
