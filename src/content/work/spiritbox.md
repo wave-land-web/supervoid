@@ -1,6 +1,7 @@
 ---
 id: 10
 title: 'Spiritbox'
+year: '2023'
 info:
   [
     "Supervoid was hired by Spiritbox to produce visuals for their first headlining tour in support of their album ETERNAL BLUE. The band wanted us to create a unique world for each song, focusing on environmental visuals that seamlessly blended with Lighting Designer Lenny Sasso's cues. Our goal was to transport the audience out of the theater and into an evolving abstract setting that matched the music.",

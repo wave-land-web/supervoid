@@ -1,6 +1,7 @@
 ---
 id: 15
 title: 'Sheryl Crow'
+year: '2025'
 info:
   [
     "Supervoid teamed up with our friends at Black Hole Studios to deliver a complete redesign of Sheryl Crow's visual show for her 2025 tour dates. We handled the Notch effects, media server programming, and IMAG camera services while Black Hole Studios delivered an incredible set of content for the show. Creative director Drew Mercadante collaborated with content designer Karl Fekete to create a cohesive look for each song, making the entire stage immerse the audience in Sheryl Crow's massive rolodex of hits.  The Notch effects and video content were designed in tandem, utilizing a shared kit of textures and colors, so that each song's unique identity is on display across the board.",

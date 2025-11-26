@@ -1,6 +1,7 @@
 ---
 id: 13
 title: 'Papa Roach'
+year: '2025'
 info:
   [
     'Supervoid was brought on to create visuals for Papa Roach''s "Rise of the Roach Tour." Taking cues from the tour’s dystopian poster art—featuring a masked figure hoisting the band’s flag in a post-apocalyptic wasteland—we built a series of immersive digital environments that served as a gritty narrative extension of themes from across their expansive catalogue.',

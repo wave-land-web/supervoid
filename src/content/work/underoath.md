@@ -1,6 +1,7 @@
 ---
 id: 9
 title: 'Underoath'
+year: '2023'
 info:
   [
     'Supervoid was hired by Underoath to produce visuals for their co-headlining tour with The Ghost Inside. With a setlist spanning their entire career, we integrated themes from the visual branding of each album to transport the crowd through the many eras of their music. From haunted houses and desert landscapes for Define The Great Line, to colorful geometry and paper collages for Lost In The Sound Of Separation, to retro futurism and CRT glitch art for Voyeurist',

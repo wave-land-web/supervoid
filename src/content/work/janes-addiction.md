@@ -1,6 +1,7 @@
 ---
 id: 12
 title: "Jane's Addiction"
+year: '2024'
 info:
   [
     "Supervoid was brought on to produce visuals for Jane's Addiction's 2024 world tour With the band reuniting their original lineup for the first time in over a decade, it was a momentous return for both the band and their fans. Celebrating the release of 'Imminent Redemption,' their first single with the original lineup since the 90s, we focused on the song's themes to create a compelling visual narrative.",

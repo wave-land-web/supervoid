@@ -1,6 +1,7 @@
 ---
 id: 14
 title: 'Tyler Childers'
+year: '2025'
 info:
   [
     "Since 2024, Supervoid has worked with Voyage Productions and Formation to produce visuals for Tyler Childers' live show.  Working under the creative direction of Emily Cox and art director Jamie Issuh, we've developed content and Notch effects that bring the audience into Tyler's world, a celebration of all things Appalachia layered with tinges of psychedelia and spiritual imagery.",

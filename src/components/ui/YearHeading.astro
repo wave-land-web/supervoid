@@ -1,0 +1,17 @@
+---
+import { Icon } from 'astro-icon/components'
+
+export interface Props {
+  year: string
+}
+
+const { year } = Astro.props
+---
+
+<a href={`#${year}`} class="group inline-flex items-center gap-2 mb-6">
+  <h2 class="text-xl group-hover:text-magenta-900 transition">{year}</h2>
+  <Icon
+    name="tabler:link"
+    class="w-10 h-10 p-2 opacity-0 group-hover:opacity-100 group-hover:text-magenta-900 transition"
+  />
+</a>

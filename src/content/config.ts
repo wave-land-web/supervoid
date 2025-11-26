@@ -6,6 +6,7 @@ const workCollection = defineCollection({
     z.object({
       id: z.number(),
       title: z.string(),
+      year: z.string().optional(),
       info: z.array(z.string()),
       credits: z.array(z.string()).optional(),
       gifs: z.object({
@@ -36,6 +37,7 @@ const lightingCollection = defineCollection({
     z.object({
       id: z.number(),
       title: z.string(),
+      year: z.string().optional(),
       youtubeId: z.string(),
       poster: image(),
     }),

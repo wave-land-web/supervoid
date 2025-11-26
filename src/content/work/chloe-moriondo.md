@@ -1,6 +1,7 @@
 ---
 id: 2
 title: 'Chloe Moriondo'
+year: '2025'
 info:
   [
     'Supervoid collaborated with singer-songwriter Chloe Moriondo to craft a dreamy, immersive underwater world for their latest run, <em>The Oyster Tour</em>. Working within the constraints of smaller venues, we designed a DIY projection setup that Chloe and their band could assemble themselves—using a short-throw projector and creatively stacked stage risers to bring unexpected dimension to intimate spaces.',

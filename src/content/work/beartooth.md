@@ -1,6 +1,7 @@
 ---
 id: 7
 title: 'Beartooth'
+year: '2025'
 info:
   [
     "Supervoid delivered Notch effects, media server programming, and IMAG camera services for Beartooth’s 2025 hometown headlining show at The Schottenstein Center. Creative director Drew Mercadante collaborated with content designer Luke Shomo to craft timecoded Notch effects, immersing the band in their visuals with dynamic particles, animated elements, and bold color treatments. Each of the 19 songs featured unique, high-impact looks—from aggressive color overlays synced to the music to multi-layer composites placing the band inside their album covers. The result was a triumphant homecoming and one of the most electrifying shows we've ever seen.",
