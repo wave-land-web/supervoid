@@ -13,16 +13,17 @@ const lightingWorkData = await getCollection('lighting')
 // Combine both collections
 const allWork = [...videoWorkData, ...lightingWorkData]
 
-// Helper function to filter and sort work by year
-const getWorkByYear = (year: string) => {
-  return allWork.filter((work) => work.data.year === year).sort((a, b) => b.data.id - a.data.id)
+// Helper function to filter and sort work by year and alphabetically
+const getAlphabetizedWorkByYear = (year: string) => {
+  return allWork
+    .filter((work) => work.data.year === year)
+    .sort((a, b) => a.data.title.localeCompare(b.data.title))
 }
 
-// Filter and sort work by year
-const work2025 = getWorkByYear('2025')
-const work2024 = getWorkByYear('2024')
-const work2023 = getWorkByYear('2023')
-const work2022 = getWorkByYear('2022')
+const work2025 = getAlphabetizedWorkByYear('2025')
+const work2024 = getAlphabetizedWorkByYear('2024')
+const work2023 = getAlphabetizedWorkByYear('2023')
+const work2022 = getAlphabetizedWorkByYear('2022')
 ---
 
 <Layout title="Animation, VFX, and Technical Design Studio">
