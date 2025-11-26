@@ -40,7 +40,7 @@ credits: [
 # gifs are MUX playback IDs
 gifs:
   {
-    hero: 'dUG021vTGWqHtXZ7NrQoH02wrExA3fs2lHVOAEVcTmXsY',
+    videoHero: 'dUG021vTGWqHtXZ7NrQoH02wrExA3fs2lHVOAEVcTmXsY',
     gallery:
       [
         '8MJ9tifAVbohl5x8N97ZeFU01Ka2hQ2WyBxlF4KblpFc',

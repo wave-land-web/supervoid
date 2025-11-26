@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import type { CollectionEntry } from 'astro:content'
+import { Picture } from 'astro:assets'
 
 export interface Props {
   work: CollectionEntry<'work'>
@@ -8,34 +9,53 @@ export interface Props {
 
 const { work } = Astro.props
 const { slug } = work
-const playbackId = work.data.gifs.hero
+const playbackId = work.data.gifs.videoHero
+const imageHero = work.data.gifs.imageHero
 const videoTitle = work.data.title
+const cardId = `work-preview-card-${slug}`
 ---
 
 <article
-  id={`work-preview-card-${playbackId}`}
+  id={cardId}
   class="work-preview-card relative w-full h-0 max-w-screen-2xl mx-auto pb-[56.25%] rounded-xl overflow-hidden group lsa lsa-slide-up no-repeat"
 >
   <a href={`/work/${slug}`}>
-    <mux-player
-      playback-id={playbackId}
-      metadata-video-title={videoTitle}
-      accent-color="var(--color-magenta-900)"
-      style="--controls: none;"
-      class="w-full brightness-75 group-[.playing]:brightness-100 group-[.playing]:scale-105 transition duration-(--transition)"
-      loop
-      muted
-      paused></mux-player>
+    {
+      playbackId ? (
+        <mux-player
+          playback-id={playbackId}
+          metadata-video-title={videoTitle}
+          accent-color="var(--color-magenta-900)"
+          style="--controls: none;"
+          class="w-full brightness-75 group-[.playing]:brightness-100 group-[.playing]:scale-105 transition duration-(--transition)"
+          loop
+          muted
+          paused
+        />
+      ) : imageHero ? (
+        <Picture
+          src={imageHero}
+          alt={videoTitle}
+          class="absolute top-0 left-0 w-full h-full object-cover brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-(--transition)"
+        />
+      ) : null
+    }
 
     <div class="absolute bottom-0 flex items-center gap-3 w-full">
-      <Icon
-        name="tabler:eye-closed"
-        class="group-[.playing]:hidden w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 transition"
-      />
-      <Icon
-        name="tabler:eye"
-        class="hidden group-[.playing]:block w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 transition"
-      />
+      {
+        playbackId && (
+          <>
+            <Icon
+              name="tabler:eye-closed"
+              class="group-[.playing]:hidden w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 transition"
+            />
+            <Icon
+              name="tabler:eye"
+              class="hidden group-[.playing]:block w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 transition"
+            />
+          </>
+        )
+      }
       <h2 class="bg-magenta-900 text-xs uppercase text-white rounded-full px-4 py-1">
         {videoTitle}
       </h2>
@@ -43,77 +63,79 @@ const videoTitle = work.data.title
   </a>
 </article>
 
-<script define:vars={{ playbackId }}>
-  const workPreviewCard = document.querySelector(`#work-preview-card-${playbackId}`)
-  const muxPlayers = document.querySelectorAll(`#work-preview-card-${playbackId} mux-player`)
-  const player = workPreviewCard.querySelector('mux-player')
+<script define:vars={{ cardId, hasVideo: !!playbackId }}>
+  if (hasVideo) {
+    const workPreviewCard = document.querySelector(`#${cardId}`)
+    const muxPlayers = document.querySelectorAll(`#${cardId} mux-player`)
+    const player = workPreviewCard.querySelector('mux-player')
 
-  // Play/pause video functions
-  async function playVideo() {
-    try {
-      await player.play()
-      workPreviewCard.classList.add('playing')
-    } catch (err) {
-      workPreviewCard.classList.remove('playing')
-    }
-  }
-
-  async function pauseVideo() {
-    try {
-      await player.pause()
-      workPreviewCard.classList.remove('playing')
-    } catch (err) {
-      workPreviewCard.classList.add('playing')
-    }
-  }
-
-  function handlePlayVideo() {
-    if (player.paused) {
-      playVideo()
-    }
-  }
-
-  async function handlePauseVideo() {
-    if (!player.paused) {
-      pauseVideo()
-    }
-  }
-
-  // Play video on scroll
-  function handlePlayOnScroll() {
-    if (!window.IntersectionObserver) {
-      return console.log('IntersectionObserver not supported')
+    // Play/pause video functions
+    async function playVideo() {
+      try {
+        await player.play()
+        workPreviewCard.classList.add('playing')
+      } catch (err) {
+        workPreviewCard.classList.remove('playing')
+      }
     }
 
-    // Configure observer options
-    if (muxPlayers.length !== 0) {
-      const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0,
+    async function pauseVideo() {
+      try {
+        await player.pause()
+        workPreviewCard.classList.remove('playing')
+      } catch (err) {
+        workPreviewCard.classList.add('playing')
+      }
+    }
+
+    function handlePlayVideo() {
+      if (player.paused) {
+        playVideo()
+      }
+    }
+
+    async function handlePauseVideo() {
+      if (!player.paused) {
+        pauseVideo()
+      }
+    }
+
+    // Play video on scroll
+    function handlePlayOnScroll() {
+      if (!window.IntersectionObserver) {
+        return console.log('IntersectionObserver not supported')
       }
 
-      // Initialize observer
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            handlePlayVideo()
-          } else if (!entry.isIntersecting) {
-            handlePauseVideo()
-          }
-        })
-      }, options)
+      // Configure observer options
+      if (muxPlayers.length !== 0) {
+        const options = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0,
+        }
 
-      muxPlayers.forEach((section) => observer.observe(section))
+        // Initialize observer
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              handlePlayVideo()
+            } else if (!entry.isIntersecting) {
+              handlePauseVideo()
+            }
+          })
+        }, options)
+
+        muxPlayers.forEach((section) => observer.observe(section))
+      }
     }
-  }
 
-  // Event listeners
-  if (window.innerWidth < 768) {
-    handlePlayOnScroll()
-  } else {
-    // Desktop
-    workPreviewCard.addEventListener('mouseover', handlePlayVideo)
-    workPreviewCard.addEventListener('mouseout', handlePauseVideo)
+    // Event listeners
+    if (window.innerWidth < 768) {
+      handlePlayOnScroll()
+    } else {
+      // Desktop
+      workPreviewCard.addEventListener('mouseover', handlePlayVideo)
+      workPreviewCard.addEventListener('mouseout', handlePauseVideo)
+    }
   }
 </script>
