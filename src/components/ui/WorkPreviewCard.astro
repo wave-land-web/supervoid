@@ -10,7 +10,7 @@ export interface Props {
 const { work } = Astro.props
 const { slug } = work
 const playbackId = work.data.gifs.videoHero
-const imageHero = work.data.gifs.imageHero
+const imageHero = work.data.thumbnail
 const videoTitle = work.data.title
 const cardId = `work-preview-card-${slug}`
 ---
@@ -21,7 +21,7 @@ const cardId = `work-preview-card-${slug}`
 >
   <a href={`/work/${slug}`}>
     {
-      playbackId ? (
+      playbackId && !imageHero ? (
         <mux-player
           playback-id={playbackId}
           metadata-video-title={videoTitle}

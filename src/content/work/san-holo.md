@@ -37,6 +37,7 @@ credits: [
     <p class="text-grey-100">Bill Loftus</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/san-holo.png'
 # gifs are MUX playback IDs
 gifs:
   {

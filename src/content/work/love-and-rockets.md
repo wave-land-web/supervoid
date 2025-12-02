@@ -21,6 +21,7 @@ credits: [
     <p class="text-grey-100">George Murphy, Kenn Koubeck, Matt Keppler</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/love-and-rockets.png'
 # gifs are MUX playback IDs
 gifs:
   {

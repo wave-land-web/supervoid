@@ -37,6 +37,7 @@ credits: [
     </div>
     ',
   ]
+thumbnail: './images/thumbnails/rage-against-the-machine.png'
 # gifs are MUX playback IDs
 gifs:
   {

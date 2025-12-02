@@ -45,6 +45,7 @@ credits: [
     <p class="text-grey-100">Ryan Smith</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/tyler-childers.png'
 # gifs are MUX playback IDs
 gifs:
   {

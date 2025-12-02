@@ -9,6 +9,7 @@ const workCollection = defineCollection({
       year: z.string().optional(),
       info: z.array(z.string()),
       credits: z.array(z.string()).optional(),
+      thumbnail: image().optional(),
       gifs: z.object({
         videoHero: z.string().optional(),
         imageHero: image().optional(),

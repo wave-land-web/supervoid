@@ -33,6 +33,7 @@ credits: [
     <p class="text-grey-100">Katie Rose</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/lil-tecca.png'
 # gifs are MUX playback IDs
 gifs:
   {

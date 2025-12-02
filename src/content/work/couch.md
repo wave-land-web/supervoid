@@ -24,6 +24,7 @@ credits: [
     <p class="text-grey-100">BT Odoy</p>
     </div>',
   ]
+thumbnail: './images/SVX_Horizontal_0030_Couch 3.jpg'
 gifs: { imageHero: './images/SVX_Horizontal_0030_Couch 3.jpg' }
 images:
   [

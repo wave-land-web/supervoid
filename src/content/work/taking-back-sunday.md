@@ -19,6 +19,7 @@ credits: [
     <p class="text-grey-100">Drew Mercadante</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/taking-back-sunday.png'
 # gifs are MUX playback IDs
 gifs:
   {

@@ -26,6 +26,7 @@ credits: [
     <p class="text-grey-100">Dave Summers</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/alex-warren.png'
 # gifs are MUX playback IDs
 gifs:
   {

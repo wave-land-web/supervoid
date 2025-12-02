@@ -25,6 +25,7 @@ credits: [
     <p class="text-grey-100">Nicholas Bentley</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/chloe-moriondo.png'
 # gifs are MUX playback IDs
 gifs:
   {

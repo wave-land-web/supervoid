@@ -32,6 +32,7 @@ credits: [
     <p class="text-grey-100">Ellie Clement</p>
     </div>',
   ]
+thumbnail: './images/SVX_Horizontal_0002_Radiohead 15.jpg'
 gifs: { imageHero: './images/SVX_Horizontal_0002_Radiohead 15.jpg' }
 images:
   [

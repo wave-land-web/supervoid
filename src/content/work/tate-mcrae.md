@@ -21,6 +21,7 @@ credits: [
     <p class="text-grey-100">Matt Keppler, Ciara Hegli</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/tate-mcrae.png'
 # gifs are MUX playback IDs
 gifs:
   {

@@ -22,6 +22,7 @@ credits: [
     <p class="text-grey-100">Matt Keppler, Jaxon Graham, Ciara Hegli, Grant Bouvier</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/spiritbox.png'
 # gifs are MUX playback IDs
 gifs:
   {

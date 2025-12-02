@@ -33,6 +33,7 @@ credits: [
     </div>
     ',
   ]
+thumbnail: './images/thumbnails/beartooth.png'
 # gifs are MUX playback IDs
 gifs:
   {

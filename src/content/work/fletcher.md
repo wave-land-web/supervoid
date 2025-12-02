@@ -34,6 +34,7 @@ credits: [
     </div>
     ',
   ]
+thumbnail: './images/thumbnails/fletcher.png'
 # gifs are MUX playback IDs
 gifs:
   {

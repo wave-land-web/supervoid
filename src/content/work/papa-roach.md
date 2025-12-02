@@ -27,6 +27,7 @@ credits: [
     </div>
     ',
   ]
+thumbnail: './images/thumbnails/papa-roach.png'
 # gifs are MUX playback IDs
 gifs:
   {

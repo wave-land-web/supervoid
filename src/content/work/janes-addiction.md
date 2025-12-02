@@ -31,6 +31,7 @@ credits: [
     </div>
     ',
   ]
+thumbnail: './images/thumbnails/janes-addiction.png'
 # gifs are MUX playback IDs
 gifs:
   {

@@ -22,6 +22,7 @@ credits: [
     <p class="text-grey-100">Matt Keppler, Grant Bouvier, George Murphy, Kenn Koubeck, John Egan</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/underoath.png'
 # gifs are MUX playback IDs
 gifs:
   {

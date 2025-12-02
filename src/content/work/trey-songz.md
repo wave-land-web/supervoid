@@ -20,6 +20,7 @@ credits: [
     <p class="text-grey-100">George Murphy, Kenn Koubeck</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/trey-songz.png'
 # gifs are MUX playback IDs
 gifs:
   {

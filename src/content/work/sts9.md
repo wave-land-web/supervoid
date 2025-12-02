@@ -20,6 +20,7 @@ credits: [
     <p class="text-grey-100">Drew Mercadante</p>
     </div>',
   ]
+thumbnail: './images/SVX_Horizontal_0024_STS9 1.jpg'
 gifs: { imageHero: './images/SVX_Horizontal_0024_STS9 1.jpg' }
 images:
   [

@@ -28,6 +28,7 @@ credits: [
     <p class="text-grey-100">Chris Wrightsman</p>
     </div>',
   ]
+thumbnail: './images/thumbnails/sheryl-crow.png'
 # gifs are MUX playback IDs
 gifs:
   {
