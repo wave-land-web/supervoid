@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components'
 import type { CollectionEntry } from 'astro:content'
 import { Picture } from 'astro:assets'
 
@@ -42,100 +41,9 @@ const cardId = `work-preview-card-${slug}`
     }
 
     <div class="absolute bottom-0 flex items-center gap-3 w-full">
-      {
-        playbackId && (
-          <>
-            <Icon
-              name="tabler:eye-closed"
-              class="group-[.playing]:hidden w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 transition"
-            />
-            <Icon
-              name="tabler:eye"
-              class="hidden group-[.playing]:block w-10 h-10 flex-shrink-0 bg-white text-black rounded-full p-2 transition"
-            />
-          </>
-        )
-      }
       <h2 class="bg-magenta-900 text-xs uppercase text-white rounded-full px-4 py-1">
         {videoTitle}
       </h2>
     </div>
   </a>
 </article>
-
-<script define:vars={{ cardId, hasVideo: !!playbackId }}>
-  if (hasVideo) {
-    const workPreviewCard = document.querySelector(`#${cardId}`)
-    const muxPlayers = document.querySelectorAll(`#${cardId} mux-player`)
-    const player = workPreviewCard.querySelector('mux-player')
-
-    // Play/pause video functions
-    async function playVideo() {
-      try {
-        await player.play()
-        workPreviewCard.classList.add('playing')
-      } catch (err) {
-        workPreviewCard.classList.remove('playing')
-      }
-    }
-
-    async function pauseVideo() {
-      try {
-        await player.pause()
-        workPreviewCard.classList.remove('playing')
-      } catch (err) {
-        workPreviewCard.classList.add('playing')
-      }
-    }
-
-    function handlePlayVideo() {
-      if (player.paused) {
-        playVideo()
-      }
-    }
-
-    async function handlePauseVideo() {
-      if (!player.paused) {
-        pauseVideo()
-      }
-    }
-
-    // Play video on scroll
-    function handlePlayOnScroll() {
-      if (!window.IntersectionObserver) {
-        return console.log('IntersectionObserver not supported')
-      }
-
-      // Configure observer options
-      if (muxPlayers.length !== 0) {
-        const options = {
-          root: null,
-          rootMargin: '0px',
-          threshold: 0,
-        }
-
-        // Initialize observer
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              handlePlayVideo()
-            } else if (!entry.isIntersecting) {
-              handlePauseVideo()
-            }
-          })
-        }, options)
-
-        muxPlayers.forEach((section) => observer.observe(section))
-      }
-    }
-
-    // Event listeners
-    if (window.innerWidth < 768) {
-      handlePlayOnScroll()
-    } else {
-      // Desktop
-      workPreviewCard.addEventListener('mouseover', handlePlayVideo)
-      workPreviewCard.addEventListener('mouseout', handlePauseVideo)
-    }
-  }
-</script>

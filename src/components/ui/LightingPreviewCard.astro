@@ -21,7 +21,7 @@ const youtubeId = work.data.youtubeId
   <!-- Overlay: image, play button, and project title -->
   <div data-image id={`image-${youtubeId}`} class="absolute top-0 left-0 w-full h-full">
     <Picture
-      class="w-full brightness-75 group-[.playing]:brightness-100 group-[.playing]:scale-105 transition duration-(--transition)"
+      class="w-full brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-(--transition)"
       src={work.data.poster}
       alt={work.data.title}
     />
@@ -38,15 +38,6 @@ const youtubeId = work.data.youtubeId
     </button>
 
     <div class="absolute bottom-0 w-full flex items-center gap-3">
-      <Icon
-        name="tabler:eye-closed"
-        class="group-[.playing]:hidden w-10 h-10 p-2 flex-shrink-0 bg-white text-black rounded-full transition"
-      />
-      <Icon
-        name="tabler:eye"
-        class="hidden group-[.playing]:block w-10 h-10 p-2 flex-shrink-0 bg-white text-black rounded-full transition"
-      />
-
       <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">
         {work.data.title}
       </h2>
@@ -55,8 +46,6 @@ const youtubeId = work.data.youtubeId
 </div>
 
 <script define:vars={{ youtubeId }}>
-  const previewCards = document.querySelectorAll('.lighting-preview-card')
-  const activePreviewCard = document.querySelector(`#lighting-preview-card-${youtubeId}`)
   const posterImage = document.querySelector(`#image-${youtubeId}`)
   const playButton = document.querySelector(`#play-button-${youtubeId}`)
   let player
@@ -74,53 +63,6 @@ const youtubeId = work.data.youtubeId
         onReady: onPlayerReady,
       },
     })
-  }
-
-  // Card animation helpers
-  function playCard() {
-    activePreviewCard.classList.add('playing')
-  }
-  function stopCard() {
-    activePreviewCard.classList.remove('playing')
-  }
-
-  // Activate card on scroll
-  function handlePlayOnScroll() {
-    if (!window.IntersectionObserver) {
-      return console.log('IntersectionObserver not supported')
-    }
-
-    // Configure observer options
-    if (previewCards.length !== 0) {
-      const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0,
-      }
-
-      // Initialize observer
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            playCard()
-          } else if (!entry.isIntersecting) {
-            stopCard()
-          }
-        })
-      }, options)
-
-      previewCards.forEach((card) => observer.observe(card))
-    }
-  }
-
-  // Event listeners
-  if (window.innerWidth < 768) {
-    // Mobile
-    handlePlayOnScroll()
-  } else {
-    // Desktop
-    activePreviewCard.addEventListener('mouseover', playCard)
-    activePreviewCard.addEventListener('mouseout', stopCard)
   }
 
   // Play video on click
