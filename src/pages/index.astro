@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content'
 import LightingPreviewCard from '../components/ui/LightingPreviewCard.astro'
 import CTA from '../components/text/CTA.astro'
 import YearHeading from '../components/ui/YearHeading.astro'
+import { getAlphabetizedWorkByYear } from '../utils/sortWork'
 
 // Get the video and lighting work data
 const videoWorkData = await getCollection('work')
@@ -13,17 +14,10 @@ const lightingWorkData = await getCollection('lighting')
 // Combine both collections
 const allWork = [...videoWorkData, ...lightingWorkData]
 
-// Helper function to filter and sort work by year and alphabetically
-const getAlphabetizedWorkByYear = (year: string) => {
-  return allWork
-    .filter((work) => work.data.year === year)
-    .sort((a, b) => a.data.title.localeCompare(b.data.title))
-}
-
-const work2025 = getAlphabetizedWorkByYear('2025')
-const work2024 = getAlphabetizedWorkByYear('2024')
-const work2023 = getAlphabetizedWorkByYear('2023')
-const work2022 = getAlphabetizedWorkByYear('2022')
+const work2025 = getAlphabetizedWorkByYear({ allWork, year: '2025' })
+const work2024 = getAlphabetizedWorkByYear({ allWork, year: '2024' })
+const work2023 = getAlphabetizedWorkByYear({ allWork, year: '2023' })
+const work2022 = getAlphabetizedWorkByYear({ allWork, year: '2022' })
 ---
 
 <Layout title="Animation, VFX, and Technical Design Studio">
