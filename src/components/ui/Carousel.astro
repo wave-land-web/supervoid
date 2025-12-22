@@ -65,15 +65,14 @@ const { images, class: className } = Astro.props
 </Swiper>
 
 <style>
-  /* TODO: can horizonal scrolling bug on mobile be fixed without overflow-hidden? */
-
-  .swiper.swiper-cards {
-    overflow-x: hidden;
-  }
-
-  @media (min-width: 768px) {
-    .swiper.swiper-cards {
-      overflow-x: visible;
-    }
+  /* add a small margin bottom to the button part of the swiper.
+     This prevents an overflow, with the scroll-bar, on small screens
+     when hovering the navigation buttons.
+     This overflow occurs because the arrow rotates on hover.
+     Adding a margin to the pagination div prevents this overflow as it
+    increases the height of the navigation container.
+  */
+  #pagination {
+    margin-bottom: 2px;
   }
 </style>
