@@ -2,6 +2,23 @@
 import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets'
 
+import { Swiper, SwiperWrapper, SwiperSlide, SwiperButtonPrev, SwiperButtonNext } from "astro-swiper";
+import type { SwiperOptions } from 'swiper/types'
+
+const swiperOptions: SwiperOptions = {
+  effect: Astro.url.pathname !== '/servers' ? 'cards' : 'slide',
+  grabCursor: true,
+  speed: 300,
+  cardsEffect: {
+    rotate: false,
+    slideShadows: true,
+  },
+  navigation: {
+    nextEl: '#right',
+    prevEl: '#left',
+  },
+}
+
 export interface Props {
   images: {
     src: ImageMetadata
@@ -13,75 +30,49 @@ export interface Props {
 const { images, class: className } = Astro.props
 ---
 
-<div class={`swiper min-w-0 max-w-full ${className}`}>
-  <div class="swiper-wrapper mb-8">
+<Swiper class={`min-w-0 max-w-full ${className}`} options={swiperOptions}>
+  <SwiperWrapper class="mb-8">
     {
       images.map((image) => (
-        <div class="swiper-slide rounded-xl">
+        <SwiperSlide class="rounded-xl">
           <Picture src={image.src} formats={['avif', 'webp']} alt={image.alt} />
-        </div>
+        </SwiperSlide>
       ))
     }
-  </div>
+  </SwiperWrapper>
 
   <div id="pagination" class="max-w-80 mx-auto flex justify-between">
-    <button
+    <SwiperButtonPrev
       id="left"
       class="hover:rotate-2 active:scale-95 active:rotate-0 transition duration-(--transition)"
+      addDefaultClass={false}
       aria-label="Previous"
       title="Previous"
     >
       <Icon name="left" class="w-32" />
-    </button>
+    </SwiperButtonPrev>
 
-    <button
+    <SwiperButtonNext
       id="right"
       class="hover:-rotate-2 active:scale-95 active:rotate-0 transition duration-(--transition)"
+      addDefaultClass={false}
       aria-label="Next"
       title="Next"
     >
       <Icon name="right" class="w-32" />
-    </button>
+    </SwiperButtonNext>
   </div>
-</div>
+</Swiper>
 
 <style>
-  /* TODO: can horizonal scrolling bug on mobile be fixed without overflow-hidden? */
-
-  .swiper.swiper-cards {
-    overflow-x: hidden;
-  }
-
-  @media (min-width: 768px) {
-    .swiper.swiper-cards {
-      overflow-x: visible;
-    }
+  /* add a small margin bottom to the button part of the swiper.
+     This prevents an overflow, with the scroll-bar, on small screens
+     when hovering the navigation buttons.
+     This overflow occurs because the arrow rotates on hover.
+     Adding a margin to the pagination div prevents this overflow as it
+    increases the height of the navigation container.
+  */
+  #pagination {
+    margin-bottom: 2px;
   }
 </style>
-
-<script>
-  import Swiper from 'swiper'
-  import 'swiper/css/bundle'
-  import { EffectCards } from 'swiper/modules'
-
-  const leftButton = document.getElementById('left') as HTMLButtonElement
-  const rightButton = document.getElementById('right') as HTMLButtonElement
-
-  // Track page to determine carousel effect
-  const { pathname } = new URL(window.location.href)
-
-  // init Swiper:
-  const swiper = new Swiper('.swiper', {
-    effect: pathname !== '/servers' ? 'cards' : 'slide',
-    grabCursor: true,
-    modules: [EffectCards],
-    speed: 300,
-    cardsEffect: {
-      rotate: false,
-      slideShadows: true,
-    },
-  })
-
-  leftButton.addEventListener('click', () => swiper.slidePrev())
-  rightButton.addEventListener('click', () => swiper.slideNext())
-</script>
