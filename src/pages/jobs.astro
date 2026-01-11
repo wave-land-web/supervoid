@@ -1,8 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components'
-import jobsCarouselOneImage from '../assets/jobs-carousel-1.png'
-import jobsCarouselTwoImage from '../assets/jobs-carousel-2.png'
-import jobsCarouselThreeImage from '../assets/jobs-carousel-3.png'
+import jobsCarouselOneImage from '../assets/horizontal-images/SVX_Horizontal_0002_Radiohead 15.jpg'
+import jobsCarouselTwoImage from '../assets/horizontal-images/SVX_Horizontal_0016_Radiohead 1.jpg'
+import jobsCarouselThreeImage from '../assets/horizontal-images/SVX_Horizontal_0018_STS9 7.jpg'
+import jobsCarouselFourImage from '../assets/horizontal-images/SVX_Horizontal_0024_STS9 1.jpg'
+import jobsCarouselFiveImage from '../assets/horizontal-images/SVX_Horizontal_0026_Couch 7.jpg'
+import jobsCarouselSixImage from '../assets/horizontal-images/SVX_Horizontal_0028_Couch 5.jpg'
 import jobsHeroImage from '../assets/jobs-hero.png'
 import CTA from '../components/text/CTA.astro'
 import Carousel from '../components/ui/Carousel.astro'
@@ -44,15 +47,18 @@ import Layout from '../layouts/Layout.astro'
     </section>
 
     <section
-      class="max-w-screen-md xl:max-w-screen-xl m-auto grid xl:grid-cols-2 gap-24 md:gap-32 lsa lsa-slide-up no-repeat"
+      class="max-w-screen-md xl:max-w-screen-xl m-auto grid xl:grid-cols-2 gap-16 md:gap-24 lsa lsa-slide-up no-repeat"
     >
       <Carousel
         images={[
-          { src: jobsCarouselOneImage, alt: 'Drew working the lighting console at a concert' },
-          { src: jobsCarouselTwoImage, alt: 'Drew working the lighting console at a concert' },
-          { src: jobsCarouselThreeImage, alt: 'Taking Back Sunday' },
+          { src: jobsCarouselOneImage, alt: 'Radiohead' },
+          { src: jobsCarouselTwoImage, alt: 'Radiohead' },
+          { src: jobsCarouselThreeImage, alt: 'STS9' },
+          { src: jobsCarouselFourImage, alt: 'STS9' },
+          { src: jobsCarouselFiveImage, alt: 'Couch' },
+          { src: jobsCarouselSixImage, alt: 'Couch' },
         ]}
-        class="self-center"
+        class="self-center order-1 md:order-0"
       />
 
       <div class="flex flex-col justify-center gap-8">

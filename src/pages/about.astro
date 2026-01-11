@@ -1,12 +1,19 @@
 ---
-import aboutCarouselOneImage from '../assets/about-carousel-1.png'
-import aboutCarouselTwoImage from '../assets/about-carousel-2.png'
-import aboutCarouselThreeImage from '../assets/about-carousel-3.png'
+import verticalRadiohead from '../assets/vertical-images/SVX_Vertical_0000_Radiohead 1.jpg'
+import verticalSts9Five from '../assets/vertical-images/SVX_Vertical_0001_STS9 5.jpg'
+import verticalSts9Four from '../assets/vertical-images/SVX_Vertical_0002_STS9 4.jpg'
+import verticalSts9Three from '../assets/vertical-images/SVX_Vertical_0003_STS9 3.jpg'
+import verticalSts9Two from '../assets/vertical-images/SVX_Vertical_0004_STS9 2.jpg'
+import verticalSts9One from '../assets/vertical-images/SVX_Vertical_0005_STS9 1.jpg'
+import verticalCouchFour from '../assets/vertical-images/SVX_Vertical_0006_Couch 4.jpg'
+import verticalCouchThree from '../assets/vertical-images/SVX_Vertical_0007_Couch 3.jpg'
+import verticalCouchTwo from '../assets/vertical-images/SVX_Vertical_0008_Couch 2.jpg'
+import verticalCouchOne from '../assets/vertical-images/SVX_Vertical_0009_Couch 1.jpg'
 import aboutHeroImage from '../assets/about-hero.jpg'
-import CTA from '../components/text/CTA.astro'
-import Carousel from '../components/ui/Carousel.astro'
+import VerticalImageCarousel from '../components/ui/VerticalImageCarousel.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
+import CTA from '../components/text/CTA.astro'
 ---
 
 <Layout title="About" socialImage="/images/about-hero.jpg">
@@ -38,8 +45,8 @@ import Layout from '../layouts/Layout.astro'
             our clients' shows. We create <span
               class="text-white inline-block lsa lsa-slide-up no-repeat delay-200"
               >stunning visuals</span
-            > that work with scalable productions, build custom controls to allow a client to affect
-            their visuals from <span
+            > that work with scalable productions, build custom controls to allow a client to affect their
+            visuals from <span
               class="text-white inline-block lsa lsa-slide-up no-repeat delay-[250ms]"
               >any device,</span
             > and design <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-300"
@@ -106,22 +113,23 @@ import Layout from '../layouts/Layout.astro'
       </div>
     </section>
 
-    <section
-      id="join-our-team"
-      class="max-w-screen-md xl:max-w-screen-xl m-auto xl:py-32 grid xl:grid-cols-2 gap-16 xl:gap-0 lsa lsa-slide-up no-repeat"
-    >
-      <Carousel
+    <section id="join-our-team" class="m-auto xl:py-32 lsa lsa-slide-up no-repeat">
+      <VerticalImageCarousel
         images={[
-          { src: aboutCarouselOneImage, alt: 'Taking Back Sunday' },
-          { src: aboutCarouselTwoImage, alt: 'Spiritbox' },
-          { src: aboutCarouselThreeImage, alt: 'Rage Against the Machine' },
+          { src: verticalRadiohead, alt: 'Radiohead' },
+          { src: verticalSts9Five, alt: 'STS9' },
+          { src: verticalSts9Four, alt: 'STS9' },
+          { src: verticalSts9Three, alt: 'STS9' },
+          { src: verticalSts9Two, alt: 'STS9' },
+          { src: verticalSts9One, alt: 'STS9' },
+          { src: verticalCouchFour, alt: 'Couch' },
+          { src: verticalCouchThree, alt: 'Couch' },
+          { src: verticalCouchTwo, alt: 'Couch' },
+          { src: verticalCouchOne, alt: 'Couch' },
         ]}
-        class="self-center xl:-translate-y-12 xl:translate-x-4"
       />
 
-      <div
-        class="flex flex-col justify-center gap-6 p-8 xl:p-12 rounded-xl xl:translate-y-12 lg:-translate-x-4 z-10 bg-magenta-900 text-center xl:text-left"
-      >
+      <div class="flex flex-col items-center justify-center gap-6 p-8 xl:p-12 text-center">
         <h2 class="text-l text-stroke">Join Our Team</h2>
         <p>
           We're always on the lookout for talented individuals to join our team. If you're
@@ -129,7 +137,7 @@ import Layout from '../layouts/Layout.astro'
           out our current openings and become part of the Supervoid family.
         </p>
 
-        <CTA href="/jobs" text="Explore Careers" lightMode={true} class="mx-auto xl:mx-0" />
+        <CTA href="/jobs" text="Explore Careers" class="mx-auto xl:mx-0" />
       </div>
     </section>
   </main>

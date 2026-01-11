@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets'
 
 export interface Props {
@@ -14,7 +13,7 @@ const { images, class: className } = Astro.props
 ---
 
 <div class={`swiper min-w-0 max-w-full ${className}`}>
-  <div class="swiper-wrapper mb-8">
+  <div class="swiper-wrapper mb-12">
     {
       images.map((image) => (
         <div class="swiper-slide rounded-xl">
@@ -24,29 +23,20 @@ const { images, class: className } = Astro.props
     }
   </div>
 
-  <div id="pagination" class="max-w-80 mx-auto flex justify-between">
-    <button
-      id="left"
-      class="hover:rotate-2 active:scale-95 active:rotate-0 transition duration-(--transition)"
-      aria-label="Previous"
-      title="Previous"
-    >
-      <Icon name="left" class="w-32" />
-    </button>
-
-    <button
-      id="right"
-      class="hover:-rotate-2 active:scale-95 active:rotate-0 transition duration-(--transition)"
-      aria-label="Next"
-      title="Next"
-    >
-      <Icon name="right" class="w-32" />
-    </button>
-  </div>
+  <div class="swiper-pagination"></div>
 </div>
 
-<style>
-  /* TODO: can horizonal scrolling bug on mobile be fixed without overflow-hidden? */
+<style is:global>
+  /* Swiper Pagination Styling */
+  .swiper {
+    --swiper-pagination-bullet-size: 10px;
+    --swiper-pagination-bullet-width: 10px;
+    --swiper-pagination-bullet-height: 10px;
+    --swiper-pagination-bullet-horizontal-gap: 10px;
+    --swiper-pagination-bullet-inactive-color: #9b9b9b;
+    --swiper-pagination-bullet-inactive-opacity: 0.25;
+    --swiper-pagination-color: #ff00ff;
+  }
 
   .swiper.swiper-cards {
     overflow-x: hidden;
@@ -57,15 +47,30 @@ const { images, class: className } = Astro.props
       overflow-x: visible;
     }
   }
+
+  .swiper-pagination-bullet {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .swiper-pagination-bullet:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+
+  .swiper-pagination-bullet-active {
+    box-shadow: 0 0 0 2px rgba(255, 0, 255, 0.3);
+  }
+
+  .swiper-pagination-bullet-active:hover {
+    box-shadow: 0 0 0 4px rgba(255, 0, 255, 0.5);
+  }
 </style>
 
 <script>
   import Swiper from 'swiper'
   import 'swiper/css/bundle'
-  import { EffectCards } from 'swiper/modules'
-
-  const leftButton = document.getElementById('left') as HTMLButtonElement
-  const rightButton = document.getElementById('right') as HTMLButtonElement
+  import { EffectCards, Pagination, Keyboard, Autoplay } from 'swiper/modules'
 
   // Track page to determine carousel effect
   const { pathname } = new URL(window.location.href)
@@ -74,14 +79,26 @@ const { images, class: className } = Astro.props
   const swiper = new Swiper('.swiper', {
     effect: pathname !== '/servers' ? 'cards' : 'slide',
     grabCursor: true,
-    modules: [EffectCards],
-    speed: 300,
+    modules: [EffectCards, Pagination, Keyboard, Autoplay],
+    speed: 500,
+    loop: true,
     cardsEffect: {
       rotate: false,
       slideShadows: true,
     },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true,
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: true,
+      pauseOnMouseEnter: true,
+    },
   })
-
-  leftButton.addEventListener('click', () => swiper.slidePrev())
-  rightButton.addEventListener('click', () => swiper.slideNext())
 </script>

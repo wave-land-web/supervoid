@@ -1,0 +1,118 @@
+---
+import { Picture } from 'astro:assets'
+
+export interface Props {
+  images: {
+    src: ImageMetadata
+    alt: string
+  }[]
+  class?: string
+}
+
+const { images, class: className } = Astro.props
+---
+
+<div class={`relative w-full h-full ${className}`}>
+  <!-- Left fade gradient overlay -->
+  <div
+    class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"
+  >
+  </div>
+
+  <!-- Right fade gradient overlay -->
+  <div
+    class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"
+  >
+  </div>
+
+  <div class="swiper w-full h-full">
+    <div class="swiper-wrapper h-full">
+      {
+        images.map((image) => (
+          <div class="swiper-slide">
+            <Picture
+              src={image.src}
+              formats={['avif', 'webp']}
+              alt={image.alt}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-wrapper {
+    height: 100%;
+  }
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 9 / 16;
+    height: auto;
+  }
+
+  /* On larger screens in grid layouts, allow slide to fill available height */
+  @media (min-width: 1024px) {
+    .swiper-slide {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper'
+  import 'swiper/css/bundle'
+  import { Mousewheel, Autoplay } from 'swiper/modules'
+
+  // Initialize Swiper with enhanced features for smooth, classy experience
+  const swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+    grabCursor: true,
+    modules: [Mousewheel, Autoplay],
+    speed: 500,
+    slidesPerView: 4,
+    spaceBetween: 16,
+    loop: true,
+    centeredSlides: false,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: true,
+      pauseOnMouseEnter: true,
+    },
+    mousewheel: {
+      enabled: true,
+      forceToAxis: true,
+      sensitivity: 0.5,
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1.5,
+        spaceBetween: 12,
+      },
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 14,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 15,
+      },
+      1280: {
+        slidesPerView: 4,
+        spaceBetween: 16,
+      },
+    },
+    watchSlidesProgress: true,
+  })
+</script>
