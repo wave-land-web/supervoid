@@ -72,12 +72,12 @@ const { images, class: className } = Astro.props
   import 'swiper/css/bundle'
   import { EffectCards, Pagination, Keyboard, Autoplay } from 'swiper/modules'
 
-  // Track page to determine carousel effect
+  // Get current page
   const { pathname } = new URL(window.location.href)
 
   // init Swiper:
   const swiper = new Swiper('.swiper', {
-    effect: pathname === '/jobs' ? 'cards' : 'slide', // Render by page
+    effect: pathname.includes('jobs') ? 'cards' : 'slide', // Render by page
     grabCursor: true,
     modules: [EffectCards, Pagination, Keyboard, Autoplay],
     speed: 500,
