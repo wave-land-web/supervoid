@@ -26,7 +26,7 @@ const { images, class: className } = Astro.props
   <div class="swiper-pagination"></div>
 </div>
 
-<style is:global>
+<style>
   /* Swiper Pagination Styling */
   .swiper {
     --swiper-pagination-bullet-size: 10px;
@@ -77,11 +77,12 @@ const { images, class: className } = Astro.props
 
   // init Swiper:
   const swiper = new Swiper('.swiper', {
-    effect: pathname !== '/servers' ? 'cards' : 'slide',
+    effect: pathname === '/jobs' ? 'cards' : 'slide', // Render by page
     grabCursor: true,
     modules: [EffectCards, Pagination, Keyboard, Autoplay],
     speed: 500,
     loop: true,
+    centeredSlides: true,
     cardsEffect: {
       rotate: false,
       slideShadows: true,
