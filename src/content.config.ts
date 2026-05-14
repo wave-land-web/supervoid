@@ -1,7 +1,9 @@
-import { defineCollection, z } from 'astro:content'
+import { defineCollection } from 'astro:content'
+import { glob } from 'astro/loaders'
+import { z } from 'astro/zod'
 
 const workCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/work' }),
   schema: ({ image }) =>
     z.object({
       id: z.number(),
@@ -20,7 +22,7 @@ const workCollection = defineCollection({
 })
 
 const pressCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/press' }),
   schema: ({ image }) =>
     z.object({
       id: z.string(),
@@ -34,7 +36,7 @@ const pressCollection = defineCollection({
 })
 
 const lightingCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/lighting' }),
   schema: ({ image }) =>
     z.object({
       id: z.number(),

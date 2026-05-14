@@ -3,8 +3,8 @@ import netlify from '@astrojs/netlify'
 import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
+import { defineConfig, fontProviders } from 'astro/config'
 import icon from 'astro-icon'
-import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,13 +32,12 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  experimental: {
-    // SEE: https://docs.astro.build/en/reference/experimental-flags/fonts/#local-font-variants
-    fonts: [
-      {
-        provider: 'local',
-        name: 'Rotonto Regular',
-        cssVariable: '--font-header',
+  fonts: [
+    {
+      provider: fontProviders.local(),
+      name: 'Rotonto Regular',
+      cssVariable: '--font-header',
+      options: {
         variants: [
           {
             src: [
@@ -51,10 +50,12 @@ export default defineConfig({
           },
         ],
       },
-      {
-        provider: 'local',
-        name: 'SF Mono Regular',
-        cssVariable: '--font-body',
+    },
+    {
+      provider: fontProviders.local(),
+      name: 'SF Mono Regular',
+      cssVariable: '--font-body',
+      options: {
         variants: [
           {
             src: [
@@ -67,6 +68,6 @@ export default defineConfig({
           },
         ],
       },
-    ],
-  },
+    },
+  ],
 })

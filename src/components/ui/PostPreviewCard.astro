@@ -11,7 +11,7 @@ const { post, isAboveTheFold } = Astro.props
 ---
 
 <article class="lsa lsa-slide-up no-repeat group">
-  <a href={`/press/${post.slug}`}>
+  <a href={`/press/${post.id}`}>
     <div class="mb-4 h-[clamp(250px,30vw,400px)] overflow-hidden rounded-xl">
       <Picture
         src={post.data.image}

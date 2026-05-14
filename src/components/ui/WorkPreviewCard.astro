@@ -1,24 +1,24 @@
 ---
-import type { CollectionEntry } from 'astro:content'
 import { Picture } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
 
 export interface Props {
   work: CollectionEntry<'work'>
 }
 
 const { work } = Astro.props
-const { slug } = work
+const { id } = work
 const playbackId = work.data.gifs.videoHero
 const imageHero = work.data.thumbnail
 const videoTitle = work.data.title
-const cardId = `work-preview-card-${slug}`
+const cardId = `work-preview-card-${id}`
 ---
 
 <article
   id={cardId}
   class="work-preview-card relative w-full h-0 max-w-screen-2xl mx-auto pb-[56.25%] rounded-xl overflow-hidden group lsa lsa-slide-up no-repeat"
 >
-  <a href={`/work/${slug}`}>
+  <a href={`/work/${id}`}>
     {
       playbackId && !imageHero ? (
         <mux-player

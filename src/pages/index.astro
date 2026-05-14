@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import WorkPreviewCard from '../components/ui/WorkPreviewCard.astro'
 import { getCollection } from 'astro:content'
-import LightingPreviewCard from '../components/ui/LightingPreviewCard.astro'
 import CTA from '../components/text/CTA.astro'
+import LightingPreviewCard from '../components/ui/LightingPreviewCard.astro'
+import WorkPreviewCard from '../components/ui/WorkPreviewCard.astro'
 import YearHeading from '../components/ui/YearHeading.astro'
+import Layout from '../layouts/Layout.astro'
 import { getAlphabetizedWorkByYear } from '../utils/sortWork'
 
 // Get the video and lighting work data
@@ -20,7 +20,7 @@ const work2023 = getAlphabetizedWorkByYear({ allWork, year: '2023' })
 const work2022 = getAlphabetizedWorkByYear({ allWork, year: '2022' })
 ---
 
-<Layout title="Animation, VFX, and Technical Design Studio">
+<Layout title="Screen Visuals, Lighting, Lasers & Scenic Design for Touring Artists">
   <header class="pt-[calc(var(--nav-height)+2rem)]">
     <div id="header-content" class="flex flex-col gap-6">
       <h1 class="text-xl md:text-2xl lg:text-3xl lsa lsa-slide-up no-repeat mb-4">
@@ -51,7 +51,7 @@ const work2022 = getAlphabetizedWorkByYear({ allWork, year: '2022' })
               <WorkPreviewCard work={work} />
             ) : (
               <LightingPreviewCard work={work} />
-            )
+            ),
           )
         }
       </div>
@@ -66,7 +66,7 @@ const work2022 = getAlphabetizedWorkByYear({ allWork, year: '2022' })
               <WorkPreviewCard work={work} />
             ) : (
               <LightingPreviewCard work={work} />
-            )
+            ),
           )
         }
       </div>
@@ -81,7 +81,7 @@ const work2022 = getAlphabetizedWorkByYear({ allWork, year: '2022' })
               <WorkPreviewCard work={work} />
             ) : (
               <LightingPreviewCard work={work} />
-            )
+            ),
           )
         }
       </div>
@@ -96,7 +96,7 @@ const work2022 = getAlphabetizedWorkByYear({ allWork, year: '2022' })
               <WorkPreviewCard work={work} />
             ) : (
               <LightingPreviewCard work={work} />
-            )
+            ),
           )
         }
       </div>

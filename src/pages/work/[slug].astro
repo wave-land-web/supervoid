@@ -1,9 +1,9 @@
 ---
-import { Icon } from 'astro-icon/components'
-import { getCollection, type CollectionEntry } from 'astro:content'
-import Layout from '../../layouts/Layout.astro'
-import Pagination from '../../components/ui/Pagination.astro'
 import { Picture } from 'astro:assets'
+import { type CollectionEntry, getCollection } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+import Pagination from '../../components/ui/Pagination.astro'
+import Layout from '../../layouts/Layout.astro'
 import { getAlphabetizedWorkByYear } from '../../utils/sortWork'
 
 export async function getStaticPaths() {
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
   return sortedPosts.map((post, index) => ({
     params: {
-      slug: post.slug,
+      slug: post.id,
     },
     props: {
       post: post as CollectionEntry<'work'>,
@@ -66,7 +66,12 @@ const { post, prevPost, nextPost } = Astro.props
         id="info-details"
         class="w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-t-[1px] border-b-[1px] py-4 md:py-6 cursor-pointer"
       >
-        <button class="flex items-center gap-3" aria-label="Show/Hide Info" title="Show/Hide Info">
+        <button
+          type="button"
+          class="flex items-center gap-3"
+          aria-label="Show/Hide Info"
+          title="Show/Hide Info"
+        >
           <Icon
             data-info-icon
             name="tabler:plus"
@@ -88,6 +93,7 @@ const { post, prevPost, nextPost } = Astro.props
         class="w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b-[1px] py-4 md:py-6 cursor-pointer"
       >
         <button
+          type="button"
           class="flex items-center gap-3"
           aria-label="Show/Hide Credits"
           title="Show/Hide Credits"
@@ -106,10 +112,7 @@ const { post, prevPost, nextPost } = Astro.props
           id="credits-content"
           class="h-0 opacity-0 overflow-hidden transition duration-(--transition) [.active]:h-auto [.active]:mt-4 [.active]:md:mt-0 [.active]:opacity-100"
         >
-          <div
-            set:html={post.data.credits && post.data.credits[0]}
-            class="flex flex-col gap-8 mb-4"
-          />
+          <div set:html={post.data.credits?.[0]} class="flex flex-col gap-8 mb-4" />
         </div>
       </div>
     </section>
@@ -132,23 +135,22 @@ const { post, prevPost, nextPost } = Astro.props
       }
 
       {
-        post.data.images &&
-          post.data.images.map((image) => (
-            <Picture
-              src={image}
-              alt={post.data.title}
-              formats={['avif', 'webp']}
-              class="aspect-video object-cover lsa lsa-slide-up no-repeat"
-            />
-          ))
+        post.data.images?.map((image) => (
+          <Picture
+            src={image}
+            alt={post.data.title}
+            formats={['avif', 'webp']}
+            class="aspect-video object-cover lsa lsa-slide-up no-repeat"
+          />
+        ))
       }
     </section>
 
     <Pagination
       prevPost={prevPost}
       nextPost={nextPost}
-      prevPostSlug={`/work/${prevPost?.slug}`}
-      nextPostSlug={`/work/${nextPost?.slug}`}
+      prevPostSlug={`/work/${prevPost?.id}`}
+      nextPostSlug={`/work/${nextPost?.id}`}
       prevPostTitle={prevPost?.data.title}
       nextPostTitle={nextPost?.data.title}
     />
@@ -179,9 +181,9 @@ const { post, prevPost, nextPost } = Astro.props
     content.classList.toggle('active')
   }
 
-  infoDetails!.addEventListener('click', () => handleShowHideDetails(infoIcon, infoContent))
+  infoDetails?.addEventListener('click', () => handleShowHideDetails(infoIcon, infoContent))
   creditsDetails?.addEventListener('click', () =>
-    handleShowHideDetails(creditsIcon, creditsContent)
+    handleShowHideDetails(creditsIcon, creditsContent),
   )
   if (muxPlayer) {
     muxPlayer.addEventListener('play', handlePlayVideo)
