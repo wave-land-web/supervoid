@@ -1,10 +1,10 @@
 ---
 id: 20
 title: 'The Wonder Years'
-year: '2025'
+year: '2026'
 info:
   [
-    'The Wonder Years brought SUPERVOID on to co-design their 2025 arena run with LD Jaxon Graham.  Utilizing custom set carts that incorporated floral designs to match their banner aesthetic, we built a quickly deployable lighting rig that could roll on and off stage in less than 5 minutes.  With The Wonder Years being hometown heroes of ours, we were incredibly excited to collaborate with them in putting this nimble yet powerful design together.',
+    'To celebrate the 10 year anniversary for their album, “No Closer To Heaven”, The Wonder Years brought SUPERVOID on to design their national tour. This was the band’s largest headline tour yet, and we wanted to showcase the energy of their live show with a series of custom carts that made each stage feel huge. The tour concluded with a 6 night run at the TLA, giving them the honor of holding the record for the largest residency at the venue.',
   ]
 credits: [
     '<div class="flex flex-col gap-4">
@@ -13,7 +13,7 @@ credits: [
     </div>
     <div class="flex flex-col gap-4">
     <h3 class="uppercase text-s">Lighting Design:</h3>
-    <p class="text-grey-100">Drew Mercadante, Jaxon Graham</p>
+    <p class="text-grey-100">Drew Mercadante</p>
     </div>
     <div class="flex flex-col gap-4">
     <h3 class="uppercase text-s">Lighting Programmer/Director:</h3>
@@ -22,20 +22,26 @@ credits: [
     <div class="flex flex-col gap-4">
     <h3 class="uppercase text-s">Vendor:</h3>
     <p class="text-grey-100">SONUS Productions</p>
+    </div>
+    <div class="flex flex-col gap-4">
+    <h3 class="uppercase text-s">Photography:</h3>
+    <p class="text-grey-100">Jacob Moniz</p>
     </div>',
   ]
-thumbnail: './images/the-wonder-years_01.png'
-gifs: { imageHero: './images/the-wonder-years_01.png' }
+thumbnail: './images/SVX_Horizontal__0000s_0000_TWY_01.jpg'
+gifs: { imageHero: './images/SVX_Horizontal__0000s_0000_TWY_01.jpg' }
 images:
   [
-    './images/the-wonder-years_02.png',
-    './images/the-wonder-years_03.png',
-    './images/the-wonder-years_04.png',
-    './images/the-wonder-years_05.png',
-    './images/the-wonder-years_06.png',
-    './images/the-wonder-years_07.png',
-    './images/the-wonder-years_08.png',
-    './images/the-wonder-years_09.png',
-    './images/the-wonder-years_10.png',
+    './images/SVX_Horizontal__0000s_0001_TWY_02.jpg',
+    './images/SVX_Horizontal__0000s_0002_TWY_03.jpg',
+    './images/SVX_Horizontal__0000s_0003_TWY_04.jpg',
+    './images/SVX_Horizontal__0000s_0004_TWY_05.jpg',
+    './images/SVX_Horizontal__0000s_0005_TWY_06.jpg',
+    './images/SVX_Horizontal__0000s_0006_TWY_07.jpg',
+    './images/SVX_Horizontal__0000s_0007_TWY_08.jpg',
+    './images/SVX_Horizontal__0000s_0008_TWY_09.jpg',
+    './images/SVX_Horizontal__0000s_0009_TWY_10.jpg',
+    './images/SVX_Horizontal__0000s_0010_TWY_11.jpg',
+    './images/SVX_Horizontal__0000s_0011_TWY_12.jpg',
   ]
 ---

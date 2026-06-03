@@ -14,6 +14,7 @@ const lightingWorkData = await getCollection('lighting')
 // Combine both collections
 const allWork = [...videoWorkData, ...lightingWorkData]
 
+const work2026 = getAlphabetizedWorkByYear({ allWork, year: '2026' })
 const work2025 = getAlphabetizedWorkByYear({ allWork, year: '2025' })
 const work2024 = getAlphabetizedWorkByYear({ allWork, year: '2024' })
 const work2023 = getAlphabetizedWorkByYear({ allWork, year: '2023' })
@@ -42,6 +43,21 @@ const work2022 = getAlphabetizedWorkByYear({ allWork, year: '2022' })
   </header>
 
   <main id="work" class="relative w-full">
+    <section id="2026">
+      <YearHeading year="2026" />
+      <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+        {
+          work2026.map((work) =>
+            work.collection === 'work' ? (
+              <WorkPreviewCard work={work} />
+            ) : (
+              <LightingPreviewCard work={work} />
+            ),
+          )
+        }
+      </div>
+    </section>
+
     <section id="2025">
       <YearHeading year="2025" />
       <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">

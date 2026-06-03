@@ -11,6 +11,7 @@ export async function getStaticPaths() {
 
   // Build sorted list by year (newest first), then alphabetically within each year
   const sortedPosts = [
+    ...getAlphabetizedWorkByYear({ allWork: allPosts, year: '2026' }),
     ...getAlphabetizedWorkByYear({ allWork: allPosts, year: '2025' }),
     ...getAlphabetizedWorkByYear({ allWork: allPosts, year: '2024' }),
     ...getAlphabetizedWorkByYear({ allWork: allPosts, year: '2023' }),
