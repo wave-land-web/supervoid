@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname
 
 <nav
   id="navigation"
-  class="fixed top-0 left-0 right-0 flex min-h-[var(--nav-height)] transition-all duration-(--transition) z-20 bg-gradient-to-b from-black to-transparent"
+  class="fixed top-0 left-0 right-0 flex min-h-(--nav-height) transition-all duration-(--transition) z-20 bg-linear-to-b from-black to-transparent"
   data-current-url={currentPath}
 >
   <!-- Mobile Navigation -->
@@ -56,12 +56,12 @@ const currentPath = Astro.url.pathname
     >
       <span
         id="top"
-        class="h-[2px] w-6 bg-white rounded-md transition duration-(--transition) -translate-y-1 group-[.active]:rotate-[135deg] group-[.active]:translate-y-[1px]"
+        class="h-0.5 w-6 bg-white rounded-md transition duration-(--transition) -translate-y-1 group-[.active]:rotate-135 group-[.active]:translate-y-px"
       >
       </span>
       <span
         id="bottom"
-        class="h-[2px] w-6 bg-white rounded-md transition duration-(--transition) translate-y-1 group-[.active]:rotate-[-135deg] group-[.active]:-translate-y-[1px]"
+        class="h-0.5 w-6 bg-white rounded-md transition duration-(--transition) translate-y-1 group-[.active]:rotate-[-135deg] group-[.active]:-translate-y-px"
       >
       </span>
     </button>
