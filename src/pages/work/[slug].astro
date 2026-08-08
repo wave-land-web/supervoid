@@ -29,9 +29,16 @@ export async function getStaticPaths() {
 }
 
 const { post, prevPost, nextPost } = Astro.props
+
+// Only pull in the Mux player script on entries that actually render one
+const hasMuxVideo = Boolean(post.data.gifs.videoHero || post.data.gifs.gallery?.length)
 ---
 
-<Layout title={`Work - ${post.data.title}`} description={toMetaDescription(post.data.info[0])}>
+<Layout
+  title={`Work - ${post.data.title}`}
+  description={toMetaDescription(post.data.info[0])}
+  mux={hasMuxVideo}
+>
   <header class="pt-(--nav-height)">
     <div class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa no-repeat">
       {
@@ -43,9 +50,12 @@ const { post, prevPost, nextPost } = Astro.props
             class="w-full hero-mux-player"
           />
         ) : post.data.gifs.imageHero ? (
+          /* Above-the-fold hero: the LCP element, so fetch it immediately */
           <Picture
             src={post.data.gifs.imageHero}
             alt={post.data.title}
+            loading="eager"
+            fetchpriority="high"
             class="absolute top-0 left-0 w-full h-full object-cover"
           />
         ) : null

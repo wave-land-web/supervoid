@@ -9,12 +9,18 @@ export interface Props {
   title: string
   description?: string
   socialImage?: string
+  /** Load the Mux player script. Only set on pages that render <mux-player>. */
+  mux?: boolean
+  /** Load the YouTube IFrame API. Only set on pages with lighting cards. */
+  youtube?: boolean
 }
 
 const {
   title,
   description = 'SUPERVOID is a creative and technical design studio specializing in screen visuals, lighting, lasers, scenic design and custom control setups for touring artists.',
   socialImage,
+  mux = false,
+  youtube = false,
 } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalURL)
@@ -62,11 +68,11 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
     <Font cssVariable="--font-header" preload />
     <Font cssVariable="--font-body" preload />
 
-    <!-- YouTube API -->
-    <script src="https://www.youtube.com/iframe_api" is:inline async></script>
+    {/* YouTube API — opted into by pages that embed YouTube players */}
+    {youtube && <script src="https://www.youtube.com/iframe_api" is:inline async />}
 
-    <!-- Mux -->
-    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" is:inline async></script>
+    {/* Mux — opted into by pages that render a video player */}
+    {mux && <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" is:inline async />}
 
     <!-- Umami Analytics -->
     <script
