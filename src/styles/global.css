@@ -96,7 +96,9 @@
 
     /* Smooth Scrolling */
     scroll-behavior: smooth;
-    scroll-padding-top: 0;
+
+    /* Offset anchor targets by the fixed navbar so they aren't hidden beneath it */
+    scroll-padding-top: var(--nav-height);
   }
 
   body {

@@ -8,7 +8,6 @@ export interface Props {
 
 const { work } = Astro.props
 const { id } = work
-const playbackId = work.data.gifs.videoHero
 const imageHero = work.data.thumbnail
 const videoTitle = work.data.title
 const cardId = `work-preview-card-${id}`
@@ -20,18 +19,7 @@ const cardId = `work-preview-card-${id}`
 >
   <a href={`/work/${id}`}>
     {
-      playbackId && !imageHero ? (
-        <mux-player
-          playback-id={playbackId}
-          metadata-video-title={videoTitle}
-          accent-color="var(--color-magenta-900)"
-          style="--controls: none;"
-          class="w-full brightness-75 group-[.playing]:brightness-100 group-[.playing]:scale-105 transition duration-(--transition)"
-          loop
-          muted
-          paused
-        />
-      ) : imageHero ? (
+      imageHero ? (
         <Picture
           src={imageHero}
           alt={videoTitle}

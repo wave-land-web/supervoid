@@ -50,13 +50,39 @@ const youtubeId = work.data.youtubeId
   const playButton = document.querySelector(`#play-button-${youtubeId}`)
   let player
 
+  // The IFrame API script is loaded `async`, so `YT` may not exist yet when a
+  // visitor clicks. Share one promise across every card on the page that
+  // resolves when the API fires its global ready callback.
+  window.youTubeApiReady ??= new Promise((resolve) => {
+    if (window.YT?.Player) {
+      resolve()
+      return
+    }
+
+    const previousCallback = window.onYouTubeIframeAPIReady
+
+    window.onYouTubeIframeAPIReady = () => {
+      previousCallback?.()
+      resolve()
+    }
+  })
+
   // Initialize YouTube Player
   function onPlayerReady(event) {
     event.target.playVideo()
     posterImage.classList.add('hidden')
   }
 
-  function playYouTubeVideo() {
+  async function playYouTubeVideo() {
+    await window.youTubeApiReady
+
+    // Reuse the existing player instead of constructing a new one per click
+    if (player) {
+      player.playVideo()
+      posterImage.classList.add('hidden')
+      return
+    }
+
     player = new YT.Player(`player-${youtubeId}`, {
       videoId: youtubeId,
       events: {

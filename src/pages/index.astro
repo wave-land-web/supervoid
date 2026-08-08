@@ -5,7 +5,7 @@ import LightingPreviewCard from '../components/ui/LightingPreviewCard.astro'
 import WorkPreviewCard from '../components/ui/WorkPreviewCard.astro'
 import YearHeading from '../components/ui/YearHeading.astro'
 import Layout from '../layouts/Layout.astro'
-import { getAlphabetizedWorkByYear } from '../utils/sortWork'
+import { getAlphabetizedWorkByYear, getWorkYearsDescending } from '../utils/sortWork'
 
 // Get the video and lighting work data
 const videoWorkData = await getCollection('work')
@@ -14,11 +14,11 @@ const lightingWorkData = await getCollection('lighting')
 // Combine both collections
 const allWork = [...videoWorkData, ...lightingWorkData]
 
-const work2026 = getAlphabetizedWorkByYear({ allWork, year: '2026' })
-const work2025 = getAlphabetizedWorkByYear({ allWork, year: '2025' })
-const work2024 = getAlphabetizedWorkByYear({ allWork, year: '2024' })
-const work2023 = getAlphabetizedWorkByYear({ allWork, year: '2023' })
-const work2022 = getAlphabetizedWorkByYear({ allWork, year: '2022' })
+// Group by year, newest first — years come from the content, not a hardcoded list
+const workByYear = getWorkYearsDescending(allWork).map((year) => ({
+  year,
+  work: getAlphabetizedWorkByYear({ allWork, year }),
+}))
 ---
 
 <Layout title="Screen Visuals, Lighting, Lasers & Scenic Design for Touring Artists">
@@ -43,79 +43,21 @@ const work2022 = getAlphabetizedWorkByYear({ allWork, year: '2022' })
   </header>
 
   <main id="work" class="relative w-full">
-    <section id="2026">
-      <YearHeading year="2026" />
-      <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-        {
-          work2026.map((work) =>
-            work.collection === 'work' ? (
-              <WorkPreviewCard work={work} />
-            ) : (
-              <LightingPreviewCard work={work} />
-            ),
-          )
-        }
-      </div>
-    </section>
-
-    <section id="2025">
-      <YearHeading year="2025" />
-      <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-        {
-          work2025.map((work) =>
-            work.collection === 'work' ? (
-              <WorkPreviewCard work={work} />
-            ) : (
-              <LightingPreviewCard work={work} />
-            ),
-          )
-        }
-      </div>
-    </section>
-
-    <section id="2024">
-      <YearHeading year="2024" />
-      <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-        {
-          work2024.map((work) =>
-            work.collection === 'work' ? (
-              <WorkPreviewCard work={work} />
-            ) : (
-              <LightingPreviewCard work={work} />
-            ),
-          )
-        }
-      </div>
-    </section>
-
-    <section id="2023">
-      <YearHeading year="2023" />
-      <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-        {
-          work2023.map((work) =>
-            work.collection === 'work' ? (
-              <WorkPreviewCard work={work} />
-            ) : (
-              <LightingPreviewCard work={work} />
-            ),
-          )
-        }
-      </div>
-    </section>
-
-    <section id="2022">
-      <YearHeading year="2022" />
-      <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-        {
-          work2022.map((work) =>
-            work.collection === 'work' ? (
-              <WorkPreviewCard work={work} />
-            ) : (
-              <LightingPreviewCard work={work} />
-            ),
-          )
-        }
-      </div>
-    </section>
+    {
+      workByYear.map(({ year, work }) => (
+        <section id={year}>
+          <YearHeading year={year} />
+          <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+            {work.map((item) =>
+              item.collection === 'work' ? (
+                <WorkPreviewCard work={item} />
+              ) : (
+                <LightingPreviewCard work={item} />
+              ),
+            )}
+          </div>
+        </section>
+      ))
+    }
   </main>
 </Layout>

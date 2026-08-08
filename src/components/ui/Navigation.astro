@@ -217,7 +217,8 @@ const currentPath = Astro.url.pathname
     }
 
     function handleMobileNavigationOverlayOnResize() {
-      if (window.innerWidth >= 768) {
+      // Must match the `lg` breakpoint where #desktop-nav replaces #mobile-nav
+      if (window.innerWidth >= 1024) {
         overlayDisplayed = false
         body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
 

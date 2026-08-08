@@ -12,7 +12,7 @@ export interface Props {
 const { images, class: className } = Astro.props
 ---
 
-<div class={`swiper min-w-0 max-w-full ${className}`}>
+<div class={`swiper js-slide-carousel min-w-0 max-w-full ${className}`}>
   <div class="swiper-wrapper mb-12">
     {
       images.map((image) => (
@@ -75,31 +75,35 @@ const { images, class: className } = Astro.props
   // Get current page
   const { pathname } = new URL(window.location.href)
 
-  // init Swiper:
-  const swiper = new Swiper('.swiper', {
-    effect: pathname.includes('jobs') ? 'cards' : 'slide', // Render by page
-    grabCursor: true,
-    modules: [EffectCards, Pagination, Keyboard, Autoplay],
-    speed: 500,
-    loop: true,
-    centeredSlides: true,
-    cardsEffect: {
-      rotate: false,
-      slideShadows: true,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true,
-    },
-    keyboard: {
-      enabled: true,
-      onlyInViewport: true,
-    },
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: true,
-      pauseOnMouseEnter: true,
-    },
-  })
+  // Init every instance against its own root element. A bare '.swiper' selector
+  // would bind only the first match on the page and could claim the element
+  // belonging to VerticalImageCarousel, which uses an incompatible config.
+  for (const el of document.querySelectorAll<HTMLElement>('.js-slide-carousel')) {
+    new Swiper(el, {
+      effect: pathname.includes('jobs') ? 'cards' : 'slide', // Render by page
+      grabCursor: true,
+      modules: [EffectCards, Pagination, Keyboard, Autoplay],
+      speed: 500,
+      loop: true,
+      centeredSlides: true,
+      cardsEffect: {
+        rotate: false,
+        slideShadows: true,
+      },
+      pagination: {
+        el: el.querySelector<HTMLElement>('.swiper-pagination'),
+        type: 'bullets',
+        clickable: true,
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: true,
+        pauseOnMouseEnter: true,
+      },
+    })
+  }
 </script>

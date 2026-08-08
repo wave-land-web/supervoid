@@ -16,8 +16,9 @@ export default defineConfig({
     icon(),
     sitemap({
       lastmod: new Date(),
-      filter: (page) =>
-        page !== 'https://www.supervoid.tv/404' && page !== 'https://www.supervoid.tv/success',
+      // Astro emits canonical URLs with a trailing slash, so compare against the
+      // pathname rather than an exact string that would never match.
+      filter: (page) => !['/404/', '/success/'].includes(new URL(page).pathname),
     }),
     mdx(),
     partytown(),

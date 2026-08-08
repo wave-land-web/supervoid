@@ -8,7 +8,7 @@ const workCollection = defineCollection({
     z.object({
       id: z.number(),
       title: z.string(),
-      year: z.string().optional(),
+      year: z.string(),
       info: z.array(z.string()),
       credits: z.array(z.string()).optional(),
       thumbnail: image().optional(),
@@ -41,7 +41,7 @@ const lightingCollection = defineCollection({
     z.object({
       id: z.number(),
       title: z.string(),
-      year: z.string().optional(),
+      year: z.string(),
       youtubeId: z.string(),
       poster: image(),
     }),
