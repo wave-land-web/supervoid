@@ -32,6 +32,14 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
 
+    <!-- Reveal-system gate: mark scripting live so the `.lsa` hidden state (in
+         global.css) only applies when JS can lift it again. With JS disabled or
+         failing, `.lsa` content stays visible instead of a blank page. Inline +
+         synchronous so it runs before first paint (no flash of visible text). -->
+    <script is:inline>
+      document.documentElement.classList.add('lsa-on')
+    </script>
+
     <!-- SEO -->
     <title>SUPERVOID | {title}</title>
     <meta name="title" content={`SUPERVOID | ${title}`} />
@@ -63,6 +71,14 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
     <meta name="msapplication-TileColor" content="#000000" />
     <meta name="theme-color" content="#000000" />
+
+    <!-- Declared here as well as in CSS (`html { color-scheme }`). The browser
+         paints a canvas during a navigation, before the new document's
+         stylesheet has been parsed — at that point the CSS declaration doesn't
+         exist yet, so it falls back to light and can flash white between pages.
+         A meta tag is read straight from the head, so the very first paint is
+         already dark. -->
+    <meta name="color-scheme" content="dark" />
 
     <!-- Preload Fonts -->
     <Font cssVariable="--font-header" preload />
@@ -96,45 +112,52 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
   </body>
 </html>
 
-<script is:inline data-astro-rerun>
+<script is:inline>
   /**
    * Animate sections with the class `lsa` when they come into view
    */
   function handleAnimations() {
-    if (!window.IntersectionObserver) {
-      return console.log('IntersectionObserver not supported')
+    const sections = document.querySelectorAll('.lsa')
+    if (sections.length === 0) return
+
+    // No IntersectionObserver (a very old browser): reveal everything up front
+    // so content is never left stuck behind the `.lsa` hidden state.
+    if (!('IntersectionObserver' in window)) {
+      for (const section of sections) section.classList.add('active')
+      return
     }
 
-    // Grab all sections to be animated
-    const sections = document.querySelectorAll('.lsa')
-
-    // Configure observer options
-    if (sections.length !== 0) {
-      const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0,
-      }
-
-      // Initialize observer
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
           const section = entry.target
 
           // By default, animations repeat on scroll unless the section has the class `no-repeat`
           if (entry.isIntersecting) {
             section.classList.add('active')
-          } else if (!entry.isIntersecting && !section.classList.contains('no-repeat')) {
+            // Play-once elements never change again — stop watching them so the
+            // callback doesn't keep firing for already-revealed content.
+            if (section.classList.contains('no-repeat')) observer.unobserve(section)
+          } else if (!section.classList.contains('no-repeat')) {
             section.classList.remove('active')
           }
-        })
-      }, options)
+        }
+      },
+      // Fire as soon as the element's top edge crosses into the bottom 90% of
+      // the viewport (threshold 0 + a -10% bottom margin), so a reveal starts
+      // once the element is meaningfully on screen rather than at its first
+      // pixel. Height-independent: a `threshold` fraction would never be
+      // reached by an element taller than ~1/threshold viewports, leaving it
+      // stuck hidden.
+      { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0 },
+    )
 
-      // Observe each section with the class `lsa`
-      sections.forEach((section) => observer.observe(section))
-    }
+    for (const section of sections) observer.observe(section)
   }
 
-  // Handle animations on page load
-  document.addEventListener('DOMContentLoaded', handleAnimations)
+  // This script is the last node in the document, so every `.lsa` element is
+  // already parsed. Run now instead of on DOMContentLoaded, which is blocked
+  // until every deferred bundle has downloaded and executed. Above-the-fold
+  // content doesn't wait on this at all — it uses the CSS-only `lsa-load`.
+  handleAnimations()
 </script>

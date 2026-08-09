@@ -39,6 +39,26 @@
   --transition: 300ms;
 }
 
+/* Easing — Tailwind's stock curve is `cubic-bezier(0.4, 0, 0.2, 1)`, which eases
+   IN at the start, so a reveal hangs before it gets moving and then coasts.
+   These start fast and settle gently instead, which is what an entrance wants.
+   Every bare `transition-*` utility reads `--default-transition-timing-function`,
+   so this retunes the `lsa` reveals, link hovers and card zooms from one place;
+   the `--ease-*` tokens also back the `ease-*` utilities and the component
+   `<style>` blocks, keeping every curve on the site traceable to these lines.
+
+   `static` because `--ease-in-out` is referenced ONLY from scoped `<style>`
+   blocks in other components (Carousel, AnimatedCTA). Tailwind tree-shakes
+   unused theme variables, and it can't see those references as utility usage —
+   without `static` the token can be dropped, which turns those declarations
+   into `transition: all 0.3s <invalid>` and silently kills the transition with
+   no build error. */
+@theme static {
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1); /* easeOutCubic — gentle settle */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* easeInOutCubic */
+  --default-transition-timing-function: var(--ease-out);
+}
+
 /* Animations */
 
 @view-transition {
@@ -47,11 +67,17 @@
 
 @media (prefers-reduced-motion: no-preference) {
   /**
-    * Required class: `lsa` (initializes animations and defaults to fade-in)
-    * Note: Add `no-repeat` class to prevent animations from repeating on scroll
-    */
-  .lsa {
-    @apply opacity-0 transform transition duration-700;
+   * Required class: `lsa` (initializes animations and defaults to fade-in)
+   * Note: Add `no-repeat` class to prevent animations from repeating on scroll
+   *
+   * Gated on `.lsa-on`, which an inline script in `Layout.astro` sets on <html>
+   * before first paint. The hidden state therefore only applies when scripting
+   * is live to lift it again — with JS disabled or failing to load, `.lsa`
+   * content stays visible rather than leaving a blank page. Above-the-fold
+   * content should use `lsa-load` below, which needs no JS at all.
+   */
+  .lsa-on .lsa {
+    @apply opacity-0 transform transition duration-1000;
 
     /* Slide animations */
     &.lsa-slide-up {
@@ -84,12 +110,135 @@
       @apply opacity-100 translate-x-0 translate-y-0;
     }
   }
+
+  /**
+   * Above-the-fold entrance — a CSS-ONLY fade (+ optional rise), deliberately
+   * separate from the JS-driven `lsa` system above.
+   *
+   * USE THIS, NOT `lsa`, FOR ANYTHING ABOVE THE FOLD. `lsa`'s hidden state is
+   * applied synchronously (the inline `lsa-on` script in Layout.astro) but
+   * lifted asynchronously by the observer, so hero content already sitting in
+   * the delivered HTML cannot paint until JS runs. The `lsa-on` gate only
+   * protects against JS being DISABLED, not against it being SLOW — which is
+   * the case that actually bites on mobile.
+   *
+   * The hidden state lives ONLY inside the keyframes, and `animation-fill-mode:
+   * both` holds the `from` frame through any delay. So if animation is
+   * unsupported or motion is reduced, the content just renders visible. Never
+   * blank, and no scripting gate needed.
+   *
+   * Two forms:
+   *   `hero-in`  — on a wrapper; its direct children cascade in DOM order and
+   *                always rise. Prefer this: a wrapper whose optional children
+   *                are absent still cascades over the ones it has, with no gap
+   *                in the sequence (unlike per-element delays, which hardcode
+   *                a slot).
+   *   `lsa-load` — on a single element, for above-the-fold items that aren't
+   *                siblings in one wrapper (page headers, hero media, cards).
+   *                Fades by default; add `lsa-slide-up` to rise as well.
+   *
+   * Longhands, not the `animation` shorthand: the shorthand would reset
+   * `animation-delay`, and these rules are unlayered so they'd beat the
+   * Tailwind delay utilities that stagger individual elements.
+   */
+  .hero-in > *,
+  .lsa-load {
+    animation-duration: 1s;
+    animation-timing-function: var(--ease-out);
+    animation-fill-mode: both;
+  }
+
+  .hero-in > * {
+    animation-name: lsa-rise;
+  }
+
+  .lsa-load {
+    animation-name: lsa-fade;
+  }
+
+  .lsa-load.lsa-slide-up {
+    animation-name: lsa-rise;
+  }
+
+  /* The cascade runs to 6 — past today's tallest hero — so adding a child
+     doesn't drop the last one to delay 0, out of sequence. */
+  .hero-in > *:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .hero-in > *:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .hero-in > *:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  .hero-in > *:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+  .hero-in > *:nth-child(6) {
+    animation-delay: 0.5s;
+  }
+
+  /**
+   * Row cascade for the card grids (`lsa-stagger` on the grid container).
+   * Lives here rather than in per-item inline styles so the column count is
+   * stated once, next to the breakpoint it depends on: the offset lands on the
+   * second column and only applies from `md`, where those grids actually
+   * become 2-up. Below that they're a single column, and a delay would just
+   * lag every other card with no row to cascade.
+   *
+   * Split by mechanism because a grid holds both kinds — the first row is
+   * `lsa-load` (animation-driven) and the rest are `lsa` (transition-driven),
+   * and neither reads the other's delay property.
+   */
+  @media (width >= 48rem) {
+    .lsa-stagger > .lsa:nth-child(2n) {
+      transition-delay: 80ms;
+    }
+
+    .lsa-stagger > .lsa-load:nth-child(2n) {
+      animation-delay: 80ms;
+    }
+  }
+}
+
+@keyframes lsa-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lsa-rise {
+  from {
+    opacity: 0;
+    translate: 0 calc(var(--spacing) * 4);
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
 }
 
 /* General */
 
 @layer base {
   html {
+    /* The site is black end to end, so tell the browser that rather than
+       letting it assume light. This is what colours the surfaces the page
+       doesn't paint itself: the canvas shown between documents during a
+       navigation, the overscroll/rubber-band area, and native UI such as the
+       contact form's select popup. Left undeclared, those default to white and
+       can flash through on the way into a new page. */
+    color-scheme: dark;
+
+    /* Paint the background here too, not only on <body>. A background set only
+       on the body propagates to the canvas instead of painting on the element,
+       so the root snapshot a cross-document view transition captures can come
+       through transparent — letting white show for a frame mid-transition. */
+    background-color: var(--color-black);
+
     /* Scrollbar */
     scrollbar-color: var(--color-white) var(--color-black);
     scrollbar-width: thin;
@@ -99,6 +248,15 @@
 
     /* Offset anchor targets by the fixed navbar so they aren't hidden beneath it */
     scroll-padding-top: var(--nav-height);
+
+    /* The entrance animations translate their element 1rem as it settles, and
+       Chrome's scroll anchoring reads that as content moving — so it shifts the
+       scroll position to compensate. On a reload that lands the page 1rem down
+       instead of at the top, with the hero appearing to drop before it slides
+       up. Nothing here needs anchoring: `astro:assets` gives every image
+       explicit dimensions and the players reserve a 16/9 box, so there is no
+       late-loading reflow for it to protect against. */
+    overflow-anchor: none;
   }
 
   body {

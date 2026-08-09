@@ -5,15 +5,20 @@ import type { CollectionEntry } from 'astro:content'
 
 export interface Props {
   work: CollectionEntry<'lighting'>
+  /** Skip the scroll observer and animate from CSS on first paint. */
+  isAboveTheFold?: boolean
 }
 
-const { work } = Astro.props
+const { work, isAboveTheFold = false } = Astro.props
 const youtubeId = work.data.youtubeId
 ---
 
 <div
   id={`lighting-preview-card-${youtubeId}`}
-  class="lighting-preview-card group relative pb-[56.25%] h-0 overflow-hidden w-full lsa lsa-slide-up no-repeat rounded-xl"
+  class:list={[
+    'lighting-preview-card group relative pb-[56.25%] h-0 overflow-hidden w-full lsa-slide-up rounded-xl',
+    isAboveTheFold ? 'lsa-load' : 'lsa no-repeat',
+  ]}
 >
   <!-- YouTube embed inserted here via YouTube API -->
   <div id={`player-${youtubeId}`} class="absolute top-0 left-0 w-full h-full"></div>
@@ -24,6 +29,7 @@ const youtubeId = work.data.youtubeId
       class="w-full brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-(--transition)"
       src={work.data.poster}
       alt={work.data.title}
+      loading={isAboveTheFold ? 'eager' : 'lazy'}
     />
 
     <button

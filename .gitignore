@@ -18,7 +18,11 @@ pnpm-debug.log*
 .DS_Store
 
 # misc
-.vscode/
+# Editor config is shared on purpose — settings.json carries the Tailwind v4
+# at-rule exemption and the Biome/Astro formatter split, which every clone needs.
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .astro/
 .netlify/
 NOTES.md

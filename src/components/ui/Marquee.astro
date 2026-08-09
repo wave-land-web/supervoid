@@ -7,7 +7,7 @@ const { class: className } = Astro.props
 ---
 
 <div
-  class={`${className} marquee max-w-screen-2xl mx-auto border-t-[1px] border-b-[1px] py-4 bg-black`}
+  class={`${className} marquee max-w-screen-2xl mx-auto border-t border-b py-4 bg-black`}
 >
   <div class="marquee-container">
     <p class="text-l">
@@ -60,6 +60,19 @@ const { class: className } = Astro.props
     align-items: center;
     justify-content: space-evenly;
     animation: footerMarquee 30s linear 0s infinite;
+  }
+
+  /* Reduced motion: stop the crawl. The second and third copies exist only so
+     the loop wraps seamlessly — with the animation off they would just repeat
+     the same sentence, so drop them and leave a single static line. */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-container {
+      animation: none;
+    }
+
+    .marquee-container:not(:first-child) {
+      display: none;
+    }
   }
 
   @keyframes footerMarquee {

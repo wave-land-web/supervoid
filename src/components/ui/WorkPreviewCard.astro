@@ -4,9 +4,11 @@ import type { CollectionEntry } from 'astro:content'
 
 export interface Props {
   work: CollectionEntry<'work'>
+  /** Skip the scroll observer and animate from CSS on first paint. */
+  isAboveTheFold?: boolean
 }
 
-const { work } = Astro.props
+const { work, isAboveTheFold = false } = Astro.props
 const { id } = work
 const imageHero = work.data.thumbnail
 const videoTitle = work.data.title
@@ -15,7 +17,10 @@ const cardId = `work-preview-card-${id}`
 
 <article
   id={cardId}
-  class="work-preview-card relative w-full h-0 max-w-screen-2xl mx-auto pb-[56.25%] rounded-xl overflow-hidden group lsa lsa-slide-up no-repeat"
+  class:list={[
+    'work-preview-card relative w-full h-0 max-w-screen-2xl mx-auto pb-[56.25%] rounded-xl overflow-hidden group lsa-slide-up',
+    isAboveTheFold ? 'lsa-load' : 'lsa no-repeat',
+  ]}
 >
   <a href={`/work/${id}`}>
     {
@@ -23,6 +28,7 @@ const cardId = `work-preview-card-${id}`
         <Picture
           src={imageHero}
           alt={videoTitle}
+          loading={isAboveTheFold ? 'eager' : 'lazy'}
           class="absolute top-0 left-0 w-full h-full object-cover brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-(--transition)"
         />
       ) : null

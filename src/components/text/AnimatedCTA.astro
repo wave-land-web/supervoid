@@ -18,9 +18,9 @@ const { href, title, direction, text, class: className } = Astro.props
   title={title}
   aria-label={title}
 >
-  {direction === 'left' && <Icon name="left" class="size-20 flex-shrink-0" />}
+  {direction === 'left' && <Icon name="left" class="size-20 shrink-0" />}
   <span>{text}</span>
-  {direction === 'right' && <Icon name="right" class="size-20 flex-shrink-0" />}
+  {direction === 'right' && <Icon name="right" class="size-20 shrink-0" />}
 
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const { href, title, direction, text, class: className } = Astro.props
     stroke-width: 4;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    transition: stroke-dashoffset 0.5s ease-in-out;
+    transition: stroke-dashoffset 0.5s var(--ease-in-out);
   }
 
   a:hover .circle-path {

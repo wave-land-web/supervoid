@@ -40,7 +40,7 @@ const hasMuxVideo = Boolean(post.data.gifs.videoHero || post.data.gifs.gallery?.
   mux={hasMuxVideo}
 >
   <header class="pt-(--nav-height)">
-    <div class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa no-repeat">
+    <div class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa-load">
       {
         post.data.gifs.videoHero ? (
           <mux-player
@@ -130,7 +130,7 @@ const hasMuxVideo = Boolean(post.data.gifs.videoHero || post.data.gifs.gallery?.
       </div>
     </section>
 
-    <section id="work-gifs" class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+    <section id="work-gifs" class="lsa-stagger grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
       {
         post.data.gifs.gallery?.map((gif: string) => (
           <article class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa lsa-slide-up no-repeat">

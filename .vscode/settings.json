@@ -1,0 +1,36 @@
+{
+  // Tailwind v4 replaces most of its config with CSS at-rules (`@theme`,
+  // `@utility`, `@source`, `@apply`). VS Code's built-in CSS validator predates
+  // them and reports "Unknown at rule @theme". Biome parses them correctly via
+  // `css.parser.tailwindDirectives` in biome.json, so the built-in check is the
+  // only thing complaining — turn that one rule off and keep the rest.
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore",
+
+  // Biome owns everything it formats well today.
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "biomejs.biome",
+  // One coordinated action rather than `quickfix.biome` +
+  // `source.organizeImports.biome`: those two apply fixes unaware of each other
+  // and can emit malformed code when both touch the same lines.
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit"
+  },
+  "[javascript]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[json]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[jsonc]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[css]": { "editor.defaultFormatter": "biomejs.biome" },
+
+  // `.astro` stays with the official Astro extension. Biome's Astro support is
+  // still experimental (it formats the HTML/CSS/JS parts of the file), so
+  // letting both format `.astro` would mean two tools fighting over the same
+  // buffer. biome.json disables its formatter for `.astro` to match this, while
+  // keeping Biome's linting active there.
+  "[astro]": { "editor.defaultFormatter": "astro-build.astro-vscode" },
+
+  // Astro's own defaults
+  "astro.content-intellisense": true,
+  "files.associations": { "*.astro": "astro" }
+}

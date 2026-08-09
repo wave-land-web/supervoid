@@ -23,20 +23,19 @@ const workByYear = getWorkYearsDescending(allWork).map((year) => ({
 
 <Layout title="Screen Visuals, Lighting, Lasers & Scenic Design for Touring Artists" youtube>
   <header class="pt-[calc(var(--nav-height)+2rem)]">
-    <div id="header-content" class="flex flex-col gap-6">
-      <h1 class="text-xl md:text-2xl lg:text-3xl lsa lsa-slide-up no-repeat mb-4">
+    {/* `hero-in` cascades these three children in DOM order — no per-element delays */}
+    <div id="header-content" class="hero-in flex flex-col gap-6">
+      <h1 class="text-xl md:text-2xl lg:text-3xl mb-4">
         SUPERVOID <br />
-        <span class="block text-m text-magenta-900 lsa lsa-slide-up no-repeat delay-100"
-          >designs shows.</span
-        >
+        <span class="block text-m text-magenta-900">designs shows.</span>
       </h1>
 
-      <p class="max-w-3xl text-balance text-base lsa lsa-slide-up no-repeat delay-200">
+      <p class="max-w-3xl text-balance text-base">
         We deliver end-to-end creative direction for live shows—designing unforgettable stages,
         visuals, and moments that bring an artist's vision to life.
       </p>
 
-      <div class="lsa lsa-slide-up no-repeat delay-300">
+      <div>
         <CTA text="Contact Us Today" href="/contact" />
       </div>
     </div>
@@ -44,17 +43,22 @@ const workByYear = getWorkYearsDescending(allWork).map((year) => ({
 
   <main id="work" class="relative w-full">
     {
-      workByYear.map(({ year, work }) => (
+      workByYear.map(({ year, work }, yearIndex) => (
         <section id={year}>
           <YearHeading year={year} />
-          <div class="grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-            {work.map((item) =>
-              item.collection === 'work' ? (
-                <WorkPreviewCard work={item} />
+          <div class="lsa-stagger grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+            {work.map((item, itemIndex) => {
+              // The first row lands in the fold — one card on phones, two once
+              // the grid splits at `md`. Those animate from CSS instead of
+              // waiting on the scroll observer.
+              const isAboveTheFold = yearIndex === 0 && itemIndex < 2
+
+              return item.collection === 'work' ? (
+                <WorkPreviewCard work={item} isAboveTheFold={isAboveTheFold} />
               ) : (
-                <LightingPreviewCard work={item} />
-              ),
-            )}
+                <LightingPreviewCard work={item} isAboveTheFold={isAboveTheFold} />
+              )
+            })}
           </div>
         </section>
       ))

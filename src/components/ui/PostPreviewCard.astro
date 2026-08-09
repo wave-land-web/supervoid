@@ -10,7 +10,13 @@ export interface Props {
 const { post, isAboveTheFold } = Astro.props
 ---
 
-<article class="lsa lsa-slide-up no-repeat group">
+<article
+  class:list={[
+    'lsa-slide-up group',
+    // Cards in the fold animate from CSS so they don't wait on the observer
+    isAboveTheFold ? 'lsa-load' : 'lsa no-repeat',
+  ]}
+>
   <a href={`/press/${post.id}`}>
     <div class="mb-4 h-[clamp(250px,30vw,400px)] overflow-hidden rounded-xl">
       <Picture

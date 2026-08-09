@@ -146,6 +146,50 @@ const currentPath = Astro.url.pathname
   </div>
 
   <style>
+    /* Cascade the overlay's links in as it opens, top to bottom. Opening only:
+       the close toggles `invisible` alongside `opacity-0`, and `visibility`
+       isn't in Tailwind's `transition` property list, so the overlay is gone on
+       that same frame — nothing plays out on the way back. Keeping the delays
+       on the open state means they can't queue up against that snap either.
+       nth-child carries spare slots so adding a nav link won't drop the last
+       item back to delay 0, out of sequence. */
+    @media (prefers-reduced-motion: no-preference) {
+      #mobile-nav-overlay li {
+        opacity: 0;
+        translate: 0 0.75rem;
+        transition:
+          opacity 0.4s var(--ease-out),
+          translate 0.4s var(--ease-out);
+      }
+
+      #mobile-nav-overlay:not(.opacity-0) li {
+        opacity: 1;
+        translate: 0 0;
+      }
+
+      #mobile-nav-overlay:not(.opacity-0) li:nth-child(1) {
+        transition-delay: 0.05s;
+      }
+      #mobile-nav-overlay:not(.opacity-0) li:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      #mobile-nav-overlay:not(.opacity-0) li:nth-child(3) {
+        transition-delay: 0.15s;
+      }
+      #mobile-nav-overlay:not(.opacity-0) li:nth-child(4) {
+        transition-delay: 0.2s;
+      }
+      #mobile-nav-overlay:not(.opacity-0) li:nth-child(5) {
+        transition-delay: 0.25s;
+      }
+      #mobile-nav-overlay:not(.opacity-0) li:nth-child(6) {
+        transition-delay: 0.3s;
+      }
+      #mobile-nav-overlay:not(.opacity-0) li:nth-child(7) {
+        transition-delay: 0.35s;
+      }
+    }
+
     /* Active nav item styles */
 
     #navigation li a,
