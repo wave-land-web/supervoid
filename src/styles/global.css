@@ -373,10 +373,16 @@
   mux-player {
     aspect-ratio: 16 / 9;
   }
+}
 
-  /* Press Styles */
+@layer components {
+  /* A page's content under its header, in the same column as the nav and the header */
+  .page-body {
+    @apply w-full max-w-screen-2xl mx-auto p-4 md:p-8 pb-16 md:pb-24;
+  }
 
-  #press-layout {
+  /* Long-form copy written in Markdown: press posts */
+  .prose {
     & h2 {
       @apply text-xl;
     }
@@ -389,20 +395,15 @@
       @apply text-m;
     }
 
-    & a:not(#pagination a) {
-      @apply text-magenta hover:text-magenta-light;
-    }
-
-    & #back-to-press {
-      @apply text-m;
-    }
-
     & p,
     & ul,
     & ol,
-    & pre,
-    & a:not(#pagination a) {
+    & pre {
       @apply text-xs;
+    }
+
+    & a {
+      @apply text-magenta hover:text-magenta-light;
     }
 
     & img,
@@ -438,12 +439,5 @@
     & strong {
       @apply font-bold;
     }
-  }
-}
-
-@layer components {
-  /* A page's content under its header, in the same column as the nav and the header */
-  .page-body {
-    @apply w-full max-w-screen-2xl mx-auto p-4 md:p-8 pb-16 md:pb-24;
   }
 }
