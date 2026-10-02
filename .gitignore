@@ -26,3 +26,6 @@ pnpm-debug.log*
 .astro/
 .netlify/
 NOTES.md
+
+# local browser-testing artifacts
+.playwright-mcp/
