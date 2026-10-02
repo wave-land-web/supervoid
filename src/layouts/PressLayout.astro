@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import PostHeader from '../components/layout/PostHeader.astro'
+import PageHeader from '../components/layout/PageHeader.astro'
 import Pagination from '../components/ui/Pagination.astro'
 import { socialImageFrom } from '../lib/socialImage'
 import Layout from './Layout.astro'
@@ -53,12 +53,12 @@ const schema = [
   ogType="article"
   schema={schema}
 >
+  <PageHeader title={title} image={{ src: image, alt: imageAlt }} narrow />
+
   <div
     id="press-layout"
-    class="page-body pt-0 max-w-4xl flex flex-col gap-[1lh] mb-16 md:mb-24 lsa no-repeat"
+    class="page-body max-w-4xl flex flex-col gap-[1lh] mb-16 md:mb-24 lsa no-repeat"
   >
-    <PostHeader title={title} image={image} imageAlt={imageAlt} />
-
     <slot />
 
     <Pagination

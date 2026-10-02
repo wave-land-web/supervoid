@@ -1,0 +1,54 @@
+---
+import { Picture } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+import { CONTAINER_SIZES, NARROW_SIZES } from '../../lib/images'
+
+/**
+ * The top of a page, clear of the fixed nav. A title on its own is large, with an optional line
+ * under it. With an image, the title sits across the image's top edge: the two share one grid
+ * cell, and the title moves up by half its own height, however many lines it wraps to.
+ */
+export interface Props {
+  title: string
+  /** A line under a title that has no image. */
+  lede?: string
+  image?: { src: ImageMetadata; alt: string; caption?: string }
+  /** Line up with a narrow reading column (press posts) instead of the full page width. */
+  narrow?: boolean
+}
+
+const { title, lede, image, narrow = false } = Astro.props
+---
+
+<header
+  class:list={[
+    'pt-[calc(var(--nav-height)+4rem)] md:pt-[calc(var(--nav-height)+6rem)] lsa-load lsa-slide-up',
+    narrow && 'max-w-4xl',
+  ]}
+>
+  {image ? (
+    <div class="grid">
+      <h1 class="col-start-1 row-start-1 self-start z-10 -translate-y-1/2 text-l text-center uppercase drop-shadow-lg">
+        {title}
+      </h1>
+      <figure class="col-start-1 row-start-1">
+        <Picture
+          src={image.src}
+          formats={['avif', 'webp']}
+          sizes={narrow ? NARROW_SIZES : CONTAINER_SIZES}
+          alt={image.alt}
+          loading="eager"
+          fetchpriority="high"
+        />
+        {image.caption && (
+          <figcaption class="py-4 text-2xs text-grey-100">{image.caption}</figcaption>
+        )}
+      </figure>
+    </div>
+  ) : (
+    <>
+      <h1 class="mb-4 text-xl text-center uppercase drop-shadow-lg">{title}</h1>
+      {lede && <p class="mx-auto text-center text-grey-100">{lede}</p>}
+    </>
+  )}
+</header>

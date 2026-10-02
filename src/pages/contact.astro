@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components'
+import PageHeader from '../components/layout/PageHeader.astro'
 import Button from '../components/ui/Button.astro'
 import Layout from '../layouts/Layout.astro'
 import { EMAIL, mailto } from '../lib/site'
@@ -14,9 +15,7 @@ const labelClass = 'block mb-2 text-left'
   title="Contact"
   description="Get in touch with SUPERVOID. We are always looking to collaborate with innovative creators and brands."
 >
-  <header class="pt-[calc(var(--nav-height)+6rem)] lsa-load lsa-slide-up">
-    <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">Contact Us</h1>
-  </header>
+  <PageHeader title="Contact Us" />
 
   <div class="page-body">
     <section class="text-center lsa-load lsa-slide-up [animation-delay:300ms]">

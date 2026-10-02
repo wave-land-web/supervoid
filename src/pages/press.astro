@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import PressCard from '../components/cards/PressCard.astro'
+import PageHeader from '../components/layout/PageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 import { sortPressNewestFirst } from '../lib/sortPress'
 
@@ -13,13 +14,10 @@ const ABOVE_THE_FOLD_COUNT = 2
   title="Press"
   description="Get a quick look at our latest projects, artist collabs, and highlights."
 >
-  <header class="pt-[calc(var(--nav-height)+6rem)] lsa-load lsa-slide-up">
-    <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">Press & Media</h1>
-    <p class="mx-auto text-center text-grey-100">
-      Get a quick look at our latest projects, artist collabs, and highlights. Click an image to
-      learn more.
-    </p>
-  </header>
+  <PageHeader
+    title="Press & Media"
+    lede="Get a quick look at our latest projects, artist collabs, and highlights. Click an image to learn more."
+  />
 
   <div class="page-body">
     <section class="lsa-stagger grid md:grid-cols-2 gap-x-10 gap-y-12">

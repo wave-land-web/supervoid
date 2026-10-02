@@ -10,7 +10,7 @@ import verticalCouchFour from '../assets/vertical-images/SVX_Vertical_0006_Couch
 import verticalCouchThree from '../assets/vertical-images/SVX_Vertical_0007_Couch 3.jpg'
 import verticalCouchTwo from '../assets/vertical-images/SVX_Vertical_0008_Couch 2.jpg'
 import verticalCouchOne from '../assets/vertical-images/SVX_Vertical_0009_Couch 1.jpg'
-import ImageHeader from '../components/layout/ImageHeader.astro'
+import PageHeader from '../components/layout/PageHeader.astro'
 import VerticalCarousel from '../components/media/VerticalCarousel.astro'
 import Button from '../components/ui/Button.astro'
 import SplitRow from '../components/ui/SplitRow.astro'
@@ -19,11 +19,13 @@ import { socialImageFrom } from '../lib/socialImage'
 ---
 
 <Layout title="About" socialImage={await socialImageFrom(aboutHeroImage)}>
-  <ImageHeader
+  <PageHeader
     title="Crafting Visual Experiences"
-    imageSrc={aboutHeroImage}
-    imageAlt="Radiohead at Madrid with Supervoid-designed screen visuals and lighting."
-    imageCaption="Radiohead, live in Madrid, 2025."
+    image={{
+      src: aboutHeroImage,
+      alt: 'Radiohead at Madrid with Supervoid-designed screen visuals and lighting.',
+      caption: 'Radiohead, live in Madrid, 2025.',
+    }}
   />
 
   <div class="page-body">

@@ -1,12 +1,11 @@
 ---
+import PageHeader from '../components/layout/PageHeader.astro'
 import Button from '../components/ui/Button.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Page Not Found" noindex>
-  <header class="pt-[calc(var(--nav-height)+6rem)] lsa-load lsa-slide-up">
-    <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">404</h1>
-  </header>
+  <PageHeader title="404" />
 
   <div class="page-body">
     <section class="max-w-xl m-auto pt-0 text-center lsa-load lsa-slide-up [animation-delay:300ms]">
