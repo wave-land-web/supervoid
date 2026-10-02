@@ -17,7 +17,7 @@ const { post, isAboveTheFold } = Astro.props
     isAboveTheFold ? 'lsa-load' : 'lsa no-repeat',
   ]}
 >
-  <a href={`/press/${post.id}`}>
+  <a href={`/press/${post.id}/`}>
     <div class="mb-4 h-[clamp(250px,30vw,400px)] overflow-hidden rounded-xl">
       <Picture
         src={post.data.image}

@@ -10,17 +10,20 @@ import SocialIcons from './SocialIcons.astro'
 // `section` is the path a link stays current under, when that isn't its href
 const NAV_LINKS: { label: string; href: string; section?: string }[] = [
   { label: 'Work', href: '/#work', section: '/work' },
-  { label: 'About', href: '/about' },
-  { label: 'Rentals', href: '/rentals' },
-  { label: 'Press', href: '/press' },
-  { label: 'Jobs', href: '/jobs' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'About', href: '/about/' },
+  { label: 'Rentals', href: '/rentals/' },
+  { label: 'Press', href: '/press/' },
+  { label: 'Jobs', href: '/jobs/' },
+  { label: 'Contact', href: '/contact/' },
 ]
 
 // aria-current: "page" on the page itself, "true" on pages inside its section
-const path = Astro.url.pathname.replace(/\/$/, '')
-const ariaCurrent = ({ href, section = href }: (typeof NAV_LINKS)[number]) =>
-  path === section ? 'page' : path.startsWith(`${section}/`) ? 'true' : undefined
+const withoutSlash = (pathname: string) => pathname.replace(/\/$/, '')
+const path = withoutSlash(Astro.url.pathname)
+const ariaCurrent = ({ href, section = href }: (typeof NAV_LINKS)[number]) => {
+  const base = withoutSlash(section)
+  return path === base ? 'page' : path.startsWith(`${base}/`) ? 'true' : undefined
+}
 ---
 
 <nav

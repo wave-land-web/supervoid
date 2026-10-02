@@ -6,7 +6,8 @@ import icon from 'astro-icon'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.supervoid.tv',
+  // The bare domain is what Netlify serves; www 301s to it
+  site: 'https://supervoid.tv',
   image: {
     layout: 'constrained',
   },
