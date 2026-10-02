@@ -43,7 +43,7 @@ export default defineConfig({
     {
       provider: fontProviders.local(),
       name: 'Rotonto Regular',
-      cssVariable: '--font-header',
+      cssVariable: '--font-rotonto',
       options: {
         variants: [
           {
@@ -61,7 +61,7 @@ export default defineConfig({
     {
       provider: fontProviders.local(),
       name: 'SF Mono Regular',
-      cssVariable: '--font-body',
+      cssVariable: '--font-sf-mono',
       // A monospace fallback, metric-matched by Astro, so text that renders
       // before the font arrives already has the right widths
       fallbacks: ['monospace'],

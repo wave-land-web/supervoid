@@ -9,6 +9,6 @@ export interface Props {
 const { as: Tag = 'span', class: className } = Astro.props
 ---
 
-<Tag class:list={['px-4 py-1 bg-magenta-900 text-xs uppercase text-black rounded-full', className]}>
+<Tag class:list={['px-4 py-1 bg-magenta text-xs uppercase text-black rounded-full', className]}>
   <slot />
 </Tag>

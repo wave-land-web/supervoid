@@ -136,8 +136,8 @@ const structuredData = {
     <meta name="color-scheme" content="dark" />
 
     <!-- Preload Fonts -->
-    <Font cssVariable="--font-header" preload />
-    <Font cssVariable="--font-body" preload />
+    <Font cssVariable="--font-rotonto" preload />
+    <Font cssVariable="--font-sf-mono" preload />
 
     <!-- Mux — opted into by pages that render a video player -->
     {mux && <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" is:inline async />}
@@ -155,7 +155,7 @@ const structuredData = {
     {!minimal && (
       <a
         href="#content"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-1 focus:rounded-full focus:bg-magenta-900 focus:text-black text-xs uppercase"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-1 focus:rounded-full focus:bg-magenta focus:text-black text-xs uppercase"
       >
         Skip to content
       </a>

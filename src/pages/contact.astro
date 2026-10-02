@@ -7,7 +7,7 @@ import { EMAIL, mailto } from '../lib/site'
 
 // 16px and up on phones, so iOS doesn't zoom the page when a field is focused
 const fieldClass =
-  'w-full px-4 py-3 bg-black text-white focus:shadow-offset ring-1 ring-inset ring-white focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-(--transition) outline-none text-base md:text-xs'
+  'w-full px-4 py-3 bg-black text-white focus:shadow-offset ring-1 ring-inset ring-white focus:ring-2 focus:ring-inset focus:ring-magenta rounded-lg transition duration-(--transition) outline-none text-base md:text-xs'
 const labelClass = 'block mb-2 text-left'
 ---
 
@@ -45,7 +45,7 @@ const labelClass = 'block mb-2 text-left'
 
           <div class="w-full">
             <label for="last-name" class={labelClass}>
-              Last Name <span class="text-grey-100">(Optional)</span>
+              Last Name <span class="text-grey">(Optional)</span>
             </label>
             <input
               type="text"
@@ -80,8 +80,8 @@ const labelClass = 'block mb-2 text-left'
               name="project-timeline"
               id="project-timeline"
               required
-              class:list={[fieldClass, 'block appearance-none text-grey-100']}
-              onchange="this.classList.toggle('text-grey-100', this.value === '')"
+              class:list={[fieldClass, 'block appearance-none text-grey']}
+              onchange="this.classList.toggle('text-grey', this.value === '')"
             >
               <option value="" selected disabled hidden>
                 Choose one
@@ -94,7 +94,7 @@ const labelClass = 'block mb-2 text-left'
 
             <Icon
               name="tabler:chevron-down"
-              class="size-8 pointer-events-none text-grey-100 absolute right-3 top-1/2 transform -translate-y-1/2"
+              class="size-8 pointer-events-none text-grey absolute right-3 top-1/2 transform -translate-y-1/2"
             />
           </div>
         </div>
@@ -113,7 +113,7 @@ const labelClass = 'block mb-2 text-left'
     <section id="general-inquiries" class="text-center lsa lsa-slide-up no-repeat delay-300">
       <h2 class="text-l uppercase text-center mb-4">General Inquiries</h2>
       <a href={mailto('General Inquiry')} class="flex justify-center items-center gap-4 text-xs">
-        <Icon name="tabler:mail" class="w-8 h-8 text-magenta-900" />
+        <Icon name="tabler:mail" class="w-8 h-8 text-magenta" />
         {EMAIL}
       </a>
     </section>

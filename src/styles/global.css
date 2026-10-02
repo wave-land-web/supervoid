@@ -28,16 +28,13 @@
 @theme {
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-black-transparent: #00000080;
-  --color-grey-100: #9b9b9b;
+  /* Secondary text: captions, intros, credit names */
+  --color-grey: #9b9b9b;
 
-  /* Oklch colors with fallbacks */
-  --color-magenta-900: #ff00ff;
-  --color-magenta-900: oklch(70.17% 0.3518 328.36);
-  --color-magenta-500: #ff66ff;
-  --color-magenta-500: oklch(75.66% 0.2764 327.71);
-  --color-magenta-100: #ffccff;
-  --color-magenta-100: oklch(90.51% 0.0974 326.27);
+  /* The accent. Wide gamut: more vivid than #ff00ff on screens that can show it, #ff00ff on the rest */
+  --color-magenta: oklch(70.17% 0.3518 328.36);
+  /* Hover on magenta links */
+  --color-magenta-light: oklch(90.51% 0.0974 326.27);
 
   /* Font sizes: source (https://fluid-type.tolin.ski/) */
   --text-2xs: clamp(0.64rem, 0.752941vi + 0.45rem, 0.96rem);
@@ -50,19 +47,15 @@
   --text-2xl: clamp(3.05rem, 3.6vi + 2.15rem, 4.58rem);
   --text-3xl: clamp(3.81rem, 4.494118vi + 2.69rem, 5.72rem);
   --text-4xl: clamp(4.77rem, 5.6vi + 3.37rem, 7.15rem);
-  --text-5xl: clamp(5.96rem, 7.011765vi + 4.21rem, 8.94rem);
-  --text-6xl: clamp(7.45rem, 8.776471vi + 5.26rem, 11.18rem);
-  --text-7xl: clamp(9.31rem, 10.964706vi + 6.57rem, 13.97rem);
-  --text-8xl: clamp(11.64rem, 13.694118vi + 8.22rem, 17.46rem);
-  --text-9xl: clamp(14.55rem, 17.129412vi + 10.27rem, 21.83rem);
 
   --nav-height: clamp(5rem, 10vw, 6rem);
 
   /* The hard offset shadow on buttons and focused fields */
-  --shadow-offset: 4px 4px 0 var(--color-magenta-900);
+  --shadow-offset: 4px 4px 0 var(--color-magenta);
 
-  --font-header: 'Rotonto Regular', sans-serif;
-  --font-body: 'SF Mono Regular', monospace;
+  /* Astro's font loader defines the font variables (astro.config.mjs) */
+  --font-header: var(--font-rotonto);
+  --font-body: var(--font-sf-mono);
 
   --transition: 300ms;
 }
@@ -351,12 +344,12 @@
   }
 
   a:hover {
-    @apply text-magenta-900;
+    @apply text-magenta;
   }
 
   /* Keyboard focus: one accent ring everywhere */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-magenta-900;
+    @apply outline-2 outline-offset-2 outline-magenta;
   }
 
   button {
@@ -364,7 +357,7 @@
   }
 
   .site-link {
-    @apply text-magenta-900 hover:text-magenta-100;
+    @apply text-magenta hover:text-magenta-light;
   }
 
   .text-stroke {
@@ -397,7 +390,7 @@
     }
 
     & a:not(#pagination a) {
-      @apply text-magenta-900 hover:text-magenta-100;
+      @apply text-magenta hover:text-magenta-light;
     }
 
     & #back-to-press {
@@ -435,7 +428,7 @@
     }
 
     & blockquote {
-      @apply relative my-[1lh] p-[1lh] border-l-4 border-magenta-900;
+      @apply relative my-[1lh] p-[1lh] border-l-4 border-magenta;
     }
 
     & em {

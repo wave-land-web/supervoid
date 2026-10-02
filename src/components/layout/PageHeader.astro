@@ -40,15 +40,13 @@ const { title, lede, image, narrow = false } = Astro.props
           loading="eager"
           fetchpriority="high"
         />
-        {image.caption && (
-          <figcaption class="py-4 text-2xs text-grey-100">{image.caption}</figcaption>
-        )}
+        {image.caption && <figcaption class="py-4 text-2xs text-grey">{image.caption}</figcaption>}
       </figure>
     </div>
   ) : (
     <>
       <h1 class="mb-4 text-xl text-center uppercase drop-shadow-lg">{title}</h1>
-      {lede && <p class="mx-auto text-center text-grey-100">{lede}</p>}
+      {lede && <p class="mx-auto text-center text-grey">{lede}</p>}
     </>
   )}
 </header>

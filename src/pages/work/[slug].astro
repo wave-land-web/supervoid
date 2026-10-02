@@ -99,11 +99,11 @@ const schema = [
           >
             <Icon
               name="tabler:player-play"
-              class="hidden group-data-paused:block w-6 lg:w-8 text-magenta-900"
+              class="hidden group-data-paused:block w-6 lg:w-8 text-magenta"
             />
             <Icon
               name="tabler:player-pause"
-              class="group-data-paused:hidden w-6 lg:w-8 text-magenta-900"
+              class="group-data-paused:hidden w-6 lg:w-8 text-magenta"
             />
           </button>
 
@@ -117,12 +117,9 @@ const schema = [
           >
             <Icon
               name="tabler:volume-off"
-              class="hidden group-data-muted:block w-6 lg:w-8 text-magenta-900"
+              class="hidden group-data-muted:block w-6 lg:w-8 text-magenta"
             />
-            <Icon
-              name="tabler:volume"
-              class="group-data-muted:hidden w-6 lg:w-8 text-magenta-900"
-            />
+            <Icon name="tabler:volume" class="group-data-muted:hidden w-6 lg:w-8 text-magenta" />
           </button>
         </div>
       )}
@@ -173,7 +170,7 @@ const schema = [
           {post.data.credits?.map(({ role, names }) => (
             <div class="flex flex-col gap-4">
               <dt class="font-header text-s uppercase text-balance">{role}:</dt>
-              <dd class="max-w-[65ch] text-xs text-pretty text-grey-100">{names}</dd>
+              <dd class="max-w-[65ch] text-xs text-pretty text-grey">{names}</dd>
             </div>
           ))}
         </dl>
