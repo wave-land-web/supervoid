@@ -29,6 +29,7 @@ const ariaCurrent = ({ href, section = href }: (typeof NAV_LINKS)[number]) => {
 <!-- The fade spans the viewport, behind a nav kept to the content column -->
 <nav
   id="navigation"
+  data-clear-view-hides
   class="fixed top-0 left-0 right-0 flex min-h-(--nav-height) transition-all duration-(--transition) z-20 before:absolute before:inset-y-0 before:left-1/2 before:w-screen before:-translate-x-1/2 before:-z-10 before:bg-linear-to-b before:from-black before:to-transparent"
 >
   <!-- Mobile Navigation -->

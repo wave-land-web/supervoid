@@ -64,7 +64,10 @@ const schema = [
 >
   <!-- Media runs edge to edge, capped at the viewport's height; the title and controls stay in the content column -->
   <div class="relative lsa-load">
-    <div class="relative aspect-video max-h-svh w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none">
+    <div
+      id="hero-media"
+      class="relative aspect-video max-h-svh w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none after:transition-opacity after:duration-(--transition)"
+    >
       {post.data.gifs.videoHero ? (
         <CoverVideo
           id="hero-video"
@@ -93,6 +96,7 @@ const schema = [
         <div class="absolute inset-x-0 bottom-4 md:bottom-8 max-w-screen-2xl mx-auto px-4 md:px-8 flex flex-col lg:flex-row items-end lg:justify-end gap-4 lg:gap-6 z-10 pointer-events-none *:pointer-events-auto">
           <button
             id="toggle-play"
+            data-clear-view-hides
             type="button"
             data-paused
             class="group hover:scale-110 transition-all duration-(--transition) active:scale-95"
@@ -111,6 +115,7 @@ const schema = [
 
           <button
             id="toggle-mute"
+            data-clear-view-hides
             type="button"
             data-muted
             class="group hover:scale-110 transition-all duration-(--transition) active:scale-95"
@@ -123,12 +128,28 @@ const schema = [
             />
             <Icon name="tabler:volume" class="group-data-muted:hidden w-6 lg:w-8 text-magenta" />
           </button>
+
+          {/* Clear view: hides everything over the hero but this button */}
+          <button
+            id="toggle-clear-view"
+            type="button"
+            class="group hover:scale-110 transition-all duration-(--transition) active:scale-95"
+            aria-label="Hide overlays"
+            aria-pressed="false"
+            title="Hide overlays"
+          >
+            <Icon name="tabler:eye-off" class="group-aria-pressed:hidden w-6 lg:w-8 text-magenta" />
+            <Icon
+              name="tabler:eye"
+              class="hidden group-aria-pressed:block w-6 lg:w-8 text-magenta"
+            />
+          </button>
         </div>
       )}
     </div>
 
-    <!-- Below the video on mobile, overlaid from md up -->
-    <header class="md:absolute md:top-1/2 md:inset-x-0 md:-translate-y-1/2 z-10">
+    <!-- Below the video on mobile, overlaid from md up, so clear view only fades it from md up -->
+    <header class="md:absolute md:top-1/2 md:inset-x-0 md:-translate-y-1/2 z-10 transition-opacity duration-(--transition) md:in-data-[clear-view]:opacity-0">
       <h1 class="text-2xl md:text-3xl lg:text-4xl mb-2 lg:mb-4 uppercase drop-shadow-lg lsa lsa-slide-up no-repeat">
         {post.data.title}
       </h1>
@@ -250,4 +271,36 @@ const schema = [
   if (heroVideo) {
     customElements.whenDefined('mux-video').then(() => setupHeroControls(heroVideo))
   }
+
+  // Clear view: fades out the nav, title, shade and video controls so the hero can be seen
+  // alone. Hidden controls are inert so keyboard focus skips them. Escape or scrolling brings them back.
+  function setupClearView(toggleClearView: HTMLElement) {
+    function setClearView(clear: boolean) {
+      document.documentElement.toggleAttribute('data-clear-view', clear)
+      for (const element of document.querySelectorAll<HTMLElement>('[data-clear-view-hides]')) {
+        element.inert = clear
+      }
+      const label = clear ? 'Show overlays' : 'Hide overlays'
+      toggleClearView.setAttribute('aria-pressed', String(clear))
+      toggleClearView.setAttribute('aria-label', label)
+      toggleClearView.title = label
+    }
+
+    toggleClearView.addEventListener('click', () => {
+      setClearView(!document.documentElement.hasAttribute('data-clear-view'))
+    })
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setClearView(false)
+    })
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (document.documentElement.hasAttribute('data-clear-view')) setClearView(false)
+      },
+      { passive: true },
+    )
+  }
+
+  const toggleClearView = document.getElementById('toggle-clear-view')
+  if (toggleClearView) setupClearView(toggleClearView)
 </script>

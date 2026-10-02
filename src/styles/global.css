@@ -419,6 +419,13 @@
     user-select: none;
   }
 
+  /* Work-page clear view: everything over the hero fades out (the script in work/[slug].astro
+     sets this, and makes the faded parts inert) */
+  [data-clear-view] [data-clear-view-hides],
+  [data-clear-view] #hero-media::after {
+    opacity: 0;
+  }
+
   /* Keyboard focus: one accent ring everywhere */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-magenta;
