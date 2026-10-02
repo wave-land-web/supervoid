@@ -5,8 +5,8 @@ import grandma3CompactImage from '../assets/grandma3-compact.png'
 import rentalsHeroImage from '../assets/rentals-hero.webp'
 import willowImage from '../assets/rentals-willow.webp'
 import svxSeriesServerBackImage from '../assets/svx-series-server-back.png'
-import CTA from '../components/text/CTA.astro'
-import ImageHeader from '../components/ui/ImageHeader.astro'
+import ImageHeader from '../components/layout/ImageHeader.astro'
+import Button from '../components/ui/Button.astro'
 import Layout from '../layouts/Layout.astro'
 import { mailto } from '../lib/site'
 import { socialImageFrom } from '../lib/socialImage'
@@ -192,7 +192,7 @@ import { socialImageFrom } from '../lib/socialImage'
           </div>
         </div>
       </div>
-      <CTA href={mailto('Rentals Inquiry')} text="Rent Now" />
+      <Button href={mailto('Rentals Inquiry')} text="Rent Now" />
     </section>
   </main>
 </Layout>

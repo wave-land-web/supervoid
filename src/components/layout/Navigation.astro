@@ -5,7 +5,7 @@
  */
 
 import { Icon } from 'astro-icon/components'
-import SocialIcons from './SocialIcons.astro'
+import SocialLinks from '../ui/SocialLinks.astro'
 
 // `section` is the path a link stays current under, when that isn't its href
 const NAV_LINKS: { label: string; href: string; section?: string }[] = [
@@ -96,7 +96,7 @@ const ariaCurrent = ({ href, section = href }: (typeof NAV_LINKS)[number]) => {
           </li>
         ))}
       </ul>
-      <SocialIcons />
+      <SocialLinks />
     </div>
   </div>
 
@@ -144,7 +144,7 @@ const ariaCurrent = ({ href, section = href }: (typeof NAV_LINKS)[number]) => {
         </li>
       ))}
     </ul>
-    <SocialIcons />
+    <SocialLinks />
   </div>
 
   <style>

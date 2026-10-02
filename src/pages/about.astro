@@ -10,9 +10,9 @@ import verticalCouchFour from '../assets/vertical-images/SVX_Vertical_0006_Couch
 import verticalCouchThree from '../assets/vertical-images/SVX_Vertical_0007_Couch 3.jpg'
 import verticalCouchTwo from '../assets/vertical-images/SVX_Vertical_0008_Couch 2.jpg'
 import verticalCouchOne from '../assets/vertical-images/SVX_Vertical_0009_Couch 1.jpg'
-import CTA from '../components/text/CTA.astro'
-import ImageHeader from '../components/ui/ImageHeader.astro'
-import VerticalImageCarousel from '../components/ui/VerticalImageCarousel.astro'
+import ImageHeader from '../components/layout/ImageHeader.astro'
+import VerticalCarousel from '../components/media/VerticalCarousel.astro'
+import Button from '../components/ui/Button.astro'
 import Layout from '../layouts/Layout.astro'
 import { socialImageFrom } from '../lib/socialImage'
 ---
@@ -154,7 +154,7 @@ import { socialImageFrom } from '../lib/socialImage'
     </section>
 
     <section id="join-our-team" class="m-auto xl:py-32 lsa lsa-slide-up no-repeat">
-      <VerticalImageCarousel
+      <VerticalCarousel
         images={[
           { src: verticalRadiohead, alt: '' },
           { src: verticalSts9Five, alt: '' },
@@ -177,7 +177,7 @@ import { socialImageFrom } from '../lib/socialImage'
           out our current openings and become part of the Supervoid family.
         </p>
 
-        <CTA href="/jobs/" text="Explore Careers" class="mx-auto xl:mx-0" />
+        <Button href="/jobs/" text="Explore Careers" class="mx-auto xl:mx-0" />
       </div>
     </section>
   </main>

@@ -1,20 +1,20 @@
 ---
-import AnimatedCTA from '../text/AnimatedCTA.astro'
+import PageLink from './PageLink.astro'
 
-interface PageLink {
+interface Link {
   href: string
   title: string
 }
 
 export interface Props {
-  prev?: PageLink
-  next?: PageLink
+  prev?: Link
+  next?: Link
 }
 
 const { prev, next } = Astro.props
 ---
 
 <section id="pagination" class="pagination flex flex-col md:flex-row justify-between gap-4 pt-0">
-  {prev && <AnimatedCTA href={prev.href} title={prev.title} text="Previous" direction="left" />}
-  {next && <AnimatedCTA href={next.href} title={next.title} text="Next" direction="right" />}
+  {prev && <PageLink href={prev.href} title={prev.title} text="Previous" direction="left" />}
+  {next && <PageLink href={next.href} title={next.title} text="Next" direction="right" />}
 </section>

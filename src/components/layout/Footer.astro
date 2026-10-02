@@ -1,13 +1,13 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { EMAIL } from '../../lib/site'
-import SocialIcons from './SocialIcons.astro'
+import SocialLinks from '../ui/SocialLinks.astro'
 ---
 
 <footer class="w-full max-w-screen-2xl m-auto p-8 fixed bottom-0 left-1/2 transform -translate-x-1/2">
   <div id="footer-contact" class="flex flex-col items-center gap-4 mb-28">
     <p class="text-base no-underline">{EMAIL}</p>
-    <SocialIcons />
+    <SocialLinks />
   </div>
   <div id="footer-info" class="flex flex-col md:flex-row justify-between items-center gap-4">
     <p>Supervoid © {new Date().getFullYear()}</p>

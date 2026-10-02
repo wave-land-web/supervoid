@@ -1,0 +1,13 @@
+---
+import { INSTAGRAM_URL, mailto } from '../../lib/site'
+import SocialLink from './SocialLink.astro'
+---
+
+<ul class="flex gap-6">
+  <li>
+    <SocialLink href={INSTAGRAM_URL} name="tabler:brand-instagram" ariaLabel="Instagram" />
+  </li>
+  <li>
+    <SocialLink href={mailto()} name="tabler:mail" ariaLabel="Email" />
+  </li>
+</ul>

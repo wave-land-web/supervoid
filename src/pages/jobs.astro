@@ -7,9 +7,9 @@ import jobsCarouselFourImage from '../assets/horizontal-images/SVX_Horizontal_00
 import jobsCarouselFiveImage from '../assets/horizontal-images/SVX_Horizontal_0026_Couch 7.jpg'
 import jobsCarouselSixImage from '../assets/horizontal-images/SVX_Horizontal_0028_Couch 5.jpg'
 import jobsHeroImage from '../assets/jobs-hero.png'
-import CTA from '../components/text/CTA.astro'
-import Carousel from '../components/ui/Carousel.astro'
-import ImageHeader from '../components/ui/ImageHeader.astro'
+import ImageHeader from '../components/layout/ImageHeader.astro'
+import Carousel from '../components/media/Carousel.astro'
+import Button from '../components/ui/Button.astro'
 import Layout from '../layouts/Layout.astro'
 import { EMAIL, mailto } from '../lib/site'
 import { socialImageFrom } from '../lib/socialImage'
@@ -99,7 +99,7 @@ import { socialImageFrom } from '../lib/socialImage'
         , and we'll reach out if there's a fit.
       </p>
 
-      <CTA href={mailto('Supervoid Job Application')} text="Apply Now" />
+      <Button href={mailto('Supervoid Job Application')} text="Apply Now" />
     </section>
   </main>
 </Layout>

@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content'
-import CTA from '../components/text/CTA.astro'
-import LightingPreviewCard from '../components/ui/LightingPreviewCard.astro'
-import WorkPreviewCard from '../components/ui/WorkPreviewCard.astro'
-import YearHeading from '../components/ui/YearHeading.astro'
+import LightingCard from '../components/cards/LightingCard.astro'
+import WorkCard from '../components/cards/WorkCard.astro'
+import Button from '../components/ui/Button.astro'
+import YearHeading from '../components/work/YearHeading.astro'
 import Layout from '../layouts/Layout.astro'
 import { getAlphabetizedWorkByYear, getWorkYearsDescending } from '../lib/sortWork'
 
@@ -36,7 +36,7 @@ const workByYear = getWorkYearsDescending(allWork).map((year) => ({
       </p>
 
       <div>
-        <CTA text="Contact Us Today" href="/contact/" />
+        <Button text="Contact Us Today" href="/contact/" />
       </div>
     </div>
   </header>
@@ -54,13 +54,9 @@ const workByYear = getWorkYearsDescending(allWork).map((year) => ({
             const priority = yearIndex === 0 && itemIndex === 0
 
             return item.collection === 'work' ? (
-              <WorkPreviewCard work={item} isAboveTheFold={isAboveTheFold} priority={priority} />
+              <WorkCard work={item} isAboveTheFold={isAboveTheFold} priority={priority} />
             ) : (
-              <LightingPreviewCard
-                work={item}
-                isAboveTheFold={isAboveTheFold}
-                priority={priority}
-              />
+              <LightingCard work={item} isAboveTheFold={isAboveTheFold} priority={priority} />
             )
           })}
         </div>

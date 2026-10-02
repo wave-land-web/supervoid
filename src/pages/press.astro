@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
-import PostPreviewCard from '../components/ui/PostPreviewCard.astro'
+import PressCard from '../components/cards/PressCard.astro'
 import Layout from '../layouts/Layout.astro'
 import { sortPressNewestFirst } from '../lib/sortPress'
 
@@ -24,7 +24,7 @@ const ABOVE_THE_FOLD_COUNT = 2
   <main>
     <section class="lsa-stagger grid md:grid-cols-2 gap-x-10 gap-y-12">
       {sortedPressPosts.map((post, index) => (
-        <PostPreviewCard
+        <PressCard
           post={post}
           isAboveTheFold={index < ABOVE_THE_FOLD_COUNT}
           priority={index === 0}
