@@ -36,17 +36,31 @@
   /* Hover on magenta links */
   --color-magenta-light: oklch(90.51% 0.0974 326.27);
 
-  /* Font sizes: source (https://fluid-type.tolin.ski/) */
+  /* Type scale: fluid steps (https://fluid-type.tolin.ski/), and the only sizes there are. Each
+     step sets its line height: open for running text, tighter as the type gets bigger.
+     2xs captions · xs body copy, nav, pills · base intros, labels · s buttons, credits ·
+     m statements, subheads · l section titles · xl page titles · 2xl to 4xl hero titles */
+  --text-*: initial;
   --text-2xs: clamp(0.64rem, 0.752941vi + 0.45rem, 0.96rem);
+  --text-2xs--line-height: 1.5;
   --text-xs: clamp(0.8rem, 0.941176vi + 0.56rem, 1.2rem);
+  --text-xs--line-height: 1.5;
   --text-base: clamp(1rem, 1.176471vi + 0.71rem, 1.5rem);
+  --text-base--line-height: 1.5;
   --text-s: clamp(1.25rem, 1.482353vi + 0.88rem, 1.88rem);
+  --text-s--line-height: 1.4;
   --text-m: clamp(1.56rem, 1.835294vi + 1.1rem, 2.34rem);
+  --text-m--line-height: 1.3;
   --text-l: clamp(1.95rem, 2.305882vi + 1.37rem, 2.93rem);
+  --text-l--line-height: 1.2;
   --text-xl: clamp(2.44rem, 2.870588vi + 1.72rem, 3.66rem);
+  --text-xl--line-height: 1.1;
   --text-2xl: clamp(3.05rem, 3.6vi + 2.15rem, 4.58rem);
+  --text-2xl--line-height: 1.1;
   --text-3xl: clamp(3.81rem, 4.494118vi + 2.69rem, 5.72rem);
+  --text-3xl--line-height: 1.05;
   --text-4xl: clamp(4.77rem, 5.6vi + 3.37rem, 7.15rem);
+  --text-4xl--line-height: 1;
 
   --nav-height: clamp(5rem, 10vw, 6rem);
 
