@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets'
 import type { ImageMetadata } from 'astro'
+import { CONTAINER_SIZES } from '../../lib/images'
 
 export interface Props {
   title?: string
@@ -21,7 +22,14 @@ const { title, imageSrc, imageAlt, imageCaption } = Astro.props
 
   {imageSrc && imageAlt && (
     <figure>
-      <Picture src={imageSrc} formats={['avif', 'webp']} alt={imageAlt} loading="eager" />
+      <Picture
+        src={imageSrc}
+        formats={['avif', 'webp']}
+        sizes={CONTAINER_SIZES}
+        alt={imageAlt}
+        loading="eager"
+        fetchpriority="high"
+      />
       {imageCaption && <figcaption class="py-4 text-2xs text-grey-100">{imageCaption}</figcaption>}
     </figure>
   )}

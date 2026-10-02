@@ -62,7 +62,12 @@ import { mailto } from '../lib/site'
 
     <section class="max-w-3xl lg:max-w-7xl m-auto grid lg:grid-cols-2 gap-16 lg:gap-0 lsa lsa-slide-up no-repeat">
       <figure class="lg:translate-x-2">
-        <Picture src={willowImage} formats={['avif', 'webp']} alt="Willow at Camp Flog Gnaw" />
+        <Picture
+          src={willowImage}
+          formats={['avif', 'webp']}
+          sizes="(min-width: 1024px) 608px, (min-width: 832px) 768px, calc(100vw - 32px)"
+          alt="Willow at Camp Flog Gnaw"
+        />
         <figcaption class="text-center mt-4 mx-auto text-2xs text-grey-100">
           Willow at Camp Flog Gnaw
         </figcaption>
@@ -89,6 +94,7 @@ import { mailto } from '../lib/site'
       <div class="max-w-3xl lg:max-w-7xl m-auto grid lg:grid-cols-2 items-start justify-items-center gap-24 md:gap-32">
         <Picture
           src={svxSeriesServerBackImage}
+          sizes="(min-width: 640px) 384px, calc(100vw - 160px)"
           formats={['avif', 'webp']}
           alt="SVX Series Servers - Back"
           class="px-16 py-12 max-w-lg"
@@ -142,6 +148,7 @@ import { mailto } from '../lib/site'
       <div class="max-w-3xl lg:max-w-7xl m-auto grid lg:grid-cols-2 items-start justify-items-center gap-24 md:gap-32">
         <Picture
           src={grandma3CompactImage}
+          sizes="(min-width: 640px) 384px, calc(100vw - 160px)"
           formats={['avif', 'webp']}
           alt="GrandMA3 Compact Lighting Console"
           class="px-16 py-12 max-w-lg"

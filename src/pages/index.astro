@@ -51,11 +51,16 @@ const workByYear = getWorkYearsDescending(allWork).map((year) => ({
             // the grid splits at `md`. Those animate from CSS instead of
             // waiting on the scroll observer.
             const isAboveTheFold = yearIndex === 0 && itemIndex < 2
+            const priority = yearIndex === 0 && itemIndex === 0
 
             return item.collection === 'work' ? (
-              <WorkPreviewCard work={item} isAboveTheFold={isAboveTheFold} />
+              <WorkPreviewCard work={item} isAboveTheFold={isAboveTheFold} priority={priority} />
             ) : (
-              <LightingPreviewCard work={item} isAboveTheFold={isAboveTheFold} />
+              <LightingPreviewCard
+                work={item}
+                isAboveTheFold={isAboveTheFold}
+                priority={priority}
+              />
             )
           })}
         </div>

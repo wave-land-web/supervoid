@@ -53,6 +53,8 @@ const { post, prevPost, nextPost } = Astro.props
         /* Above-the-fold hero: the LCP element, so fetch it immediately */
         <Picture
           src={post.data.gifs.imageHero}
+          formats={['avif', 'webp']}
+          sizes="(min-width: 1536px) 1536px, 100vw"
           alt={post.data.title}
           loading="eager"
           fetchpriority="high"
@@ -164,6 +166,7 @@ const { post, prevPost, nextPost } = Astro.props
       {post.data.images?.map((image) => (
         <Picture
           src={image}
+          sizes={TWO_COLUMN_SIZES}
           alt={post.data.title}
           formats={['avif', 'webp']}
           class="aspect-video object-cover lsa lsa-slide-up no-repeat"

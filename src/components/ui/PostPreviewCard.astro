@@ -1,13 +1,16 @@
 ---
 import { Picture } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
+import { TWO_COLUMN_SIZES } from '../../lib/images'
 
 export interface Props {
   post: CollectionEntry<'press'>
   isAboveTheFold: boolean
+  /** Fetch the image ahead of everything else: the page's first card is its LCP. */
+  priority?: boolean
 }
 
-const { post, isAboveTheFold } = Astro.props
+const { post, isAboveTheFold, priority = false } = Astro.props
 ---
 
 <article
@@ -23,7 +26,9 @@ const { post, isAboveTheFold } = Astro.props
         src={post.data.image}
         alt={post.data.imageAlt}
         formats={['avif', 'webp']}
+        sizes={TWO_COLUMN_SIZES}
         loading={isAboveTheFold ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : undefined}
         class="brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-(--transition) w-full h-full object-cover"
       />
     </div>

@@ -15,6 +15,13 @@ const { title, image, imageAlt } = Astro.props
     <h1 class="absolute w-full top-[-0.5lh] left-1/2 -translate-x-1/2 text-l drop-shadow-lg text-center uppercase">
       {title}
     </h1>
-    <Picture src={image} formats={['avif', 'webp']} alt={imageAlt} loading="eager" />
+    <Picture
+      src={image}
+      formats={['avif', 'webp']}
+      sizes="(min-width: 960px) 896px, (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)"
+      alt={imageAlt}
+      loading="eager"
+      fetchpriority="high"
+    />
   </div>
 </header>

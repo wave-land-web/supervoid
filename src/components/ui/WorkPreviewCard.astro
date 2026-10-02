@@ -1,14 +1,17 @@
 ---
 import { Picture } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
+import { TWO_COLUMN_SIZES } from '../../lib/images'
 
 export interface Props {
   work: CollectionEntry<'work'>
   /** Skip the scroll observer and animate from CSS on first paint. */
   isAboveTheFold?: boolean
+  /** Fetch the image ahead of everything else: the page's first card is its LCP. */
+  priority?: boolean
 }
 
-const { work, isAboveTheFold = false } = Astro.props
+const { work, isAboveTheFold = false, priority = false } = Astro.props
 const { id } = work
 const imageHero = work.data.thumbnail
 const videoTitle = work.data.title
@@ -27,7 +30,10 @@ const cardId = `work-preview-card-${id}`
       <Picture
         src={imageHero}
         alt={videoTitle}
+        formats={['avif', 'webp']}
+        sizes={TWO_COLUMN_SIZES}
         loading={isAboveTheFold ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : undefined}
         class="absolute top-0 left-0 w-full h-full object-cover brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-(--transition)"
       />
     ) : null}

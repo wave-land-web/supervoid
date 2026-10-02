@@ -16,7 +16,12 @@ const { images, class: className } = Astro.props
   <div class="swiper-wrapper mb-12">
     {images.map((image) => (
       <div class="swiper-slide rounded-xl">
-        <Picture src={image.src} formats={['avif', 'webp']} alt={image.alt} />
+        <Picture
+          src={image.src}
+          formats={['avif', 'webp']}
+          sizes="(min-width: 1280px) 50vw, (min-width: 768px) 768px, 100vw"
+          alt={image.alt}
+        />
       </div>
     ))}
   </div>

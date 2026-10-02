@@ -5,3 +5,7 @@
  */
 export const TWO_COLUMN_SIZES =
   '(min-width: 768px) calc((min(100vw, 1536px) - 104px) / 2), calc(100vw - 32px)'
+
+/** `sizes` for media spanning the padded page container. */
+export const CONTAINER_SIZES =
+  '(min-width: 1536px) 1472px, (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)'

@@ -24,7 +24,11 @@ const ABOVE_THE_FOLD_COUNT = 2
   <main>
     <section class="lsa-stagger grid md:grid-cols-2 gap-x-10 gap-y-12">
       {sortedPressPosts.map((post, index) => (
-        <PostPreviewCard post={post} isAboveTheFold={index < ABOVE_THE_FOLD_COUNT} />
+        <PostPreviewCard
+          post={post}
+          isAboveTheFold={index < ABOVE_THE_FOLD_COUNT}
+          priority={index === 0}
+        />
       ))}
     </section>
   </main>
