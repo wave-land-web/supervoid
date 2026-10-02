@@ -11,6 +11,7 @@ import CTA from '../components/text/CTA.astro'
 import Carousel from '../components/ui/Carousel.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
+import { EMAIL, mailto } from '../lib/site'
 ---
 
 <Layout
@@ -90,13 +91,13 @@ import Layout from '../layouts/Layout.astro'
       <p>
         If you want to make something no one has ever seen before and contribute to innovative
         projects, we'd love to hear from you. Please submit your resume to{' '}
-        <a href="mailto:info@supervoid.tv?subject=Supervoid%20Job%20Application" class="site-link">
-          info@supervoid.tv
+        <a href={mailto('Supervoid Job Application')} class="site-link">
+          {EMAIL}
         </a>
         , and we'll reach out if there's a fit.
       </p>
 
-      <CTA href="mailto:info@supervoid.tv?subject=Supervoid%20Job%20Application" text="Apply Now" />
+      <CTA href={mailto('Supervoid Job Application')} text="Apply Now" />
     </section>
   </main>
 </Layout>

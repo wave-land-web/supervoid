@@ -1,7 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content'
+import type { InferGetStaticPropsType } from 'astro'
 import PressLayout from '../../layouts/PressLayout.astro'
-import { sortPressNewestFirst } from '../../utils/sortPress'
+import { sortPressNewestFirst } from '../../lib/sortPress'
 
 export async function getStaticPaths() {
   const posts = sortPressNewestFirst(await getCollection('press'))
@@ -11,6 +12,8 @@ export async function getStaticPaths() {
     props: { post, prevPost: posts[index - 1], nextPost: posts[index + 1] },
   }))
 }
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { post, prevPost, nextPost } = Astro.props
 const { Content } = await render(post)

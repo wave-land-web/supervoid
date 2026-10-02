@@ -1,16 +1,13 @@
 ---
+import { INSTAGRAM_URL, mailto } from '../../lib/site'
 import SocialIcon from '../text/SocialIcon.astro'
 ---
 
 <ul class="flex gap-6">
   <li>
-    <SocialIcon
-      href="https://www.instagram.com/supervoidtv/"
-      name="tabler:brand-instagram"
-      ariaLabel="Instagram"
-    />
+    <SocialIcon href={INSTAGRAM_URL} name="tabler:brand-instagram" ariaLabel="Instagram" />
   </li>
   <li>
-    <SocialIcon href="mailto:info@supervoid.tv" name="tabler:mail" ariaLabel="Email" />
+    <SocialIcon href={mailto()} name="tabler:mail" ariaLabel="Email" />
   </li>
 </ul>

@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import Layout from '../layouts/Layout.astro'
+import { EMAIL, mailto } from '../lib/site'
 ---
 
 <Layout
@@ -124,12 +125,9 @@ import Layout from '../layouts/Layout.astro'
 
     <section id="general-inquiries" class="text-center lsa lsa-slide-up no-repeat delay-300">
       <h2 class="text-l uppercase text-center mb-4">General Inquiries</h2>
-      <a
-        href="mailto:info@supervoid.tv?subject=General%20Inquiry"
-        class="flex justify-center items-center gap-4 text-xs"
-      >
+      <a href={mailto('General Inquiry')} class="flex justify-center items-center gap-4 text-xs">
         <Icon name="tabler:mail" class="w-8 h-8 text-magenta-900" />
-        info@supervoid.tv
+        {EMAIL}
       </a>
     </section>
   </main>

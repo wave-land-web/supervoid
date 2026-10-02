@@ -8,6 +8,7 @@ import svxSeriesServerBackImage from '../assets/svx-series-server-back.png'
 import CTA from '../components/text/CTA.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
+import { mailto } from '../lib/site'
 ---
 
 <Layout
@@ -203,7 +204,7 @@ import Layout from '../layouts/Layout.astro'
           </div>
         </div>
       </div>
-      <CTA href="mailto:info@supervoid.tv?subject=Rentals Inquiry" text="Rent Now" />
+      <CTA href={mailto('Rentals Inquiry')} text="Rent Now" />
     </section>
   </main>
 </Layout>

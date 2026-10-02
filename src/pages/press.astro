@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content'
 import PostPreviewCard from '../components/ui/PostPreviewCard.astro'
 import Layout from '../layouts/Layout.astro'
-import { sortPressNewestFirst } from '../utils/sortPress'
+import { sortPressNewestFirst } from '../lib/sortPress'
 
 const sortedPressPosts = sortPressNewestFirst(await getCollection('press'))
 // The newest two fill the first row, which is above the fold

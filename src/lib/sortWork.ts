@@ -1,17 +1,17 @@
 import type { CollectionEntry } from 'astro:content'
 
-export interface SortedWork {
-  allWork: (CollectionEntry<'work'> | CollectionEntry<'lighting'>)[]
-  year: string
-}
+type WorkEntry = CollectionEntry<'work'> | CollectionEntry<'lighting'>
 
 /**
  * Helper function to filter and sort work by year and alphabetically
  */
-export function getAlphabetizedWorkByYear({
+export function getAlphabetizedWorkByYear<T extends WorkEntry>({
   allWork,
   year,
-}: SortedWork): (CollectionEntry<'work'> | CollectionEntry<'lighting'>)[] {
+}: {
+  allWork: T[]
+  year: string
+}): T[] {
   return allWork
     .filter((work) => work.data.year === year)
     .sort((a, b) => a.data.title.localeCompare(b.data.title))
@@ -23,8 +23,6 @@ export function getAlphabetizedWorkByYear({
  * Derived from the collection rather than hardcoded so that adding a new year
  * needs no code change, and an entry can never silently drop off the site.
  */
-export function getWorkYearsDescending(
-  allWork: (CollectionEntry<'work'> | CollectionEntry<'lighting'>)[],
-): string[] {
+export function getWorkYearsDescending(allWork: WorkEntry[]): string[] {
   return [...new Set(allWork.map((work) => work.data.year))].sort((a, b) => b.localeCompare(a))
 }

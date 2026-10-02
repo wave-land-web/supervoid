@@ -1,11 +1,12 @@
 ---
 import { Picture } from 'astro:assets'
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { getCollection } from 'astro:content'
+import type { InferGetStaticPropsType } from 'astro'
 import { Icon } from 'astro-icon/components'
 import Pagination from '../../components/ui/Pagination.astro'
 import Layout from '../../layouts/Layout.astro'
-import { getAlphabetizedWorkByYear, getWorkYearsDescending } from '../../utils/sortWork'
-import { toMetaDescription } from '../../utils/text'
+import { getAlphabetizedWorkByYear, getWorkYearsDescending } from '../../lib/sortWork'
+import { toMetaDescription } from '../../lib/text'
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('work')
@@ -21,12 +22,14 @@ export async function getStaticPaths() {
       slug: post.id,
     },
     props: {
-      post: post as CollectionEntry<'work'>,
+      post,
       prevPost: sortedPosts[index - 1],
       nextPost: sortedPosts[index + 1],
     },
   }))
 }
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { post, prevPost, nextPost } = Astro.props
 
@@ -161,7 +164,7 @@ const heroStillWidths = [768, 1280, 1920]
           id="info-content"
           class="active h-0 opacity-0 overflow-hidden transition duration-(--transition) [.active]:h-auto [.active]:mt-4 [.active]:md:mt-0 [.active]:opacity-100"
         >
-          {post.data.info.map((item: string) => (
+          {post.data.info.map((item) => (
             <p class="mb-4" set:html={item} />
           ))}
         </div>
@@ -191,7 +194,7 @@ const heroStillWidths = [768, 1280, 1920]
           id="credits-content"
           class="h-0 opacity-0 overflow-hidden transition duration-(--transition) [.active]:h-auto [.active]:mt-4 [.active]:md:mt-0 [.active]:opacity-100"
         >
-          {post.data.credits?.map((item: string) => (
+          {post.data.credits?.map((item) => (
             <div set:html={item} class="flex flex-col gap-8 mb-4" />
           ))}
         </div>
@@ -199,7 +202,7 @@ const heroStillWidths = [768, 1280, 1920]
     </section>
 
     <section id="work-gifs" class="lsa-stagger grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-      {post.data.gifs.gallery?.map((gif: string) => (
+      {post.data.gifs.gallery?.map((gif) => (
         <article class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa lsa-slide-up no-repeat">
           <mux-player
             playback-id={gif}

@@ -1,4 +1,6 @@
 ---
+import { INSTAGRAM_URL } from '../../lib/site'
+
 export interface Props {
   class?: string
 }
@@ -10,12 +12,7 @@ const { class: className } = Astro.props
   <div class="marquee-container">
     <p class="text-l">
       Follow us on Instagram{' '}
-      <a
-        href="https://www.instagram.com/supervoidtv/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="site-link"
-      >
+      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" class="site-link">
         @supervoidtv
       </a>
     </p>
@@ -24,12 +21,7 @@ const { class: className } = Astro.props
   <div class="marquee-container">
     <p class="text-l">
       Follow us on Instagram{' '}
-      <a
-        href="https://www.instagram.com/supervoidtv/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="site-link"
-      >
+      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" class="site-link">
         @supervoidtv
       </a>
     </p>
@@ -38,12 +30,7 @@ const { class: className } = Astro.props
   <div class="marquee-container">
     <p class="text-l">
       Follow us on Instagram{' '}
-      <a
-        href="https://www.instagram.com/supervoidtv/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="site-link"
-      >
+      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" class="site-link">
         @supervoidtv
       </a>
     </p>
