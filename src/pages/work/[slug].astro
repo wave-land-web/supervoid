@@ -62,14 +62,15 @@ const schema = [
   ogType="article"
   schema={schema}
 >
-  <div class="relative max-w-screen-2xl mx-auto lsa-load">
-    <div class="relative aspect-video w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none">
+  <!-- Media runs edge to edge, capped at the viewport's height; the title and controls stay in the content column -->
+  <div class="relative lsa-load">
+    <div class="relative aspect-video max-h-svh w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none">
       {post.data.gifs.videoHero ? (
         <CoverVideo
           id="hero-video"
           playbackId={post.data.gifs.videoHero}
           eager
-          sizes="(min-width: 1536px) 1536px, 100vw"
+          sizes="100vw"
           tracking
           title={`Supervoid Work Page: ${post.data.title}`}
           class="size-full"
@@ -80,7 +81,7 @@ const schema = [
           src={post.data.gifs.imageHero}
           formats={['avif']}
           fallbackFormat="webp"
-          sizes="(min-width: 1536px) 1536px, 100vw"
+          sizes="100vw"
           alt=""
           loading="eager"
           fetchpriority="high"
@@ -89,7 +90,7 @@ const schema = [
       ) : null}
 
       {post.data.gifs.videoHero && (
-        <div class="absolute bottom-4 md:bottom-8 right-4 md:right-8 flex flex-col lg:flex-row gap-4 lg:gap-6 z-10">
+        <div class="absolute inset-x-0 bottom-4 md:bottom-8 max-w-screen-2xl mx-auto px-4 md:px-8 flex flex-col lg:flex-row items-end lg:justify-end gap-4 lg:gap-6 z-10 pointer-events-none *:pointer-events-auto">
           <button
             id="toggle-play"
             type="button"
@@ -127,7 +128,7 @@ const schema = [
     </div>
 
     <!-- Below the video on mobile, overlaid from md up -->
-    <header class="md:absolute md:top-1/2 md:left-0 md:-translate-y-1/2 z-10">
+    <header class="md:absolute md:top-1/2 md:inset-x-0 md:-translate-y-1/2 z-10">
       <h1 class="text-2xl md:text-3xl lg:text-4xl mb-2 lg:mb-4 uppercase drop-shadow-lg lsa lsa-slide-up no-repeat">
         {post.data.title}
       </h1>
