@@ -1,7 +1,7 @@
 ---
 id: '9'
 title: 'Papa Roach'
-description: 'Highlights and recent press coverage of SUPERVOID working with Papa Roach'
+description: 'V13 on Papa Roach''s Rise of the Roach tour at Wembley: flames, smoke and immersive SUPERVOID visuals behind a roaring crowd.'
 published: 2025-02-15
 image: './images/papa-roach.jpg'
 imageAlt: 'Papa Roach'

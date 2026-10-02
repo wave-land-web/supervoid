@@ -1,7 +1,7 @@
 ---
 id: '7'
 title: 'Alex Warren'
-description: 'Highlights and recent press coverage of SUPERVOID working with Alex Warren'
+description: '13th Floor on Alex Warren''s live show, with SUPERVOID''s screens and visuals: full of stage effects, yet as intimate as a small room.'
 published: 2025-08-18
 image: './images/alex-warren.jpg'
 imageAlt: 'Alex Warren'

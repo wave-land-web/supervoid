@@ -1,7 +1,7 @@
 ---
 id: '11'
 title: 'Radiohead'
-description: 'Highlights and recent press coverage of SUPERVOID working with Radiohead'
+description: 'Il Sole 24 Ore on Radiohead''s tour: twelve moving screens of real-time SUPERVOID visuals that turn the music into light.'
 published: 2025-12-07
 image: './images/radiohead.jpg'
 imageAlt: 'Radiohead Live Performance'

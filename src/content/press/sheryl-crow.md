@@ -1,7 +1,7 @@
 ---
 id: '8'
 title: 'Sheryl Crow'
-description: 'Highlights and recent press coverage of SUPERVOID working with Sheryl Crow'
+description: 'The Crimson on Sheryl Crow at Boston Calling, as SUPERVOID''s screens lit her up in burnt orange and red for "Soak Up The Sun."'
 published: 2025-05-25
 image: './images/sheryl-crow.webp'
 imageAlt: 'Sheryl Crow'

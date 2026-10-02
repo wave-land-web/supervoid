@@ -1,7 +1,7 @@
 ---
 id: '10'
 title: 'STS9'
-description: 'Highlights and recent press coverage of SUPERVOID working with STS9'
+description: 'PLSN on STS9''s redesigned show: pre-programmed cues mixed with live visual improvisation from SUPERVOID.'
 published: 2025-12-07
 image: './images/sts9.jpg'
 imageAlt: 'STS9 Live Performance'

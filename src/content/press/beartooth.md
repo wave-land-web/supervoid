@@ -1,7 +1,7 @@
 ---
 id: '6'
 title: 'Beartooth'
-description: 'Highlights and recent press coverage of SUPERVOID working with Beartooth'
+description: 'HM Magazine called Beartooth''s hometown show, with SUPERVOID''s Notch effects and IMAG, one of the most memorable of the band''s career.'
 published: 2025-03-10
 image: './images/beartooth.jpg'
 imageAlt: 'Beartooth'

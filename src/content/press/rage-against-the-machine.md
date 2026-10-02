@@ -1,7 +1,7 @@
 ---
 id: '0'
 title: 'Rage Against the Machine'
-description: 'Highlights and recent press coverage of SUPERVOID working with Rage Against the Machine'
+description: 'Notch and Rolling Stone on Rage Against the Machine''s reunion tour, with SUPERVOID''s Drew Mercadante on Notch and media servers.'
 published: 2022-10-25
 image: './images/rage-against-the-machine.png'
 imageAlt: 'Rage Against the Machine'

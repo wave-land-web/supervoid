@@ -1,7 +1,7 @@
 ---
 id: '3'
 title: 'San Holo'
-description: 'Highlights and recent press coverage of SUPERVOID working with San Holo'
+description: 'PLSN and Notch on San Holo''s EXISTENTIAL DANCE MUSIC tour, where SUPERVOID took real-time Notch visuals to a new level.'
 published: 2023-12-11
 image: './images/san-holo.png'
 imageAlt: 'San Holo'

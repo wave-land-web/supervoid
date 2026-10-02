@@ -1,7 +1,7 @@
 ---
 id: '5'
 title: 'Lil Tecca'
-description: 'Highlights and recent press coverage of SUPERVOID working with Lil Tecca'
+description: 'Following Backstage on Lil Tecca''s HVN ON EARTH tour: chain-link fences, barbed wire and fast, flashing visuals by SUPERVOID.'
 published: 2025-07-22
 image: './images/lil-tecca.jpg'
 imageAlt: 'Lil Tecca'

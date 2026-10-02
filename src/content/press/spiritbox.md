@@ -1,7 +1,7 @@
 ---
 id: '2'
 title: 'Spiritbox'
-description: 'Highlights and recent press coverage of SUPERVOID working with Spiritbox'
+description: 'PLSN, Notch and Express on Spiritbox''s Eternal Blue tour: SUPERVOID visuals that fans went on to post about.'
 published: 2023-06-06
 image: './images/spiritbox.jpg'
 imageAlt: 'Spiritbox'
