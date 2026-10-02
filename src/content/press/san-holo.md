@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with San
 published: 2023-12-11
 image: './images/san-holo.png'
 imageAlt: 'San Holo'
-socialImage: '/images/san-holo.png'
 ---
 
 > “They brought in Visual Effects Specialist Mercadante to provide the needed video integration. As a team they masterfully took NVIDIA graphics technology and real-time graphics tool, Notch to a new level for this tour.”

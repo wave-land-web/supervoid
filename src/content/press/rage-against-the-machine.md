@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with Rag
 published: 2022-10-25
 image: './images/rage-against-the-machine.png'
 imageAlt: 'Rage Against the Machine'
-socialImage: '/images/rage-against-the-machine.png'
 ---
 
 > “As Rage Against the Machine is the kind of band that actively avoids flashy 3D visuals, the final product was purposefully kept sparse and to the point. The creative team received great reviews for their simple, direct looks that just added a bit of edge and showcased the performances without distraction.”

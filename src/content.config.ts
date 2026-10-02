@@ -31,7 +31,6 @@ const pressCollection = defineCollection({
       published: z.coerce.date(),
       image: image(),
       imageAlt: z.string(),
-      socialImage: z.string(),
     }),
 })
 

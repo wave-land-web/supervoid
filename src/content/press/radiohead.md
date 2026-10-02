@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with Rad
 published: 2025-12-07
 image: './images/radiohead.jpg'
 imageAlt: 'Radiohead Live Performance'
-socialImage: '/images/radiohead.jpg'
 ---
 
 > "Around the band, twelve vertical screens rise and fall like moving panels, projecting now abstract visuals, now close-up details of instruments and artists' faces: the images deform and recompose, as if the music could be translated into light impulses."

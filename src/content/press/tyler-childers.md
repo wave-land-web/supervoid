@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with Tyl
 published: 2024-06-13
 image: './images/tyler-childers.png'
 imageAlt: 'Tyler Childers'
-socialImage: '/images/tyler-childers.png'
 ---
 
 > "Drew Mercadante, of Philadelphia-based SUPERVOID, is a visual effects specialist"

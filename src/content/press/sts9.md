@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with STS
 published: 2025-12-07
 image: './images/sts9.jpg'
 imageAlt: 'STS9 Live Performance'
-socialImage: '/images/sts9.jpg'
 ---
 
 > "Pre-programmed cues tied to key moments in the setlist, mixed with real-time visual improvisation that allows for on-the-fly responsiveness during the show."

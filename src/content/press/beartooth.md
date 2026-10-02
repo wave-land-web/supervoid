@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with Bea
 published: 2025-03-10
 image: './images/beartooth.jpg'
 imageAlt: 'Beartooth'
-socialImage: '/images/beartooth.jpg'
 ---
 
 > "It was pyrotechnic spectacle and one of the most memorable shows of the band's career thus far."

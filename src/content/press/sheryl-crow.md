@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with She
 published: 2025-05-25
 image: './images/sheryl-crow.webp'
 imageAlt: 'Sheryl Crow'
-socialImage: '/images/sheryl-crow.webp'
 ---
 
 > "Crow kicked off "Soak Up The Sun" as the screen behind her lit up with starbursts of burnt orange and red, illuminating her in toasty light."

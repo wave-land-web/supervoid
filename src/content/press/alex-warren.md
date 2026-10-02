@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with Ale
 published: 2025-08-18
 image: './images/alex-warren.jpg'
 imageAlt: 'Alex Warren'
-socialImage: '/images/alex-warren.jpg'
 ---
 
 > "The whole show felt extremely put together – while it was full of stage effects, backing screens and tight visuals, it didn't feel stiff or compressed in the way many concerts may have. He played to what felt like every member of the audience, chatting easily to the crowd – it felt less like a packed out theatre and more like an intimate experience."

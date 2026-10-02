@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with Spi
 published: 2023-06-06
 image: './images/spiritbox.jpg'
 imageAlt: 'Spiritbox'
-socialImage: '/images/spiritbox.jpg'
 ---
 
 > “I've known Drew for several years now, and with his company SUPERVOID, he's become my go-to video guy. He really crushed it on this one.”

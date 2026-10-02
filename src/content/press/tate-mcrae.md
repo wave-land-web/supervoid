@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with Tat
 published: 2022-10-04
 image: './images/tate-mcrae.png'
 imageAlt: 'Tate McRae'
-socialImage: '/images/tate-mcrae.png'
 ---
 
 > “SUPERVOID.tv delivered an electrified haze of scenery and video for Tate McRae's mainstage set at Made in America 2022.”

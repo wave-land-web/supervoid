@@ -5,7 +5,6 @@ description: 'Highlights and recent press coverage of SUPERVOID working with Pap
 published: 2025-02-15
 image: './images/papa-roach.jpg'
 imageAlt: 'Papa Roach'
-socialImage: '/images/papa-roach.jpg'
 ---
 
 > "...the banner dropped, revealing an extravagant stage set-up. Flames, smoke and intense lighting created an immersive, sensory experience for the already roaring fans."
