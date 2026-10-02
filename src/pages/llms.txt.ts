@@ -36,10 +36,11 @@ export const GET: APIRoute = async ({ site }) => {
     '',
     '## Case studies',
     '',
-    ...caseStudies.map(
-      (entry) =>
-        `- [${entry.data.title} (${entry.data.year})](${url(`/work/${entry.id}/`)}): ${toMetaDescription(entry.data.info.join(' '), 400)}`,
-    ),
+    ...caseStudies.map((entry) => {
+      const summary = toMetaDescription(entry.data.info.join(' '), 400)
+      const credits = entry.data.credits?.map(({ role, names }) => `${role}: ${names}`).join('; ')
+      return `- [${entry.data.title} (${entry.data.year})](${url(`/work/${entry.id}/`)}): ${summary}${credits ? ` Credits: ${credits}.` : ''}`
+    }),
     '',
     '## Press',
     '',
