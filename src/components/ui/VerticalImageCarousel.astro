@@ -12,7 +12,7 @@ export interface Props {
 const { images, class: className } = Astro.props
 ---
 
-<div class={`relative w-full h-full ${className}`}>
+<div class:list={['relative w-full h-full', className]}>
   <!-- Left fade gradient overlay -->
   <div class="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-black to-transparent z-10 pointer-events-none"></div>
 

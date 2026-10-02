@@ -14,7 +14,11 @@ const { href, title, direction, text, class: className } = Astro.props
 
 <a
   href={href}
-  class={`flex items-center gap-4 hover:text-white relative text-m ${direction === 'left' ? 'mr-auto' : 'ml-auto'} ${className}`}
+  class:list={[
+    'flex items-center gap-4 hover:text-white relative text-m',
+    direction === 'left' ? 'mr-auto' : 'ml-auto',
+    className,
+  ]}
   title={title}
   aria-label={title}
 >
