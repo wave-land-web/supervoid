@@ -1,33 +1,20 @@
 ---
 import AnimatedCTA from '../text/AnimatedCTA.astro'
 
-export interface Props {
-  prevPost?: any
-  nextPost?: any
-  prevPostSlug?: string
-  nextPostSlug?: string
-  prevPostTitle?: string
-  nextPostTitle?: string
+interface PageLink {
+  href: string
+  title: string
 }
 
-const { prevPost, nextPost, prevPostSlug, nextPostSlug, prevPostTitle, nextPostTitle } = Astro.props
+export interface Props {
+  prev?: PageLink
+  next?: PageLink
+}
+
+const { prev, next } = Astro.props
 ---
 
 <section id="pagination" class="pagination flex flex-col md:flex-row justify-between gap-4 pt-0">
-  {prevPost && (
-    <AnimatedCTA
-      href={`${prevPostSlug}`}
-      title={`${prevPostTitle}`}
-      text="Previous"
-      direction="left"
-    />
-  )}
-  {nextPost && (
-    <AnimatedCTA
-      href={`${nextPostSlug}`}
-      title={`${nextPostTitle}`}
-      text="Next"
-      direction="right"
-    />
-  )}
+  {prev && <AnimatedCTA href={prev.href} title={prev.title} text="Previous" direction="left" />}
+  {next && <AnimatedCTA href={next.href} title={next.title} text="Next" direction="right" />}
 </section>

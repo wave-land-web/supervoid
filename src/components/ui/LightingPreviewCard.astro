@@ -1,7 +1,7 @@
 ---
-import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
+import { Icon } from 'astro-icon/components'
 
 export interface Props {
   work: CollectionEntry<'lighting'>
@@ -34,6 +34,7 @@ const youtubeId = work.data.youtubeId
 
     <button
       id={`play-button-${youtubeId}`}
+      type="button"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       aria-label="Play Video"
     >
@@ -54,7 +55,7 @@ const youtubeId = work.data.youtubeId
 <script define:vars={{ youtubeId }}>
   const posterImage = document.querySelector(`#image-${youtubeId}`)
   const playButton = document.querySelector(`#play-button-${youtubeId}`)
-  let player
+  let player = null
 
   // The IFrame API script is loaded `async`, so `YT` may not exist yet when a
   // visitor clicks. Share one promise across every card on the page that

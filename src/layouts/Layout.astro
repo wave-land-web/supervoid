@@ -1,9 +1,9 @@
 ---
 import '../styles/global.css'
+import { Font } from 'astro:assets'
+import Footer from '../components/ui/Footer.astro'
 import Marquee from '../components/ui/Marquee.astro'
 import Navigation from '../components/ui/Navigation.astro'
-import Footer from '../components/ui/Footer.astro'
-import { Font } from 'astro:assets'
 
 export interface Props {
   title: string
@@ -83,10 +83,10 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
     <Font cssVariable="--font-header" preload />
     <Font cssVariable="--font-body" preload />
 
-    {/* YouTube API — opted into by pages that embed YouTube players */}
+    <!-- YouTube API — opted into by pages that embed YouTube players -->
     {youtube && <script src="https://www.youtube.com/iframe_api" is:inline async />}
 
-    {/* Mux — opted into by pages that render a video player */}
+    <!-- Mux — opted into by pages that render a video player -->
     {mux && <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" is:inline async />}
 
     <!-- Umami Analytics -->

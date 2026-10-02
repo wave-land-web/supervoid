@@ -24,6 +24,7 @@ const currentPath = Astro.url.pathname
         height="58"
         fill="none"
         viewBox="0 0 100 58"
+        aria-hidden="true"
       >
         <g clip-path="url(#a)">
           <path
@@ -56,6 +57,7 @@ const currentPath = Astro.url.pathname
     </a>
     <button
       id="hamburger"
+      type="button"
       class="relative flex flex-col justify-center items-center size-8 z-10 group"
       aria-expanded="false"
       title="Menu"
@@ -121,6 +123,7 @@ const currentPath = Astro.url.pathname
         height="58"
         fill="none"
         viewBox="0 0 100 58"
+        aria-hidden="true"
       >
         <g clip-path="url(#a)">
           <path
@@ -361,7 +364,9 @@ const currentPath = Astro.url.pathname
     })
 
     // Event listeners
-    mobileNavItems.forEach((i) => i.addEventListener('click', handleMobileNavigationOverlayOnClick))
+    for (const item of mobileNavItems) {
+      item.addEventListener('click', handleMobileNavigationOverlayOnClick)
+    }
     hamburger.addEventListener('click', handleMobileNavigationOverlayOnClick)
     window.addEventListener('resize', handleMobileNavigationOverlayOnResize)
     window.addEventListener('scroll', handleActiveNavigationOnScroll)

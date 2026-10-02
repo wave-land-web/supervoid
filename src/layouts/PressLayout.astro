@@ -26,12 +26,8 @@ const nextPost = allPosts.find((p) => +p.data.id === currentPostId - 1)
     <slot />
 
     <Pagination
-      prevPost={prevPost}
-      nextPost={nextPost}
-      prevPostSlug={`/press/${prevPost?.id}`}
-      nextPostSlug={`/press/${nextPost?.id}`}
-      prevPostTitle={prevPost?.data.title}
-      nextPostTitle={nextPost?.data.title}
+      prev={prevPost && { href: `/press/${prevPost.id}`, title: prevPost.data.title }}
+      next={nextPost && { href: `/press/${nextPost.id}`, title: nextPost.data.title }}
     />
   </main>
 </Layout>

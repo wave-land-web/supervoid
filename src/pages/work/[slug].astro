@@ -224,12 +224,8 @@ const heroStillWidths = [768, 1280, 1920]
     </section>
 
     <Pagination
-      prevPost={prevPost}
-      nextPost={nextPost}
-      prevPostSlug={`/work/${prevPost?.id}`}
-      nextPostSlug={`/work/${nextPost?.id}`}
-      prevPostTitle={prevPost?.data.title}
-      nextPostTitle={nextPost?.data.title}
+      prev={prevPost && { href: `/work/${prevPost.id}`, title: prevPost.data.title }}
+      next={nextPost && { href: `/work/${nextPost.id}`, title: nextPost.data.title }}
     />
   </main>
 </Layout>
