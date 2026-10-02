@@ -4,7 +4,7 @@ title: 'STS9'
 year: '2025'
 info:
   [
-    'STS9 reached out to SUPERVOID in early 2025, seeking a full redesign of their stage production.  We brought on legendary production designer Martin Phillips to create the blueprint, then iterated with our own ideas on his base design.  The resulting collaboration has been a resounding success, allowing the band to breathe new life into their 200+ song catalog.  By integrating a mixed canvas of lighting and video, the stage design elevates the bands performances and accentuates the nuances of each composition.',
+    'STS9 reached out to SUPERVOID in early 2025, seeking a full redesign of their stage production.  We brought on legendary production designer Martin Phillips to create the blueprint, then iterated with our own ideas on his base design.  The resulting collaboration has been a resounding success, allowing the band to breathe new life into their 200+ song catalog.  By integrating a mixed canvas of lighting and video, the stage design elevates the band''s performances and accentuates the nuances of each composition.',
   ]
 credits: [
     '<div class="flex flex-col gap-4">

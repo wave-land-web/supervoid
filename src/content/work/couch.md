@@ -4,7 +4,7 @@ title: 'Couch'
 year: '2025'
 info:
   [
-    "SUPERVOID was selected by COUCH to handle production design and lighting for their first headlining tour with a full production package.  We designed custom set pieces that attached to their stage risers that we're made of mixed frosted plexiglass and mirrors, designed to capture light from the stage and refract it into space while simultaneously making the risers glow and bloom with the music.  For the lighting side of things, we utilized Robe Tetra2 battens to create dense pixel chases and wide gobo looks with a minimal amount of gear.  The show sold out nearly everywhere they took it, leaving fans blown away.",
+    "SUPERVOID was selected by COUCH to handle production design and lighting for their first headlining tour with a full production package.  We designed custom set pieces that attached to their stage risers that were made of mixed frosted plexiglass and mirrors, designed to capture light from the stage and refract it into space while simultaneously making the risers glow and bloom with the music.  For the lighting side of things, we utilized Robe Tetra2 battens to create dense pixel chases and wide gobo looks with a minimal amount of gear.  The show sold out nearly everywhere they took it, leaving fans blown away.",
   ]
 credits: [
     '<div class="flex flex-col gap-4">
