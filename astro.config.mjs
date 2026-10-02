@@ -14,7 +14,13 @@ export default defineConfig({
     prefetchAll: true,
   },
   integrations: [
-    icon(),
+    icon({
+      // Keep each icon's own ids. SVGO's default renames them to "a", "b"… so two
+      // icons on one page can end up sharing an id and clipping each other.
+      svgoOptions: {
+        plugins: [{ name: 'preset-default', params: { overrides: { cleanupIds: false } } }],
+      },
+    }),
     sitemap({
       lastmod: new Date(),
       // Astro emits canonical URLs with a trailing slash, so compare against the
