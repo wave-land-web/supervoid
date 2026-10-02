@@ -2,7 +2,7 @@
 id: '2'
 title: 'Spiritbox'
 description: 'Highlights and recent press coverage of SUPERVOID working with Spiritbox'
-published: '06-06-2023'
+published: 2023-06-06
 image: './images/spiritbox.jpg'
 imageAlt: 'Spiritbox'
 socialImage: '/images/spiritbox.jpg'

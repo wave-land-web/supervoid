@@ -2,7 +2,7 @@
 id: '8'
 title: 'Sheryl Crow'
 description: 'Highlights and recent press coverage of SUPERVOID working with Sheryl Crow'
-published: '05-25-2025'
+published: 2025-05-25
 image: './images/sheryl-crow.webp'
 imageAlt: 'Sheryl Crow'
 socialImage: '/images/sheryl-crow.webp'

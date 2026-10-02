@@ -2,7 +2,7 @@
 id: '0'
 title: 'Rage Against the Machine'
 description: 'Highlights and recent press coverage of SUPERVOID working with Rage Against the Machine'
-published: '10-25-2022'
+published: 2022-10-25
 image: './images/rage-against-the-machine.png'
 imageAlt: 'Rage Against the Machine'
 socialImage: '/images/rage-against-the-machine.png'

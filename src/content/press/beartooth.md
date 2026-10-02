@@ -2,7 +2,7 @@
 id: '6'
 title: 'Beartooth'
 description: 'Highlights and recent press coverage of SUPERVOID working with Beartooth'
-published: '03-10-2025'
+published: 2025-03-10
 image: './images/beartooth.jpg'
 imageAlt: 'Beartooth'
 socialImage: '/images/beartooth.jpg'

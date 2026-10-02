@@ -2,7 +2,7 @@
 id: '1'
 title: 'Tate McRae'
 description: 'Highlights and recent press coverage of SUPERVOID working with Tate McRae'
-published: '10-04-2022'
+published: 2022-10-04
 image: './images/tate-mcrae.png'
 imageAlt: 'Tate McRae'
 socialImage: '/images/tate-mcrae.png'

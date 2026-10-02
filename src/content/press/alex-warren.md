@@ -2,7 +2,7 @@
 id: '7'
 title: 'Alex Warren'
 description: 'Highlights and recent press coverage of SUPERVOID working with Alex Warren'
-published: '08-18-2025'
+published: 2025-08-18
 image: './images/alex-warren.jpg'
 imageAlt: 'Alex Warren'
 socialImage: '/images/alex-warren.jpg'

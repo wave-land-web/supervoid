@@ -28,7 +28,7 @@ const pressCollection = defineCollection({
       id: z.string(),
       title: z.string(),
       description: z.string(),
-      published: z.string(),
+      published: z.coerce.date(),
       image: image(),
       imageAlt: z.string(),
       socialImage: z.string(),

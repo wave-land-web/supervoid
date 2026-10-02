@@ -2,7 +2,7 @@
 id: '11'
 title: 'Radiohead'
 description: 'Highlights and recent press coverage of SUPERVOID working with Radiohead'
-published: '12-07-2025'
+published: 2025-12-07
 image: './images/radiohead.jpg'
 imageAlt: 'Radiohead Live Performance'
 socialImage: '/images/radiohead.jpg'

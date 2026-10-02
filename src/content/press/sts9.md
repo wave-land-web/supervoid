@@ -2,7 +2,7 @@
 id: '10'
 title: 'STS9'
 description: 'Highlights and recent press coverage of SUPERVOID working with STS9'
-published: '12-07-2025'
+published: 2025-12-07
 image: './images/sts9.jpg'
 imageAlt: 'STS9 Live Performance'
 socialImage: '/images/sts9.jpg'

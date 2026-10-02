@@ -2,7 +2,7 @@
 id: '9'
 title: 'Papa Roach'
 description: 'Highlights and recent press coverage of SUPERVOID working with Papa Roach'
-published: '02-15-2025'
+published: 2025-02-15
 image: './images/papa-roach.jpg'
 imageAlt: 'Papa Roach'
 socialImage: '/images/papa-roach.jpg'

@@ -2,7 +2,7 @@
 id: '5'
 title: 'Lil Tecca'
 description: 'Highlights and recent press coverage of SUPERVOID working with Lil Tecca'
-published: '07-22-2025'
+published: 2025-07-22
 image: './images/lil-tecca.jpg'
 imageAlt: 'Lil Tecca'
 socialImage: '/images/lil-tecca.jpg'

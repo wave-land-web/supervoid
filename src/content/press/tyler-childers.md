@@ -2,7 +2,7 @@
 id: '4'
 title: 'Tyler Childers'
 description: 'Highlights and recent press coverage of SUPERVOID working with Tyler Childers'
-published: '06-13-2024'
+published: 2024-06-13
 image: './images/tyler-childers.png'
 imageAlt: 'Tyler Childers'
 socialImage: '/images/tyler-childers.png'

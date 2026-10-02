@@ -2,7 +2,7 @@
 id: '3'
 title: 'San Holo'
 description: 'Highlights and recent press coverage of SUPERVOID working with San Holo'
-published: '12-11-2023'
+published: 2023-12-11
 image: './images/san-holo.png'
 imageAlt: 'San Holo'
 socialImage: '/images/san-holo.png'
