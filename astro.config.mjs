@@ -38,6 +38,12 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    // Pre-bundle the Mux player when the dev server starts. Found later, Vite re-bundles it
+    // mid-session and answers the open page with "504 Outdated Optimize Dep", so work-page
+    // videos never load in dev.
+    optimizeDeps: {
+      include: ['@mux/mux-video'],
+    },
   },
   fonts: [
     {
