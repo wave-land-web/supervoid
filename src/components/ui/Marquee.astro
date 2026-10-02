@@ -18,7 +18,8 @@ const { class: className } = Astro.props
     </p>
   </div>
 
-  <div class="marquee-container">
+  <!-- Copies for the seamless loop: hidden from screen readers and the tab order -->
+  <div class="marquee-container" aria-hidden="true" inert>
     <p class="text-l">
       Follow us on Instagram{' '}
       <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" class="site-link">
@@ -27,7 +28,7 @@ const { class: className } = Astro.props
     </p>
   </div>
 
-  <div class="marquee-container">
+  <div class="marquee-container" aria-hidden="true" inert>
     <p class="text-l">
       Follow us on Instagram{' '}
       <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" class="site-link">
@@ -54,6 +55,12 @@ const { class: className } = Astro.props
     align-items: center;
     justify-content: space-evenly;
     animation: footerMarquee 30s linear 0s infinite;
+  }
+
+  /* Hold still while someone is pointing at or tabbing through it */
+  .marquee:hover .marquee-container,
+  .marquee:focus-within .marquee-container {
+    animation-play-state: paused;
   }
 
   /* Reduced motion: stop the crawl. The second and third copies exist only so
