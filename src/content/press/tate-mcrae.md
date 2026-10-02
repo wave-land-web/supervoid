@@ -3,7 +3,7 @@ id: '1'
 title: 'Tate McRae'
 description: 'Notch on Tate McRae''s Made in America 2022 mainstage set, where SUPERVOID delivered an electrified haze of scenery and video.'
 published: 2022-10-04
-image: './images/tate-mcrae.png'
+image: './images/tate-mcrae.jpg'
 imageAlt: 'Tate McRae'
 ---
 

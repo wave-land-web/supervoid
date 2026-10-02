@@ -17,7 +17,7 @@ credits:
     names: 'Bryan Campbell'
   - role: 'Lighting Director'
     names: 'Dave Summers'
-thumbnail: './images/thumbnails/papa-roach.png'
+thumbnail: './images/thumbnails/papa-roach.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

@@ -15,7 +15,7 @@ credits:
     names: 'Drew Mercadante'
   - role: 'Animation Team'
     names: 'Matt Keppler, Grant Bouvier, George Murphy, Kenn Koubeck, John Egan'
-thumbnail: './images/thumbnails/underoath.png'
+thumbnail: './images/thumbnails/underoath.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

@@ -19,7 +19,7 @@ credits:
     names: 'Ben Jarrett'
   - role: 'LIGHTING DIRECTOR'
     names: 'Colin Bishop'
-thumbnail: './images/thumbnails/beartooth.png'
+thumbnail: './images/thumbnails/beartooth.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

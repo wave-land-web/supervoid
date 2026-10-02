@@ -78,7 +78,8 @@ const schema = [
         /* Above-the-fold hero: the LCP element, so fetch it immediately */
         <Picture
           src={post.data.gifs.imageHero}
-          formats={['avif', 'webp']}
+          formats={['avif']}
+          fallbackFormat="webp"
           sizes="(min-width: 1536px) 1536px, 100vw"
           alt=""
           loading="eager"
@@ -191,7 +192,8 @@ const schema = [
           src={image}
           sizes={TWO_COLUMN_SIZES}
           alt=""
-          formats={['avif', 'webp']}
+          formats={['avif']}
+          fallbackFormat="webp"
           class="aspect-video object-cover lsa lsa-slide-up no-repeat"
         />
       ))}

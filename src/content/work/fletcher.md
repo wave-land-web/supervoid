@@ -19,7 +19,7 @@ credits:
     names: 'Drew Mercadante'
   - role: 'Sceptron Lighting Effects'
     names: 'Drew Mercadante'
-thumbnail: './images/thumbnails/fletcher.png'
+thumbnail: './images/thumbnails/fletcher.jpg'
 # gifs are MUX playback IDs
 gifs:
   {
@@ -38,5 +38,5 @@ gifs:
         'HKAXafMCDP4mIOhv2pnFnlXVTC902iDxSzT01ICQ1c4Ps',
       ],
   }
-images: ['./images/fletcher-1.png', './images/fletcher-2.png', './images/fletcher-3.png']
+images: ['./images/fletcher-1.jpg', './images/fletcher-2.jpg', './images/fletcher-3.jpg']
 ---

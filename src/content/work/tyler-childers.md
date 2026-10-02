@@ -26,7 +26,7 @@ credits:
     names: 'Devon Brown'
   - role: 'Content Producer'
     names: 'Ryan Smith'
-thumbnail: './images/thumbnails/tyler-childers.png'
+thumbnail: './images/thumbnails/tyler-childers.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

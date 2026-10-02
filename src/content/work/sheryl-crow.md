@@ -17,7 +17,7 @@ credits:
     names: 'Drew Mercadante, Cole Lofink'
   - role: 'PRODUCTION MANAGER'
     names: 'Chris Wrightsman'
-thumbnail: './images/thumbnails/sheryl-crow.png'
+thumbnail: './images/thumbnails/sheryl-crow.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

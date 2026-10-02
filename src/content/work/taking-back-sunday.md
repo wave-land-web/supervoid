@@ -14,7 +14,7 @@ credits:
     names: 'Lenny Sasso'
   - role: 'Animation Director'
     names: 'Drew Mercadante'
-thumbnail: './images/thumbnails/taking-back-sunday.png'
+thumbnail: './images/thumbnails/taking-back-sunday.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

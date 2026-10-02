@@ -18,7 +18,7 @@ credits:
     names: 'Ryan Smith, Karl Fekete, Nick Schoener'
   - role: 'Production Manager'
     names: 'Rodney Johnson'
-thumbnail: './images/thumbnails/janes-addiction.png'
+thumbnail: './images/thumbnails/janes-addiction.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

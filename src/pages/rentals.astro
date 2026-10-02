@@ -67,7 +67,8 @@ import { socialImageFrom } from '../lib/socialImage'
       <figure class="lg:translate-x-2">
         <Picture
           src={willowImage}
-          formats={['avif', 'webp']}
+          formats={['avif']}
+          fallbackFormat="webp"
           sizes="(min-width: 1024px) 608px, (min-width: 832px) 768px, calc(100vw - 32px)"
           alt="Willow at Camp Flog Gnaw"
         />
@@ -98,7 +99,8 @@ import { socialImageFrom } from '../lib/socialImage'
         <Picture
           src={svxSeriesServerBackImage}
           sizes="(min-width: 640px) 384px, calc(100vw - 160px)"
-          formats={['avif', 'webp']}
+          formats={['avif']}
+          fallbackFormat="webp"
           alt="SVX Series Servers - Back"
           class="px-16 py-12 max-w-lg"
         />
@@ -135,7 +137,8 @@ import { socialImageFrom } from '../lib/socialImage'
         <Picture
           src={grandma3CompactImage}
           sizes="(min-width: 640px) 384px, calc(100vw - 160px)"
-          formats={['avif', 'webp']}
+          formats={['avif']}
+          fallbackFormat="webp"
           alt="GrandMA3 Compact Lighting Console"
           class="px-16 py-12 max-w-lg"
         />

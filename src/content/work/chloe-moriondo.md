@@ -16,7 +16,7 @@ credits:
     names: 'Marco Gil'
   - role: 'Playback Tech'
     names: 'Nicholas Bentley'
-thumbnail: './images/thumbnails/chloe-moriondo.png'
+thumbnail: './images/thumbnails/chloe-moriondo.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

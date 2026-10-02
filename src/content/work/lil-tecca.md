@@ -20,7 +20,7 @@ credits:
     names: 'Tyler Olson'
   - role: 'Tour VJ'
     names: 'Katie Rose'
-thumbnail: './images/thumbnails/lil-tecca.png'
+thumbnail: './images/thumbnails/lil-tecca.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

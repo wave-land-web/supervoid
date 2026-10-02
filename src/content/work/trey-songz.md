@@ -13,7 +13,7 @@ credits:
     names: 'Drew Mercadante'
   - role: 'Animation Team'
     names: 'George Murphy, Kenn Koubeck'
-thumbnail: './images/thumbnails/trey-songz.png'
+thumbnail: './images/thumbnails/trey-songz.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

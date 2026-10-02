@@ -26,7 +26,8 @@ const { images, class: className } = Astro.props
           <Picture
             src={image.src}
             sizes="(min-width: 1280px) 368px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 67vw"
-            formats={['avif', 'webp']}
+            formats={['avif']}
+            fallbackFormat="webp"
             alt={image.alt}
             class="w-full h-full object-cover"
           />

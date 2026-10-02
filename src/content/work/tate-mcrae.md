@@ -14,7 +14,7 @@ credits:
     names: 'Drew Mercadante'
   - role: 'Animation Team'
     names: 'Matt Keppler, Ciara Hegli'
-thumbnail: './images/thumbnails/tate-mcrae.png'
+thumbnail: './images/thumbnails/tate-mcrae.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

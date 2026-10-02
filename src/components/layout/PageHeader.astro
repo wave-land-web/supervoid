@@ -34,7 +34,8 @@ const { title, lede, image, narrow = false } = Astro.props
       <figure class="col-start-1 row-start-1">
         <Picture
           src={image.src}
-          formats={['avif', 'webp']}
+          formats={['avif']}
+          fallbackFormat="webp"
           sizes={narrow ? NARROW_SIZES : CONTAINER_SIZES}
           alt={image.alt}
           loading="eager"

@@ -21,7 +21,7 @@ credits:
     names: 'Brett Bolton'
   - role: 'Video Operator & Programmer'
     names: 'Drew Mercadante'
-thumbnail: './images/thumbnails/rage-against-the-machine.png'
+thumbnail: './images/thumbnails/rage-against-the-machine.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

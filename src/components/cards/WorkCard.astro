@@ -33,7 +33,8 @@ const cardId = `work-preview-card-${id}`
       <Picture
         src={imageHero}
         alt=""
-        formats={['avif', 'webp']}
+        formats={['avif']}
+        fallbackFormat="webp"
         sizes={TWO_COLUMN_SIZES}
         loading={isAboveTheFold ? 'eager' : 'lazy'}
         fetchpriority={priority ? 'high' : undefined}

@@ -14,7 +14,7 @@ credits:
     names: 'Drew Mercadante'
   - role: 'Animation Team'
     names: 'George Murphy, Kenn Koubeck, Matt Keppler'
-thumbnail: './images/thumbnails/love-and-rockets.png'
+thumbnail: './images/thumbnails/love-and-rockets.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

@@ -22,7 +22,7 @@ credits:
     names: 'Jeff Meuzelaar, Pinnacle Productions'
   - role: 'Laser Programmer'
     names: 'Bill Loftus'
-thumbnail: './images/thumbnails/san-holo.png'
+thumbnail: './images/thumbnails/san-holo.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

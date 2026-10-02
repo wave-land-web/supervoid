@@ -25,7 +25,8 @@ const { post, isAboveTheFold, priority = false } = Astro.props
       <Picture
         src={post.data.image}
         alt=""
-        formats={['avif', 'webp']}
+        formats={['avif']}
+        fallbackFormat="webp"
         sizes={TWO_COLUMN_SIZES}
         loading={isAboveTheFold ? 'eager' : 'lazy'}
         fetchpriority={priority ? 'high' : undefined}

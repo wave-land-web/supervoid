@@ -15,7 +15,7 @@ credits:
     names: 'Drew Mercadante'
   - role: 'Animation Team'
     names: 'Matt Keppler, Jaxon Graham, Ciara Hegli, Grant Bouvier'
-thumbnail: './images/thumbnails/spiritbox.png'
+thumbnail: './images/thumbnails/spiritbox.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

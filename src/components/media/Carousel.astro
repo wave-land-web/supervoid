@@ -18,7 +18,8 @@ const { images, class: className } = Astro.props
       <div class="swiper-slide rounded-xl">
         <Picture
           src={image.src}
-          formats={['avif', 'webp']}
+          formats={['avif']}
+          fallbackFormat="webp"
           sizes="(min-width: 1280px) 50vw, (min-width: 768px) 768px, 100vw"
           alt={image.alt}
         />

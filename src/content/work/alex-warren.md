@@ -17,7 +17,7 @@ credits:
     names: 'Jeff Maker'
   - role: 'Lighting Director'
     names: 'Dave Summers'
-thumbnail: './images/thumbnails/alex-warren.png'
+thumbnail: './images/thumbnails/alex-warren.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

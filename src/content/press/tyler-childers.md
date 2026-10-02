@@ -3,7 +3,7 @@ id: '4'
 title: 'Tyler Childers'
 description: 'PLSN and Notch on Tyler Childers'' Mule Pull ''24 tour, where SUPERVOID built a world of Appalachian psychedelia.'
 published: 2024-06-13
-image: './images/tyler-childers.png'
+image: './images/tyler-childers.jpg'
 imageAlt: 'Tyler Childers'
 ---
 
