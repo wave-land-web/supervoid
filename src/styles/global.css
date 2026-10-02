@@ -314,18 +314,12 @@
   }
 
   header,
-  main,
   nav {
     @apply w-full max-w-screen-2xl mx-auto;
   }
 
-  header,
-  main {
+  header {
     @apply p-4 md:p-8;
-  }
-
-  main {
-    @apply pb-16 md:pb-24;
   }
 
   nav {
@@ -451,5 +445,12 @@
     & strong {
       @apply font-bold;
     }
+  }
+}
+
+@layer components {
+  /* A page's content under its header, in the same column as the nav and the header */
+  .page-body {
+    @apply w-full max-w-screen-2xl mx-auto p-4 md:p-8 pb-16 md:pb-24;
   }
 }

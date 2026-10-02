@@ -8,7 +8,10 @@ export interface Props {
 const { class: className } = Astro.props
 ---
 
-<div class:list={[className, 'marquee max-w-screen-2xl mx-auto border-t border-b py-4 bg-black']}>
+<aside
+  aria-label="Instagram"
+  class:list={[className, 'marquee max-w-screen-2xl mx-auto border-t border-b py-4 bg-black']}
+>
   <div class="marquee-container">
     <p class="text-l">
       Follow us on Instagram{' '}
@@ -36,7 +39,7 @@ const { class: className } = Astro.props
       </a>
     </p>
   </div>
-</div>
+</aside>
 
 <style>
   .marquee,

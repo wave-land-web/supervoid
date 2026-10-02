@@ -62,7 +62,7 @@ const schema = [
   ogType="article"
   schema={schema}
 >
-  <div slot="video-slot" class="relative lsa-load">
+  <div class="relative max-w-screen-2xl mx-auto lsa-load">
     <div class="relative aspect-video w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none">
       {post.data.gifs.videoHero ? (
         <CoverVideo
@@ -139,7 +139,7 @@ const schema = [
     </header>
   </div>
 
-  <main>
+  <div class="page-body">
     <section id="work-details" class="lsa no-repeat pt-4 pb-8">
       <details
         open
@@ -201,7 +201,7 @@ const schema = [
       prev={prevPost && { href: `/work/${prevPost.id}/`, title: prevPost.data.title }}
       next={nextPost && { href: `/work/${nextPost.id}/`, title: nextPost.data.title }}
     />
-  </main>
+  </div>
 </Layout>
 
 <script>

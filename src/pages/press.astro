@@ -21,7 +21,7 @@ const ABOVE_THE_FOLD_COUNT = 2
     </p>
   </header>
 
-  <main>
+  <div class="page-body">
     <section class="lsa-stagger grid md:grid-cols-2 gap-x-10 gap-y-12">
       {sortedPressPosts.map((post, index) => (
         <PressCard
@@ -31,5 +31,5 @@ const ABOVE_THE_FOLD_COUNT = 2
         />
       ))}
     </section>
-  </main>
+  </div>
 </Layout>

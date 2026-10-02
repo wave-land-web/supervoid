@@ -91,6 +91,7 @@ const structuredData = {
     <link rel="canonical" href={canonicalURL} />
     {noindex && <meta name="robots" content="noindex" />}
     <script
+      is:inline
       type="application/ld+json"
       set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')}
     />
@@ -151,13 +152,22 @@ const structuredData = {
   </head>
 
   <body class="font-body bg-black text-white">
+    {!minimal && (
+      <a
+        href="#content"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-1 focus:rounded-full focus:bg-magenta-900 focus:text-black text-xs uppercase"
+      >
+        Skip to content
+      </a>
+    )}
     <!-- The bottom margin uncovers the fixed footer underneath as the page ends -->
     <div id="wrapper" class:list={['relative z-10 bg-black', !minimal && 'mb-96']}>
-      <div class="max-w-screen-2xl mx-auto">
-        {!minimal && <Navigation />}
-        <slot name="video-slot" />
-      </div>
-      <slot />
+      {!minimal && <Navigation />}
+      <main>
+        <!-- Skip link target, at the top of the page's own content -->
+        <div id="content" tabindex="-1" class="outline-none"></div>
+        <slot />
+      </main>
       {!minimal && <Marquee />}
     </div>
     {!minimal && <Footer />}

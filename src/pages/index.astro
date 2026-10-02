@@ -41,7 +41,7 @@ const workByYear = getWorkYearsDescending(allWork).map((year) => ({
     </div>
   </header>
 
-  <main id="work" class="relative w-full">
+  <div id="work" class="page-body relative">
     {workByYear.map(({ year, work }, yearIndex) => (
       <section id={year}>
         <YearHeading year={year} />
@@ -62,5 +62,5 @@ const workByYear = getWorkYearsDescending(allWork).map((year) => ({
         </div>
       </section>
     ))}
-  </main>
+  </div>
 </Layout>
