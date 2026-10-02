@@ -64,8 +64,8 @@ const { images, class: className } = Astro.props
 
 <script>
   import Swiper from 'swiper'
-  import 'swiper/css/bundle'
-  import { Autoplay, Mousewheel } from 'swiper/modules'
+  import 'swiper/css'
+  import { A11y, Keyboard, Mousewheel } from 'swiper/modules'
 
   // Init every instance against its own root element rather than a bare
   // '.swiper' selector, which would bind only the first match on the page and
@@ -74,16 +74,15 @@ const { images, class: className } = Astro.props
     new Swiper(el, {
       direction: 'horizontal',
       grabCursor: true,
-      modules: [Mousewheel, Autoplay],
+      modules: [A11y, Keyboard, Mousewheel],
       speed: 500,
       slidesPerView: 4,
       spaceBetween: 16,
       loop: true,
       centeredSlides: false,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: true,
-        pauseOnMouseEnter: true,
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
       },
       mousewheel: {
         enabled: true,
