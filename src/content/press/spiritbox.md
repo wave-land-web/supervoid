@@ -6,14 +6,7 @@ published: '06-06-2023'
 image: './images/spiritbox.jpg'
 imageAlt: 'Spiritbox'
 socialImage: '/images/spiritbox.jpg'
-layout: '../../layouts/PressLayout.astro'
 ---
-
-import { Picture } from 'astro:assets'
-import PostHeader from '../../components/ui/PostHeader.astro'
-import headerImage from './images/spiritbox.jpg'
-
-<PostHeader image={headerImage} frontmatter={frontmatter} />
 
 > “I've known Drew for several years now, and with his company SUPERVOID, he's become my go-to video guy. He really crushed it on this one.”
 > -- <cite>Read more at <a href="https://plsn.com/articles/production-spotlight/spiritbox-the-eternal-blue-tour/" target="_blank" rel="noopener noreferrer">PLSN.com</a></cite>

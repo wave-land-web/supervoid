@@ -1,18 +1,21 @@
 ---
 import { getCollection, render } from 'astro:content'
+import PressLayout from '../../layouts/PressLayout.astro'
+import { sortPressNewestFirst } from '../../utils/sortPress'
 
 export async function getStaticPaths() {
-  const posts = await getCollection('press')
-  return posts.map((post) => ({
-    params: {
-      slug: post.id,
-    },
-    props: { post },
+  const posts = sortPressNewestFirst(await getCollection('press'))
+
+  return posts.map((post, index) => ({
+    params: { slug: post.id },
+    props: { post, prevPost: posts[index - 1], nextPost: posts[index + 1] },
   }))
 }
 
-const { post } = Astro.props
+const { post, prevPost, nextPost } = Astro.props
 const { Content } = await render(post)
 ---
 
-<Content />
+<PressLayout post={post} prevPost={prevPost} nextPost={nextPost}>
+  <Content />
+</PressLayout>

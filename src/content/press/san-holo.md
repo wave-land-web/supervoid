@@ -6,14 +6,7 @@ published: '12-11-2023'
 image: './images/san-holo.png'
 imageAlt: 'San Holo'
 socialImage: '/images/san-holo.png'
-layout: '../../layouts/PressLayout.astro'
 ---
-
-import { Picture } from 'astro:assets'
-import PostHeader from '../../components/ui/PostHeader.astro'
-import headerImage from './images/san-holo.png'
-
-<PostHeader image={headerImage} frontmatter={frontmatter} />
 
 > “They brought in Visual Effects Specialist Mercadante to provide the needed video integration. As a team they masterfully took NVIDIA graphics technology and real-time graphics tool, Notch to a new level for this tour.”
 > -- <cite>Read more at <a href="https://plsn.com/archives/december-2023/san-holo-existential-dance-music-tour/" target="_blank" rel="noopener noreferrer">PLSN.com</a></cite>

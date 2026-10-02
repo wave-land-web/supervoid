@@ -1,8 +1,13 @@
 ---
 import { Picture } from 'astro:assets'
 
-const { frontmatter, image } = Astro.props
-const { title, imageAlt } = frontmatter
+export interface Props {
+  title: string
+  image: ImageMetadata
+  imageAlt: string
+}
+
+const { title, image, imageAlt } = Astro.props
 ---
 
 <header class="px-0 pt-[calc(var(--nav-height)+4rem)] md:pt-[calc(var(--nav-height)+6rem)] lsa-load lsa-slide-up">

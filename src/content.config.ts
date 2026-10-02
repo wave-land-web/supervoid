@@ -22,7 +22,7 @@ const workCollection = defineCollection({
 })
 
 const pressCollection = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './src/content/press' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/press' }),
   schema: ({ image }) =>
     z.object({
       id: z.string(),

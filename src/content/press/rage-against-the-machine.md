@@ -6,14 +6,7 @@ published: '10-25-2022'
 image: './images/rage-against-the-machine.png'
 imageAlt: 'Rage Against the Machine'
 socialImage: '/images/rage-against-the-machine.png'
-layout: '../../layouts/PressLayout.astro'
 ---
-
-import { Picture } from 'astro:assets'
-import PostHeader from '../../components/ui/PostHeader.astro'
-import headerImage from './images/rage-against-the-machine.png'
-
-<PostHeader image={headerImage} frontmatter={frontmatter} />
 
 > “As Rage Against the Machine is the kind of band that actively avoids flashy 3D visuals, the final product was purposefully kept sparse and to the point. The creative team received great reviews for their simple, direct looks that just added a bit of edge and showcased the performances without distraction.”
 > -- <cite>Read more at <a href="https://www.notch.one/portfolio/rage-against-the-machine-world-tour-2022/" target="_blank" rel="noopener noreferrer">Notch.one</a></cite>

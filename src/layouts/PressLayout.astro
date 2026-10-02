@@ -1,28 +1,26 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
 import Pagination from '../components/ui/Pagination.astro'
+import PostHeader from '../components/ui/PostHeader.astro'
 import Layout from './Layout.astro'
 
-// Frontmatter
-const { frontmatter } = Astro.props
-const currentPostId = +frontmatter.id
+export interface Props {
+  post: CollectionEntry<'press'>
+  prevPost?: CollectionEntry<'press'>
+  nextPost?: CollectionEntry<'press'>
+}
 
-// Post data
-const allPosts = (await getCollection('press')) as CollectionEntry<'press'>[]
-const prevPost = allPosts.find((p) => +p.data.id === currentPostId + 1)
-const nextPost = allPosts.find((p) => +p.data.id === currentPostId - 1)
+const { post, prevPost, nextPost } = Astro.props
+const { title, description, image, imageAlt, socialImage } = post.data
 ---
 
-<Layout
-  title={`Press - ${frontmatter.title}`}
-  description={frontmatter.description}
-  socialImage={frontmatter.socialImage}
->
+<Layout title={`Press - ${title}`} description={description} socialImage={socialImage}>
   <main
     id="press-layout"
     class="pt-0 max-w-4xl flex flex-col gap-[1lh] mb-16 md:mb-24 lsa no-repeat"
   >
+    <PostHeader title={title} image={image} imageAlt={imageAlt} />
+
     <slot />
 
     <Pagination

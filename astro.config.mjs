@@ -1,6 +1,4 @@
-import mdx from '@astrojs/mdx'
 import netlify from '@astrojs/netlify'
-import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig, fontProviders } from 'astro/config'
@@ -23,8 +21,6 @@ export default defineConfig({
       // pathname rather than an exact string that would never match.
       filter: (page) => !['/404/', '/success/'].includes(new URL(page).pathname),
     }),
-    mdx(),
-    partytown(),
   ],
   adapter: netlify({
     imageCDN: false,

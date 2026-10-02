@@ -1,12 +1,10 @@
 ---
-import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
 import PostPreviewCard from '../components/ui/PostPreviewCard.astro'
 import Layout from '../layouts/Layout.astro'
+import { sortPressNewestFirst } from '../utils/sortPress'
 
-const allPressPosts = (await getCollection('press')) as CollectionEntry<'press'>[]
-// Chronological order - sort by id in descending order
-const sortedPressPosts = [...allPressPosts].sort((a, b) => +b.data.id - +a.data.id)
+const sortedPressPosts = sortPressNewestFirst(await getCollection('press'))
 // The newest two fill the first row, which is above the fold
 const ABOVE_THE_FOLD_COUNT = 2
 ---
