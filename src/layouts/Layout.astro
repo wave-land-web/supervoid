@@ -11,8 +11,6 @@ export interface Props {
   socialImage?: string
   /** Load the Mux Player script, for the full player on /reel. Clips elsewhere use CoverVideo. */
   mux?: boolean
-  /** Load the YouTube IFrame API. Only set on pages with lighting cards. */
-  youtube?: boolean
   /** Leave out the nav, marquee and footer (the /reel splash page). */
   minimal?: boolean
   /** Keep the page out of search results (utility pages). */
@@ -24,7 +22,6 @@ const {
   description = 'SUPERVOID is a creative and technical design studio specializing in screen visuals, lighting, lasers, scenic design and custom control setups for touring artists.',
   socialImage,
   mux = false,
-  youtube = false,
   minimal = false,
   noindex = false,
 } = Astro.props
@@ -89,9 +86,6 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
     <!-- Preload Fonts -->
     <Font cssVariable="--font-header" preload />
     <Font cssVariable="--font-body" preload />
-
-    <!-- YouTube API — opted into by pages that embed YouTube players -->
-    {youtube && <script src="https://www.youtube.com/iframe_api" is:inline async />}
 
     <!-- Mux — opted into by pages that render a video player -->
     {mux && <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" is:inline async />}

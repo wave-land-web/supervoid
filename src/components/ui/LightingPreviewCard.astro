@@ -17,17 +17,18 @@ const youtubeId = work.data.youtubeId
 ---
 
 <div
-  id={`lighting-preview-card-${youtubeId}`}
+  data-lighting-card
+  data-youtube-id={youtubeId}
   class:list={[
     'lighting-preview-card group relative pb-[56.25%] h-0 overflow-hidden w-full lsa-slide-up rounded-xl',
     isAboveTheFold ? 'lsa-load' : 'lsa no-repeat',
   ]}
 >
   <!-- YouTube embed inserted here via YouTube API -->
-  <div id={`player-${youtubeId}`} class="absolute top-0 left-0 w-full h-full"></div>
+  <div data-player class="absolute top-0 left-0 w-full h-full"></div>
 
   <!-- Overlay: image, play button, and project title -->
-  <div data-image id={`image-${youtubeId}`} class="absolute top-0 left-0 w-full h-full">
+  <div data-poster class="absolute top-0 left-0 w-full h-full">
     <Picture
       class="w-full brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-(--transition)"
       src={work.data.poster}
@@ -39,10 +40,10 @@ const youtubeId = work.data.youtubeId
     />
 
     <button
-      id={`play-button-${youtubeId}`}
+      data-play
       type="button"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      aria-label="Play Video"
+      aria-label={`Play ${work.data.title} video`}
     >
       <Icon
         name="play"
@@ -58,52 +59,80 @@ const youtubeId = work.data.youtubeId
   </div>
 </div>
 
-<script define:vars={{ youtubeId }}>
-  const posterImage = document.querySelector(`#image-${youtubeId}`)
-  const playButton = document.querySelector(`#play-button-${youtubeId}`)
-  let player = null
-
-  // The IFrame API script is loaded `async`, so `YT` may not exist yet when a
-  // visitor clicks. Share one promise across every card on the page that
-  // resolves when the API fires its global ready callback.
-  window.youTubeApiReady ??= new Promise((resolve) => {
-    if (window.YT?.Player) {
-      resolve()
-      return
-    }
-
-    const previousCallback = window.onYouTubeIframeAPIReady
-
-    window.onYouTubeIframeAPIReady = () => {
-      previousCallback?.()
-      resolve()
-    }
-  })
-
-  // Initialize YouTube Player
-  function onPlayerReady(event) {
-    event.target.playVideo()
-    posterImage.classList.add('hidden')
+<script>
+  interface YouTubePlayer {
+    playVideo(): void
+    getIframe(): HTMLIFrameElement
   }
 
-  async function playYouTubeVideo() {
-    await window.youTubeApiReady
+  interface YouTubeApi {
+    Player: new (
+      element: HTMLElement,
+      options: { videoId: string; events: { onReady: (event: { target: YouTubePlayer }) => void } },
+    ) => YouTubePlayer
+  }
 
-    // Reuse the existing player instead of constructing a new one per click
-    if (player) {
-      player.playVideo()
-      posterImage.classList.add('hidden')
-      return
+  const youTube = window as Window & {
+    YT?: YouTubeApi
+    onYouTubeIframeAPIReady?: () => void
+  }
+
+  // The IFrame API loads on the first sign of interest in a card (hover, focus
+  // or a tap on Play) rather than with the page. Every card shares one load.
+  let apiReady: Promise<YouTubeApi> | undefined
+
+  function loadYouTubeApi(): Promise<YouTubeApi> {
+    apiReady ??= new Promise((resolve) => {
+      if (youTube.YT?.Player) return resolve(youTube.YT)
+
+      const previousCallback = youTube.onYouTubeIframeAPIReady
+      youTube.onYouTubeIframeAPIReady = () => {
+        previousCallback?.()
+        resolve(youTube.YT as YouTubeApi)
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://www.youtube.com/iframe_api'
+      document.head.append(script)
+    })
+    return apiReady
+  }
+
+  for (const card of document.querySelectorAll<HTMLElement>('[data-lighting-card]')) {
+    const videoId = card.dataset.youtubeId as string
+    const poster = card.querySelector('[data-poster]') as HTMLElement
+    const playerElement = card.querySelector('[data-player]') as HTMLElement
+    let player: YouTubePlayer | undefined
+
+    // Hand off to the player: hide the poster and move focus into the embed,
+    // since the focused Play button is about to disappear
+    const showPlayer = (target: YouTubePlayer) => {
+      poster.classList.add('hidden')
+      target.getIframe().focus()
     }
 
-    player = new YT.Player(`player-${youtubeId}`, {
-      videoId: youtubeId,
-      events: {
-        onReady: onPlayerReady,
-      },
+    card.addEventListener('pointerenter', loadYouTubeApi, { once: true })
+    card.addEventListener('focusin', loadYouTubeApi, { once: true })
+
+    card.querySelector('[data-play]')?.addEventListener('click', async () => {
+      const api = await loadYouTubeApi()
+
+      // Reuse the player instead of constructing a new one per click
+      if (player) {
+        player.playVideo()
+        showPlayer(player)
+        return
+      }
+
+      player = new api.Player(playerElement, {
+        videoId,
+        events: {
+          onReady: ({ target }) => {
+            target.playVideo()
+            showPlayer(target)
+          },
+        },
+      })
     })
   }
-
-  // Play video on click
-  playButton.addEventListener('click', playYouTubeVideo)
 </script>
