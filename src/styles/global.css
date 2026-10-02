@@ -398,6 +398,27 @@
     @apply text-magenta;
   }
 
+  /* Selected text: magenta with black text. On a magenta surface (pills, card titles, the rentals
+     panel) that would vanish, so it flips to black with magenta text. */
+  ::selection {
+    background-color: var(--color-magenta);
+    color: var(--color-black);
+  }
+
+  .bg-magenta::selection,
+  .bg-magenta ::selection {
+    background-color: var(--color-black);
+    color: var(--color-magenta);
+  }
+
+  /* Media never selects, so dragging across the page doesn't tint photos and clips magenta.
+     Text around them, card titles included, still selects. */
+  img,
+  video,
+  svg {
+    user-select: none;
+  }
+
   /* Keyboard focus: one accent ring everywhere */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-magenta;
