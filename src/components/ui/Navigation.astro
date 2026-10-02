@@ -53,6 +53,7 @@ const currentPath = Astro.url.pathname
       type="button"
       class="relative flex flex-col justify-center items-center size-8 z-10 group"
       aria-expanded="false"
+      aria-controls="mobile-nav-overlay"
       title="Menu"
       aria-label="Menu"
     >
@@ -272,59 +273,47 @@ const currentPath = Astro.url.pathname
   </style>
 
   <script>
-    const body = document.querySelector('body') as HTMLBodyElement
-    const navigation = document.getElementById('navigation')
-    const mobileNavItems = document.querySelectorAll('#mobile-nav a')
+    const body = document.body
+    const navigation = document.getElementById('navigation') as HTMLElement
     const hamburger = document.getElementById('hamburger') as HTMLButtonElement
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay') as HTMLDivElement
     let overlayDisplayed = false
     let prevScrollpos = window.scrollY
 
     /**
-     * Mobile navigation overlay helpers
+     * Mobile navigation overlay
      */
 
-    function handleMobileNavigationOverlayOnClick() {
-      overlayDisplayed = !overlayDisplayed
-      body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
-
-      // Mobile nav overlay styles
-      mobileNavOverlay.classList.toggle('invisible')
-      mobileNavOverlay.classList.toggle('opacity-0')
-
-      // Hamburger styles
-      hamburger.setAttribute('aria-expanded', `${overlayDisplayed}`)
-      hamburger.classList.toggle('active')
-    }
-
-    function handleMobileNavigationOverlayOnResize() {
-      // Must match the `lg` breakpoint where #desktop-nav replaces #mobile-nav
-      if (window.innerWidth >= 1024) {
-        overlayDisplayed = false
-        body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
-
-        // Reset mobile nav overlay styles
-        mobileNavOverlay.classList.add('invisible')
-        mobileNavOverlay.classList.add('opacity-0')
-
-        // Reset hamburger styles
-        hamburger.setAttribute('aria-expanded', `${overlayDisplayed}`)
-        hamburger.classList.remove('active')
+    // While the menu is open, nothing behind it can take focus or be read out:
+    // mark every sibling along the nav's path up to <body> inert.
+    function setPageInert(inert: boolean) {
+      for (let el = navigation; el !== body; el = el.parentElement as HTMLElement) {
+        for (const sibling of (el.parentElement as HTMLElement).children) {
+          if (sibling !== el) (sibling as HTMLElement).inert = inert
+        }
       }
     }
 
+    function setOverlayDisplayed(displayed: boolean) {
+      overlayDisplayed = displayed
+      body.setAttribute('data-overlay-displayed', `${displayed}`)
+      mobileNavOverlay.classList.toggle('invisible', !displayed)
+      mobileNavOverlay.classList.toggle('opacity-0', !displayed)
+      hamburger.setAttribute('aria-expanded', `${displayed}`)
+      hamburger.classList.toggle('active', displayed)
+      setPageInert(displayed)
+    }
+
     /**
-     * Navbar visibility helpers
+     * Navbar visibility: hide while scrolling down, show while scrolling up
      */
 
     function showNavbar() {
-      navigation?.classList.add('top-0')
-      navigation?.classList.remove('-top-20')
+      navigation.classList.remove('-translate-y-full')
     }
 
     function hideNavbar() {
-      navigation?.classList.remove('top-0')
-      navigation?.classList.add('-top-20')
+      navigation.classList.add('-translate-y-full')
     }
 
     function handleActiveNavigationOnScroll() {
@@ -342,19 +331,33 @@ const currentPath = Astro.url.pathname
       prevScrollpos = currentScrollPos
     }
 
-    // Accessibility
-    hamburger.addEventListener('keyup', (event) => {
-      if (event.code === 'Escape' && overlayDisplayed) {
-        handleMobileNavigationOverlayOnClick()
+    hamburger.addEventListener('click', () => setOverlayDisplayed(!overlayDisplayed))
+
+    // Following a menu link closes the menu. (The logo isn't in the overlay, so
+    // tapping it no longer opens the menu on the way out.)
+    for (const link of mobileNavOverlay.querySelectorAll('a')) {
+      link.addEventListener('click', () => setOverlayDisplayed(false))
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && overlayDisplayed) {
+        setOverlayDisplayed(false)
+        hamburger.focus()
       }
     })
 
-    // Event listeners
-    for (const item of mobileNavItems) {
-      item.addEventListener('click', handleMobileNavigationOverlayOnClick)
-    }
-    hamburger.addEventListener('click', handleMobileNavigationOverlayOnClick)
-    window.addEventListener('resize', handleMobileNavigationOverlayOnResize)
+    // Must match the `lg` breakpoint where #desktop-nav replaces #mobile-nav
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024 && overlayDisplayed) setOverlayDisplayed(false)
+    })
+
+    // A page restored from the back/forward cache comes back as it was left
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted && overlayDisplayed) setOverlayDisplayed(false)
+    })
+
+    // Bring the hidden nav back when a keyboard user tabs into it
+    navigation.addEventListener('focusin', showNavbar)
     window.addEventListener('scroll', handleActiveNavigationOnScroll)
   </script>
 </nav>
