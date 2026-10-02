@@ -54,7 +54,7 @@ export default defineConfig({
             ],
             weight: '400',
             style: 'normal',
-            display: 'block',
+            display: 'swap',
           },
         ],
       },
@@ -63,6 +63,9 @@ export default defineConfig({
       provider: fontProviders.local(),
       name: 'SF Mono Regular',
       cssVariable: '--font-body',
+      // A monospace fallback, metric-matched by Astro, so text that renders
+      // before the font arrives already has the right widths
+      fallbacks: ['monospace'],
       options: {
         variants: [
           {
@@ -72,7 +75,7 @@ export default defineConfig({
             ],
             weight: '400',
             style: 'normal',
-            display: 'block',
+            display: 'swap',
           },
         ],
       },
