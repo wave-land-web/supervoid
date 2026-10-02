@@ -2,7 +2,7 @@
 import { Picture } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 import { TWO_COLUMN_SIZES } from '../../lib/images'
-import Pill from '../ui/Pill.astro'
+import CardTitle from './CardTitle.astro'
 
 export interface Props {
   work: CollectionEntry<'work'>
@@ -41,8 +41,6 @@ const cardId = `work-preview-card-${id}`
       />
     ) : null}
 
-    <div class="absolute bottom-0 flex items-center gap-3 w-full">
-      <Pill as="h3">{videoTitle}</Pill>
-    </div>
+    <CardTitle>{videoTitle}</CardTitle>
   </a>
 </article>
