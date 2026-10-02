@@ -26,7 +26,8 @@ export default defineConfig({
       lastmod: new Date(),
       // Astro emits canonical URLs with a trailing slash, so compare against the
       // pathname rather than an exact string that would never match.
-      filter: (page) => !['/404/', '/success/'].includes(new URL(page).pathname),
+      // Utility pages carry noindex, so keep them out of the sitemap too
+      filter: (page) => !['/404/', '/success/', '/reel/'].includes(new URL(page).pathname),
     }),
   ],
   adapter: netlify({
