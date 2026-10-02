@@ -62,11 +62,11 @@ const schema = [
   ogType="article"
   schema={schema}
 >
-  <!-- Media runs edge to edge, capped at the viewport's height; the title and controls stay in the content column -->
+  <!-- Media runs edge to edge, capped at the viewport's height, with square corners; the title and controls stay in the content column -->
   <div class="relative lsa-load">
     <div
       id="hero-media"
-      class="relative aspect-video max-h-svh w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none after:transition-opacity after:duration-(--transition)"
+      class="relative aspect-video max-h-svh w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none after:transition-opacity after:duration-(--transition) [&_img]:rounded-none"
     >
       {post.data.gifs.videoHero ? (
         <CoverVideo
