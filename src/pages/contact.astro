@@ -80,8 +80,7 @@ const labelClass = 'block mb-2 text-left'
               name="project-timeline"
               id="project-timeline"
               required
-              class:list={[fieldClass, 'block appearance-none text-grey']}
-              onchange="this.classList.toggle('text-grey', this.value === '')"
+              class:list={[fieldClass, 'block appearance-none invalid:text-grey']}
             >
               <option value="" selected disabled hidden>
                 Choose one
