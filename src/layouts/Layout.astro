@@ -4,11 +4,18 @@ import { Font } from 'astro:assets'
 import Footer from '../components/ui/Footer.astro'
 import Marquee from '../components/ui/Marquee.astro'
 import Navigation from '../components/ui/Navigation.astro'
+import type { SocialImage } from '../lib/socialImage'
 
 export interface Props {
+  /** The page's own name. " | SUPERVOID" is appended. */
   title: string
   description?: string
-  socialImage?: string
+  /** Link-preview image, ideally 1200×630 (see socialImageFrom). Defaults to the site card. */
+  socialImage?: SocialImage
+  /** Describes the preview image, for platforms that read it out. */
+  socialImageAlt?: string
+  /** `article` for case studies and press posts. */
+  ogType?: 'website' | 'article'
   /** Load the Mux Player script, for the full player on /reel. Clips elsewhere use CoverVideo. */
   mux?: boolean
   /** Leave out the nav, marquee and footer (the /reel splash page). */
@@ -20,13 +27,16 @@ export interface Props {
 const {
   title,
   description = 'SUPERVOID is a creative and technical design studio specializing in screen visuals, lighting, lasers, scenic design and custom control setups for touring artists.',
-  socialImage,
+  socialImage = { src: '/images/og-image.png', width: 1920, height: 1080 },
+  socialImageAlt = 'SUPERVOID',
+  ogType = 'website',
   mux = false,
   minimal = false,
   noindex = false,
 } = Astro.props
+const pageTitle = `${title} | SUPERVOID`
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalURL)
+const socialImageURL = new URL(socialImage.src, canonicalURL)
 ---
 
 <!doctype html>
@@ -43,8 +53,7 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
       document.documentElement.classList.add('lsa-on')
     </script>
     <!-- SEO -->
-    <title>SUPERVOID | {title}</title>
-    <meta name="title" content={`SUPERVOID | ${title}`} />
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
@@ -53,18 +62,24 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
 
     <!-- Facebook -->
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={`SUPERVOID | ${title}`} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="SUPERVOID" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:width" content={String(socialImage.width)} />
+    <meta property="og:image:height" content={String(socialImage.height)} />
+    <meta property="og:image:alt" content={socialImageAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:domain" content="supervoid.tv" />
     <meta name="twitter:url" content={canonicalURL} />
-    <meta name="twitter:title" content={`SUPERVOID | ${title}`} />
+    <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

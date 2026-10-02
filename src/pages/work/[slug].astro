@@ -7,6 +7,7 @@ import CoverVideo from '../../components/ui/CoverVideo.astro'
 import Pagination from '../../components/ui/Pagination.astro'
 import Layout from '../../layouts/Layout.astro'
 import { TWO_COLUMN_SIZES } from '../../lib/images'
+import { socialImageFrom } from '../../lib/socialImage'
 import { getAlphabetizedWorkByYear, getWorkYearsDescending } from '../../lib/sortWork'
 import { toMetaDescription } from '../../lib/text'
 
@@ -34,9 +35,16 @@ export async function getStaticPaths() {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { post, prevPost, nextPost } = Astro.props
+const socialImage = post.data.thumbnail && (await socialImageFrom(post.data.thumbnail))
 ---
 
-<Layout title={`Work - ${post.data.title}`} description={toMetaDescription(post.data.info[0])}>
+<Layout
+  title={`${post.data.title} | Work`}
+  description={toMetaDescription(post.data.info[0])}
+  socialImage={socialImage}
+  socialImageAlt={post.data.title}
+  ogType="article"
+>
   <div slot="video-slot" class="relative lsa-load">
     <div class="relative aspect-video w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none">
       {post.data.gifs.videoHero ? (

@@ -23,10 +23,9 @@ export default defineConfig({
       },
     }),
     sitemap({
-      lastmod: new Date(),
-      // Astro emits canonical URLs with a trailing slash, so compare against the
-      // pathname rather than an exact string that would never match.
-      // Utility pages carry noindex, so keep them out of the sitemap too
+      // Utility pages carry noindex, so leave them out. Compare pathnames: Astro's
+      // canonical URLs end in a slash. (No `lastmod`: stamping every URL with the
+      // build time tells crawlers nothing, so they learn to ignore it.)
       filter: (page) => !['/404/', '/success/', '/reel/'].includes(new URL(page).pathname),
     }),
   ],

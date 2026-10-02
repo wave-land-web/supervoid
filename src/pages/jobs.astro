@@ -12,12 +12,13 @@ import Carousel from '../components/ui/Carousel.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 import { EMAIL, mailto } from '../lib/site'
+import { socialImageFrom } from '../lib/socialImage'
 ---
 
 <Layout
   title="Jobs"
   description="Apply to join the SUPERVOID team. We're looking for passionate and innovative individuals who want to make something no one has ever seen before."
-  socialImage="/images/jobs-hero.png"
+  socialImage={await socialImageFrom(jobsHeroImage)}
 >
   <ImageHeader
     title="Join Our Team"

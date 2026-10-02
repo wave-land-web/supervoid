@@ -1,8 +1,8 @@
 ---
-import { getImage } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 import Pagination from '../components/ui/Pagination.astro'
 import PostHeader from '../components/ui/PostHeader.astro'
+import { socialImageFrom } from '../lib/socialImage'
 import Layout from './Layout.astro'
 
 export interface Props {
@@ -14,17 +14,16 @@ export interface Props {
 const { post, prevPost, nextPost } = Astro.props
 const { title, description, image, imageAlt } = post.data
 
-// Share image: the post's own photo, cropped to the 1200×630 link-preview size
-const socialImage = await getImage({
-  src: image,
-  width: 1200,
-  height: 630,
-  fit: 'cover',
-  format: 'jpg',
-})
+const socialImage = await socialImageFrom(image)
 ---
 
-<Layout title={`Press - ${title}`} description={description} socialImage={socialImage.src}>
+<Layout
+  title={`${title} | Press`}
+  description={description}
+  socialImage={socialImage}
+  socialImageAlt={imageAlt}
+  ogType="article"
+>
   <main
     id="press-layout"
     class="pt-0 max-w-4xl flex flex-col gap-[1lh] mb-16 md:mb-24 lsa no-repeat"

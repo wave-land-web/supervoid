@@ -9,12 +9,13 @@ import CTA from '../components/text/CTA.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 import { mailto } from '../lib/site'
+import { socialImageFrom } from '../lib/socialImage'
 ---
 
 <Layout
   title="Rentals"
   description="SUPERVOID offers show control solutions for video playback and lighting control. Our SVX series servers and GrandMA3 Compact consoles are trusted by Paramore, Tate McRae, Jane's Addiction, and more."
-  socialImage="/images/rentals-hero.png"
+  socialImage={await socialImageFrom(rentalsHeroImage)}
 >
   <ImageHeader
     title="Powering Your Performance"

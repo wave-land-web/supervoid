@@ -14,9 +14,10 @@ import CTA from '../components/text/CTA.astro'
 import ImageHeader from '../components/ui/ImageHeader.astro'
 import VerticalImageCarousel from '../components/ui/VerticalImageCarousel.astro'
 import Layout from '../layouts/Layout.astro'
+import { socialImageFrom } from '../lib/socialImage'
 ---
 
-<Layout title="About" socialImage="/images/about-hero.jpg">
+<Layout title="About" socialImage={await socialImageFrom(aboutHeroImage)}>
   <ImageHeader
     title="Crafting Visual Experiences"
     imageSrc={aboutHeroImage}
