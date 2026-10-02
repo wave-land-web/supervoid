@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 
+/** A year on the homepage. It links to itself, so a year's work can be shared. */
 export interface Props {
   year: string
 }
@@ -8,10 +9,13 @@ export interface Props {
 const { year } = Astro.props
 ---
 
-<a href={`#${year}`} class="group inline-flex items-center gap-2 mb-6">
-  <h2 class="font-body text-xl group-hover:text-magenta transition">{year}</h2>
-  <Icon
-    name="tabler:link"
-    class="w-10 h-10 p-2 opacity-0 group-hover:opacity-100 group-hover:text-magenta transition"
-  />
-</a>
+<h2 class="mb-6 font-body text-xl">
+  <a href={`#${year}`} class="group inline-flex items-center gap-2 hocus:text-magenta">
+    {year}
+    <Icon
+      name="tabler:link"
+      aria-hidden="true"
+      class="size-10 p-2 opacity-0 group-hocus:opacity-100 transition duration-(--transition)"
+    />
+  </a>
+</h2>
