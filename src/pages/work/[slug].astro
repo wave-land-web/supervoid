@@ -286,9 +286,6 @@ const heroStillWidths = [768, 1280, 1920];
     const togglePlay = document.getElementById("toggle-play") as HTMLElement;
     const toggleMute = document.getElementById("toggle-mute") as HTMLElement;
 
-    // Rejects when autoplay is blocked; the still and Play button stay up
-    const playVideo = () => player.play().catch(() => {});
-
     const setLabel = (button: HTMLElement, label: string) => {
       button.setAttribute("aria-label", label);
       button.title = label;
@@ -313,7 +310,7 @@ const heroStillWidths = [768, 1280, 1920];
     player.addEventListener("volumechange", syncVolume);
 
     togglePlay.addEventListener("click", () =>
-      player.paused ? playVideo() : player.pause(),
+      player.paused ? player.play().catch(() => {}) : player.pause(),
     );
     toggleMute.addEventListener("click", () => {
       player.muted = !player.muted;
@@ -321,8 +318,9 @@ const heroStillWidths = [768, 1280, 1920];
 
     syncPlayback();
     syncVolume();
+    // Mux starts it once the stream loads; a play() this early is aborted by that load
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      playVideo();
+      player.setAttribute("autoplay", "muted");
     }
   }
 
