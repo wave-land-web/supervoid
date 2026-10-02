@@ -142,63 +142,42 @@ const heroStillWidths = [768, 1280, 1920]
 
   <main>
     <section id="work-details" class="lsa no-repeat pt-4 pb-8">
-      <div
-        id="info-details"
-        class="w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-t border-b py-4 md:py-6 cursor-pointer"
+      <details
+        open
+        class="work-details group w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b py-4 md:py-6 border-t"
       >
-        <button
-          type="button"
-          class="flex items-center gap-3"
-          aria-label="Show/Hide Info"
-          title="Show/Hide Info"
-        >
+        <summary class="flex items-center gap-3 w-fit cursor-pointer list-none [&::-webkit-details-marker]:hidden">
           <Icon
-            data-info-icon
             name="tabler:plus"
-            class="w-10 h-10 shrink-0 bg-white text-black rounded-full p-2 rotate-45 hover:scale-105 active:scale-95 transition duration-(--transition)"
+            class="w-10 h-10 shrink-0 bg-white text-black rounded-full p-2 group-open:rotate-45 hover:scale-105 active:scale-95 transition duration-(--transition)"
           />
           <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">info</h2>
-        </button>
+        </summary>
 
-        <div
-          id="info-content"
-          class="active h-0 opacity-0 overflow-hidden transition duration-(--transition) [.active]:h-auto [.active]:mt-4 [.active]:md:mt-0 [.active]:opacity-100"
-        >
+        <div class="mt-4 md:mt-0">
           {post.data.info.map((item) => (
             <p class="mb-4" set:html={item} />
           ))}
         </div>
-      </div>
+      </details>
 
-      <div
-        id="credits-details"
-        class="w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b py-4 md:py-6 cursor-pointer"
-      >
-        <button
-          type="button"
-          class="flex items-center gap-3"
-          aria-label="Show/Hide Credits"
-          title="Show/Hide Credits"
-        >
+      <details class="work-details group w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b py-4 md:py-6">
+        <summary class="flex items-center gap-3 w-fit cursor-pointer list-none [&::-webkit-details-marker]:hidden">
           <Icon
-            data-credits-icon
             name="tabler:plus"
-            class="w-10 h-10 shrink-0 bg-white text-black rounded-full p-2 hover:scale-105 active:scale-95 transition duration-(--transition)"
+            class="w-10 h-10 shrink-0 bg-white text-black rounded-full p-2 group-open:rotate-45 hover:scale-105 active:scale-95 transition duration-(--transition)"
           />
           <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">
             credits
           </h2>
-        </button>
+        </summary>
 
-        <div
-          id="credits-content"
-          class="h-0 opacity-0 overflow-hidden transition duration-(--transition) [.active]:h-auto [.active]:mt-4 [.active]:md:mt-0 [.active]:opacity-100"
-        >
+        <div class="mt-4 md:mt-0">
           {post.data.credits?.map((item) => (
             <div set:html={item} class="flex flex-col gap-8 mb-4" />
           ))}
         </div>
-      </div>
+      </details>
     </section>
 
     <section id="work-gifs" class="lsa-stagger grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
@@ -235,12 +214,6 @@ const heroStillWidths = [768, 1280, 1920]
 
 <script>
   const heroVideo = document.getElementById('hero-video') as HTMLVideoElement | null
-  const infoDetails = document.querySelector(`#info-details`) as Element
-  const infoContent = document.querySelector(`#info-content`) as HTMLElement
-  const infoIcon = document.querySelector(`[data-info-icon]`) as Element
-  const creditsDetails = document.querySelector(`#credits-details`) as Element
-  const creditsContent = document.querySelector(`#credits-content`) as HTMLElement
-  const creditsIcon = document.querySelector(`[data-credits-icon]`) as Element
 
   // Hero video: autoplay unless reduced motion; controls follow player state
   function setupHeroVideo(player: HTMLVideoElement) {
@@ -283,17 +256,24 @@ const heroStillWidths = [768, 1280, 1920]
     }
   }
 
-  // Show/hide details and handle icon rotation
-  function handleShowHideDetails(icon: Element, content: HTMLElement) {
-    icon.classList.toggle('rotate-45')
-    content.classList.toggle('active')
-  }
-
-  infoDetails?.addEventListener('click', () => handleShowHideDetails(infoIcon, infoContent))
-  creditsDetails?.addEventListener('click', () =>
-    handleShowHideDetails(creditsIcon, creditsContent),
-  )
   if (heroVideo) {
     customElements.whenDefined('mux-player').then(() => setupHeroVideo(heroVideo))
   }
 </script>
+
+<style>
+  /* Fade the Info/Credits panels in and out where the browser exposes the
+     <details> content box; elsewhere they simply open and close */
+  @media (prefers-reduced-motion: no-preference) {
+    .work-details::details-content {
+      opacity: 0;
+      transition:
+        opacity var(--transition),
+        content-visibility var(--transition) allow-discrete;
+    }
+
+    .work-details[open]::details-content {
+      opacity: 1;
+    }
+  }
+</style>
