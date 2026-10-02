@@ -88,8 +88,12 @@ const structuredData = {
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={canonicalURL} />
-    {noindex && <meta name="robots" content="noindex" />}
+    <!-- Only pages in search get a canonical URL; the 404 page has no address of its own -->
+    {noindex ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <link rel="canonical" href={canonicalURL} />
+    )}
     <script
       is:inline
       type="application/ld+json"
