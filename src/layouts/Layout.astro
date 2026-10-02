@@ -13,6 +13,8 @@ export interface Props {
   mux?: boolean
   /** Load the YouTube IFrame API. Only set on pages with lighting cards. */
   youtube?: boolean
+  /** Leave out the nav, marquee and footer (the /reel splash page). */
+  minimal?: boolean
 }
 
 const {
@@ -21,6 +23,7 @@ const {
   socialImage,
   mux = false,
   youtube = false,
+  minimal = false,
 } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalURL)
@@ -99,15 +102,16 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
   </head>
 
   <body class="font-body bg-black text-white">
-    <div id="wrapper" class="relative z-10 mb-96 bg-black">
+    <!-- The bottom margin uncovers the fixed footer underneath as the page ends -->
+    <div id="wrapper" class:list={['relative z-10 bg-black', !minimal && 'mb-96']}>
       <div class="max-w-screen-2xl mx-auto">
-        {!Astro.url.pathname.includes('/reel') && <Navigation />}
+        {!minimal && <Navigation />}
         <slot name="video-slot" />
       </div>
       <slot />
-      {!Astro.url.pathname.includes('/reel') && <Marquee />}
+      {!minimal && <Marquee />}
     </div>
-    {!Astro.url.pathname.includes('/reel') && <Footer />}
+    {!minimal && <Footer />}
   </body>
 </html>
 
