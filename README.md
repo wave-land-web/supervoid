@@ -54,7 +54,7 @@ Tokens and utilities live in `src/styles/global.css`. Use them rather than raw v
 - **Page structure:** `Layout` renders the `<main>`. A page puts its `PageHeader` (the h1, clear of the fixed nav) first, then its content in a `.page-body` div. Markdown copy goes in `.prose`.
 - **Components:** `Button`, `Pill` (`as="h2"` or `as="h3"` when it titles something), `CheckList` and `SplitRow`.
 - **Hover and focus:** use `hocus:` and `group-hocus:` (hover or keyboard focus) instead of pairing `hover:` with `focus-visible:`. Every focusable element gets the magenta focus ring.
-- **Motion:** `lsa-load` (or `hero-in` on a wrapper) for content above the fold, `lsa` for content that reveals on scroll. Reduced motion turns them off, and clips don't autoplay.
+- **Motion:** `lsa-load` (or `hero-in` on a wrapper) for content above the fold, `lsa` for content that reveals on scroll. Timing uses `--transition` for hovers and `--duration-move` for things that change size, like a `<details>` panel opening. Reduced motion turns it all off, and clips don't autoplay.
 - **Images:** `alt=""` when an image is decorative, and `sizes` from `src/lib/images.ts`.
 
 ## Content

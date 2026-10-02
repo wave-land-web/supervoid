@@ -71,7 +71,10 @@
   --font-header: var(--font-rotonto);
   --font-body: var(--font-sf-mono);
 
+  /* Motion: --transition for hovers and small state changes, --duration-move for things that
+     change size or place on screen (a details panel opening) */
   --transition: 300ms;
+  --duration-move: 400ms;
 }
 
 /* Easing — Tailwind's stock curve is `cubic-bezier(0.4, 0, 0.2, 1)`, which eases
@@ -259,6 +262,40 @@
   to {
     opacity: 1;
     translate: 0 0;
+  }
+}
+
+/* Details (Info and Credits on work pages) grow to their height as they open and shrink as they
+   close, with their content fading in and out (waveland's pattern). Browsers that can't animate
+   to an auto height just fade, and reduced motion opens them instantly. */
+@media (prefers-reduced-motion: no-preference) {
+  details::details-content {
+    opacity: 0;
+    transition-property: opacity, content-visibility;
+    transition-duration: var(--transition);
+    transition-timing-function: var(--ease-out);
+    transition-behavior: allow-discrete;
+  }
+
+  details[open]::details-content {
+    opacity: 1;
+  }
+
+  @supports (interpolate-size: allow-keywords) {
+    details {
+      interpolate-size: allow-keywords;
+    }
+
+    details::details-content {
+      block-size: 0;
+      overflow-y: clip;
+      transition-property: block-size, opacity, content-visibility;
+      transition-duration: var(--duration-move), var(--transition), var(--duration-move);
+    }
+
+    details[open]::details-content {
+      block-size: auto;
+    }
   }
 }
 

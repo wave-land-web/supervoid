@@ -140,7 +140,7 @@ const schema = [
     <section id="work-details" class="lsa no-repeat pt-4 pb-8">
       <details
         open
-        class="work-details group w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b py-4 md:py-6 border-t"
+        class="group w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b py-4 md:py-6 border-t"
       >
         <summary class="flex items-center gap-3 w-fit cursor-pointer list-none [&::-webkit-details-marker]:hidden">
           <Icon
@@ -150,14 +150,14 @@ const schema = [
           <Pill as="h2">info</Pill>
         </summary>
 
-        <div class="mt-4 md:mt-0">
+        <div class="flex flex-col gap-4 pt-4 md:pt-0 pb-4">
           {post.data.info.map((item) => (
-            <p class="mb-4" set:html={item} />
+            <p set:html={item} />
           ))}
         </div>
       </details>
 
-      <details class="work-details group w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b py-4 md:py-6">
+      <details class="group w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b py-4 md:py-6">
         <summary class="flex items-center gap-3 w-fit cursor-pointer list-none [&::-webkit-details-marker]:hidden">
           <Icon
             name="tabler:plus"
@@ -166,7 +166,7 @@ const schema = [
           <Pill as="h2">credits</Pill>
         </summary>
 
-        <dl class="mt-4 md:mt-0 mb-4 flex flex-col gap-8">
+        <dl class="flex flex-col gap-8 pt-4 md:pt-0 pb-4">
           {post.data.credits?.map(({ role, names }) => (
             <div class="flex flex-col gap-4">
               <dt class="font-header text-s uppercase text-balance">{role}:</dt>
@@ -248,20 +248,3 @@ const schema = [
     customElements.whenDefined('mux-video').then(() => setupHeroControls(heroVideo))
   }
 </script>
-
-<style>
-  /* Fade the Info/Credits panels in and out where the browser exposes the
-     <details> content box; elsewhere they simply open and close */
-  @media (prefers-reduced-motion: no-preference) {
-    .work-details::details-content {
-      opacity: 0;
-      transition:
-        opacity var(--transition),
-        content-visibility var(--transition) allow-discrete;
-    }
-
-    .work-details[open]::details-content {
-      opacity: 1;
-    }
-  }
-</style>
