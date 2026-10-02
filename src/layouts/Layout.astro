@@ -9,7 +9,7 @@ export interface Props {
   title: string
   description?: string
   socialImage?: string
-  /** Load the Mux player script. Only set on pages that render <mux-player>. */
+  /** Load the Mux Player script, for the full player on /reel. Clips elsewhere use CoverVideo. */
   mux?: boolean
   /** Load the YouTube IFrame API. Only set on pages with lighting cards. */
   youtube?: boolean

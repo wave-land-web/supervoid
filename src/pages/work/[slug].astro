@@ -3,8 +3,10 @@ import { Picture } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import type { InferGetStaticPropsType } from 'astro'
 import { Icon } from 'astro-icon/components'
+import CoverVideo from '../../components/ui/CoverVideo.astro'
 import Pagination from '../../components/ui/Pagination.astro'
 import Layout from '../../layouts/Layout.astro'
+import { TWO_COLUMN_SIZES } from '../../lib/images'
 import { getAlphabetizedWorkByYear, getWorkYearsDescending } from '../../lib/sortWork'
 import { toMetaDescription } from '../../lib/text'
 
@@ -32,51 +34,21 @@ export async function getStaticPaths() {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { post, prevPost, nextPost } = Astro.props
-
-// Only pull in the Mux player script on entries that actually render one
-const hasMuxVideo = Boolean(post.data.gifs.videoHero || post.data.gifs.gallery?.length)
-
-// First frame of the hero video, shown until the player fades in over it
-// (`time=0`: Mux's default thumbnail is mid-clip)
-const heroStill = (width: number) =>
-  `https://image.mux.com/${post.data.gifs.videoHero}/thumbnail.webp?width=${width}&time=0`
-const heroStillWidths = [768, 1280, 1920]
 ---
 
-<Layout
-  title={`Work - ${post.data.title}`}
-  description={toMetaDescription(post.data.info[0])}
-  mux={hasMuxVideo}
->
+<Layout title={`Work - ${post.data.title}`} description={toMetaDescription(post.data.info[0])}>
   <div slot="video-slot" class="relative lsa-load">
     <div class="relative aspect-video w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none">
       {post.data.gifs.videoHero ? (
-        <>
-          <img
-            src={heroStill(1920)}
-            srcset={heroStillWidths.map((w) => `${heroStill(w)} ${w}w`).join(', ')}
-            sizes="(min-width: 1536px) 1536px, 100vw"
-            alt={post.data.title}
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-            class="absolute inset-0 size-full object-cover pointer-events-none"
-          />
-          {/* The still replaces Mux's poster; nothing buffers until playback */}
-          <mux-player
-            id="hero-video"
-            playback-id={post.data.gifs.videoHero}
-            metadata-video-title={`Supervoid Work Page: ${post.data.title}`}
-            accent-color="var(--color-magenta-900)"
-            class="absolute inset-0 size-full opacity-0 transition-opacity duration-500 data-playing:opacity-100"
-            style="--controls: none;"
-            poster=""
-            preload="none"
-            loop
-            muted
-            playsinline
-          />
-        </>
+        <CoverVideo
+          id="hero-video"
+          playbackId={post.data.gifs.videoHero}
+          eager
+          sizes="(min-width: 1536px) 1536px, 100vw"
+          tracking
+          title={`Supervoid Work Page: ${post.data.title}`}
+          class="size-full"
+        />
       ) : post.data.gifs.imageHero ? (
         /* Above-the-fold hero: the LCP element, so fetch it immediately */
         <Picture
@@ -182,17 +154,11 @@ const heroStillWidths = [768, 1280, 1920]
 
     <section id="work-gifs" class="lsa-stagger grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
       {post.data.gifs.gallery?.map((gif) => (
-        <article class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa lsa-slide-up no-repeat">
-          <mux-player
-            playback-id={gif}
-            accent-color="var(--color-magenta-900)"
-            class="w-full"
-            style="--controls: none;"
-            loop
-            muted
-            autoplay
-          />
-        </article>
+        <CoverVideo
+          playbackId={gif}
+          sizes={TWO_COLUMN_SIZES}
+          class="aspect-video rounded-xl overflow-hidden lsa lsa-slide-up no-repeat"
+        />
       ))}
 
       {post.data.images?.map((image) => (
@@ -213,10 +179,11 @@ const heroStillWidths = [768, 1280, 1920]
 </Layout>
 
 <script>
+  // Hero controls: Play/Pause and Mute/Unmute follow the player's state. CoverVideo
+  // starts and stops the clip as it scrolls in and out of view.
   const heroVideo = document.getElementById('hero-video') as HTMLVideoElement | null
 
-  // Hero video: autoplay unless reduced motion; controls follow player state
-  function setupHeroVideo(player: HTMLVideoElement) {
+  function setupHeroControls(player: HTMLVideoElement) {
     const togglePlay = document.getElementById('toggle-play') as HTMLElement
     const toggleMute = document.getElementById('toggle-mute') as HTMLElement
 
@@ -233,31 +200,26 @@ const heroStillWidths = [768, 1280, 1920]
       setLabel(toggleMute, player.muted ? 'Unmute' : 'Mute')
     }
 
-    // Fade in over the still once frames are rendering
-    player.addEventListener('playing', () => player.setAttribute('data-playing', ''), {
-      once: true,
-    })
     player.addEventListener('play', syncPlayback)
     player.addEventListener('pause', syncPlayback)
     player.addEventListener('volumechange', syncVolume)
 
-    togglePlay.addEventListener('click', () =>
-      player.paused ? player.play().catch(() => {}) : player.pause(),
-    )
+    // A pause from this button sticks: scrolling back into view won't restart it
+    togglePlay.addEventListener('click', () => {
+      player.toggleAttribute('data-user-paused', !player.paused)
+      if (player.paused) player.play().catch(() => {})
+      else player.pause()
+    })
     toggleMute.addEventListener('click', () => {
       player.muted = !player.muted
     })
 
     syncPlayback()
     syncVolume()
-    // Mux starts it once the stream loads; a play() this early is aborted by that load
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      player.setAttribute('autoplay', 'muted')
-    }
   }
 
   if (heroVideo) {
-    customElements.whenDefined('mux-player').then(() => setupHeroVideo(heroVideo))
+    customElements.whenDefined('mux-video').then(() => setupHeroControls(heroVideo))
   }
 </script>
 

@@ -6,5 +6,5 @@ Read README.md first. It covers commands, code style, project layout and content
 - **Block analytics when testing in a browser.** Pages send Umami pageviews and Mux Data beacons. In Playwright, abort requests to `cloud.umami.is` and `litix.io` before loading any page.
 - **Use a fresh browser context after rebuilding.** `serve` sends no cache headers, so a reused context can load the previous build's HTML.
 - **Refactors shouldn't change the built HTML.** Diff `dist/**/*.html` before and after, normalizing hashed `/_astro/` file names and Astro's scoped-style ids.
-- **Mux heroes autoplay via `autoplay="muted"`, set from JS when reduced motion is off.** A `play()` call right after `<mux-player>` is defined gets aborted by the player's own load.
+- **Work-page clips (hero and gallery) are `CoverVideo`**: `<mux-video>` bundled from npm over a first-frame still, played and paused by an IntersectionObserver. The CDN `<mux-player>` is only used on /reel. If you ever need to start that player from code, use `autoplay="muted"`: a `play()` call right after it's defined gets aborted by the player's own load.
 - **The bar to match:** wave-land-web/product-insight and wave-land-web/waveland, which are the same agency and stack. Port their patterns, but not their Sanity CMS plumbing.
