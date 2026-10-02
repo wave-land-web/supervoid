@@ -10,7 +10,8 @@
     "astro": "astro",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "format": "biome format --write ."
+    "format": "biome format --write . && prettier --write \"src/**/*.astro\"",
+    "format:check": "biome format . && prettier --check \"src/**/*.astro\""
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
@@ -27,6 +28,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.7",
-    "@iconify-json/tabler": "^1.2.38"
+    "@iconify-json/tabler": "^1.2.38",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0"
   }
 }
