@@ -23,6 +23,8 @@ export const GET: APIRoute = async ({ site }) => {
     '',
     `> ${SITE_DESCRIPTION}`,
     '',
+    'Based in Philadelphia, PA.',
+    '',
     `Contact: ${EMAIL}`,
     '',
     '## Pages',
