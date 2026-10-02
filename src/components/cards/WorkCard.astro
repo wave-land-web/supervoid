@@ -22,7 +22,7 @@ const cardId = `work-preview-card-${id}`
 <article
   id={cardId}
   class:list={[
-    'work-preview-card relative w-full h-0 max-w-screen-2xl mx-auto pb-[56.25%] rounded-xl overflow-hidden group lsa-slide-up',
+    'work-preview-card relative aspect-video rounded-xl overflow-hidden group lsa-slide-up',
     // The link's box is empty (everything in it is positioned), so the focus ring goes on the card
     'has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-magenta',
     isAboveTheFold ? 'lsa-load' : 'lsa no-repeat',
