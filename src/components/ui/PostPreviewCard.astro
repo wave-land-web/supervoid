@@ -20,7 +20,7 @@ const { post, isAboveTheFold, priority = false } = Astro.props
     isAboveTheFold ? 'lsa-load' : 'lsa no-repeat',
   ]}
 >
-  <a href={`/press/${post.id}/`}>
+  <a href={`/press/${post.id}/`} class="block rounded-xl">
     <div class="mb-4 h-[clamp(250px,30vw,400px)] overflow-hidden rounded-xl">
       <Picture
         src={post.data.image}
@@ -29,7 +29,7 @@ const { post, isAboveTheFold, priority = false } = Astro.props
         sizes={TWO_COLUMN_SIZES}
         loading={isAboveTheFold ? 'eager' : 'lazy'}
         fetchpriority={priority ? 'high' : undefined}
-        class="brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-(--transition) w-full h-full object-cover"
+        class="brightness-75 group-hocus:brightness-100 group-hocus:scale-105 transition duration-(--transition) w-full h-full object-cover"
       />
     </div>
     <h2 class="mb-2 text-s">{post.data.title}</h2>

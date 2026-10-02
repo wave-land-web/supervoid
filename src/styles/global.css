@@ -1,5 +1,30 @@
 @import 'tailwindcss';
 
+/* Hover and keyboard focus as one variant, so a focus state is never forgotten. Hover only counts
+   on devices that hover, like Tailwind's own hover: variant (ported from waveland).
+   hocus: the element itself. group-hocus: an ancestor .group, hovered or holding focus. */
+@custom-variant hocus {
+  @media (hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+  &:focus-visible {
+    @slot;
+  }
+}
+
+@custom-variant group-hocus {
+  @media (hover: hover) {
+    &:is(:where(.group):hover *) {
+      @slot;
+    }
+  }
+  &:is(:where(.group):focus-visible *, :where(.group):has(:focus-visible) *) {
+    @slot;
+  }
+}
+
 @theme {
   --color-white: #ffffff;
   --color-black: #000000;
@@ -63,6 +88,12 @@
 
 @view-transition {
   navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -243,8 +274,10 @@
     scrollbar-color: var(--color-white) var(--color-black);
     scrollbar-width: thin;
 
-    /* Smooth Scrolling */
-    scroll-behavior: smooth;
+    /* Smooth scrolling, unless motion is reduced */
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
 
     /* Offset anchor targets by the fixed navbar so they aren't hidden beneath it */
     scroll-padding-top: var(--nav-height);
@@ -322,6 +355,11 @@
 
   a:hover {
     @apply text-magenta-900;
+  }
+
+  /* Keyboard focus: one accent ring everywhere */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-magenta-900;
   }
 
   button {
