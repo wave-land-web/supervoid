@@ -8,7 +8,7 @@ info:
   ]
 credits:
   - role: 'Production Manager'
-    names: 'Dan Arbaelez'
+    names: 'Daniel Arbelaez'
   - role: 'Animation Director'
     names: 'Drew Mercadante'
   - role: 'Animation Team'
