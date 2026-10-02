@@ -7,30 +7,17 @@ info:
     "Supervoid was brought on to produce visuals for Jane's Addiction's 2024 world tour. With the band reuniting their original lineup for the first time in over a decade, it was a momentous return for both the band and their fans. Celebrating the release of 'Imminent Redemption,' their first single with the original lineup since the 90s, we focused on the song's themes to create a compelling visual narrative.",
     'Our visuals explored the duality of modern human industrial civilization coexisting with the natural world. Some sequences depicted corporate greed and environmental destruction, while others portrayed nature reclaiming human civilization, symbolizing a return to spirituality and harmony with the earth.',
   ]
-credits: [
-    '
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Designer/Programmer:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Director:</h3>
-    <p class="text-grey-100">Gerry Dintelman</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Director:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Team:</h3>
-    <p class="text-grey-100">Ryan Smith, Karl Fekete, Nick Schoener</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Manager:</h3>
-    <p class="text-grey-100">Rodney Johnson</p>
-    </div>
-    ',
-  ]
+credits:
+  - role: 'Lighting Designer/Programmer'
+    names: 'Drew Mercadante'
+  - role: 'Lighting Director'
+    names: 'Gerry Dintelman'
+  - role: 'Animation Director'
+    names: 'Drew Mercadante'
+  - role: 'Animation Team'
+    names: 'Ryan Smith, Karl Fekete, Nick Schoener'
+  - role: 'Production Manager'
+    names: 'Rodney Johnson'
 thumbnail: './images/thumbnails/janes-addiction.png'
 # gifs are MUX playback IDs
 gifs:

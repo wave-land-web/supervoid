@@ -8,24 +8,15 @@ info:
     "With only 8 days from kickoff to completion, we built bespoke Notch-driven visuals for 12 songs, each one designed to amplify the emotional arc and aesthetic of Alex's performance. We treated live camera shots in real time, transforming them into stylized vignettes that expanded each song's world, giving fans a cinematic experience in every venue.",
     "It was an intense sprint, but the result was a polished, high-impact visual show that matched the energy and ambition of one of pop's fastest-rising stars.",
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Notch Design, Media Server Programming:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Manager, FOH:</h3>
-    <p class="text-grey-100">Phil Gornell</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Designer:</h3>
-    <p class="text-grey-100">Jeff Maker</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Director:</h3>
-    <p class="text-grey-100">Dave Summers</p>
-    </div>',
-  ]
+credits:
+  - role: 'Notch Design, Media Server Programming'
+    names: 'Drew Mercadante'
+  - role: 'Production Manager, FOH'
+    names: 'Phil Gornell'
+  - role: 'Lighting Designer'
+    names: 'Jeff Maker'
+  - role: 'Lighting Director'
+    names: 'Dave Summers'
 thumbnail: './images/thumbnails/alex-warren.png'
 # gifs are MUX playback IDs
 gifs:

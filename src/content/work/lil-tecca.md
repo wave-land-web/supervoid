@@ -7,32 +7,19 @@ info:
     "Supervoid was brought on to create visuals for Lil Tecca's HVN ON EARTH tour in early 2024, our mission was to craft a tripped out cyberpunk aesthetic with glitchy analog video synths and 16-bit inspired 3D visuals.",
     'Drawing inspiration from 90s anime, video games, and modern internet culture, we developed multiple looks for each song, which VJ Katie With The Blue Hair manipulated live during performances. After many sold-out shows and a standout set at Rolling Loud, the HVN ON EARTH tour concluded as a major success.',
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Creative Director:</h3>
-    <p class="text-grey-100">Sam Contant</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Director:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Team:</h3>
-    <p class="text-grey-100">Drew Mercadante, Grant Bouvier</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Tour Director:</h3>
-    <p class="text-grey-100">Matt Palumbo</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Designer:</h3>
-    <p class="text-grey-100">Tyler Olson</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Tour VJ:</h3>
-    <p class="text-grey-100">Katie Rose</p>
-    </div>',
-  ]
+credits:
+  - role: 'Creative Director'
+    names: 'Sam Contant'
+  - role: 'Animation Director'
+    names: 'Drew Mercadante'
+  - role: 'Animation Team'
+    names: 'Drew Mercadante, Grant Bouvier'
+  - role: 'Tour Director'
+    names: 'Matt Palumbo'
+  - role: 'Lighting Designer'
+    names: 'Tyler Olson'
+  - role: 'Tour VJ'
+    names: 'Katie Rose'
 thumbnail: './images/thumbnails/lil-tecca.png'
 # gifs are MUX playback IDs
 gifs:

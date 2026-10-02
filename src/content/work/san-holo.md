@@ -7,36 +7,21 @@ info:
     "Supervoid was hired by Voyage Productions to produce visuals for San Holo's EXISTENTIAL DANCE MUSIC tour. We drew inspiration from San's longtime friend and creative director Thorwald van den Akker's hand-drawn aesthetic, which defines San Holo's visual world. By blending Thor's hand-drawn imagery, like flocks of birds and unique lettering, with our computer-based techniques, including Notch particle systems and live camera effects, we created visuals that beautifully blurred the lines between traditional art and CG.",
     "In addition to the show content, we developed various Notch effects that captured live camera feeds of San and his audience, adding otherworldly auras and colors. These subtle enhancements elevated the emotional depth of San's music, transforming the highs and lows of life into an immersive audiovisual experience.",
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Creative Director:</h3>
-    <p class="text-grey-100">Thorwald van den Akker</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Art Director:</h3>
-    <p class="text-grey-100">Jamie Lew</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Director, Notch Designer:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production & Lighting Designer:</h3>
-    <p class="text-grey-100">Kyle Kegan, Voyage Productions</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Director:</h3>
-    <p class="text-grey-100">Blake Addington</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Manager:</h3>
-    <p class="text-grey-100">Jeff Meuzelaar, Pinnacle Productions</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Laser Programmer:</h3>
-    <p class="text-grey-100">Bill Loftus</p>
-    </div>',
-  ]
+credits:
+  - role: 'Creative Director'
+    names: 'Thorwald van den Akker'
+  - role: 'Art Director'
+    names: 'Jamie Lew'
+  - role: 'Animation Director, Notch Designer'
+    names: 'Drew Mercadante'
+  - role: 'Production & Lighting Designer'
+    names: 'Kyle Kegan, Voyage Productions'
+  - role: 'Lighting Director'
+    names: 'Blake Addington'
+  - role: 'Production Manager'
+    names: 'Jeff Meuzelaar, Pinnacle Productions'
+  - role: 'Laser Programmer'
+    names: 'Bill Loftus'
 thumbnail: './images/thumbnails/san-holo.png'
 # gifs are MUX playback IDs
 gifs:

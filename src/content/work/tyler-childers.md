@@ -7,44 +7,25 @@ info:
     "Since 2024, Supervoid has worked with Voyage Productions and Formation to produce visuals for Tyler Childers' live show.  Working under the creative direction of Emily Cox and art director Jamie Issuh, we've developed content and Notch effects that bring the audience into Tyler's world, a celebration of all things Appalachia layered with tinges of psychedelia and spiritual imagery.",
     'With a setlist that’s different every night and no timecode to sync visuals to, we develop the visuals in a way that makes sure all the big moments are highlighted while keeping things flexible enough to make room for improvisation.',
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Creative Director:</h3>
-    <p class="text-grey-100">Emily Cox, Formation Creative</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Show Designer/Director/Lighting Designer:</h3>
-    <p class="text-grey-100">Kyle Kegan, Voyage Productions Inc.</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Art Director:</h3>
-    <p class="text-grey-100">Jamie Lew</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Notch Designer:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Notch/D3 Programmer:</h3>
-    <p class="text-grey-100">Larry Barnes, Ciara Hegli</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animators:</h3>
-    <p class="text-grey-100">Drew Mercadante, Nick Schoener, Marco Cardenas, Karl Fekete, Matt Keppler, Olivia Sebesky, Spencer Haley, Katie Kirschner, Hanbi Sung</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Director:</h3>
-    <p class="text-grey-100">Jack Davis</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Programmer:</h3>
-    <p class="text-grey-100">Devon Brown</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Content Producer:</h3>
-    <p class="text-grey-100">Ryan Smith</p>
-    </div>',
-  ]
+credits:
+  - role: 'Creative Director'
+    names: 'Emily Cox, Formation Creative'
+  - role: 'Show Designer/Director/Lighting Designer'
+    names: 'Kyle Kegan, Voyage Productions Inc.'
+  - role: 'Art Director'
+    names: 'Jamie Lew'
+  - role: 'Notch Designer'
+    names: 'Drew Mercadante'
+  - role: 'Notch/D3 Programmer'
+    names: 'Larry Barnes, Ciara Hegli'
+  - role: 'Animators'
+    names: 'Drew Mercadante, Nick Schoener, Marco Cardenas, Karl Fekete, Matt Keppler, Olivia Sebesky, Spencer Haley, Katie Kirschner, Hanbi Sung'
+  - role: 'Lighting Director'
+    names: 'Jack Davis'
+  - role: 'Lighting Programmer'
+    names: 'Devon Brown'
+  - role: 'Content Producer'
+    names: 'Ryan Smith'
 thumbnail: './images/thumbnails/tyler-childers.png'
 # gifs are MUX playback IDs
 gifs:

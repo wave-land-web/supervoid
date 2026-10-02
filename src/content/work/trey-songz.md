@@ -6,20 +6,13 @@ info:
   [
     "Supervoid was hired to produce visuals for Trey Songz' set on the LOVE HARD tour by production manager Daniel Arbelaez. We brought on our frequent collaborators Planet 10 to help pull this together on a tight timeline. With less than two weeks to produce a creative deck, direction, animation and final edits, it was a marathon project that pushed us to work efficiently and not second guess our instincts. It was quite a journey but the end result was great!",
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Manager:</h3>
-    <p class="text-grey-100">Dan Arbaelez</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Director:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Team:</h3>
-    <p class="text-grey-100">George Murphy, Kenn Koubeck</p>
-    </div>',
-  ]
+credits:
+  - role: 'Production Manager'
+    names: 'Dan Arbaelez'
+  - role: 'Animation Director'
+    names: 'Drew Mercadante'
+  - role: 'Animation Team'
+    names: 'George Murphy, Kenn Koubeck'
 thumbnail: './images/thumbnails/trey-songz.png'
 # gifs are MUX playback IDs
 gifs:

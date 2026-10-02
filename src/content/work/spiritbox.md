@@ -8,20 +8,13 @@ info:
     'We used cutting-edge tools like Unreal Engine 5 and Notch to develop real-time animations that could be quickly adapted as the arrangements evolved.',
     "Working with a band like Spiritbox that's always pushing the boundaries of their music, we sought to capture their bleeding-edge mentality and create visuals that pushed the boundaries of what's previously been seen at a metal show into something that felt stadium-sized and as massive as the band's music.",
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Design, Lighting Programming:</h3>
-    <p class="text-grey-100">Lenny Sasso</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Director:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Team:</h3>
-    <p class="text-grey-100">Matt Keppler, Jaxon Graham, Ciara Hegli, Grant Bouvier</p>
-    </div>',
-  ]
+credits:
+  - role: 'Production Design, Lighting Programming'
+    names: 'Lenny Sasso'
+  - role: 'Animation Director'
+    names: 'Drew Mercadante'
+  - role: 'Animation Team'
+    names: 'Matt Keppler, Jaxon Graham, Ciara Hegli, Grant Bouvier'
 thumbnail: './images/thumbnails/spiritbox.png'
 # gifs are MUX playback IDs
 gifs:

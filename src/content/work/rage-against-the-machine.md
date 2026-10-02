@@ -6,37 +6,21 @@ info:
   [
     "In 2022, Drew Mercadante of Supervoid joined Rage Against The Machine's highly anticipated reunion tour as their Notch and media server programmer/operator. Collaborating with an elite creative team—including Creative Director Todd Tourso (Beyoncé, Pharrell), Content Designers Good Company (Taylor Swift, Kendrick Lamar), and Lighting Designer Cory Fitzgerald (Jay-Z, Beyoncé)—Supervoid seamlessly integrated dynamic visual effects into each night's powerhouse performance. Live IMAG footage was enhanced with impactful Notch effects designed by Brett Bolton, creating a visually arresting experience. The fusion of cutting-edge visuals and the band's electrifying energy resulted in a tour de force that captivated audiences nationwide.",
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production & Lighting Designer:</h3>
-    <p class="text-grey-100">Cory Fitzgerald</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Creative Director:</h3>
-    <p class="text-grey-100">Todd Tourso</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Video Director:</h3>
-    <p class="text-grey-100">Christian Lamb</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Director & Programmer:</h3>
-    <p class="text-grey-100">Joey Troup</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Content:</h3>
-    <p class="text-grey-100">Good Co</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Notch Designer:</h3>
-    <p class="text-grey-100">Brett Bolton</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Video Operator & Programmer:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    ',
-  ]
+credits:
+  - role: 'Production & Lighting Designer'
+    names: 'Cory Fitzgerald'
+  - role: 'Creative Director'
+    names: 'Todd Tourso'
+  - role: 'Video Director'
+    names: 'Christian Lamb'
+  - role: 'Lighting Director & Programmer'
+    names: 'Joey Troup'
+  - role: 'Content'
+    names: 'Good Co'
+  - role: 'Notch Designer'
+    names: 'Brett Bolton'
+  - role: 'Video Operator & Programmer'
+    names: 'Drew Mercadante'
 thumbnail: './images/thumbnails/rage-against-the-machine.png'
 # gifs are MUX playback IDs
 gifs:

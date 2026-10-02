@@ -10,7 +10,8 @@ const workCollection = defineCollection({
       title: z.string(),
       year: z.string(),
       info: z.array(z.string()),
-      credits: z.array(z.string()).optional(),
+      // Who did what on the show, in display order. `role` takes no trailing colon.
+      credits: z.array(z.object({ role: z.string(), names: z.string() })).optional(),
       thumbnail: image().optional(),
       gifs: z.object({
         videoHero: z.string().optional(),

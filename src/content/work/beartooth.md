@@ -6,33 +6,19 @@ info:
   [
     "Supervoid delivered Notch effects, media server programming, and IMAG camera services for Beartooth’s 2025 hometown headlining show at The Schottenstein Center. Creative director Drew Mercadante collaborated with content designer Luke Shomo to craft timecoded Notch effects, immersing the band in their visuals with dynamic particles, animated elements, and bold color treatments. Each of the 19 songs featured unique, high-impact looks—from aggressive color overlays synced to the music to multi-layer composites placing the band inside their album covers. The result was a triumphant homecoming and one of the most electrifying shows we've ever seen.",
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">STAGE VISUALS:</h3>
-    <p class="text-grey-100">Luke Shomo</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">NOTCH DESIGNER, MEDIA SERVER PROGRAMMER:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">IMAG DIRECTOR:</h3>
-    <p class="text-grey-100">Matt Keppler</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">CAMERA OPERATORS:</h3>
-    <p class="text-grey-100">Steve Garfinkel, Nick Centore</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">LIGHTING DESIGNER:</h3>
-    <p class="text-grey-100">Ben Jarrett</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">LIGHTING DIRECTOR:</h3>
-    <p class="text-grey-100">Colin Bishop</p>
-    </div>
-    ',
-  ]
+credits:
+  - role: 'STAGE VISUALS'
+    names: 'Luke Shomo'
+  - role: 'NOTCH DESIGNER, MEDIA SERVER PROGRAMMER'
+    names: 'Drew Mercadante'
+  - role: 'IMAG DIRECTOR'
+    names: 'Matt Keppler'
+  - role: 'CAMERA OPERATORS'
+    names: 'Steve Garfinkel, Nick Centore'
+  - role: 'LIGHTING DESIGNER'
+    names: 'Ben Jarrett'
+  - role: 'LIGHTING DIRECTOR'
+    names: 'Colin Bishop'
 thumbnail: './images/thumbnails/beartooth.png'
 # gifs are MUX playback IDs
 gifs:

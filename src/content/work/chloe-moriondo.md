@@ -7,24 +7,15 @@ info:
     'Supervoid collaborated with singer-songwriter Chloe Moriondo to craft a dreamy, immersive underwater world for their latest run, <em>The Oyster Tour</em>. Working within the constraints of smaller venues, we designed a DIY projection setup that Chloe and their band could assemble themselves—using a short-throw projector and creatively stacked stage risers to bring unexpected dimension to intimate spaces.',
     'To elevate the production value while staying budget-conscious, we created timecoded visuals that brought the stage to life with surreal underwater imagery—rippling light, drifting sea creatures, and submerged dreamscapes synced perfectly with each song. The result was a transportive, oceanic world that added emotional depth and visual richness to every performance.',
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Video Editors:</h3>
-    <p class="text-grey-100">Kyle Krazewski, Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Tour Manager:</h3>
-    <p class="text-grey-100">Risa Tapanes</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Front of House Engineer:</h3>
-    <p class="text-grey-100">Marco Gil</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Playback Tech:</h3>
-    <p class="text-grey-100">Nicholas Bentley</p>
-    </div>',
-  ]
+credits:
+  - role: 'Video Editors'
+    names: 'Kyle Krazewski, Drew Mercadante'
+  - role: 'Tour Manager'
+    names: 'Risa Tapanes'
+  - role: 'Front of House Engineer'
+    names: 'Marco Gil'
+  - role: 'Playback Tech'
+    names: 'Nicholas Bentley'
 thumbnail: './images/thumbnails/chloe-moriondo.png'
 # gifs are MUX playback IDs
 gifs:
