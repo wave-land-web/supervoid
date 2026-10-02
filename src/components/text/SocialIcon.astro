@@ -4,17 +4,18 @@ import { Icon } from 'astro-icon/components'
 export interface Props {
   href: string
   name: string
-  openInNewTab?: boolean
   ariaLabel: string
 }
 
-const { href, name, openInNewTab = true, ariaLabel } = Astro.props
+const { href, name, ariaLabel } = Astro.props
+// Profiles open in a new tab; mailto: links hand off to the mail app instead
+const isExternal = href.startsWith('http')
 ---
 
 <a
   href={href}
-  target={openInNewTab ? '_blank' : '_self'}
-  rel={openInNewTab ? 'noopener noreferrer' : ''}
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noopener noreferrer' : undefined}
   class="relative flex justify-center size-10 scale-100 before:content-[''] before:absolute before:left-1/2 before:top-1/2 before:transform before:-translate-x-1/2 before:-translate-y-1/2 before:bg-magenta-900 before:size-10 before:rounded-full before:flex before:justify-center hover:before:scale-105 active:before:scale-95 before:transition-all before:duration-(--transition) hover:text-white"
   aria-label={ariaLabel}
 >
