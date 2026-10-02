@@ -42,26 +42,24 @@ const workByYear = getWorkYearsDescending(allWork).map((year) => ({
   </header>
 
   <main id="work" class="relative w-full">
-    {
-      workByYear.map(({ year, work }, yearIndex) => (
-        <section id={year}>
-          <YearHeading year={year} />
-          <div class="lsa-stagger grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-            {work.map((item, itemIndex) => {
-              // The first row lands in the fold — one card on phones, two once
-              // the grid splits at `md`. Those animate from CSS instead of
-              // waiting on the scroll observer.
-              const isAboveTheFold = yearIndex === 0 && itemIndex < 2
+    {workByYear.map(({ year, work }, yearIndex) => (
+      <section id={year}>
+        <YearHeading year={year} />
+        <div class="lsa-stagger grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+          {work.map((item, itemIndex) => {
+            // The first row lands in the fold — one card on phones, two once
+            // the grid splits at `md`. Those animate from CSS instead of
+            // waiting on the scroll observer.
+            const isAboveTheFold = yearIndex === 0 && itemIndex < 2
 
-              return item.collection === 'work' ? (
-                <WorkPreviewCard work={item} isAboveTheFold={isAboveTheFold} />
-              ) : (
-                <LightingPreviewCard work={item} isAboveTheFold={isAboveTheFold} />
-              )
-            })}
-          </div>
-        </section>
-      ))
-    }
+            return item.collection === 'work' ? (
+              <WorkPreviewCard work={item} isAboveTheFold={isAboveTheFold} />
+            ) : (
+              <LightingPreviewCard work={item} isAboveTheFold={isAboveTheFold} />
+            )
+          })}
+        </div>
+      </section>
+    ))}
   </main>
 </Layout>

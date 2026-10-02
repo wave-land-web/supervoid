@@ -14,13 +14,11 @@ const { images, class: className } = Astro.props
 
 <div class={`swiper js-slide-carousel min-w-0 max-w-full ${className}`}>
   <div class="swiper-wrapper mb-12">
-    {
-      images.map((image) => (
-        <div class="swiper-slide rounded-xl">
-          <Picture src={image.src} formats={['avif', 'webp']} alt={image.alt} />
-        </div>
-      ))
-    }
+    {images.map((image) => (
+      <div class="swiper-slide rounded-xl">
+        <Picture src={image.src} formats={['avif', 'webp']} alt={image.alt} />
+      </div>
+    ))}
   </div>
 
   <div class="swiper-pagination"></div>

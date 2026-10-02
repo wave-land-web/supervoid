@@ -3,9 +3,7 @@ import { Icon } from 'astro-icon/components'
 import SocialIcons from './SocialIcons.astro'
 ---
 
-<footer
-  class="w-full max-w-screen-2xl m-auto p-8 fixed bottom-0 left-1/2 transform -translate-x-1/2"
->
+<footer class="w-full max-w-screen-2xl m-auto p-8 fixed bottom-0 left-1/2 transform -translate-x-1/2">
   <div id="footer-contact" class="flex flex-col items-center gap-4 mb-28">
     <p class="text-base no-underline">info@supervoid.tv</p>
     <SocialIcons />
@@ -13,7 +11,8 @@ import SocialIcons from './SocialIcons.astro'
   <div id="footer-info" class="flex flex-col md:flex-row justify-between items-center gap-4">
     <p>Supervoid © {new Date().getFullYear()}</p>
     <p>
-      Website by <a
+      Website by{' '}
+      <a
         href="https://wavelandweb.com"
         target="_blank"
         rel="noopener noreferrer"

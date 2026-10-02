@@ -23,16 +23,14 @@ const cardId = `work-preview-card-${id}`
   ]}
 >
   <a href={`/work/${id}`}>
-    {
-      imageHero ? (
-        <Picture
-          src={imageHero}
-          alt={videoTitle}
-          loading={isAboveTheFold ? 'eager' : 'lazy'}
-          class="absolute top-0 left-0 w-full h-full object-cover brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-(--transition)"
-        />
-      ) : null
-    }
+    {imageHero ? (
+      <Picture
+        src={imageHero}
+        alt={videoTitle}
+        loading={isAboveTheFold ? 'eager' : 'lazy'}
+        class="absolute top-0 left-0 w-full h-full object-cover brightness-75 group-hover:brightness-100 group-hover:scale-105 transition duration-(--transition)"
+      />
+    ) : null}
 
     <div class="absolute bottom-0 flex items-center gap-3 w-full">
       <h2 class="bg-magenta-900 text-xs uppercase text-white rounded-full px-4 py-1">

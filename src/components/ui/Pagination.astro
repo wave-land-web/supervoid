@@ -14,24 +14,20 @@ const { prevPost, nextPost, prevPostSlug, nextPostSlug, prevPostTitle, nextPostT
 ---
 
 <section id="pagination" class="pagination flex flex-col md:flex-row justify-between gap-4 pt-0">
-  {
-    prevPost && (
-      <AnimatedCTA
-        href={`${prevPostSlug}`}
-        title={`${prevPostTitle}`}
-        text="Previous"
-        direction="left"
-      />
-    )
-  }
-  {
-    nextPost && (
-      <AnimatedCTA
-        href={`${nextPostSlug}`}
-        title={`${nextPostTitle}`}
-        text="Next"
-        direction="right"
-      />
-    )
-  }
+  {prevPost && (
+    <AnimatedCTA
+      href={`${prevPostSlug}`}
+      title={`${prevPostTitle}`}
+      text="Previous"
+      direction="left"
+    />
+  )}
+  {nextPost && (
+    <AnimatedCTA
+      href={`${nextPostSlug}`}
+      title={`${nextPostTitle}`}
+      text="Next"
+      direction="right"
+    />
+  )}
 </section>

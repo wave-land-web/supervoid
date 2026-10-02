@@ -12,25 +12,17 @@ export interface Props {
 const { title, imageSrc, imageAlt, imageCaption } = Astro.props
 ---
 
-<header
-  class="relative pt-[calc(var(--nav-height)+4rem)] md:pt-[calc(var(--nav-height)+6rem)] lsa-load lsa-slide-up"
->
-  {
-    title && (
-      <h1 class="absolute w-full top-[calc(var(--nav-height)+2rem)] md:top-[calc(var(--nav-height)+4rem)] left-1/2 -translate-x-1/2 text-l drop-shadow-lg text-center uppercase">
-        {title}
-      </h1>
-    )
-  }
+<header class="relative pt-[calc(var(--nav-height)+4rem)] md:pt-[calc(var(--nav-height)+6rem)] lsa-load lsa-slide-up">
+  {title && (
+    <h1 class="absolute w-full top-[calc(var(--nav-height)+2rem)] md:top-[calc(var(--nav-height)+4rem)] left-1/2 -translate-x-1/2 text-l drop-shadow-lg text-center uppercase">
+      {title}
+    </h1>
+  )}
 
-  {
-    imageSrc && imageAlt && (
-      <figure>
-        <Picture src={imageSrc} formats={['avif', 'webp']} alt={imageAlt} loading="eager" />
-        {imageCaption && (
-          <figcaption class="py-4 text-2xs text-grey-100">{imageCaption}</figcaption>
-        )}
-      </figure>
-    )
-  }
+  {imageSrc && imageAlt && (
+    <figure>
+      <Picture src={imageSrc} formats={['avif', 'webp']} alt={imageAlt} loading="eager" />
+      {imageCaption && <figcaption class="py-4 text-2xs text-grey-100">{imageCaption}</figcaption>}
+    </figure>
+  )}
 </header>
