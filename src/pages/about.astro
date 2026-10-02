@@ -13,6 +13,7 @@ import verticalCouchOne from '../assets/vertical-images/SVX_Vertical_0009_Couch 
 import ImageHeader from '../components/layout/ImageHeader.astro'
 import VerticalCarousel from '../components/media/VerticalCarousel.astro'
 import Button from '../components/ui/Button.astro'
+import SplitRow from '../components/ui/SplitRow.astro'
 import Layout from '../layouts/Layout.astro'
 import { socialImageFrom } from '../lib/socialImage'
 ---
@@ -27,9 +28,7 @@ import { socialImageFrom } from '../lib/socialImage'
 
   <main>
     <section id="who-we-are" class="lsa lsa-slide-up no-repeat pt-4 pb-8">
-      <div class="w-full grid md:grid-cols-[1fr_4fr] gap-4 lg:gap-8 py-6 border-t">
-        <h2 class="text-base uppercase">Who We Are</h2>
-
+      <SplitRow label="Who We Are">
         <div class="flex flex-col gap-4">
           <p class="text-m">
             <span class="text-magenta-900 inline-block lsa lsa-slide-up no-repeat delay-50">
@@ -84,7 +83,7 @@ import { socialImageFrom } from '../lib/socialImage'
             </span>
           </p>
         </div>
-      </div>
+      </SplitRow>
     </section>
 
     <section id="services">

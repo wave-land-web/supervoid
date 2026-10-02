@@ -3,6 +3,7 @@ import { Picture } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 import { Icon } from 'astro-icon/components'
 import { TWO_COLUMN_SIZES } from '../../lib/images'
+import Pill from '../ui/Pill.astro'
 
 export interface Props {
   work: CollectionEntry<'lighting'>
@@ -52,9 +53,7 @@ const youtubeId = work.data.youtubeId
     </button>
 
     <div class="absolute bottom-0 w-full flex items-center gap-3">
-      <h3 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-black rounded-full">
-        {work.data.title}
-      </h3>
+      <Pill as="h3">{work.data.title}</Pill>
     </div>
   </div>
 </div>

@@ -1,0 +1,14 @@
+---
+/** The magenta label pill: card titles and the Info/Credits toggles. */
+export interface Props {
+  /** A heading level when the pill titles something; a span otherwise. */
+  as?: 'span' | 'h2' | 'h3'
+  class?: string
+}
+
+const { as: Tag = 'span', class: className } = Astro.props
+---
+
+<Tag class:list={['px-4 py-1 bg-magenta-900 text-xs uppercase text-black rounded-full', className]}>
+  <slot />
+</Tag>

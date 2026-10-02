@@ -58,6 +58,9 @@
 
   --nav-height: clamp(5rem, 10vw, 6rem);
 
+  /* The hard offset shadow on buttons and focused fields */
+  --shadow-offset: 4px 4px 0 var(--color-magenta-900);
+
   --font-header: 'Rotonto Regular', sans-serif;
   --font-body: 'SF Mono Regular', monospace;
 

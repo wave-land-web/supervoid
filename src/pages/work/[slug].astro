@@ -5,6 +5,7 @@ import type { InferGetStaticPropsType } from 'astro'
 import { Icon } from 'astro-icon/components'
 import CoverVideo from '../../components/media/CoverVideo.astro'
 import Pagination from '../../components/ui/Pagination.astro'
+import Pill from '../../components/ui/Pill.astro'
 import Layout from '../../layouts/Layout.astro'
 import { TWO_COLUMN_SIZES } from '../../lib/images'
 import { socialImageFrom } from '../../lib/socialImage'
@@ -149,7 +150,7 @@ const schema = [
             name="tabler:plus"
             class="w-10 h-10 shrink-0 bg-white text-black rounded-full p-2 group-open:rotate-45 hover:scale-105 active:scale-95 transition duration-(--transition)"
           />
-          <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-black rounded-full">info</h2>
+          <Pill as="h2">info</Pill>
         </summary>
 
         <div class="mt-4 md:mt-0">
@@ -165,9 +166,7 @@ const schema = [
             name="tabler:plus"
             class="w-10 h-10 shrink-0 bg-white text-black rounded-full p-2 group-open:rotate-45 hover:scale-105 active:scale-95 transition duration-(--transition)"
           />
-          <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-black rounded-full">
-            credits
-          </h2>
+          <Pill as="h2">credits</Pill>
         </summary>
 
         <div class="mt-4 md:mt-0">

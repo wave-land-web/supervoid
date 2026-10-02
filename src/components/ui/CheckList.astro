@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon/components'
+
+export interface Props {
+  items: string[]
+  class?: string
+}
+
+const { items, class: className } = Astro.props
+---
+
+<ul class:list={['flex flex-col gap-4', className]}>
+  {items.map((item) => (
+    <li class="flex items-center gap-8">
+      <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" aria-hidden="true" />
+      {item}
+    </li>
+  ))}
+</ul>

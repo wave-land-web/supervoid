@@ -1,12 +1,13 @@
 ---
 import { Picture } from 'astro:assets'
-import { Icon } from 'astro-icon/components'
 import grandma3CompactImage from '../assets/grandma3-compact.png'
 import rentalsHeroImage from '../assets/rentals-hero.webp'
 import willowImage from '../assets/rentals-willow.webp'
 import svxSeriesServerBackImage from '../assets/svx-series-server-back.png'
 import ImageHeader from '../components/layout/ImageHeader.astro'
 import Button from '../components/ui/Button.astro'
+import CheckList from '../components/ui/CheckList.astro'
+import SplitRow from '../components/ui/SplitRow.astro'
 import Layout from '../layouts/Layout.astro'
 import { mailto } from '../lib/site'
 import { socialImageFrom } from '../lib/socialImage'
@@ -26,18 +27,16 @@ import { socialImageFrom } from '../lib/socialImage'
 
   <main>
     <section class="pt-4 pb-8">
-      <div class="w-full grid md:grid-cols-[1fr_4fr] gap-4 lg:gap-8 py-6 border-t lsa lsa-slide-up no-repeat">
-        <h2 class="text-base uppercase">Trusted by</h2>
+      <SplitRow label="Trusted by" class="lsa lsa-slide-up no-repeat">
         <p class="mb-4 text-m">
           Alex Warren. Sheryl Crow. Paramore. Tate McRae. Jane's Addiction. Dan + Shay. Willow. Elle
           King. All Time Low. Chloe Moriondo. STS9. Cuco. Underoath. Taking Back Sunday. Wage War.
           Motion City Soundtrack. Love and Rockets. Spiritbox. San Holo. Five Finger Death Punch.
           Trans-Siberian Orchestra. Poppy. The Wonder Years. Cage The Elephant. Cavetown.
         </p>
-      </div>
+      </SplitRow>
 
-      <div class="w-full grid md:grid-cols-[1fr_4fr] gap-4 lg:gap-8 py-6 border-t lsa lsa-slide-up no-repeat">
-        <h2 class="text-base uppercase">Show Control Solutions</h2>
+      <SplitRow label="Show Control Solutions" class="lsa lsa-slide-up no-repeat">
         <div class="flex flex-col gap-4">
           <p class="text-grey-100">
             Custom video content and beautiful lighting design don't do much for a show without
@@ -58,7 +57,7 @@ import { socialImageFrom } from '../lib/socialImage'
             value.
           </p>
         </div>
-      </div>
+      </SplitRow>
     </section>
 
     <section class="max-w-3xl lg:max-w-7xl m-auto grid lg:grid-cols-2 gap-16 lg:gap-0 lsa lsa-slide-up no-repeat">
@@ -109,33 +108,16 @@ import { socialImageFrom } from '../lib/socialImage'
               low as $500/week, with 24/7 tech support and SUPERVOID exclusive VJ loops and visual
               content included in every rental.
             </p>
-            <ul class="flex flex-col gap-4">
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Run up to 12 HD screens, 3 4K screens, or even a single 8K screen, with a dedicated
-                GUI for controlling the software
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Capture up to 4 HD inputs or one 4K input over SDI or HDMI
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Real-time low latency visual effects with Notch built into each server
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Pixel map and control hundreds of universes of lights over artnet
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Control via your lighting desk with artnet or from MIDI or OSC
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Remote control over LAN/Wifi from any Windows or Mac computer
-              </li>
-            </ul>
+            <CheckList
+              items={[
+                'Run up to 12 HD screens, 3 4K screens, or even a single 8K screen, with a dedicated GUI for controlling the software',
+                'Capture up to 4 HD inputs or one 4K input over SDI or HDMI',
+                'Real-time low latency visual effects with Notch built into each server',
+                'Pixel map and control hundreds of universes of lights over artnet',
+                'Control via your lighting desk with artnet or from MIDI or OSC',
+                'Remote control over LAN/Wifi from any Windows or Mac computer',
+              ]}
+            />
           </div>
         </div>
       </div>
@@ -163,32 +145,16 @@ import { socialImageFrom } from '../lib/socialImage'
               ideal for small to medium events. It offers customizable features, intuitive dual
               encoders, and seamless compatibility with grandMA2 and grandMA3 software.
             </p>
-            <ul class="flex flex-col gap-4">
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Control up to 250,000 parameters with grandMA3 processing units
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />6 DMX outputs,
-                1 DMX input, and 3 etherCON connectors
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Foldable internal multi-touch screen with external screen support
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                29 backlit rotary encoders, 5 dual encoders, and 40 playbacks
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                10 motorized 60 mm faders and 2 motorized A/B faders (100 mm)
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Silent, backlit keys and 16 assignable x-keys for smooth control
-              </li>
-            </ul>
+            <CheckList
+              items={[
+                'Control up to 250,000 parameters with grandMA3 processing units',
+                '6 DMX outputs, 1 DMX input, and 3 etherCON connectors',
+                'Foldable internal multi-touch screen with external screen support',
+                '29 backlit rotary encoders, 5 dual encoders, and 40 playbacks',
+                '10 motorized 60 mm faders and 2 motorized A/B faders (100 mm)',
+                'Silent, backlit keys and 16 assignable x-keys for smooth control',
+              ]}
+            />
           </div>
         </div>
       </div>

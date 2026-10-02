@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components'
 import jobsCarouselOneImage from '../assets/horizontal-images/SVX_Horizontal_0002_Radiohead 15.jpg'
 import jobsCarouselTwoImage from '../assets/horizontal-images/SVX_Horizontal_0016_Radiohead 1.jpg'
 import jobsCarouselThreeImage from '../assets/horizontal-images/SVX_Horizontal_0018_STS9 7.jpg'
@@ -10,6 +9,8 @@ import jobsHeroImage from '../assets/jobs-hero.png'
 import ImageHeader from '../components/layout/ImageHeader.astro'
 import Carousel from '../components/media/Carousel.astro'
 import Button from '../components/ui/Button.astro'
+import CheckList from '../components/ui/CheckList.astro'
+import SplitRow from '../components/ui/SplitRow.astro'
 import Layout from '../layouts/Layout.astro'
 import { EMAIL, mailto } from '../lib/site'
 import { socialImageFrom } from '../lib/socialImage'
@@ -30,9 +31,7 @@ import { socialImageFrom } from '../lib/socialImage'
   <!-- Clip sideways: the card carousel's stacked slides overflow its box from md up -->
   <main class="overflow-x-clip">
     <section class="lsa lsa-slide-up no-repeat pt-4 pb-8">
-      <div class="grid md:grid-cols-[1fr_4fr] gap-4 lg:gap-8 py-6 border-t">
-        <h2 class="text-base uppercase">OUR PHILOSOPHY</h2>
-
+      <SplitRow label="OUR PHILOSOPHY">
         <div>
           <p class="mb-4 text-m">
             We started SUPERVOID to make the kind of shows that we want to see{' '}
@@ -45,7 +44,7 @@ import { socialImageFrom } from '../lib/socialImage'
             practical realities.
           </p>
         </div>
-      </div>
+      </SplitRow>
     </section>
 
     <section class="max-w-3xl xl:max-w-7xl m-auto grid xl:grid-cols-2 gap-16 md:gap-24 lsa lsa-slide-up no-repeat">
@@ -66,25 +65,14 @@ import { socialImageFrom } from '../lib/socialImage'
         <p class="text-grey-100">
           We're always on the lookout for passionate and innovative individuals who:
         </p>
-        <ul class="flex flex-col gap-4">
-          <li class="flex items-center gap-8">
-            <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-            Have a strong portfolio demonstrating their skills and creativity.
-          </li>
-          <li class="flex items-center gap-8">
-            <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-            Are team players who thrive in a collaborative environment.
-          </li>
-          <li class="flex items-center gap-8">
-            <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-            Are eager to learn and push the limits of what's possible in animation, VFX, lighting,
-            and stage design.
-          </li>
-          <li class="flex items-center gap-8">
-            <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-            Bring unique perspectives and ideas to the table.
-          </li>
-        </ul>
+        <CheckList
+          items={[
+            'Have a strong portfolio demonstrating their skills and creativity.',
+            'Are team players who thrive in a collaborative environment.',
+            "Are eager to learn and push the limits of what's possible in animation, VFX, lighting, and stage design.",
+            'Bring unique perspectives and ideas to the table.',
+          ]}
+        />
       </div>
     </section>
 

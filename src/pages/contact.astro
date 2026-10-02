@@ -1,11 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components'
+import Button from '../components/ui/Button.astro'
 import Layout from '../layouts/Layout.astro'
 import { EMAIL, mailto } from '../lib/site'
 
 // 16px and up on phones, so iOS doesn't zoom the page when a field is focused
 const fieldClass =
-  'w-full px-4 py-3 bg-black text-white focus:shadow-[4px_4px_0_var(--color-magenta-900)] ring-1 ring-inset ring-white focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-(--transition) outline-none text-base md:text-xs'
+  'w-full px-4 py-3 bg-black text-white focus:shadow-offset ring-1 ring-inset ring-white focus:ring-2 focus:ring-inset focus:ring-magenta-900 rounded-lg transition duration-(--transition) outline-none text-base md:text-xs'
 const labelClass = 'block mb-2 text-left'
 ---
 
@@ -106,17 +107,7 @@ const labelClass = 'block mb-2 text-left'
           <textarea name="message" id="message" rows="4" required class={fieldClass}></textarea>
         </div>
 
-        <button
-          type="submit"
-          class="mx-auto py-2 px-8 text-center text-magenta-900 max-w-fit border-2
-        border-magenta-900 rounded-full hover:shadow-[4px_4px_0_var(--color-magenta-900)]
-        hover:text-magenta-900 active:translate-x-1 active:translate-y-1 active:shadow-none
-        text-stroke text-m transition duration-(--transition)"
-          aria-label="Send Message"
-          title="Send Message"
-        >
-          Send Message
-        </button>
+        <Button type="submit" text="Send Message" class="mx-auto" />
       </form>
     </section>
 
