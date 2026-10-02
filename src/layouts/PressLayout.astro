@@ -15,6 +15,34 @@ const { post, prevPost, nextPost } = Astro.props
 const { title, description, image, imageAlt } = post.data
 
 const socialImage = await socialImageFrom(image)
+const url = new URL(Astro.url.pathname, Astro.site).href
+
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: `${title} press highlights`,
+    description,
+    url,
+    image: new URL(socialImage.src, Astro.site).href,
+    datePublished: post.data.published.toISOString().slice(0, 10),
+    author: { '@id': `${Astro.site}#organization` },
+    publisher: { '@id': `${Astro.site}#organization` },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site?.href },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Press',
+        item: new URL('/press/', Astro.site).href,
+      },
+      { '@type': 'ListItem', position: 3, name: title, item: url },
+    ],
+  },
+]
 ---
 
 <Layout
@@ -23,6 +51,7 @@ const socialImage = await socialImageFrom(image)
   socialImage={socialImage}
   socialImageAlt={imageAlt}
   ogType="article"
+  schema={schema}
 >
   <main
     id="press-layout"

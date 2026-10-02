@@ -36,14 +36,30 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { post, prevPost, nextPost } = Astro.props
 const socialImage = post.data.thumbnail && (await socialImageFrom(post.data.thumbnail))
+const description = toMetaDescription(post.data.info[0])
+const url = new URL(Astro.url.pathname, Astro.site).href
+
+const schema = [
+  {
+    '@type': 'CreativeWork',
+    '@id': `${url}#work`,
+    name: post.data.title,
+    description,
+    url,
+    image: socialImage && new URL(socialImage.src, Astro.site).href,
+    dateCreated: post.data.year,
+    creator: { '@id': `${Astro.site}#organization` },
+  },
+]
 ---
 
 <Layout
   title={`${post.data.title} | Work`}
-  description={toMetaDescription(post.data.info[0])}
+  description={description}
   socialImage={socialImage}
   socialImageAlt={post.data.title}
   ogType="article"
+  schema={schema}
 >
   <div slot="video-slot" class="relative lsa-load">
     <div class="relative aspect-video w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none">

@@ -4,6 +4,7 @@ import { Font } from 'astro:assets'
 import Footer from '../components/ui/Footer.astro'
 import Marquee from '../components/ui/Marquee.astro'
 import Navigation from '../components/ui/Navigation.astro'
+import { EMAIL, INSTAGRAM_URL, SITE_DESCRIPTION } from '../lib/site'
 import type { SocialImage } from '../lib/socialImage'
 
 export interface Props {
@@ -16,6 +17,8 @@ export interface Props {
   socialImageAlt?: string
   /** `article` for case studies and press posts. */
   ogType?: 'website' | 'article'
+  /** JSON-LD nodes for this page, added to the site-wide Organization and WebSite. */
+  schema?: Record<string, unknown>[]
   /** Load the Mux Player script, for the full player on /reel. Clips elsewhere use CoverVideo. */
   mux?: boolean
   /** Leave out the nav, marquee and footer (the /reel splash page). */
@@ -26,10 +29,11 @@ export interface Props {
 
 const {
   title,
-  description = 'SUPERVOID is a creative and technical design studio specializing in screen visuals, lighting, lasers, scenic design and custom control setups for touring artists.',
+  description = SITE_DESCRIPTION,
   socialImage = { src: '/images/og-image.png', width: 1920, height: 1080 },
   socialImageAlt = 'SUPERVOID',
   ogType = 'website',
+  schema = [],
   mux = false,
   minimal = false,
   noindex = false,
@@ -37,6 +41,34 @@ const {
 const pageTitle = `${title} | SUPERVOID`
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const socialImageURL = new URL(socialImage.src, canonicalURL)
+
+// Structured data: who SUPERVOID is on every page, plus whatever the page adds.
+// Pages reference the organization by its @id.
+const site = Astro.site?.href ?? canonicalURL.origin
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${site}#organization`,
+      name: 'SUPERVOID',
+      url: site,
+      logo: new URL('/android-chrome-512x512.png', site).href,
+      description: SITE_DESCRIPTION,
+      email: EMAIL,
+      sameAs: [INSTAGRAM_URL],
+      knowsAbout: ['Screen visuals', 'Lighting design', 'Lasers', 'Scenic design', 'Show control'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site}#website`,
+      name: 'SUPERVOID',
+      url: site,
+      publisher: { '@id': `${site}#organization` },
+    },
+    ...schema,
+  ],
+}
 ---
 
 <!doctype html>
@@ -58,6 +90,10 @@ const socialImageURL = new URL(socialImage.src, canonicalURL)
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
     {noindex && <meta name="robots" content="noindex" />}
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')}
+    />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Facebook -->
