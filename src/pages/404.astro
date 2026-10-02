@@ -2,6 +2,14 @@
 import PageHeader from '../components/layout/PageHeader.astro'
 import Button from '../components/ui/Button.astro'
 import Layout from '../layouts/Layout.astro'
+
+// Where someone who followed a dead link most likely wanted to go
+const ONWARD_LINKS = [
+  { label: 'Our work', href: '/#work' },
+  { label: 'Rentals', href: '/rentals/' },
+  { label: 'Press', href: '/press/' },
+  { label: 'Contact', href: '/contact/' },
+]
 ---
 
 <Layout title="Page Not Found" noindex>
@@ -11,6 +19,15 @@ import Layout from '../layouts/Layout.astro'
     <section class="max-w-xl m-auto pt-0 text-center lsa-load lsa-slide-up [animation-delay:300ms]">
       <p class="mb-8 text-base">Oops! Looks like you've stumbled upon a page that doesn't exist.</p>
       <Button text="Back to Home" href="/" class="mx-auto" />
+      <ul class="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-2">
+        {ONWARD_LINKS.map(({ label, href }) => (
+          <li>
+            <a href={href} class="site-link">
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
     </section>
   </div>
 </Layout>
