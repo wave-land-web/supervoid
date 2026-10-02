@@ -7,13 +7,25 @@
 import { Icon } from 'astro-icon/components'
 import SocialIcons from './SocialIcons.astro'
 
-const currentPath = Astro.url.pathname
+// `section` is the path a link stays current under, when that isn't its href
+const NAV_LINKS: { label: string; href: string; section?: string }[] = [
+  { label: 'Work', href: '/#work', section: '/work' },
+  { label: 'About', href: '/about' },
+  { label: 'Rentals', href: '/rentals' },
+  { label: 'Press', href: '/press' },
+  { label: 'Jobs', href: '/jobs' },
+  { label: 'Contact', href: '/contact' },
+]
+
+// aria-current: "page" on the page itself, "true" on pages inside its section
+const path = Astro.url.pathname.replace(/\/$/, '')
+const ariaCurrent = ({ href, section = href }: (typeof NAV_LINKS)[number]) =>
+  path === section ? 'page' : path.startsWith(`${section}/`) ? 'true' : undefined
 ---
 
 <nav
   id="navigation"
   class="fixed top-0 left-0 right-0 flex min-h-(--nav-height) transition-all duration-(--transition) z-20 bg-linear-to-b from-black to-transparent"
-  data-current-url={currentPath}
 >
   <!-- Mobile Navigation -->
   <div id="mobile-nav" class="lg:hidden w-full flex justify-between items-center">
@@ -73,36 +85,13 @@ const currentPath = Astro.url.pathname
     >
       <!-- nav items -->
       <ul class="flex flex-col gap-8 pt-32 mb-16">
-        <li>
-          <a href="/#work" aria-label="Work" title="Work" class="text-l">
-            Work{' '}
-          </a>
-        </li>
-        <li>
-          <a href="/about" aria-label="About" title="About" class="text-l">
-            About
-          </a>
-        </li>
-        <li>
-          <a href="/rentals" aria-label="Rentals" title="Rentals" class="text-l">
-            Rentals
-          </a>
-        </li>
-        <li>
-          <a href="/press" aria-label="Press" title="Press" class="text-l">
-            Press
-          </a>
-        </li>
-        <li>
-          <a href="/jobs" aria-label="Jobs" title="Jobs" class="text-l">
-            Jobs
-          </a>
-        </li>
-        <li>
-          <a href="/contact" aria-label="Contact" title="Contact" class="text-l">
-            Contact
-          </a>
-        </li>
+        {NAV_LINKS.map((link) => (
+          <li>
+            <a href={link.href} class="text-l" aria-current={ariaCurrent(link)}>
+              {link.label}
+            </a>
+          </li>
+        ))}
       </ul>
       <SocialIcons />
     </div>
@@ -143,42 +132,14 @@ const currentPath = Astro.url.pathname
     </a>
     <!-- nav items -->
     <ul class="flex gap-10 text-xs">
-      <li>
-        <a href="/#work" aria-label="Work" title="Work">
-          Work
-          <Icon name="underline" />
-        </a>
-      </li>
-      <li>
-        <a href="/about" aria-label="About" title="About">
-          About
-          <Icon name="underline" />
-        </a>
-      </li>
-      <li>
-        <a href="/rentals" aria-label="Rentals" title="Rentals">
-          Rentals
-          <Icon name="underline" />
-        </a>
-      </li>
-      <li>
-        <a href="/press" aria-label="Press" title="Press">
-          Press
-          <Icon name="underline" />
-        </a>
-      </li>
-      <li>
-        <a href="/jobs" aria-label="Jobs" title="Jobs">
-          Jobs
-          <Icon name="underline" />
-        </a>
-      </li>
-      <li>
-        <a href="/contact" aria-label="Contact" title="Contact">
-          Contact
-          <Icon name="underline" />
-        </a>
-      </li>
+      {NAV_LINKS.map((link) => (
+        <li>
+          <a href={link.href} aria-current={ariaCurrent(link)}>
+            {link.label}
+            <Icon name="underline" />
+          </a>
+        </li>
+      ))}
     </ul>
     <SocialIcons />
   </div>
@@ -241,11 +202,7 @@ const currentPath = Astro.url.pathname
 
     /* Mobile */
 
-    #navigation[data-current-url^='/about'] [aria-label='About'],
-    #navigation[data-current-url^='/rentals'] [aria-label='Rentals'],
-    #navigation[data-current-url^='/press'] [aria-label='Press'],
-    #navigation[data-current-url^='/jobs'] [aria-label='Jobs'],
-    #navigation[data-current-url^='/contact'] [aria-label='Contact'] {
+    #navigation [aria-current] {
       color: var(--color-magenta-900);
 
       @media (min-width: 1024px) {
@@ -258,11 +215,7 @@ const currentPath = Astro.url.pathname
     /* Desktop */
 
     @media (min-width: 1024px) {
-      #navigation[data-current-url^='/about'] [aria-label='About'] [data-icon='underline'],
-      #navigation[data-current-url^='/rentals'] [aria-label='Rentals'] [data-icon='underline'],
-      #navigation[data-current-url^='/press'] [aria-label='Press'] [data-icon='underline'],
-      #navigation[data-current-url^='/jobs'] [aria-label='Jobs'] [data-icon='underline'],
-      #navigation[data-current-url^='/contact'] [aria-label='Contact'] [data-icon='underline'] {
+      #navigation [aria-current] [data-icon='underline'] {
         display: block;
         position: absolute;
         bottom: -0.5rem;
