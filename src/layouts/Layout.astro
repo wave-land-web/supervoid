@@ -4,7 +4,7 @@ import { Font } from 'astro:assets'
 import Footer from '../components/layout/Footer.astro'
 import Marquee from '../components/layout/Marquee.astro'
 import Navigation from '../components/layout/Navigation.astro'
-import { EMAIL, INSTAGRAM_URL, SITE_DESCRIPTION } from '../lib/site'
+import { EMAIL, INSTAGRAM_URL, LINKEDIN_URL, SITE_DESCRIPTION, YOUTUBE_URL } from '../lib/site'
 import type { SocialImage } from '../lib/socialImage'
 
 export interface Props {
@@ -56,7 +56,7 @@ const structuredData = {
       logo: new URL('/android-chrome-512x512.png', site).href,
       description: SITE_DESCRIPTION,
       email: EMAIL,
-      sameAs: [INSTAGRAM_URL],
+      sameAs: [INSTAGRAM_URL, YOUTUBE_URL, LINKEDIN_URL],
       knowsAbout: ['Screen visuals', 'Lighting design', 'Lasers', 'Scenic design', 'Show control'],
     },
     {

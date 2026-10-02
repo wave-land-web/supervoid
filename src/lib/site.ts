@@ -1,6 +1,8 @@
 // Contact details and profiles used across the site. Change them here, not in components.
 export const EMAIL = 'info@supervoid.tv'
 export const INSTAGRAM_URL = 'https://www.instagram.com/supervoidtv/'
+export const YOUTUBE_URL = 'https://www.youtube.com/@supervoidtv'
+export const LINKEDIN_URL = 'https://www.linkedin.com/company/supervoidtv/'
 
 /** The site's default meta description, also used for the Organization structured data. */
 export const SITE_DESCRIPTION =
