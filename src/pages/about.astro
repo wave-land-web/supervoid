@@ -16,6 +16,28 @@ import Button from '../components/ui/Button.astro'
 import SplitRow from '../components/ui/SplitRow.astro'
 import Layout from '../layouts/Layout.astro'
 import { socialImageFrom } from '../lib/socialImage'
+
+// What we do, one list per discipline
+const SERVICES = [
+  {
+    title: 'Production Design',
+    items: ['Set Design', 'Lighting Design', 'Video Design', 'Camera Layout', 'Production Support'],
+  },
+  {
+    title: 'Screen Visuals',
+    items: [
+      'Full service from concept to delivery',
+      '2D and 3D Graphics',
+      'Notch + IMAG',
+      'Filmed content',
+      'Full previs capability',
+    ],
+  },
+  {
+    title: 'Lighting Design',
+    items: ['Plot Creation', 'Rendering', 'Programming (MA2 + MA3)', 'Full previs capability'],
+  },
+]
 ---
 
 <Layout title="About" socialImage={await socialImageFrom(aboutHeroImage)}>
@@ -92,65 +114,25 @@ import { socialImageFrom } from '../lib/socialImage'
       <h2 class="sr-only">Services</h2>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16">
-        <div class="lsa lsa-slide-up no-repeat">
-          <h3 class="mb-4 text-m text-magenta uppercase">Production Design</h3>
-          <ul>
-            <li class="flex gap-4">
-              - <span>Set Design</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>Lighting Design</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>Video Design</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>Camera Layout</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>Production Support</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="lsa lsa-slide-up no-repeat delay-100">
-          <h3 class="mb-4 text-m text-magenta uppercase">Screen Visuals</h3>
-          <ul>
-            <li class="flex gap-4">
-              - <span>Full service from concept to delivery</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>2D and 3D Graphics</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>Notch + IMAG</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>Filmed content</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>Full previs capability</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="lsa lsa-slide-up no-repeat delay-200">
-          <h3 class="mb-4 text-m text-magenta uppercase">Lighting Design</h3>
-          <ul>
-            <li class="flex gap-4">
-              - <span>Plot Creation</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>Rendering</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>Programming (MA2 + MA3)</span>
-            </li>
-            <li class="flex gap-4">
-              - <span>Full previs capability</span>
-            </li>
-          </ul>
-        </div>
+        {SERVICES.map(({ title, items }, index) => (
+          <div
+            class:list={[
+              'lsa lsa-slide-up no-repeat',
+              index === 1 && 'delay-100',
+              index === 2 && 'delay-200',
+            ]}
+          >
+            <h3 class="mb-4 text-m text-magenta uppercase">{title}</h3>
+            <ul>
+              {items.map((item) => (
+                <li class="flex gap-4">
+                  <span aria-hidden="true">-</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
 

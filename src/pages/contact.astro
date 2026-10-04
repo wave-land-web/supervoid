@@ -18,12 +18,11 @@ const labelClass = 'block mb-2 text-left'
   <PageHeader title="Contact Us" />
 
   <div class="page-body">
-    <section class="text-center lsa-load lsa-slide-up [animation-delay:300ms]">
-      <h2 class="text-l uppercase text-center mb-8">Let's Get Started</h2>
-
+    <section class="pt-0 text-center lsa-load lsa-slide-up [animation-delay:300ms]">
       <form
         method="POST"
         name="contactForm"
+        aria-label="Project inquiry"
         action="/success/"
         class="max-w-2xl mx-auto flex flex-col gap-4"
         data-netlify="true"
@@ -111,8 +110,8 @@ const labelClass = 'block mb-2 text-left'
 
     <section id="general-inquiries" class="text-center lsa lsa-slide-up no-repeat delay-300">
       <h2 class="text-l uppercase text-center mb-4">General Inquiries</h2>
-      <a href={mailto('General Inquiry')} class="flex justify-center items-center gap-4 text-xs">
-        <Icon name="tabler:mail" class="w-8 h-8 text-magenta" />
+      <a href={mailto('General Inquiry')} class="flex justify-center items-center gap-4 text-base">
+        <Icon name="tabler:mail" aria-hidden="true" class="w-8 h-8 text-magenta" />
         {EMAIL}
       </a>
     </section>
