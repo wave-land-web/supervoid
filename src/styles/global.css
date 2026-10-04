@@ -28,7 +28,9 @@
 @theme {
   --color-white: #ffffff;
   --color-black: #000000;
-  /* Secondary text: captions, intros, credit names */
+  /* Text in three steps: white for what people came to read, grey-light for the supporting
+     paragraphs around it, grey for captions, labels and hints */
+  --color-grey-light: #cccccc;
   --color-grey: #9b9b9b;
 
   /* The accent. Wide gamut: more vivid than #ff00ff on screens that can show it, #ff00ff on the rest */
@@ -41,9 +43,9 @@
      2xs captions · xs body copy, nav, pills · base intros, labels · s buttons, credits ·
      m statements, subheads · l section titles · xl page titles · 2xl to 4xl hero titles */
   --text-*: initial;
-  --text-2xs: clamp(0.64rem, 0.752941vi + 0.45rem, 0.96rem);
+  --text-2xs: clamp(0.75rem, 0.752941vi + 0.45rem, 0.96rem);
   --text-2xs--line-height: 1.5;
-  --text-xs: clamp(0.8rem, 0.941176vi + 0.56rem, 1.2rem);
+  --text-xs: clamp(0.9375rem, 0.941176vi + 0.56rem, 1.2rem);
   --text-xs--line-height: 1.5;
   --text-base: clamp(1rem, 1.176471vi + 0.71rem, 1.5rem);
   --text-base--line-height: 1.5;
