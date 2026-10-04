@@ -7,8 +7,8 @@ import Layout from './Layout.astro'
 
 export interface Props {
   post: CollectionEntry<'press'>
-  prevPost?: CollectionEntry<'press'>
-  nextPost?: CollectionEntry<'press'>
+  prevPost: CollectionEntry<'press'>
+  nextPost: CollectionEntry<'press'>
 }
 
 const { post, prevPost, nextPost } = Astro.props
@@ -61,8 +61,9 @@ const schema = [
     </div>
 
     <Pagination
-      prev={prevPost && { href: `/press/${prevPost.id}/`, title: prevPost.data.title }}
-      next={nextPost && { href: `/press/${nextPost.id}/`, title: nextPost.data.title }}
+      label="More press"
+      prev={{ href: `/press/${prevPost.id}/`, title: prevPost.data.title }}
+      next={{ href: `/press/${nextPost.id}/`, title: nextPost.data.title }}
     />
   </div>
 </Layout>

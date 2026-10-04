@@ -27,8 +27,9 @@ export async function getStaticPaths() {
     },
     props: {
       post,
-      prevPost: sortedPosts[index - 1],
-      nextPost: sortedPosts[index + 1],
+      // The list wraps around, so every case study links both ways
+      prevPost: sortedPosts.at(index - 1) ?? post,
+      nextPost: sortedPosts[(index + 1) % sortedPosts.length],
     },
   }))
 }
@@ -222,8 +223,9 @@ const schema = [
     </section>
 
     <Pagination
-      prev={prevPost && { href: `/work/${prevPost.id}/`, title: prevPost.data.title }}
-      next={nextPost && { href: `/work/${nextPost.id}/`, title: nextPost.data.title }}
+      label="More work"
+      prev={{ href: `/work/${prevPost.id}/`, title: prevPost.data.title }}
+      next={{ href: `/work/${nextPost.id}/`, title: nextPost.data.title }}
     />
   </div>
 </Layout>

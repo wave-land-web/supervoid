@@ -9,7 +9,12 @@ export async function getStaticPaths() {
 
   return posts.map((post, index) => ({
     params: { slug: post.id },
-    props: { post, prevPost: posts[index - 1], nextPost: posts[index + 1] },
+    // The list wraps around, so every post links both ways
+    props: {
+      post,
+      prevPost: posts.at(index - 1) ?? post,
+      nextPost: posts[(index + 1) % posts.length],
+    },
   }))
 }
 

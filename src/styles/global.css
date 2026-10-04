@@ -86,7 +86,7 @@
    `<style>` blocks, keeping every curve on the site traceable to these lines.
 
    `static` because `--ease-in-out` is referenced ONLY from scoped `<style>`
-   blocks in other components (Carousel, PageLink). Tailwind tree-shakes
+   blocks in other components (Carousel, Pagination). Tailwind tree-shakes
    unused theme variables, and it can't see those references as utility usage —
    without `static` the token can be dropped, which turns those declarations
    into `transition: all 0.3s <invalid>` and silently kills the transition with
