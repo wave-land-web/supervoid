@@ -1,0 +1,47 @@
+---
+import { Picture } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+import { TWO_COLUMN_SIZES } from '../../lib/images'
+import CardTitle from './CardTitle.astro'
+
+export interface Props {
+  work: CollectionEntry<'work'>
+  /** Skip the scroll observer and animate from CSS on first paint. */
+  isAboveTheFold?: boolean
+  /** Fetch the image ahead of everything else: the page's first card is its LCP. */
+  priority?: boolean
+}
+
+const { work, isAboveTheFold = false, priority = false } = Astro.props
+const { id } = work
+const imageHero = work.data.thumbnail
+const videoTitle = work.data.title
+const cardId = `work-preview-card-${id}`
+---
+
+<article
+  id={cardId}
+  class:list={[
+    'work-preview-card relative aspect-video rounded-xl overflow-hidden group lsa-slide-up',
+    // The link's box is empty (everything in it is positioned), so the focus ring goes on the card
+    'has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-magenta',
+    isAboveTheFold ? 'lsa-load' : 'lsa no-repeat',
+  ]}
+>
+  <a href={`/work/${id}/`} class="outline-none">
+    {imageHero ? (
+      <Picture
+        src={imageHero}
+        alt=""
+        formats={['avif']}
+        fallbackFormat="webp"
+        sizes={TWO_COLUMN_SIZES}
+        loading={isAboveTheFold ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : undefined}
+        class="absolute top-0 left-0 w-full h-full object-cover brightness-75 group-hocus:brightness-100 group-hocus:scale-105 transition duration-(--transition)"
+      />
+    ) : null}
+
+    <CardTitle>{videoTitle}</CardTitle>
+  </a>
+</article>

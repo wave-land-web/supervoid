@@ -1,0 +1,136 @@
+---
+import { Picture } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+import { TWO_COLUMN_SIZES } from '../../lib/images'
+import CardTitle from './CardTitle.astro'
+
+export interface Props {
+  work: CollectionEntry<'lighting'>
+  /** Skip the scroll observer and animate from CSS on first paint. */
+  isAboveTheFold?: boolean
+  /** Fetch the image ahead of everything else: the page's first card is its LCP. */
+  priority?: boolean
+}
+
+const { work, isAboveTheFold = false, priority = false } = Astro.props
+const youtubeId = work.data.youtubeId
+---
+
+<div
+  data-lighting-card
+  data-youtube-id={youtubeId}
+  class:list={[
+    'lighting-preview-card group relative aspect-video overflow-hidden lsa-slide-up rounded-xl',
+    isAboveTheFold ? 'lsa-load' : 'lsa no-repeat',
+  ]}
+>
+  <!-- YouTube embed inserted here via YouTube API -->
+  <div data-player class="absolute top-0 left-0 w-full h-full"></div>
+
+  <!-- Overlay: image, play button, and project title -->
+  <div data-poster class="absolute top-0 left-0 w-full h-full">
+    <Picture
+      class="w-full brightness-75 group-hocus:brightness-100 group-hocus:scale-105 transition duration-(--transition)"
+      src={work.data.poster}
+      alt=""
+      formats={['avif']}
+      fallbackFormat="webp"
+      sizes={TWO_COLUMN_SIZES}
+      loading={isAboveTheFold ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : undefined}
+    />
+
+    <button
+      data-play
+      type="button"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      aria-label={`Play ${work.data.title} video`}
+    >
+      <Icon
+        name="play"
+        class="size-22.5 p-6 md:bg-black md:hover:bg-magenta active:scale-95 rounded-full md:shadow-lg transition duration-[0.4s]"
+      />
+    </button>
+
+    <CardTitle>{work.data.title}</CardTitle>
+  </div>
+</div>
+
+<script>
+  interface YouTubePlayer {
+    playVideo(): void
+    getIframe(): HTMLIFrameElement
+  }
+
+  interface YouTubeApi {
+    Player: new (
+      element: HTMLElement,
+      options: { videoId: string; events: { onReady: (event: { target: YouTubePlayer }) => void } },
+    ) => YouTubePlayer
+  }
+
+  const youTube = window as Window & {
+    YT?: YouTubeApi
+    onYouTubeIframeAPIReady?: () => void
+  }
+
+  // The IFrame API loads on the first sign of interest in a card (hover, focus
+  // or a tap on Play) rather than with the page. Every card shares one load.
+  let apiReady: Promise<YouTubeApi> | undefined
+
+  function loadYouTubeApi(): Promise<YouTubeApi> {
+    apiReady ??= new Promise((resolve) => {
+      if (youTube.YT?.Player) return resolve(youTube.YT)
+
+      const previousCallback = youTube.onYouTubeIframeAPIReady
+      youTube.onYouTubeIframeAPIReady = () => {
+        previousCallback?.()
+        resolve(youTube.YT as YouTubeApi)
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://www.youtube.com/iframe_api'
+      document.head.append(script)
+    })
+    return apiReady
+  }
+
+  for (const card of document.querySelectorAll<HTMLElement>('[data-lighting-card]')) {
+    const videoId = card.dataset.youtubeId as string
+    const poster = card.querySelector('[data-poster]') as HTMLElement
+    const playerElement = card.querySelector('[data-player]') as HTMLElement
+    let player: YouTubePlayer | undefined
+
+    // Hand off to the player: hide the poster and move focus into the embed,
+    // since the focused Play button is about to disappear
+    const showPlayer = (target: YouTubePlayer) => {
+      poster.classList.add('hidden')
+      target.getIframe().focus()
+    }
+
+    card.addEventListener('pointerenter', loadYouTubeApi, { once: true })
+    card.addEventListener('focusin', loadYouTubeApi, { once: true })
+
+    card.querySelector('[data-play]')?.addEventListener('click', async () => {
+      const api = await loadYouTubeApi()
+
+      // Reuse the player instead of constructing a new one per click
+      if (player) {
+        player.playVideo()
+        showPlayer(player)
+        return
+      }
+
+      player = new api.Player(playerElement, {
+        videoId,
+        events: {
+          onReady: ({ target }) => {
+            target.playVideo()
+            showPlayer(target)
+          },
+        },
+      })
+    })
+  }
+</script>

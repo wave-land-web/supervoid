@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content'
-import CTA from '../components/text/CTA.astro'
-import LightingPreviewCard from '../components/ui/LightingPreviewCard.astro'
-import WorkPreviewCard from '../components/ui/WorkPreviewCard.astro'
-import YearHeading from '../components/ui/YearHeading.astro'
+import LightingCard from '../components/cards/LightingCard.astro'
+import WorkCard from '../components/cards/WorkCard.astro'
+import Button from '../components/ui/Button.astro'
+import YearHeading from '../components/work/YearHeading.astro'
 import Layout from '../layouts/Layout.astro'
-import { getAlphabetizedWorkByYear, getWorkYearsDescending } from '../utils/sortWork'
+import { getAlphabetizedWorkByYear, getWorkYearsDescending } from '../lib/sortWork'
 
 // Get the video and lighting work data
 const videoWorkData = await getCollection('work')
@@ -21,13 +21,13 @@ const workByYear = getWorkYearsDescending(allWork).map((year) => ({
 }))
 ---
 
-<Layout title="Screen Visuals, Lighting, Lasers & Scenic Design for Touring Artists" youtube>
+<Layout title="Screen Visuals, Lighting, Lasers & Scenic Design for Touring Artists">
   <header class="pt-[calc(var(--nav-height)+2rem)]">
-    {/* `hero-in` cascades these three children in DOM order — no per-element delays */}
+    <!-- `hero-in` cascades these three children in DOM order — no per-element delays -->
     <div id="header-content" class="hero-in flex flex-col gap-6">
       <h1 class="text-xl md:text-2xl lg:text-3xl mb-4">
-        SUPERVOID <br />
-        <span class="block text-m text-magenta-900">designs shows.</span>
+        SUPERVOID
+        <span class="block text-m text-magenta">designs shows.</span>
       </h1>
 
       <p class="max-w-3xl text-balance text-base">
@@ -36,32 +36,31 @@ const workByYear = getWorkYearsDescending(allWork).map((year) => ({
       </p>
 
       <div>
-        <CTA text="Contact Us Today" href="/contact" />
+        <Button text="Contact Us Today" href="/contact/" />
       </div>
     </div>
   </header>
 
-  <main id="work" class="relative w-full">
-    {
-      workByYear.map(({ year, work }, yearIndex) => (
-        <section id={year}>
-          <YearHeading year={year} />
-          <div class="lsa-stagger grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-            {work.map((item, itemIndex) => {
-              // The first row lands in the fold — one card on phones, two once
-              // the grid splits at `md`. Those animate from CSS instead of
-              // waiting on the scroll observer.
-              const isAboveTheFold = yearIndex === 0 && itemIndex < 2
+  <div id="work" class="page-body relative">
+    {workByYear.map(({ year, work }, yearIndex) => (
+      <section id={year}>
+        <YearHeading year={year} />
+        <div class="lsa-stagger grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
+          {work.map((item, itemIndex) => {
+            // The first row lands in the fold — one card on phones, two once
+            // the grid splits at `md`. Those animate from CSS instead of
+            // waiting on the scroll observer.
+            const isAboveTheFold = yearIndex === 0 && itemIndex < 2
+            const priority = yearIndex === 0 && itemIndex === 0
 
-              return item.collection === 'work' ? (
-                <WorkPreviewCard work={item} isAboveTheFold={isAboveTheFold} />
-              ) : (
-                <LightingPreviewCard work={item} isAboveTheFold={isAboveTheFold} />
-              )
-            })}
-          </div>
-        </section>
-      ))
-    }
-  </main>
+            return item.collection === 'work' ? (
+              <WorkCard work={item} isAboveTheFold={isAboveTheFold} priority={priority} />
+            ) : (
+              <LightingCard work={item} isAboveTheFold={isAboveTheFold} priority={priority} />
+            )
+          })}
+        </div>
+      </section>
+    ))}
+  </div>
 </Layout>

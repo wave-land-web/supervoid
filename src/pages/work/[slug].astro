@@ -1,11 +1,16 @@
 ---
 import { Picture } from 'astro:assets'
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { getCollection } from 'astro:content'
+import type { InferGetStaticPropsType } from 'astro'
 import { Icon } from 'astro-icon/components'
+import CoverVideo from '../../components/media/CoverVideo.astro'
 import Pagination from '../../components/ui/Pagination.astro'
+import Pill from '../../components/ui/Pill.astro'
 import Layout from '../../layouts/Layout.astro'
-import { getAlphabetizedWorkByYear, getWorkYearsDescending } from '../../utils/sortWork'
-import { toMetaDescription } from '../../utils/text'
+import { TWO_COLUMN_SIZES } from '../../lib/images'
+import { socialImageFrom } from '../../lib/socialImage'
+import { getAlphabetizedWorkByYear, getWorkYearsDescending } from '../../lib/sortWork'
+import { toMetaDescription } from '../../lib/text'
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('work')
@@ -21,185 +26,283 @@ export async function getStaticPaths() {
       slug: post.id,
     },
     props: {
-      post: post as CollectionEntry<'work'>,
-      prevPost: sortedPosts[index - 1],
-      nextPost: sortedPosts[index + 1],
+      post,
+      // The list wraps around, so every case study links both ways
+      prevPost: sortedPosts.at(index - 1) ?? post,
+      nextPost: sortedPosts[(index + 1) % sortedPosts.length],
     },
   }))
 }
 
-const { post, prevPost, nextPost } = Astro.props
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
-// Only pull in the Mux player script on entries that actually render one
-const hasMuxVideo = Boolean(post.data.gifs.videoHero || post.data.gifs.gallery?.length)
+const { post, prevPost, nextPost } = Astro.props
+const socialImage = post.data.thumbnail && (await socialImageFrom(post.data.thumbnail))
+const description = toMetaDescription(post.data.info[0])
+const url = new URL(Astro.url.pathname, Astro.site).href
+
+const schema = [
+  {
+    '@type': 'CreativeWork',
+    '@id': `${url}#work`,
+    name: post.data.title,
+    description,
+    url,
+    image: socialImage && new URL(socialImage.src, Astro.site).href,
+    dateCreated: post.data.year,
+    creator: { '@id': `${Astro.site}#organization` },
+  },
+]
 ---
 
 <Layout
-  title={`Work - ${post.data.title}`}
-  description={toMetaDescription(post.data.info[0])}
-  mux={hasMuxVideo}
+  title={`${post.data.title} | Work`}
+  description={description}
+  socialImage={socialImage}
+  socialImageAlt={post.data.title}
+  ogType="article"
+  schema={schema}
 >
-  <header class="pt-(--nav-height)">
-    <div class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa-load">
-      {
-        post.data.gifs.videoHero ? (
-          <mux-player
-            playback-id={post.data.gifs.videoHero}
-            metadata-video-title={`Supervoid Work Page: ${post.data.title}`}
-            accent-color="var(--color-magenta-900)"
-            class="w-full hero-mux-player"
-          />
-        ) : post.data.gifs.imageHero ? (
-          /* Above-the-fold hero: the LCP element, so fetch it immediately */
-          <Picture
-            src={post.data.gifs.imageHero}
-            alt={post.data.title}
-            loading="eager"
-            fetchpriority="high"
-            class="absolute top-0 left-0 w-full h-full object-cover"
-          />
-        ) : null
-      }
-      <h1
-        data-page-title
-        class="absolute left-1 bottom-1 z-50 mr-1 px-4 py-1 bg-magenta-900 text-xs md:text-base lg:text-s uppercase text-white rounded-full"
-      >
+  <!-- Media runs edge to edge, capped at the viewport's height, with square corners; the title and controls stay in the content column -->
+  <div class="relative lsa-load">
+    <div
+      id="hero-media"
+      class="relative aspect-video max-h-svh w-full after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-black after:pointer-events-none after:transition-opacity after:duration-(--transition) [&_img]:rounded-none"
+    >
+      {post.data.gifs.videoHero ? (
+        <CoverVideo
+          id="hero-video"
+          playbackId={post.data.gifs.videoHero}
+          eager
+          sizes="100vw"
+          tracking
+          title={`Supervoid Work Page: ${post.data.title}`}
+          class="size-full"
+        />
+      ) : post.data.gifs.imageHero ? (
+        /* Above-the-fold hero: the LCP element, so fetch it immediately */
+        <Picture
+          src={post.data.gifs.imageHero}
+          formats={['avif']}
+          fallbackFormat="webp"
+          sizes="100vw"
+          alt=""
+          loading="eager"
+          fetchpriority="high"
+          class="absolute top-0 left-0 w-full h-full object-cover"
+        />
+      ) : null}
+
+      {post.data.gifs.videoHero && (
+        <div class="absolute inset-x-0 bottom-4 md:bottom-8 max-w-screen-2xl mx-auto px-4 md:px-8 flex flex-col lg:flex-row items-end lg:justify-end gap-4 lg:gap-6 z-10 pointer-events-none *:pointer-events-auto">
+          <button
+            id="toggle-play"
+            data-clear-view-hides
+            type="button"
+            data-paused
+            class="group hover:scale-110 transition-all duration-(--transition) active:scale-95"
+            aria-label="Play"
+            title="Play"
+          >
+            <Icon
+              name="tabler:player-play"
+              class="hidden group-data-paused:block w-6 lg:w-8 text-magenta"
+            />
+            <Icon
+              name="tabler:player-pause"
+              class="group-data-paused:hidden w-6 lg:w-8 text-magenta"
+            />
+          </button>
+
+          <button
+            id="toggle-mute"
+            data-clear-view-hides
+            type="button"
+            data-muted
+            class="group hover:scale-110 transition-all duration-(--transition) active:scale-95"
+            aria-label="Unmute"
+            title="Unmute"
+          >
+            <Icon
+              name="tabler:volume-off"
+              class="hidden group-data-muted:block w-6 lg:w-8 text-magenta"
+            />
+            <Icon name="tabler:volume" class="group-data-muted:hidden w-6 lg:w-8 text-magenta" />
+          </button>
+
+          {/* Clear view: hides everything over the hero but this button */}
+          <button
+            id="toggle-clear-view"
+            type="button"
+            class="group hover:scale-110 transition-all duration-(--transition) active:scale-95"
+            aria-label="Hide overlays"
+            aria-pressed="false"
+            title="Hide overlays"
+          >
+            <Icon name="tabler:eye-off" class="group-aria-pressed:hidden w-6 lg:w-8 text-magenta" />
+            <Icon
+              name="tabler:eye"
+              class="hidden group-aria-pressed:block w-6 lg:w-8 text-magenta"
+            />
+          </button>
+        </div>
+      )}
+    </div>
+
+    <!-- Below the video on mobile, overlaid from md up, so clear view only fades it from md up -->
+    <header class="md:absolute md:top-1/2 md:inset-x-0 md:-translate-y-1/2 z-10 transition-opacity duration-(--transition) md:in-data-[clear-view]:opacity-0">
+      <h1 class="text-2xl md:text-3xl lg:text-4xl mb-2 lg:mb-4 uppercase drop-shadow-lg lsa lsa-slide-up no-repeat">
         {post.data.title}
       </h1>
-    </div>
-  </header>
+      <p class="text-base lg:text-s drop-shadow-lg lsa lsa-slide-up no-repeat delay-200">
+        {post.data.year}
+      </p>
+    </header>
+  </div>
 
-  <main>
+  <div class="page-body">
     <section id="work-details" class="lsa no-repeat pt-4 pb-8">
-      <div
-        id="info-details"
-        class="w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-t border-b py-4 md:py-6 cursor-pointer"
+      <details
+        open
+        class="group w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b py-4 md:py-6 border-t"
       >
-        <button
-          type="button"
-          class="flex items-center gap-3"
-          aria-label="Show/Hide Info"
-          title="Show/Hide Info"
-        >
+        <summary class="flex items-center gap-3 w-fit cursor-pointer list-none [&::-webkit-details-marker]:hidden">
           <Icon
-            data-info-icon
             name="tabler:plus"
-            class="w-10 h-10 shrink-0 bg-white text-black rounded-full p-2 rotate-45 hover:scale-105 active:scale-95 transition duration-(--transition)"
+            class="w-10 h-10 shrink-0 bg-white text-black rounded-full p-2 group-open:rotate-45 hover:scale-105 active:scale-95 transition duration-(--transition)"
           />
-          <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">info</h2>
-        </button>
+          <Pill as="h2">info</Pill>
+        </summary>
 
-        <div
-          id="info-content"
-          class="active h-0 opacity-0 overflow-hidden transition duration-(--transition) [.active]:h-auto [.active]:mt-4 [.active]:md:mt-0 [.active]:opacity-100"
-        >
-          {post.data.info.map((item: string) => <p class="mb-4" set:html={item} />)}
+        <div class="flex flex-col gap-4 pt-4 md:pt-0 pb-4">
+          {post.data.info.map((item) => (
+            <p set:html={item} />
+          ))}
         </div>
-      </div>
+      </details>
 
-      <div
-        id="credits-details"
-        class="w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b py-4 md:py-6 cursor-pointer"
-      >
-        <button
-          type="button"
-          class="flex items-center gap-3"
-          aria-label="Show/Hide Credits"
-          title="Show/Hide Credits"
-        >
+      <details class="group w-full md:grid md:grid-cols-[1fr_4fr] items-start gap-4 lg:gap-8 border-b py-4 md:py-6">
+        <summary class="flex items-center gap-3 w-fit cursor-pointer list-none [&::-webkit-details-marker]:hidden">
           <Icon
-            data-credits-icon
             name="tabler:plus"
-            class="w-10 h-10 shrink-0 bg-white text-black rounded-full p-2 hover:scale-105 active:scale-95 transition duration-(--transition)"
+            class="w-10 h-10 shrink-0 bg-white text-black rounded-full p-2 group-open:rotate-45 hover:scale-105 active:scale-95 transition duration-(--transition)"
           />
-          <h2 class="px-4 py-1 bg-magenta-900 text-xs uppercase text-white rounded-full">
-            credits
-          </h2>
-        </button>
+          <Pill as="h2">credits</Pill>
+        </summary>
 
-        <div
-          id="credits-content"
-          class="h-0 opacity-0 overflow-hidden transition duration-(--transition) [.active]:h-auto [.active]:mt-4 [.active]:md:mt-0 [.active]:opacity-100"
-        >
-          {
-            post.data.credits?.map((item: string) => (
-              <div set:html={item} class="flex flex-col gap-8 mb-4" />
-            ))
-          }
-        </div>
-      </div>
+        <dl class="flex flex-col gap-8 pt-4 md:pt-0 pb-4">
+          {post.data.credits?.map(({ role, names }) => (
+            <div class="flex flex-col gap-4">
+              <dt class="font-header text-s uppercase text-balance">{role}:</dt>
+              <dd class="max-w-[65ch] text-xs text-pretty">{names}</dd>
+            </div>
+          ))}
+        </dl>
+      </details>
     </section>
 
     <section id="work-gifs" class="lsa-stagger grid md:grid-cols-2 md:gap-x-10 gap-y-8 md:gap-y-12">
-      {
-        post.data.gifs.gallery?.map((gif: string) => (
-          <article class="relative pb-[56.25%] h-0 rounded-xl overflow-hidden lsa lsa-slide-up no-repeat">
-            <mux-player
-              playback-id={gif}
-              accent-color="var(--color-magenta-900)"
-              class="w-full"
-              style="--controls: none;"
-              loop
-              muted
-              autoplay
-            />
-          </article>
-        ))
-      }
+      {post.data.gifs.gallery?.map((gif) => (
+        <CoverVideo
+          playbackId={gif}
+          sizes={TWO_COLUMN_SIZES}
+          class="aspect-video rounded-xl overflow-hidden lsa lsa-slide-up no-repeat"
+        />
+      ))}
 
-      {
-        post.data.images?.map((image) => (
-          <Picture
-            src={image}
-            alt={post.data.title}
-            formats={['avif', 'webp']}
-            class="aspect-video object-cover lsa lsa-slide-up no-repeat"
-          />
-        ))
-      }
+      {post.data.images?.map((image) => (
+        <Picture
+          src={image}
+          sizes={TWO_COLUMN_SIZES}
+          alt=""
+          formats={['avif']}
+          fallbackFormat="webp"
+          class="aspect-video object-cover lsa lsa-slide-up no-repeat"
+        />
+      ))}
     </section>
 
     <Pagination
-      prevPost={prevPost}
-      nextPost={nextPost}
-      prevPostSlug={`/work/${prevPost?.id}`}
-      nextPostSlug={`/work/${nextPost?.id}`}
-      prevPostTitle={prevPost?.data.title}
-      nextPostTitle={nextPost?.data.title}
+      label="More work"
+      prev={{ href: `/work/${prevPost.id}/`, title: prevPost.data.title }}
+      next={{ href: `/work/${nextPost.id}/`, title: nextPost.data.title }}
     />
-  </main>
+  </div>
 </Layout>
 
 <script>
-  const muxPlayer = document.querySelector(`.hero-mux-player`) as HTMLVideoElement
-  const title = document.querySelector(`[data-page-title]`) as HTMLElement
-  const infoDetails = document.querySelector(`#info-details`) as Element
-  const infoContent = document.querySelector(`#info-content`) as HTMLElement
-  const infoIcon = document.querySelector(`[data-info-icon]`) as Element
-  const creditsDetails = document.querySelector(`#credits-details`) as Element
-  const creditsContent = document.querySelector(`#credits-content`) as HTMLElement
-  const creditsIcon = document.querySelector(`[data-credits-icon]`) as Element
+  // Hero controls: Play/Pause and Mute/Unmute follow the player's state. CoverVideo
+  // starts and stops the clip as it scrolls in and out of view.
+  const heroVideo = document.getElementById('hero-video') as HTMLVideoElement | null
 
-  function handlePlayVideo() {
-    title?.classList.add('hidden')
+  function setupHeroControls(player: HTMLVideoElement) {
+    const togglePlay = document.getElementById('toggle-play') as HTMLElement
+    const toggleMute = document.getElementById('toggle-mute') as HTMLElement
+
+    const setLabel = (button: HTMLElement, label: string) => {
+      button.setAttribute('aria-label', label)
+      button.title = label
+    }
+    const syncPlayback = () => {
+      togglePlay.toggleAttribute('data-paused', player.paused)
+      setLabel(togglePlay, player.paused ? 'Play' : 'Pause')
+    }
+    const syncVolume = () => {
+      toggleMute.toggleAttribute('data-muted', player.muted)
+      setLabel(toggleMute, player.muted ? 'Unmute' : 'Mute')
+    }
+
+    player.addEventListener('play', syncPlayback)
+    player.addEventListener('pause', syncPlayback)
+    player.addEventListener('volumechange', syncVolume)
+
+    // A pause from this button sticks: scrolling back into view won't restart it
+    togglePlay.addEventListener('click', () => {
+      player.toggleAttribute('data-user-paused', !player.paused)
+      if (player.paused) player.play().catch(() => {})
+      else player.pause()
+    })
+    toggleMute.addEventListener('click', () => {
+      player.muted = !player.muted
+    })
+
+    syncPlayback()
+    syncVolume()
   }
 
-  function handlePauseVideo() {
-    title?.classList.remove('hidden')
+  if (heroVideo) {
+    customElements.whenDefined('mux-video').then(() => setupHeroControls(heroVideo))
   }
 
-  // Show/hide details and handle icon rotation
-  function handleShowHideDetails(icon: Element, content: HTMLElement) {
-    icon.classList.toggle('rotate-45')
-    content.classList.toggle('active')
+  // Clear view: fades out the nav, title, shade and video controls so the hero can be seen
+  // alone. Hidden controls are inert so keyboard focus skips them. Escape or scrolling brings them back.
+  function setupClearView(toggleClearView: HTMLElement) {
+    function setClearView(clear: boolean) {
+      document.documentElement.toggleAttribute('data-clear-view', clear)
+      for (const element of document.querySelectorAll<HTMLElement>('[data-clear-view-hides]')) {
+        element.inert = clear
+      }
+      const label = clear ? 'Show overlays' : 'Hide overlays'
+      toggleClearView.setAttribute('aria-pressed', String(clear))
+      toggleClearView.setAttribute('aria-label', label)
+      toggleClearView.title = label
+    }
+
+    toggleClearView.addEventListener('click', () => {
+      setClearView(!document.documentElement.hasAttribute('data-clear-view'))
+    })
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setClearView(false)
+    })
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (document.documentElement.hasAttribute('data-clear-view')) setClearView(false)
+      },
+      { passive: true },
+    )
   }
 
-  infoDetails?.addEventListener('click', () => handleShowHideDetails(infoIcon, infoContent))
-  creditsDetails?.addEventListener('click', () =>
-    handleShowHideDetails(creditsIcon, creditsContent),
-  )
-  if (muxPlayer) {
-    muxPlayer.addEventListener('play', handlePlayVideo)
-    muxPlayer.addEventListener('pause', handlePauseVideo)
-  }
+  const toggleClearView = document.getElementById('toggle-clear-view')
+  if (toggleClearView) setupClearView(toggleClearView)
 </script>

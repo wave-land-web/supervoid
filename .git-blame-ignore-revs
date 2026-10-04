@@ -1,0 +1,5 @@
+# Formatting-only commits, skipped by `git blame` (GitHub honors this file;
+# locally: git config blame.ignoreRevsFile .git-blame-ignore-revs)
+
+# Reformat .astro files with Prettier configured to match Biome
+59a2bf903719c01fd735181df20ea2e3a79ce5af

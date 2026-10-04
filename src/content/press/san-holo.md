@@ -1,0 +1,14 @@
+---
+id: '3'
+title: 'San Holo'
+description: 'PLSN and Notch on San Holo''s EXISTENTIAL DANCE MUSIC tour, where SUPERVOID took real-time Notch visuals to a new level.'
+published: 2023-12-11
+image: './images/san-holo.jpg'
+imageAlt: 'San Holo'
+---
+
+> “They brought in Visual Effects Specialist Mercadante to provide the needed video integration. As a team they masterfully took NVIDIA graphics technology and real-time graphics tool, Notch to a new level for this tour.”
+> -- <cite>Read more at <a href="https://plsn.com/archives/december-2023/san-holo-existential-dance-music-tour/" target="_blank" rel="noopener noreferrer">PLSN.com</a></cite>
+
+> “Nonstop stream of beats from scratch layered with lively guitar riffs and mystical imagery, culminating in nothing short of an emotional experience”
+> -- <cite>Read more at <a href="https://www.notch.one/portfolio/san-holo-tour-2023/" target="_blank" rel="noopener noreferrer">Notch.one</a></cite>

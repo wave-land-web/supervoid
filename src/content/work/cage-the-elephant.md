@@ -6,24 +6,15 @@ info:
   [
     'Supervoid crafted custom Notch effects for Cage The Elephant’s 2026 tour, debuting with a high-profile appearance at iHeartRadio’s Alter Ego festival in Los Angeles alongside Green Day and Twenty One Pilots. Creative Director Drew Mercadante collaborated with Lighting Designer Robert Fuller to build a versatile effects toolkit, shifting seamlessly between sparse restraint and full-tilt maximalism, designed to elevate and intensify Cage’s live visual experience.',
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Manager:</h3>
-    <p class="text-grey-100">Chris Fillery</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Designer:</h3>
-    <p class="text-grey-100">Robert Fuller</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Notch Designer, Media Server Programmer:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Photography:</h3>
-    <p class="text-grey-100">Kevin W Condon</p>
-    </div>',
-  ]
+credits:
+  - role: 'Production Manager'
+    names: 'Chris Fillery'
+  - role: 'Lighting Designer'
+    names: 'Robert Fuller'
+  - role: 'Notch Designer, Media Server Programmer'
+    names: 'Drew Mercadante'
+  - role: 'Photography'
+    names: 'Kevin W Condon'
 thumbnail: './images/SVX_Horizontal_Cage_1.jpg'
 gifs: { imageHero: './images/SVX_Horizontal_Cage_1.jpg' }
 images:

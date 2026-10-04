@@ -1,0 +1,26 @@
+---
+/** The outlined magenta button. A link when given an `href`; a <button> otherwise. */
+export interface Props {
+  text: string
+  href?: string
+  type?: 'button' | 'submit'
+  class?: string
+}
+
+const { text, href, type = 'button', class: className } = Astro.props
+
+const classes = [
+  className,
+  'block py-2 px-8 max-w-fit border-2 border-magenta rounded-full hocus:shadow-offset text-magenta hover:text-magenta active:translate-x-1 active:translate-y-1 active:shadow-none text-s transition duration-(--transition)',
+]
+---
+
+{href ? (
+  <a href={href} class:list={classes}>
+    {text}
+  </a>
+) : (
+  <button type={type} class:list={classes}>
+    {text}
+  </button>
+)}

@@ -27,7 +27,8 @@
   // still experimental (it formats the HTML/CSS/JS parts of the file), so
   // letting both format `.astro` would mean two tools fighting over the same
   // buffer. biome.json disables its formatter for `.astro` to match this, while
-  // keeping Biome's linting active there.
+  // keeping Biome's linting active there. The extension formats with the
+  // workspace's Prettier, and .prettierrc.json mirrors biome.json's style.
   "[astro]": { "editor.defaultFormatter": "astro-build.astro-vscode" },
 
   // Astro's own defaults

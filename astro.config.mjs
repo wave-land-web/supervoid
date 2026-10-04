@@ -1,6 +1,4 @@
-import mdx from '@astrojs/mdx'
 import netlify from '@astrojs/netlify'
-import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig, fontProviders } from 'astro/config'
@@ -8,7 +6,8 @@ import icon from 'astro-icon'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.supervoid.tv',
+  // The bare domain is what Netlify serves; www 301s to it
+  site: 'https://supervoid.tv',
   image: {
     layout: 'constrained',
   },
@@ -16,15 +15,19 @@ export default defineConfig({
     prefetchAll: true,
   },
   integrations: [
-    icon(),
-    sitemap({
-      lastmod: new Date(),
-      // Astro emits canonical URLs with a trailing slash, so compare against the
-      // pathname rather than an exact string that would never match.
-      filter: (page) => !['/404/', '/success/'].includes(new URL(page).pathname),
+    icon({
+      // Keep each icon's own ids. SVGO's default renames them to "a", "b"… so two
+      // icons on one page can end up sharing an id and clipping each other.
+      svgoOptions: {
+        plugins: [{ name: 'preset-default', params: { overrides: { cleanupIds: false } } }],
+      },
     }),
-    mdx(),
-    partytown(),
+    sitemap({
+      // Utility pages carry noindex, so leave them out. Compare pathnames: Astro's
+      // canonical URLs end in a slash. (No `lastmod`: stamping every URL with the
+      // build time tells crawlers nothing, so they learn to ignore it.)
+      filter: (page) => !['/404/', '/success/', '/reel/'].includes(new URL(page).pathname),
+    }),
   ],
   adapter: netlify({
     imageCDN: false,
@@ -35,12 +38,18 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    // Pre-bundle the Mux player when the dev server starts. Found later, Vite re-bundles it
+    // mid-session and answers the open page with "504 Outdated Optimize Dep", so work-page
+    // videos never load in dev.
+    optimizeDeps: {
+      include: ['@mux/mux-video'],
+    },
   },
   fonts: [
     {
       provider: fontProviders.local(),
       name: 'Rotonto Regular',
-      cssVariable: '--font-header',
+      cssVariable: '--font-rotonto',
       options: {
         variants: [
           {
@@ -50,7 +59,7 @@ export default defineConfig({
             ],
             weight: '400',
             style: 'normal',
-            display: 'block',
+            display: 'swap',
           },
         ],
       },
@@ -58,7 +67,10 @@ export default defineConfig({
     {
       provider: fontProviders.local(),
       name: 'SF Mono Regular',
-      cssVariable: '--font-body',
+      cssVariable: '--font-sf-mono',
+      // A monospace fallback, metric-matched by Astro, so text that renders
+      // before the font arrives already has the right widths
+      fallbacks: ['monospace'],
       options: {
         variants: [
           {
@@ -68,7 +80,7 @@ export default defineConfig({
             ],
             weight: '400',
             style: 'normal',
-            display: 'block',
+            display: 'swap',
           },
         ],
       },

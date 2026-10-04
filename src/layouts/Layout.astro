@@ -1,29 +1,80 @@
 ---
 import '../styles/global.css'
-import Marquee from '../components/ui/Marquee.astro'
-import Navigation from '../components/ui/Navigation.astro'
-import Footer from '../components/ui/Footer.astro'
 import { Font } from 'astro:assets'
+import Footer from '../components/layout/Footer.astro'
+import Marquee from '../components/layout/Marquee.astro'
+import Navigation from '../components/layout/Navigation.astro'
+import { EMAIL, INSTAGRAM_URL, LINKEDIN_URL, SITE_DESCRIPTION, YOUTUBE_URL } from '../lib/site'
+import type { SocialImage } from '../lib/socialImage'
 
 export interface Props {
+  /** The page's own name. " | SUPERVOID" is appended. */
   title: string
   description?: string
-  socialImage?: string
-  /** Load the Mux player script. Only set on pages that render <mux-player>. */
+  /** Link-preview image, ideally 1200×630 (see socialImageFrom). Defaults to the site card. */
+  socialImage?: SocialImage
+  /** Describes the preview image, for platforms that read it out. */
+  socialImageAlt?: string
+  /** `article` for case studies and press posts. */
+  ogType?: 'website' | 'article'
+  /** JSON-LD nodes for this page, added to the site-wide Organization and WebSite. */
+  schema?: Record<string, unknown>[]
+  /** Load the Mux Player script, for the full player on /reel. Clips elsewhere use CoverVideo. */
   mux?: boolean
-  /** Load the YouTube IFrame API. Only set on pages with lighting cards. */
-  youtube?: boolean
+  /** Leave out the nav, marquee and footer (the /reel splash page). */
+  minimal?: boolean
+  /** Keep the page out of search results (utility pages). */
+  noindex?: boolean
 }
 
 const {
   title,
-  description = 'SUPERVOID is a creative and technical design studio specializing in screen visuals, lighting, lasers, scenic design and custom control setups for touring artists.',
-  socialImage,
+  description = SITE_DESCRIPTION,
+  socialImage = { src: '/images/og-image.png', width: 1920, height: 1080 },
+  socialImageAlt = 'SUPERVOID',
+  ogType = 'website',
+  schema = [],
   mux = false,
-  youtube = false,
+  minimal = false,
+  noindex = false,
 } = Astro.props
+const pageTitle = `${title} | SUPERVOID`
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalURL)
+const socialImageURL = new URL(socialImage.src, canonicalURL)
+
+// Structured data: who SUPERVOID is on every page, plus whatever the page adds.
+// Pages reference the organization by its @id.
+const site = Astro.site?.href ?? canonicalURL.origin
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${site}#organization`,
+      name: 'SUPERVOID',
+      url: site,
+      logo: new URL('/android-chrome-512x512.png', site).href,
+      description: SITE_DESCRIPTION,
+      email: EMAIL,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Philadelphia',
+        addressRegion: 'PA',
+        addressCountry: 'US',
+      },
+      sameAs: [INSTAGRAM_URL, YOUTUBE_URL, LINKEDIN_URL],
+      knowsAbout: ['Screen visuals', 'Lighting design', 'Lasers', 'Scenic design', 'Show control'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site}#website`,
+      name: 'SUPERVOID',
+      url: site,
+      publisher: { '@id': `${site}#organization` },
+    },
+    ...schema,
+  ],
+}
 ---
 
 <!doctype html>
@@ -39,29 +90,43 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
     <script is:inline>
       document.documentElement.classList.add('lsa-on')
     </script>
-
     <!-- SEO -->
-    <title>SUPERVOID | {title}</title>
-    <meta name="title" content={`SUPERVOID | ${title}`} />
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={canonicalURL} />
+    <!-- Only pages in search get a canonical URL; the 404 page has no address of its own -->
+    {noindex ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <link rel="canonical" href={canonicalURL} />
+    )}
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')}
+    />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Facebook -->
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={`SUPERVOID | ${title}`} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="SUPERVOID" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:width" content={String(socialImage.width)} />
+    <meta property="og:image:height" content={String(socialImage.height)} />
+    <meta property="og:image:alt" content={socialImageAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:domain" content="supervoid.tv" />
     <meta name="twitter:url" content={canonicalURL} />
-    <meta name="twitter:title" content={`SUPERVOID | ${title}`} />
+    <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -81,34 +146,41 @@ const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalU
     <meta name="color-scheme" content="dark" />
 
     <!-- Preload Fonts -->
-    <Font cssVariable="--font-header" preload />
-    <Font cssVariable="--font-body" preload />
+    <Font cssVariable="--font-rotonto" preload />
+    <Font cssVariable="--font-sf-mono" preload />
 
-    {/* YouTube API — opted into by pages that embed YouTube players */}
-    {youtube && <script src="https://www.youtube.com/iframe_api" is:inline async />}
-
-    {/* Mux — opted into by pages that render a video player */}
+    <!-- Mux — opted into by pages that render a video player -->
     {mux && <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" is:inline async />}
 
     <!-- Umami Analytics -->
     <script
-      type="text/partytown"
       is:inline
       defer
       src="https://cloud.umami.is/script.js"
-      data-website-id="50a25800-0106-435f-b0ae-27a89f5ef36b"></script>
+      data-website-id="50a25800-0106-435f-b0ae-27a89f5ef36b"
+    ></script>
   </head>
 
   <body class="font-body bg-black text-white">
-    <div id="wrapper" class="relative z-10 mb-96 bg-black">
-      <div class="max-w-screen-2xl mx-auto">
-        {!Astro.url.pathname.includes('/reel') && <Navigation />}
-        <slot name="video-slot" />
-      </div>
-      <slot />
-      {!Astro.url.pathname.includes('/reel') && <Marquee />}
+    {!minimal && (
+      <a
+        href="#content"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-1 focus:rounded-full focus:bg-magenta focus:text-black text-xs uppercase"
+      >
+        Skip to content
+      </a>
+    )}
+    <!-- The bottom margin uncovers the fixed footer underneath as the page ends -->
+    <div id="wrapper" class:list={['relative z-10 bg-black', !minimal && 'mb-96']}>
+      {!minimal && <Navigation />}
+      <main>
+        <!-- Skip link target, at the top of the page's own content -->
+        <div id="content" tabindex="-1" class="outline-none"></div>
+        <slot />
+      </main>
+      {!minimal && <Marquee />}
     </div>
-    {!Astro.url.pathname.includes('/reel') && <Footer />}
+    {!minimal && <Footer />}
   </body>
 </html>
 

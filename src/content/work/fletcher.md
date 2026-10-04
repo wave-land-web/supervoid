@@ -4,37 +4,22 @@ title: 'Fletcher'
 year: '2024'
 info:
   [
-    "SUPERVOID worked with Datum Creative to produce Notch looks for Fletcher's IN SEARCH OF THE ANTIDOTE tour. Drawing inspiration from Creative Director Tess Bijere's visual palette and Production Designer Dave Singleton's lights, we created Notch treatments that varied from blissful hazy filters to grungy punk CRT noise that took the camera feed and mangled it like a guitar plugged into a fuzzbox cranked to 11. It was amazing to see Fletcher and her fans having so much fun at every show, and we're so happy we got to play a part in it.",
+    "SUPERVOID worked with Datum Creative to produce Notch looks for Fletcher's IN SEARCH OF THE ANTIDOTE tour. Drawing inspiration from Creative Director Tess Bjiere's visual palette and Production Designer Dave Singleton's lights, we created Notch treatments that varied from blissful hazy filters to grungy punk CRT noise that took the camera feed and mangled it like a guitar plugged into a fuzzbox cranked to 11. It was amazing to see Fletcher and her fans having so much fun at every show, and we're so happy we got to play a part in it.",
   ]
-credits: [
-    '
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Creative Director:</h3>
-    <p class="text-grey-100">Tess Bjiere</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Design:</h3>
-    <p class="text-grey-100">Datum Creative</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting & Video Programming:</h3>
-    <p class="text-grey-100">Datum Creative</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Visual Content:</h3>
-    <p class="text-grey-100">Tess Bjiere</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Notch:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Sceptron Lighting Effects:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    ',
-  ]
-thumbnail: './images/thumbnails/fletcher.png'
+credits:
+  - role: 'Creative Director'
+    names: 'Tess Bjiere'
+  - role: 'Production Design'
+    names: 'Datum Creative'
+  - role: 'Lighting & Video Programming'
+    names: 'Datum Creative'
+  - role: 'Visual Content'
+    names: 'Tess Bjiere'
+  - role: 'Notch'
+    names: 'Drew Mercadante'
+  - role: 'Sceptron Lighting Effects'
+    names: 'Drew Mercadante'
+thumbnail: './images/thumbnails/fletcher.jpg'
 # gifs are MUX playback IDs
 gifs:
   {
@@ -53,5 +38,5 @@ gifs:
         'HKAXafMCDP4mIOhv2pnFnlXVTC902iDxSzT01ICQ1c4Ps',
       ],
   }
-images: ['./images/fletcher-1.png', './images/fletcher-2.png', './images/fletcher-3.png']
+images: ['./images/fletcher-1.jpg', './images/fletcher-2.jpg', './images/fletcher-3.jpg']
 ---

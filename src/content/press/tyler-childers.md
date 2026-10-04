@@ -1,0 +1,14 @@
+---
+id: '4'
+title: 'Tyler Childers'
+description: 'PLSN and Notch on Tyler Childers'' Mule Pull ''24 tour, where SUPERVOID built a world of Appalachian psychedelia.'
+published: 2024-06-13
+image: './images/tyler-childers.jpg'
+imageAlt: 'Tyler Childers'
+---
+
+> "Drew Mercadante, of Philadelphia-based SUPERVOID, is a visual effects specialist"
+> -- <cite>Read more at <a href="https://plsn.com/articles/inside-the-design/tyler-childers-mule-pull-24-tour/" target="_blank" rel="noopener noreferrer">PLSN.com</a></cite>
+
+> "Created a visual world inspired by Tyler Childers' signature Appalachian psychedelia"
+> -- <cite>Read more at <a href="https://www.notch.one/portfolio/tyler-childers-mule-pull-24/" target="_blank" rel="noopener noreferrer">Notch.one</a></cite>
