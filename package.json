@@ -15,11 +15,11 @@
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "@astrojs/mdx": "^7.0.5",
-    "@astrojs/netlify": "^8.2.0",
+    "@astrojs/netlify": "^8.2.10",
     "@astrojs/partytown": "^2.1.7",
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.2.0",
+    "astro": "^7.4.2",
     "astro-icon": "^1.1.5",
     "swiper": "^14.1.0",
     "tailwindcss": "^4.3.3",
