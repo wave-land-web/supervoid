@@ -20,7 +20,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@netlify/blobs": "^11.1.6",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.5",
+    "astro": "^7.4.2",
     "astro-icon": "^1.1.5",
     "sharp": "^0.35.5",
     "swiper": "^14.1.0",
