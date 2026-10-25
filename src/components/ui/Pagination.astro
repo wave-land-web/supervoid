@@ -15,26 +15,25 @@ export interface Props {
 
 const { label, prev, next } = Astro.props
 const links = [
-  { ...prev, rel: 'prev', text: 'Previous', icon: 'left' },
-  { ...next, rel: 'next', text: 'Next', icon: 'right' },
+  { ...prev, side: 'prev', text: 'Previous', icon: 'left' },
+  { ...next, side: 'next', text: 'Next', icon: 'right' },
 ] as const
 ---
 
 <!-- Previous and Next name where they go. On hover or keyboard focus a hand-drawn ring circles the name -->
 <nav aria-label={label} class="grid grid-cols-2 gap-x-6 pt-8 md:pt-12">
-  {links.map(({ href, title, rel, text, icon }) => (
+  {links.map(({ href, title, side, text, icon }) => (
     <a
       href={href}
-      rel={rel}
       class:list={[
         'group flex flex-col gap-4 md:gap-5 outline-none hover:text-white',
-        rel === 'next' ? 'items-end text-right' : 'items-start',
+        side === 'next' ? 'items-end text-right' : 'items-start',
       ]}
     >
       <span
         class:list={[
           'flex items-center gap-3 md:gap-4 text-xs text-grey',
-          rel === 'next' && 'flex-row-reverse',
+          side === 'next' && 'flex-row-reverse',
         ]}
       >
         <Icon name={icon} aria-hidden="true" class="w-10 md:w-14 h-auto shrink-0" />
