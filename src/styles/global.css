@@ -359,17 +359,8 @@
     @apply rounded-xl;
   }
 
-  header,
-  nav {
-    @apply w-full max-w-screen-2xl mx-auto;
-  }
-
   header {
-    @apply p-4 md:p-8;
-  }
-
-  nav {
-    @apply px-4 md:px-8;
+    @apply w-full max-w-screen-2xl mx-auto p-4 md:p-8;
   }
 
   section {
