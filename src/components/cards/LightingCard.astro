@@ -77,60 +77,71 @@ const youtubeId = work.data.youtubeId
 
   // The IFrame API loads on the first sign of interest in a card (hover, focus
   // or a tap on Play) rather than with the page. Every card shares one load.
+  // It rejects if the script fails or hangs, and Play then opens the video on
+  // YouTube instead of doing nothing.
+  const API_TIMEOUT_MS = 10_000
   let apiReady: Promise<YouTubeApi> | undefined
 
   function loadYouTubeApi(): Promise<YouTubeApi> {
-    apiReady ??= new Promise((resolve) => {
+    apiReady ??= new Promise((resolve, reject) => {
       if (youTube.YT?.Player) return resolve(youTube.YT)
+
+      const timeout = setTimeout(() => reject(new Error('YouTube API timed out')), API_TIMEOUT_MS)
 
       const previousCallback = youTube.onYouTubeIframeAPIReady
       youTube.onYouTubeIframeAPIReady = () => {
+        clearTimeout(timeout)
         previousCallback?.()
         resolve(youTube.YT as YouTubeApi)
       }
 
       const script = document.createElement('script')
       script.src = 'https://www.youtube.com/iframe_api'
+      script.onerror = () => {
+        clearTimeout(timeout)
+        reject(new Error('YouTube API failed to load'))
+      }
       document.head.append(script)
     })
     return apiReady
   }
 
+  // Warming up on hover or focus is best effort: a failure surfaces on Play
+  const preloadYouTubeApi = () => loadYouTubeApi().catch(() => {})
+
   for (const card of document.querySelectorAll<HTMLElement>('[data-lighting-card]')) {
     const videoId = card.dataset.youtubeId as string
     const poster = card.querySelector('[data-poster]') as HTMLElement
     const playerElement = card.querySelector('[data-player]') as HTMLElement
-    let player: YouTubePlayer | undefined
 
-    // Hand off to the player: hide the poster and move focus into the embed,
-    // since the focused Play button is about to disappear
-    const showPlayer = (target: YouTubePlayer) => {
-      poster.classList.add('hidden')
-      target.getIframe().focus()
-    }
+    // One player per card, created by the first tap on Play. Taps made while it
+    // is still loading wait for the same player instead of building another.
+    let playerReady: Promise<YouTubePlayer> | undefined
 
-    card.addEventListener('pointerenter', loadYouTubeApi, { once: true })
-    card.addEventListener('focusin', loadYouTubeApi, { once: true })
+    card.addEventListener('pointerenter', preloadYouTubeApi, { once: true })
+    card.addEventListener('focusin', preloadYouTubeApi, { once: true })
 
     card.querySelector('[data-play]')?.addEventListener('click', async () => {
-      const api = await loadYouTubeApi()
+      try {
+        playerReady ??= loadYouTubeApi().then(
+          (api) =>
+            new Promise((resolve) => {
+              new api.Player(playerElement, {
+                videoId,
+                events: { onReady: ({ target }) => resolve(target) },
+              })
+            }),
+        )
+        const player = await playerReady
 
-      // Reuse the player instead of constructing a new one per click
-      if (player) {
+        // Hand off to the player: hide the poster and move focus into the
+        // embed, since the focused Play button is about to disappear
         player.playVideo()
-        showPlayer(player)
-        return
+        poster.classList.add('hidden')
+        player.getIframe().focus()
+      } catch {
+        window.location.assign(`https://www.youtube.com/watch?v=${videoId}`)
       }
-
-      player = new api.Player(playerElement, {
-        videoId,
-        events: {
-          onReady: ({ target }) => {
-            target.playVideo()
-            showPlayer(target)
-          },
-        },
-      })
     })
   }
 </script>
