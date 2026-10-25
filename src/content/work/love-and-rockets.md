@@ -7,21 +7,14 @@ info:
     "Supervoid collaborated with Production Designer Martin Phillips to create visuals for Love and Rockets' highly anticipated 2023 Reunion tour. With this being the band's first tour in 15 years, our goal was to blend their iconic 80s aesthetic with cutting-edge technology like Notch, resulting in a visual experience that's both nostalgic and futuristic.",
     'To achieve this, we heavily incorporated CRT textures and noise, paying homage to counter-culture touchstones such as Max Headroom and They Live. The show debuted to rave reviews at the Cruel World Festival in Los Angeles and went on to sell out shows across the U.S., solidifying its success.',
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Design, Lighting Design:</h3>
-    <p class="text-grey-100">Martin Phillips</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Director:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Team:</h3>
-    <p class="text-grey-100">George Murphy, Kenn Koubeck, Matt Keppler</p>
-    </div>',
-  ]
-thumbnail: './images/thumbnails/love-and-rockets.png'
+credits:
+  - role: 'Production Design, Lighting Design'
+    names: 'Martin Phillips'
+  - role: 'Animation Director'
+    names: 'Drew Mercadante'
+  - role: 'Animation Team'
+    names: 'George Murphy, Kenn Koubeck, Matt Keppler'
+thumbnail: './images/thumbnails/love-and-rockets.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

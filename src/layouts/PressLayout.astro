@@ -1,37 +1,69 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
+import PageHeader from '../components/layout/PageHeader.astro'
 import Pagination from '../components/ui/Pagination.astro'
+import { socialImageFrom } from '../lib/socialImage'
 import Layout from './Layout.astro'
 
-// Frontmatter
-const { frontmatter } = Astro.props
-const currentPostId = +frontmatter.id
+export interface Props {
+  post: CollectionEntry<'press'>
+  prevPost: CollectionEntry<'press'>
+  nextPost: CollectionEntry<'press'>
+}
 
-// Post data
-const allPosts = (await getCollection('press')) as CollectionEntry<'press'>[]
-const prevPost = allPosts.find((p) => +p.data.id === currentPostId + 1)
-const nextPost = allPosts.find((p) => +p.data.id === currentPostId - 1)
+const { post, prevPost, nextPost } = Astro.props
+const { title, description, image, imageAlt } = post.data
+
+const socialImage = await socialImageFrom(image)
+const url = new URL(Astro.url.pathname, Astro.site).href
+
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: `${title} press highlights`,
+    description,
+    url,
+    image: new URL(socialImage.src, Astro.site).href,
+    datePublished: post.data.published.toISOString().slice(0, 10),
+    author: { '@id': `${Astro.site}#organization` },
+    publisher: { '@id': `${Astro.site}#organization` },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site?.href },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Press',
+        item: new URL('/press/', Astro.site).href,
+      },
+      { '@type': 'ListItem', position: 3, name: title, item: url },
+    ],
+  },
+]
 ---
 
 <Layout
-  title={`Press - ${frontmatter.title}`}
-  description={frontmatter.description}
-  socialImage={frontmatter.socialImage}
+  title={`${title} | Press`}
+  description={description}
+  socialImage={socialImage}
+  socialImageAlt={imageAlt}
+  ogType="article"
+  schema={schema}
 >
-  <main
-    id="press-layout"
-    class="pt-0 max-w-4xl flex flex-col gap-[1lh] mb-16 md:mb-24 lsa no-repeat"
-  >
-    <slot />
+  <PageHeader title={title} image={{ src: image, alt: imageAlt }} narrow />
+
+  <div class="page-body max-w-4xl flex flex-col gap-[1lh] lsa no-repeat">
+    <div class="prose flex flex-col gap-[1lh]">
+      <slot />
+    </div>
 
     <Pagination
-      prevPost={prevPost}
-      nextPost={nextPost}
-      prevPostSlug={`/press/${prevPost?.id}`}
-      nextPostSlug={`/press/${nextPost?.id}`}
-      prevPostTitle={prevPost?.data.title}
-      nextPostTitle={nextPost?.data.title}
+      label="More press"
+      prev={{ href: `/press/${prevPost.id}/`, title: prevPost.data.title }}
+      next={{ href: `/press/${nextPost.id}/`, title: nextPost.data.title }}
     />
-  </main>
+  </div>
 </Layout>

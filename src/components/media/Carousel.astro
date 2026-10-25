@@ -1,0 +1,109 @@
+---
+import { Picture } from 'astro:assets'
+
+export interface Props {
+  images: {
+    src: ImageMetadata
+    alt: string
+  }[]
+  class?: string
+}
+
+const { images, class: className } = Astro.props
+---
+
+<div class={`swiper js-slide-carousel min-w-0 max-w-full ${className}`}>
+  <div class="swiper-wrapper mb-12">
+    {images.map((image) => (
+      <div class="swiper-slide rounded-xl">
+        <Picture
+          src={image.src}
+          formats={['avif']}
+          fallbackFormat="webp"
+          sizes="(min-width: 1280px) 50vw, (min-width: 768px) 768px, 100vw"
+          alt={image.alt}
+        />
+      </div>
+    ))}
+  </div>
+
+  <div class="swiper-pagination"></div>
+</div>
+
+<style>
+  /* Swiper Pagination Styling */
+  .swiper {
+    --swiper-pagination-bullet-size: 10px;
+    --swiper-pagination-bullet-width: 10px;
+    --swiper-pagination-bullet-height: 10px;
+    --swiper-pagination-bullet-horizontal-gap: 10px;
+    --swiper-pagination-bullet-inactive-color: #9b9b9b;
+    /* 0.6 keeps the inactive bullets at 3:1 against black */
+    --swiper-pagination-bullet-inactive-opacity: 0.6;
+    --swiper-pagination-color: #ff00ff;
+  }
+
+  .swiper.swiper-cards {
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .swiper.swiper-cards {
+      overflow-x: visible;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    cursor: pointer;
+    transition: all 0.3s var(--ease-in-out);
+  }
+
+  .swiper-pagination-bullet:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+
+  .swiper-pagination-bullet-active {
+    box-shadow: 0 0 0 2px rgba(255, 0, 255, 0.3);
+  }
+
+  .swiper-pagination-bullet-active:hover {
+    box-shadow: 0 0 0 4px rgba(255, 0, 255, 0.5);
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper'
+  import 'swiper/css'
+  import 'swiper/css/effect-cards'
+  import 'swiper/css/pagination'
+  import { A11y, EffectCards, Keyboard, Pagination } from 'swiper/modules'
+
+  // Init every instance against its own root element. A bare '.swiper' selector
+  // would bind only the first match on the page and could claim the element
+  // belonging to VerticalCarousel, which uses an incompatible config.
+  for (const el of document.querySelectorAll<HTMLElement>('.js-slide-carousel')) {
+    new Swiper(el, {
+      effect: 'cards',
+      grabCursor: true,
+      modules: [A11y, EffectCards, Pagination, Keyboard],
+      speed: 500,
+      // `loop` needs more slides than the card stack has; rewind wraps from the last card instead
+      rewind: true,
+      centeredSlides: true,
+      cardsEffect: {
+        rotate: false,
+        slideShadows: true,
+      },
+      pagination: {
+        el: el.querySelector<HTMLElement>('.swiper-pagination'),
+        type: 'bullets',
+        clickable: true,
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+    })
+  }
+</script>

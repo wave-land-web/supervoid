@@ -1,13 +1,17 @@
 ---
-import CTA from '../components/text/CTA.astro'
+import Button from '../components/ui/Button.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Reel" description="SUPERVOID 2024 Reel" mux>
-  <main class="max-w-7xl m-auto p-0 flex flex-col items-center gap-6">
+<Layout title="Reel" description="SUPERVOID 2024 Reel" mux minimal noindex>
+  <div class="w-full max-w-7xl m-auto flex flex-col items-center gap-6">
+    <h1 class="sr-only">SUPERVOID Reel</h1>
+    <!-- Full width up front: before the player script upgrades it, the element has no width -->
     <mux-player
+      class="w-full"
       playback-id="EqmrnE02pPK2GXjhft00qYcMAi3PkfLWjUSm45SgPOimw"
-      accent-color="var(--color-magenta-900)"></mux-player>
-    <CTA href="/" text="Click to Enter Site" class="uppercase" />
-  </main>
+      accent-color="var(--color-magenta)"
+    ></mux-player>
+    <Button href="/" text="Click to Enter Site" class="uppercase" />
+  </div>
 </Layout>

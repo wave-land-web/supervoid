@@ -1,0 +1,15 @@
+---
+/**
+ * A card's title, set into its bottom-left corner. Its outer corner follows the card's, and its inner
+ * corner takes the same radius, so the label reads as part of the card.
+ */
+export interface Props {
+  as?: 'h2' | 'h3'
+}
+
+const { as: Tag = 'h3' } = Astro.props
+---
+
+<Tag class="absolute bottom-0 left-0 px-4 py-1.5 rounded-tr-xl rounded-bl-xl bg-magenta text-xs uppercase text-black">
+  <slot />
+</Tag>

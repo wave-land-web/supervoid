@@ -1,56 +1,56 @@
 ---
-import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets'
 import grandma3CompactImage from '../assets/grandma3-compact.png'
 import rentalsHeroImage from '../assets/rentals-hero.webp'
 import willowImage from '../assets/rentals-willow.webp'
 import svxSeriesServerBackImage from '../assets/svx-series-server-back.png'
-import CTA from '../components/text/CTA.astro'
-import ImageHeader from '../components/ui/ImageHeader.astro'
+import PageHeader from '../components/layout/PageHeader.astro'
+import Button from '../components/ui/Button.astro'
+import CheckList from '../components/ui/CheckList.astro'
+import SplitRow from '../components/ui/SplitRow.astro'
 import Layout from '../layouts/Layout.astro'
+import { mailto } from '../lib/site'
+import { socialImageFrom } from '../lib/socialImage'
 ---
 
 <Layout
   title="Rentals"
   description="SUPERVOID offers show control solutions for video playback and lighting control. Our SVX series servers and GrandMA3 Compact consoles are trusted by Paramore, Tate McRae, Jane's Addiction, and more."
-  socialImage="/images/rentals-hero.png"
+  socialImage={await socialImageFrom(rentalsHeroImage)}
 >
-  <ImageHeader
+  <PageHeader
     title="Powering Your Performance"
-    imageSrc={rentalsHeroImage}
-    imageAlt="Paramore on the Eras tour"
-    imageCaption="Paramore at 2024 iHeartRadio Music Festival - Visuals powered by SUPERVOID SVX-1 Series Servers."
+    image={{
+      src: rentalsHeroImage,
+      alt: 'Paramore performing at the 2024 iHeartRadio Music Festival',
+      caption:
+        'Paramore at 2024 iHeartRadio Music Festival - Visuals powered by SUPERVOID SVX-1 Series Servers.',
+    }}
   />
 
-  <main>
+  <div class="page-body">
     <section class="pt-4 pb-8">
-      <div
-        class="w-full grid md:grid-cols-[1fr_4fr] gap-4 lg:gap-8 py-6 border-t lsa lsa-slide-up no-repeat"
-      >
-        <h2 class="text-base uppercase">Trusted by</h2>
+      <SplitRow label="Trusted by" class="lsa lsa-slide-up no-repeat">
         <p class="mb-4 text-m">
           Alex Warren. Sheryl Crow. Paramore. Tate McRae. Jane's Addiction. Dan + Shay. Willow. Elle
-          King. All Time Low. Chloe Moriando. STS9. Cuco. Underoath. Taking Back Sunday. Wage War.
+          King. All Time Low. Chloe Moriondo. STS9. Cuco. Underoath. Taking Back Sunday. Wage War.
           Motion City Soundtrack. Love and Rockets. Spiritbox. San Holo. Five Finger Death Punch.
           Trans-Siberian Orchestra. Poppy. The Wonder Years. Cage The Elephant. Cavetown.
         </p>
-      </div>
+      </SplitRow>
 
-      <div
-        class="w-full grid md:grid-cols-[1fr_4fr] gap-4 lg:gap-8 py-6 border-t lsa lsa-slide-up no-repeat"
-      >
-        <h2 class="text-base uppercase">Show Control Solutions</h2>
+      <SplitRow label="Show Control Solutions" class="lsa lsa-slide-up no-repeat">
         <div class="flex flex-col gap-4">
-          <p class="text-grey-100">
+          <p class="text-grey-light">
             Custom video content and beautiful lighting design don't do much for a show without
             elegant solutions for playback and control.
           </p>
-          <p class="text-grey-100 max-w-[66ch]">
+          <p class="text-grey-light max-w-[66ch]">
             For video playback and IMAG FX, we've designed the SUPERVOID SVX-1 Media Server to meet
             the needs of shows large and small. Our media servers are tremendously powerful and can
             run the biggest shows without needing the biggest budgets.
           </p>
-          <p class="text-grey-100">
+          <p class="text-grey-light">
             For lighting control, we've invested in MA Lighting's GrandMA3 Compact console. These
             are the most cost-efficient of the MA3 series, enabling our clients to run shows from
             arenas to clubs. They empower Lighting Directors with the powerful MA3 platform in a
@@ -60,22 +60,24 @@ import Layout from '../layouts/Layout.astro'
             value.
           </p>
         </div>
-      </div>
+      </SplitRow>
     </section>
 
-    <section
-      class="max-w-3xl lg:max-w-7xl m-auto grid lg:grid-cols-2 gap-16 lg:gap-0 lsa lsa-slide-up no-repeat"
-    >
+    <section class="max-w-3xl lg:max-w-7xl m-auto grid lg:grid-cols-2 gap-16 lg:gap-0 lsa lsa-slide-up no-repeat">
       <figure class="lg:translate-x-2">
-        <Picture src={willowImage} formats={['avif', 'webp']} alt="Willow at Camp Flog Gnaw" />
-        <figcaption class="text-center mt-4 mx-auto text-2xs text-grey-100">
+        <Picture
+          src={willowImage}
+          formats={['avif']}
+          fallbackFormat="webp"
+          sizes="(min-width: 1024px) 608px, (min-width: 832px) 768px, calc(100vw - 32px)"
+          alt="Willow at Camp Flog Gnaw"
+        />
+        <figcaption class="text-center mt-4 mx-auto text-2xs text-grey">
           Willow at Camp Flog Gnaw
         </figcaption>
       </figure>
 
-      <div
-        class="self-center h-fit p-8 lg:p-12 lg:-translate-x-2 rounded-xl z-10 bg-magenta-900 text-center lg:text-left"
-      >
+      <div class="self-center h-fit p-8 lg:p-12 lg:-translate-x-2 rounded-xl z-10 bg-magenta text-black text-center lg:text-left">
         <p>
           For years we programmed media servers that cost several thousands of dollars per week to
           rent, which prohibited some of our clients from bringing them on their tours, so we made
@@ -93,72 +95,32 @@ import Layout from '../layouts/Layout.astro'
     >
       <h2 class="text-l text-center uppercase">SVX Series Servers Quick Specs</h2>
 
-      <div
-        class="max-w-3xl lg:max-w-7xl m-auto grid lg:grid-cols-2 items-start justify-items-center gap-24 md:gap-32"
-      >
+      <div class="max-w-3xl lg:max-w-7xl m-auto grid lg:grid-cols-2 items-start justify-items-center gap-24 md:gap-32">
         <Picture
           src={svxSeriesServerBackImage}
-          formats={['avif', 'webp']}
+          sizes="(min-width: 640px) 384px, calc(100vw - 160px)"
+          formats={['avif']}
+          fallbackFormat="webp"
           alt="SVX Series Servers - Back"
           class="px-16 py-12 max-w-lg"
         />
 
-        <div class="flex flex-col justify-center gap-8">
-          <h3 class="text-base uppercase">Description</h3>
-          <div id="servers-description" class="flex flex-col gap-8">
-            <p class="text-grey-100">
-              Our 2RU Fly Rack Kits contain everything you need to run your show. Rentals start as
-              low as $500/week, with 24/7 tech support and SUPERVOID exclusive VJ loops and visual
-              content included in every rental.
-            </p>
-            <ul class="flex flex-col gap-4">
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Run up to 12 HD screens, 3 4K screens, or even a single 8K screen, with a dedicated GUI
-                for controlling the software
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Capture up to 4 HD inputs or one 4K input over SDI or HDMI
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Real-time low latency visual effects with Notch built into each server
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Pixel map and control hundreds of universes of lights over artnet
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Control via your lighting desk with artnet or from MIDI or OSC
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Remote control over LAN/Wifi from any Windows or Mac computer
-              </li>
-            </ul>
-          </div>
-
-          <div id="servers-specifications" class="hidden flex-col gap-8">
-            <p class="text-grey-100">
-              9th Gen Intel i7 8-core processor, 32GB DDR4 RAM, 1TB NVMe SSD, 2TB SATA SSD, 4x HDMI
-            </p>
-            <ul class="flex flex-col gap-4">
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                2x 10G Ethernet ports for high-speed data transfer
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                4x USB 3.0 ports for peripherals and external storage devices
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                2x DisplayPort outputs for GUI and additional screens or projectors
-              </li>
-            </ul>
-          </div>
+        <div id="servers-description" class="flex flex-col justify-center gap-8">
+          <p>
+            Our 2RU Fly Rack Kits contain everything you need to run your show. Rentals start as low
+            as $500/week, with 24/7 tech support and SUPERVOID exclusive VJ loops and visual content
+            included in every rental.
+          </p>
+          <CheckList
+            items={[
+              'Run up to 12 HD screens, 3 4K screens, or even a single 8K screen, with a dedicated GUI for controlling the software',
+              'Capture up to 4 HD inputs or one 4K input over SDI or HDMI',
+              'Real-time low latency visual effects with Notch built into each server',
+              'Pixel map and control hundreds of universes of lights over artnet',
+              'Control via your lighting desk with artnet or from MIDI or OSC',
+              'Remote control over LAN/Wifi from any Windows or Mac computer',
+            ]}
+          />
         </div>
       </div>
     </section>
@@ -168,54 +130,35 @@ import Layout from '../layouts/Layout.astro'
     <section id="lighting" class="flex flex-col items-center gap-16 lsa lsa-slide-up no-repeat">
       <h2 class="text-l text-center uppercase">GrandMA3 Compact Quick Specs</h2>
 
-      <div
-        class="max-w-3xl lg:max-w-7xl m-auto grid lg:grid-cols-2 items-start justify-items-center gap-24 md:gap-32"
-      >
+      <div class="max-w-3xl lg:max-w-7xl m-auto grid lg:grid-cols-2 items-start justify-items-center gap-24 md:gap-32">
         <Picture
           src={grandma3CompactImage}
-          formats={['avif', 'webp']}
+          sizes="(min-width: 640px) 384px, calc(100vw - 160px)"
+          formats={['avif']}
+          fallbackFormat="webp"
           alt="GrandMA3 Compact Lighting Console"
           class="px-16 py-12 max-w-lg"
         />
 
-        <div class="flex flex-col justify-center gap-8">
-          <h3 class="text-base uppercase">Description</h3>
-          <div id="lighting-description" class="flex flex-col gap-8">
-            <p class="text-grey-100">
-              The grandMA3 compact console is a portable, professional lighting control system,
-              ideal for small to medium events. It offers customizable features, intuitive dual
-              encoders, and seamless compatibility with grandMA2 and grandMA3 software.
-            </p>
-            <ul class="flex flex-col gap-4">
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Control up to 250,000 parameters with grandMA3 processing units
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                6 DMX outputs, 1 DMX input, and 3 etherCON connectors
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Foldable internal multi-touch screen with external screen support
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                29 backlit rotary encoders, 5 dual encoders, and 40 playbacks
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                10 motorized 60 mm faders and 2 motorized A/B faders (100 mm)
-              </li>
-              <li class="flex items-center gap-8">
-                <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-                Silent, backlit keys and 16 assignable x-keys for smooth control
-              </li>
-            </ul>
-          </div>
+        <div id="lighting-description" class="flex flex-col justify-center gap-8">
+          <p>
+            The grandMA3 compact console is a portable, professional lighting control system, ideal
+            for small to medium events. It offers customizable features, intuitive dual encoders,
+            and seamless compatibility with grandMA2 and grandMA3 software.
+          </p>
+          <CheckList
+            items={[
+              'Control up to 250,000 parameters with grandMA3 processing units',
+              '6 DMX outputs, 1 DMX input, and 3 etherCON connectors',
+              'Foldable internal multi-touch screen with external screen support',
+              '29 backlit rotary encoders, 5 dual encoders, and 40 playbacks',
+              '10 motorized 60 mm faders and 2 motorized A/B faders (100 mm)',
+              'Silent, backlit keys and 16 assignable x-keys for smooth control',
+            ]}
+          />
         </div>
       </div>
-      <CTA href="mailto:info@supervoid.tv?subject=Rentals Inquiry" text="Rent Now" />
+      <Button href={mailto('Rentals Inquiry')} text="Rent Now" />
     </section>
-  </main>
+  </div>
 </Layout>

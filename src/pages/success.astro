@@ -1,19 +1,18 @@
 ---
-import CTA from '../components/text/CTA.astro'
+import PageHeader from '../components/layout/PageHeader.astro'
+import Button from '../components/ui/Button.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Success">
-  <header class="pt-[calc(var(--nav-height)+6rem)] lsa-load lsa-slide-up">
-    <h1 class="text-xl mb-4 drop-shadow-lg text-center uppercase">Success!</h1>
-  </header>
+<Layout title="Message Sent" noindex>
+  <PageHeader title="Success!" />
 
-  <main>
+  <div class="page-body">
     <section class="max-w-xl m-auto pt-0 text-center lsa-load lsa-slide-up [animation-delay:300ms]">
       <p class="mb-8 text-base">
         Your message has been sent. We'll get back to you as soon as possible.
       </p>
-      <CTA text="Back to Home" href="/" class="mx-auto" />
+      <Button text="Back to Home" href="/" class="mx-auto" />
     </section>
-  </main>
+  </div>
 </Layout>

@@ -1,0 +1,14 @@
+---
+id: '0'
+title: 'Rage Against the Machine'
+description: 'Notch and Rolling Stone on Rage Against the Machine''s reunion tour, with SUPERVOID''s Drew Mercadante on Notch and media servers.'
+published: 2022-10-25
+image: './images/rage-against-the-machine.jpg'
+imageAlt: 'Rage Against the Machine'
+---
+
+> “As Rage Against the Machine is the kind of band that actively avoids flashy 3D visuals, the final product was purposefully kept sparse and to the point. The creative team received great reviews for their simple, direct looks that just added a bit of edge and showcased the performances without distraction.”
+> -- <cite>Read more at <a href="https://www.notch.one/portfolio/rage-against-the-machine-world-tour-2022/" target="_blank" rel="noopener noreferrer">Notch.one</a></cite>
+
+> “Chilling images on the screens, including an El Paso police car on fire, a helicopter descending on a group of helpless refugees in a boat, and a stern Border Patrol agent standing near a drone and German Shepherd”
+> -- <cite>Read more at <a href="https://www.rollingstone.com/music/music-live-reviews/rage-against-the-machine-reunion-tour-launch-review-1380433/" target="_blank" rel="noopener noreferrer">Rollingstone.com</a></cite>

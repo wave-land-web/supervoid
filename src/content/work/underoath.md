@@ -4,25 +4,18 @@ title: 'Underoath'
 year: '2023'
 info:
   [
-    'Supervoid was hired by Underoath to produce visuals for their co-headlining tour with The Ghost Inside. With a setlist spanning their entire career, we integrated themes from the visual branding of each album to transport the crowd through the many eras of their music. From haunted houses and desert landscapes for Define The Great Line, to colorful geometry and paper collages for Lost In The Sound Of Separation, to retro futurism and CRT glitch art for Voyeurist',
+    'Supervoid was hired by Underoath to produce visuals for their co-headlining tour with The Ghost Inside. With a setlist spanning their entire career, we integrated themes from the visual branding of each album to transport the crowd through the many eras of their music. From haunted houses and desert landscapes for Define The Great Line, to colorful geometry and paper collages for Lost In The Sound Of Separation, to retro futurism and CRT glitch art for Voyeurist.',
     "For They're Only Chasing Safety, one of the band's earliest and most beloved albums, we used live cameras to capture the band and their audience, uniting them on screen. This footage was heavily treated with Notch and cut to timecode, creating a dynamic and immersive experience.",
     'The variety of visuals in the show highlighted the many eras of Underoath, each bringing its own strengths and character from a long career of powerful heavy music.',
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Design, Lighting Programming:</h3>
-    <p class="text-grey-100">Lenny Sasso</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Director:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Animation Team:</h3>
-    <p class="text-grey-100">Matt Keppler, Grant Bouvier, George Murphy, Kenn Koubeck, John Egan</p>
-    </div>',
-  ]
-thumbnail: './images/thumbnails/underoath.png'
+credits:
+  - role: 'Production Design, Lighting Programming'
+    names: 'Lenny Sasso'
+  - role: 'Animation Director'
+    names: 'Drew Mercadante'
+  - role: 'Animation Team'
+    names: 'Matt Keppler, Grant Bouvier, George Murphy, Kenn Koubeck, John Egan'
+thumbnail: './images/thumbnails/underoath.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

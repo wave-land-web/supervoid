@@ -6,32 +6,19 @@ info:
   [
     'SUPERVOID had the honor of designing the video content and handling camera direction each night for Radiohead on their first tour in 7 years. All stage visuals were made with Notch and run in real time, without any pre-rendered video content.  The show was run completely live, with no timecode or guard rails.  Each performance was unique and a frenetic interplay between the band and the operators.',
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Creative Director:</h3>
-    <p class="text-grey-100">Sean Evans</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Manager:</h3>
-    <p class="text-grey-100">John M. Lafferty</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Designer/Programmer/Operator:</h3>
-    <p class="text-grey-100">Pryderi Baskerville</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Video Content:</h3>
-    <p class="text-grey-100">SUPERVOID</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Camera Director:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Media Server Programmer/Operator:</h3>
-    <p class="text-grey-100">Ellie Clement</p>
-    </div>',
-  ]
+credits:
+  - role: 'Creative Director'
+    names: 'Sean Evans'
+  - role: 'Production Manager'
+    names: 'John M. Lafferty'
+  - role: 'Lighting Designer/Programmer/Operator'
+    names: 'Pryderi Baskerville'
+  - role: 'Video Content'
+    names: 'SUPERVOID'
+  - role: 'Camera Director'
+    names: 'Drew Mercadante'
+  - role: 'Media Server Programmer/Operator'
+    names: 'Ellie Clement'
 thumbnail: './images/SVX_Horizontal_0002_Radiohead 15.jpg'
 gifs: { imageHero: './images/SVX_Horizontal_0002_Radiohead 15.jpg' }
 images:

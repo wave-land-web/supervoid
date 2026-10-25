@@ -1,0 +1,17 @@
+---
+id: '2'
+title: 'Spiritbox'
+description: 'PLSN, Notch and Express on Spiritbox''s Eternal Blue tour: SUPERVOID visuals that fans went on to post about.'
+published: 2023-06-06
+image: './images/spiritbox.jpg'
+imageAlt: 'Spiritbox'
+---
+
+> “I've known Drew for several years now, and with his company SUPERVOID, he's become my go-to video guy. He really crushed it on this one.”
+> -- <cite>Read more at <a href="https://plsn.com/articles/production-spotlight/spiritbox-the-eternal-blue-tour/" target="_blank" rel="noopener noreferrer">PLSN.com</a></cite>
+
+> “The band, their management, and their fans were extremely happy, with attendees posting on social media specifically about the visual elements.”
+> -- <cite>Read more at <a href="https://www.notch.one/portfolio/spiritbox-eternal-blue/" target="_blank" rel="noopener noreferrer">Notch.one</a></cite>
+
+> “Stunning visuals silhouetted Courtney with lyrics plastering the walls, sparks, flames, confetti…”
+> -- <cite>Read more at <a href="https://www.express.co.uk/entertainment/music/1791100/spiritbox-review-london-roundhouse-courtney-laplante" target="_blank" rel="noopener noreferrer">Express.co.uk</a></cite>

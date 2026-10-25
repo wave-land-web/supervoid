@@ -1,0 +1,15 @@
+/**
+ * `sizes` for media in the two-column grids (homepage work, press, work
+ * galleries): half of the padded container from `md` up, full width below.
+ * Keeps the browser from fetching full-viewport images for half-width cards.
+ */
+export const TWO_COLUMN_SIZES =
+  '(min-width: 768px) calc((min(100vw, 1536px) - 104px) / 2), calc(100vw - 32px)'
+
+/** `sizes` for media spanning the padded page container. */
+export const CONTAINER_SIZES =
+  '(min-width: 1536px) 1472px, (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)'
+
+/** `sizes` for media in the narrow reading column (`max-w-4xl`, press posts). */
+export const NARROW_SIZES =
+  '(min-width: 896px) 832px, (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)'

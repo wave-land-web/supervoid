@@ -1,4 +1,5 @@
 ---
+import aboutHeroImage from '../assets/about-hero.jpg'
 import verticalRadiohead from '../assets/vertical-images/SVX_Vertical_0000_Radiohead 1.jpg'
 import verticalSts9Five from '../assets/vertical-images/SVX_Vertical_0001_STS9 5.jpg'
 import verticalSts9Four from '../assets/vertical-images/SVX_Vertical_0002_STS9 4.jpg'
@@ -9,135 +10,158 @@ import verticalCouchFour from '../assets/vertical-images/SVX_Vertical_0006_Couch
 import verticalCouchThree from '../assets/vertical-images/SVX_Vertical_0007_Couch 3.jpg'
 import verticalCouchTwo from '../assets/vertical-images/SVX_Vertical_0008_Couch 2.jpg'
 import verticalCouchOne from '../assets/vertical-images/SVX_Vertical_0009_Couch 1.jpg'
-import aboutHeroImage from '../assets/about-hero.jpg'
-import VerticalImageCarousel from '../components/ui/VerticalImageCarousel.astro'
-import ImageHeader from '../components/ui/ImageHeader.astro'
+import PageHeader from '../components/layout/PageHeader.astro'
+import VerticalCarousel from '../components/media/VerticalCarousel.astro'
+import Button from '../components/ui/Button.astro'
+import SplitRow from '../components/ui/SplitRow.astro'
 import Layout from '../layouts/Layout.astro'
-import CTA from '../components/text/CTA.astro'
+import { socialImageFrom } from '../lib/socialImage'
+
+// What we do, one list per discipline
+const SERVICES = [
+  {
+    title: 'Production Design',
+    items: ['Set Design', 'Lighting Design', 'Video Design', 'Camera Layout', 'Production Support'],
+  },
+  {
+    title: 'Screen Visuals',
+    items: [
+      'Full service from concept to delivery',
+      '2D and 3D Graphics',
+      'Notch + IMAG',
+      'Filmed content',
+      'Full previs capability',
+    ],
+  },
+  {
+    title: 'Lighting Design',
+    items: ['Plot Creation', 'Rendering', 'Programming (MA2 + MA3)', 'Full previs capability'],
+  },
+]
 ---
 
-<Layout title="About" socialImage="/images/about-hero.jpg">
-  <ImageHeader
+<Layout title="About" socialImage={await socialImageFrom(aboutHeroImage)}>
+  <PageHeader
     title="Crafting Visual Experiences"
-    imageSrc={aboutHeroImage}
-    imageAlt="Radiohead at Madrid with Supervoid-designed screen visuals and lighting."
-    imageCaption="Radiohead, live in Madrid, 2025."
+    image={{
+      src: aboutHeroImage,
+      alt: 'Radiohead at Madrid with Supervoid-designed screen visuals and lighting.',
+      caption: 'Radiohead, live in Madrid, 2025.',
+    }}
   />
 
-  <main>
+  <div class="page-body">
     <section id="who-we-are" class="lsa lsa-slide-up no-repeat pt-4 pb-8">
-      <div class="w-full grid md:grid-cols-[1fr_4fr] gap-4 lg:gap-8 py-6 border-t">
-        <h2 class="text-base uppercase">Who We Are</h2>
-
+      <SplitRow label="Who We Are">
         <div class="flex flex-col gap-4">
           <p class="text-m">
-            <span class="text-magenta-900 inline-block lsa lsa-slide-up no-repeat delay-50"
-              >SUPERVOID</span
-            > is a design practice specializing in <span
-              class="text-magenta-900 inline-block lsa lsa-slide-up no-repeat delay-100"
-              >creative, dynamic,</span
-            > and <span class="text-magenta-900 inline-block lsa lsa-slide-up no-repeat delay-150"
-              >interactive media.</span
-            >
+            <span class="text-magenta inline-block lsa lsa-slide-up no-repeat delay-50">
+              SUPERVOID
+            </span>{' '}
+            is a design practice specializing in{' '}
+            <span class="text-magenta inline-block lsa lsa-slide-up no-repeat delay-100">
+              creative, dynamic,
+            </span>{' '}
+            and{' '}
+            <span class="text-magenta inline-block lsa lsa-slide-up no-repeat delay-150">
+              interactive media.
+            </span>
           </p>
-          <p class="text-grey-100">
+          <p class="text-grey-light">
             We use our expertise in the creative and technical aspects of live production to elevate
-            our clients' shows. We create <span
-              class="text-white inline-block lsa lsa-slide-up no-repeat delay-200"
-              >stunning visuals</span
-            > that work with scalable productions, build custom controls to allow a client to affect their
-            visuals from <span
-              class="text-white inline-block lsa lsa-slide-up no-repeat delay-250"
-              >any device,</span
-            > and design <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-300"
-              >lighting and laser shows</span
-            > that leave audiences with their jaws on the floor.
+            our clients' shows. We create{' '}
+            <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-200">
+              stunning visuals
+            </span>{' '}
+            that work with scalable productions, build custom controls to allow a client to affect
+            their visuals from{' '}
+            <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-250">
+              any device,
+            </span>{' '}
+            and design{' '}
+            <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-300">
+              lighting and laser shows
+            </span>{' '}
+            that leave audiences with their jaws on the floor.
           </p>
-          <p class="text-grey-100">
-            Everything we do we do with one <span
-              class="text-white inline-block lsa lsa-slide-up no-repeat delay-350">mission</span
-            > in mind:
+          <p class="text-grey-light">
+            Everything we do we do with one{' '}
+            <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-350">
+              mission
+            </span>{' '}
+            in mind:
           </p>
-          <p class="text-grey-100">
-            <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-400"
-              >Create</span
-            > something you'll never forget, that <span
-              class="text-white inline-block lsa lsa-slide-up no-repeat delay-450"
-              >highlights your work</span
-            > instead of distracting from it, and build it in a way that is <span
-              class="text-white inline-block lsa lsa-slide-up no-repeat delay-500">efficient</span
-            > and <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-550"
-              >reliable.</span
-            >
+          <p class="text-grey-light">
+            <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-400">Create</span>{' '}
+            something you'll never forget, that{' '}
+            <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-450">
+              highlights your work
+            </span>{' '}
+            instead of distracting from it, and build it in a way that is{' '}
+            <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-500">
+              efficient
+            </span>{' '}
+            and{' '}
+            <span class="text-white inline-block lsa lsa-slide-up no-repeat delay-550">
+              reliable.
+            </span>
           </p>
         </div>
-      </div>
+      </SplitRow>
     </section>
 
     <section id="services">
       <h2 class="sr-only">Services</h2>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16">
-        <div class="lsa lsa-slide-up no-repeat">
-          <h3 class="mb-4 text-m text-magenta-900 uppercase">Production Design</h3>
-          <ul>
-            <li class="flex gap-4">- <span>Set Design</span></li>
-            <li class="flex gap-4">- <span>Lighting Design</span></li>
-            <li class="flex gap-4">- <span>Video Design</span></li>
-            <li class="flex gap-4">- <span>Camera Layout</span></li>
-            <li class="flex gap-4">- <span>Production Support</span></li>
-          </ul>
-        </div>
-
-        <div class="lsa lsa-slide-up no-repeat delay-100">
-          <h3 class="mb-4 text-m text-magenta-900 uppercase">Screen Visuals</h3>
-          <ul>
-            <li class="flex gap-4">- <span>Full service from concept to delivery</span></li>
-            <li class="flex gap-4">- <span>2D and 3D Graphics</span></li>
-            <li class="flex gap-4">- <span>Notch + IMAG</span></li>
-            <li class="flex gap-4">- <span>Filmed content</span></li>
-            <li class="flex gap-4">- <span>Full previs capability</span></li>
-          </ul>
-        </div>
-
-        <div class="lsa lsa-slide-up no-repeat delay-200">
-          <h3 class="mb-4 text-m text-magenta-900 uppercase">Lighting Design</h3>
-          <ul>
-            <li class="flex gap-4">- <span>Plot Creation</span></li>
-            <li class="flex gap-4">- <span>Rendering</span></li>
-            <li class="flex gap-4">- <span>Programming (MA2 + MA3)</span></li>
-            <li class="flex gap-4">- <span>Full previs capability</span></li>
-          </ul>
-        </div>
+        {SERVICES.map(({ title, items }, index) => (
+          <div
+            class:list={[
+              'lsa lsa-slide-up no-repeat',
+              index === 1 && 'delay-100',
+              index === 2 && 'delay-200',
+            ]}
+          >
+            <h3 class="mb-4 text-m text-magenta uppercase">{title}</h3>
+            <ul>
+              {items.map((item) => (
+                <li class="flex gap-4">
+                  <span aria-hidden="true">-</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
 
     <section id="join-our-team" class="m-auto xl:py-32 lsa lsa-slide-up no-repeat">
-      <VerticalImageCarousel
+      <VerticalCarousel
         images={[
-          { src: verticalRadiohead, alt: 'Radiohead' },
-          { src: verticalSts9Five, alt: 'STS9' },
-          { src: verticalSts9Four, alt: 'STS9' },
-          { src: verticalSts9Three, alt: 'STS9' },
-          { src: verticalSts9Two, alt: 'STS9' },
-          { src: verticalSts9One, alt: 'STS9' },
-          { src: verticalCouchFour, alt: 'Couch' },
-          { src: verticalCouchThree, alt: 'Couch' },
-          { src: verticalCouchTwo, alt: 'Couch' },
-          { src: verticalCouchOne, alt: 'Couch' },
+          { src: verticalRadiohead, alt: '' },
+          { src: verticalSts9Five, alt: '' },
+          { src: verticalSts9Four, alt: '' },
+          { src: verticalSts9Three, alt: '' },
+          { src: verticalSts9Two, alt: '' },
+          { src: verticalSts9One, alt: '' },
+          { src: verticalCouchFour, alt: '' },
+          { src: verticalCouchThree, alt: '' },
+          { src: verticalCouchTwo, alt: '' },
+          { src: verticalCouchOne, alt: '' },
         ]}
       />
 
       <div class="flex flex-col items-center justify-center gap-6 p-8 xl:p-12 text-center">
-        <h2 class="text-l text-stroke">Join Our Team</h2>
+        <h2 class="text-l uppercase text-stroke">Join Our Team</h2>
         <p>
           We're always on the lookout for talented individuals to join our team. If you're
           passionate about animation, VFX, and design, and want to work on exciting projects, check
           out our current openings and become part of the Supervoid family.
         </p>
 
-        <CTA href="/jobs" text="Explore Careers" class="mx-auto xl:mx-0" />
+        <Button href="/jobs/" text="Explore Careers" class="mx-auto xl:mx-0" />
       </div>
     </section>
-  </main>
+  </div>
 </Layout>

@@ -8,26 +8,16 @@ info:
     'Utilizing Unreal Engine and Notch, we crafted real-time worlds that integrated seamlessly with the LED screen layout, working closely with the lighting team to ensure each scene amplified the intensity of the live show. For the track "Getting Away With Murder," we developed a custom large language model running on a local server to generate AI-driven imagery of corrupt politicians and financiers, adding a visceral edge to the song''s critique of systemic injustice.',
     'The result was a visual experience that amplified the raw energy of <em>Infest</em>, transforming the stage into a cinematic battleground of rebellion and decay.',
   ]
-credits: [
-    '<div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Creative Director, Animator:</h3>
-    <p class="text-grey-100">Drew Mercadante</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Designer:</h3>
-    <p class="text-grey-100">Mathias Kuhn</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Production Manager:</h3>
-    <p class="text-grey-100">Bryan Campbell</p>
-    </div>
-    <div class="flex flex-col gap-4">
-    <h3 class="uppercase text-s">Lighting Director:</h3>
-    <p class="text-grey-100">Dave Summers</p>
-    </div>
-    ',
-  ]
-thumbnail: './images/thumbnails/papa-roach.png'
+credits:
+  - role: 'Creative Director, Animator'
+    names: 'Drew Mercadante'
+  - role: 'Production Designer'
+    names: 'Mathias Kuhn'
+  - role: 'Production Manager'
+    names: 'Bryan Campbell'
+  - role: 'Lighting Director'
+    names: 'Dave Summers'
+thumbnail: './images/thumbnails/papa-roach.jpg'
 # gifs are MUX playback IDs
 gifs:
   {

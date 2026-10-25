@@ -1,0 +1,91 @@
+---
+import { INSTAGRAM_URL } from '../../lib/site'
+
+export interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+---
+
+<aside
+  aria-label="Instagram"
+  class:list={[className, 'marquee max-w-screen-2xl mx-auto border-t border-b py-4 bg-black']}
+>
+  <div class="marquee-container">
+    <p class="text-l">
+      Follow us on Instagram{' '}
+      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" class="site-link">
+        @supervoidtv
+      </a>
+    </p>
+  </div>
+
+  <!-- Copies for the seamless loop: hidden from screen readers and the tab order -->
+  <div class="marquee-container" aria-hidden="true" inert>
+    <p class="text-l">
+      Follow us on Instagram{' '}
+      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" class="site-link">
+        @supervoidtv
+      </a>
+    </p>
+  </div>
+
+  <div class="marquee-container" aria-hidden="true" inert>
+    <p class="text-l">
+      Follow us on Instagram{' '}
+      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" class="site-link">
+        @supervoidtv
+      </a>
+    </p>
+  </div>
+</aside>
+
+<style>
+  .marquee,
+  .marquee-container {
+    display: flex;
+    gap: clamp(1.5rem, 2vw, 2rem);
+  }
+
+  .marquee {
+    overflow: hidden;
+  }
+
+  .marquee-container {
+    flex: 0 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    animation: footerMarquee 30s linear 0s infinite;
+  }
+
+  /* Hold still while someone is pointing at or tabbing through it */
+  .marquee:hover .marquee-container,
+  .marquee:focus-within .marquee-container {
+    animation-play-state: paused;
+  }
+
+  /* Reduced motion: stop the crawl. The second and third copies exist only so
+     the loop wraps seamlessly — with the animation off they would just repeat
+     the same sentence, so drop them and leave a single static line. */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-container {
+      animation: none;
+    }
+
+    .marquee-container:not(:first-child) {
+      display: none;
+    }
+  }
+
+  @keyframes footerMarquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* This prevents "skipping" on animation reset */
+      transform: translateX(calc(-100% - clamp(1.5rem, 2vw, 2rem)));
+    }
+  }
+</style>

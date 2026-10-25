@@ -1,0 +1,16 @@
+# Netlify redirects, applied at the edge as real 301s (Astro's `redirects`
+# config would emit meta-refresh pages in a static build). Not forced (no `!`),
+# so a file that exists at the path always wins. Targets end in a slash so they
+# land on the built page without a second hop.
+
+# Servers became Rentals
+/servers    /rentals/    301
+
+# There is no work index; the homepage lists the work
+/work    /    301
+
+# The Jane's Addiction press post moved into its case study
+/press/janes-addiction    /work/janes-addiction/    301
+
+# The sitemap lives at /sitemap-index.xml; send the usual guess there
+/sitemap.xml    /sitemap-index.xml    301

@@ -1,106 +1,93 @@
 ---
-import { Icon } from 'astro-icon/components'
-import jobsCarouselOneImage from '../assets/horizontal-images/SVX_Horizontal_0002_Radiohead 15.jpg'
-import jobsCarouselTwoImage from '../assets/horizontal-images/SVX_Horizontal_0016_Radiohead 1.jpg'
-import jobsCarouselThreeImage from '../assets/horizontal-images/SVX_Horizontal_0018_STS9 7.jpg'
-import jobsCarouselFourImage from '../assets/horizontal-images/SVX_Horizontal_0024_STS9 1.jpg'
-import jobsCarouselFiveImage from '../assets/horizontal-images/SVX_Horizontal_0026_Couch 7.jpg'
-import jobsCarouselSixImage from '../assets/horizontal-images/SVX_Horizontal_0028_Couch 5.jpg'
-import jobsHeroImage from '../assets/jobs-hero.png'
-import CTA from '../components/text/CTA.astro'
-import Carousel from '../components/ui/Carousel.astro'
-import ImageHeader from '../components/ui/ImageHeader.astro'
+import jobsHeroImage from '../assets/jobs-hero.jpg'
+import PageHeader from '../components/layout/PageHeader.astro'
+import Carousel from '../components/media/Carousel.astro'
+import Button from '../components/ui/Button.astro'
+import CheckList from '../components/ui/CheckList.astro'
+import SplitRow from '../components/ui/SplitRow.astro'
+import jobsCarouselOneImage from '../content/work/images/SVX_Horizontal_0002_Radiohead 15.jpg'
+import jobsCarouselTwoImage from '../content/work/images/SVX_Horizontal_0016_Radiohead 1.jpg'
+import jobsCarouselThreeImage from '../content/work/images/SVX_Horizontal_0018_STS9 7.jpg'
+import jobsCarouselFourImage from '../content/work/images/SVX_Horizontal_0024_STS9 1.jpg'
+import jobsCarouselFiveImage from '../content/work/images/SVX_Horizontal_0026_Couch 7.jpg'
+import jobsCarouselSixImage from '../content/work/images/SVX_Horizontal_0028_Couch 5.jpg'
 import Layout from '../layouts/Layout.astro'
+import { EMAIL, mailto } from '../lib/site'
+import { socialImageFrom } from '../lib/socialImage'
 ---
 
 <Layout
   title="Jobs"
   description="Apply to join the SUPERVOID team. We're looking for passionate and innovative individuals who want to make something no one has ever seen before."
-  socialImage="/images/jobs-hero.png"
+  socialImage={await socialImageFrom(jobsHeroImage)}
 >
-  <ImageHeader
+  <PageHeader
     title="Join Our Team"
-    imageSrc={jobsHeroImage}
-    imageAlt="Tyler Childers at Madison Square Garden"
-    imageCaption="Tyler Childers at Madison Square Garden - Video Content by SUPERVOID"
+    image={{
+      src: jobsHeroImage,
+      alt: 'Tyler Childers at Madison Square Garden',
+      caption: 'Tyler Childers at Madison Square Garden - Video Content by SUPERVOID',
+    }}
   />
 
-  <main>
+  <!-- Clip sideways: the card carousel's stacked slides overflow its box from md up -->
+  <div class="page-body overflow-x-clip">
     <section class="lsa lsa-slide-up no-repeat pt-4 pb-8">
-      <div class="grid md:grid-cols-[1fr_4fr] gap-4 lg:gap-8 py-6 border-t">
-        <h2 class="text-base uppercase">OUR PHILOSOPHY</h2>
-
+      <SplitRow label="OUR PHILOSOPHY">
         <div>
           <p class="mb-4 text-m">
-            We started SUPERVOID to make the kind of shows that we want to see <span
-              class="text-magenta-900">as fans</span
-            >.
+            We started SUPERVOID to make the kind of shows that we want to see{' '}
+            <span class="text-magenta">as fans</span>.
           </p>
-          <p class="text-grey-100">
+          <p class="text-grey-light">
             We foster an environment where offbeat ideas can flourish, collaboration is key, and
             everyone's taste and vision is considered, no matter your job title or level of
             experience. Our team is dedicated to taking our wildest ideas and turning them into
             practical realities.
           </p>
         </div>
-      </div>
+      </SplitRow>
     </section>
 
-    <section
-      class="max-w-3xl xl:max-w-7xl m-auto grid xl:grid-cols-2 gap-16 md:gap-24 lsa lsa-slide-up no-repeat"
-    >
+    <section class="max-w-3xl xl:max-w-7xl m-auto grid xl:grid-cols-2 gap-16 md:gap-24 lsa lsa-slide-up no-repeat">
       <Carousel
         images={[
-          { src: jobsCarouselOneImage, alt: 'Radiohead' },
-          { src: jobsCarouselTwoImage, alt: 'Radiohead' },
-          { src: jobsCarouselThreeImage, alt: 'STS9' },
-          { src: jobsCarouselFourImage, alt: 'STS9' },
-          { src: jobsCarouselFiveImage, alt: 'Couch' },
-          { src: jobsCarouselSixImage, alt: 'Couch' },
+          { src: jobsCarouselOneImage, alt: '' },
+          { src: jobsCarouselTwoImage, alt: '' },
+          { src: jobsCarouselThreeImage, alt: '' },
+          { src: jobsCarouselFourImage, alt: '' },
+          { src: jobsCarouselFiveImage, alt: '' },
+          { src: jobsCarouselSixImage, alt: '' },
         ]}
         class="self-center order-1 md:order-0"
       />
 
       <div class="flex flex-col justify-center gap-8">
         <h2 class="text-l uppercase">Who We're Looking For</h2>
-        <p class="text-grey-100">
-          We're always on the lookout for passionate and innovative individuals who:
-        </p>
-        <ul class="flex flex-col gap-4">
-          <li class="flex items-center gap-8">
-            <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-            Have a strong portfolio demonstrating their skills and creativity.
-          </li>
-          <li class="flex items-center gap-8">
-            <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-            Are team players who thrive in a collaborative environment.
-          </li>
-          <li class="flex items-center gap-8">
-            <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-            Are eager to learn and push the limits of what's possible in animation, VFX, lighting, and
-            stage design.
-          </li>
-          <li class="flex items-center gap-8">
-            <Icon name="tabler:check" class="size-8 shrink-0 text-magenta-900" />
-            Bring unique perspectives and ideas to the table.
-          </li>
-        </ul>
+        <p>We're always on the lookout for passionate and innovative individuals who:</p>
+        <CheckList
+          items={[
+            'Have a strong portfolio demonstrating their skills and creativity.',
+            'Are team players who thrive in a collaborative environment.',
+            "Are eager to learn and push the limits of what's possible in animation, VFX, lighting, and stage design.",
+            'Bring unique perspectives and ideas to the table.',
+          ]}
+        />
       </div>
     </section>
 
-    <section
-      class="max-w-xl m-auto flex flex-col items-center gap-8 text-center lsa lsa-slide-up no-repeat"
-    >
+    <section class="max-w-xl m-auto flex flex-col items-center gap-8 text-center lsa lsa-slide-up no-repeat">
       <h2 class="text-l uppercase">Join Our Team</h2>
       <p>
         If you want to make something no one has ever seen before and contribute to innovative
-        projects, we'd love to hear from you. Please submit your resume to <a
-          href="mailto:info@supervoid.tv?subject=Supervoid%20Job%20Application"
-          class="site-link">info@supervoid.tv</a
-        >, and we'll reach out if there's a fit.
+        projects, we'd love to hear from you. Please submit your resume to{' '}
+        <a href={mailto('Supervoid Job Application')} class="site-link">
+          {EMAIL}
+        </a>
+        , and we'll reach out if there's a fit.
       </p>
 
-      <CTA href="mailto:info@supervoid.tv?subject=Supervoid%20Job%20Application" text="Apply Now" />
+      <Button href={mailto('Supervoid Job Application')} text="Apply Now" />
     </section>
-  </main>
+  </div>
 </Layout>

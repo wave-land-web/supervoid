@@ -1,0 +1,97 @@
+---
+/**
+ * A muted, looping Mux clip over a still of its first frame. A <video> paints
+ * black from the moment play() is called until it has a frame, so the still
+ * sits underneath and the clip fades in once it's actually playing. The still
+ * also stays put when the clip never plays (reduced motion, or no JS).
+ *
+ * Clips play only while on screen. Under prefers-reduced-motion nothing
+ * autoplays.
+ */
+export interface Props {
+  playbackId: string
+  /** Load the still at high priority, for a clip above the fold (the LCP image). */
+  eager?: boolean
+  /** The still's `sizes`, matching the width the clip renders at. */
+  sizes?: string
+  /** Report views to Mux Data. Off for decorative loops. */
+  tracking?: boolean
+  /** Video title reported to Mux Data. */
+  title?: string
+  id?: string
+  class?: string
+}
+
+const {
+  playbackId,
+  eager = false,
+  sizes = '100vw',
+  tracking = false,
+  title,
+  id,
+  class: className,
+} = Astro.props
+
+// `time=0` because Mux's default thumbnail is mid-clip
+const still = (width: number) =>
+  `https://image.mux.com/${playbackId}/thumbnail.webp?width=${width}&time=0`
+const widths = [640, 960, 1280, 1536, 1920]
+---
+
+<div class:list={['relative', className]}>
+  <img
+    src={still(1280)}
+    srcset={widths.map((width) => `${still(width)} ${width}w`).join(', ')}
+    sizes={sizes}
+    alt=""
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : undefined}
+    decoding="async"
+    class="absolute inset-0 size-full object-cover pointer-events-none"
+  />
+  <mux-video
+    id={id}
+    data-cover
+    playback-id={playbackId}
+    metadata-video-title={title}
+    disable-tracking={tracking ? undefined : ''}
+    max-resolution="720p"
+    preload="none"
+    muted
+    loop
+    playsinline
+    aria-hidden="true"
+    class="absolute inset-0 size-full [--media-object-fit:cover] opacity-0 transition-opacity duration-500 data-playing:opacity-100"
+  ></mux-video>
+</div>
+
+<script>
+  import '@mux/mux-video'
+
+  const videos = document.querySelectorAll<HTMLVideoElement>('mux-video[data-cover]')
+
+  for (const video of videos) {
+    // Fade in over the still once frames are rendering
+    video.addEventListener('playing', () => video.setAttribute('data-playing', ''), { once: true })
+  }
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Play what's on screen and pause the rest, so a page of clips never streams them all at once
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const { target, isIntersecting } of entries) {
+          const video = target as HTMLVideoElement
+          // A clip someone paused stays paused until they play it again
+          if (isIntersecting && !video.hasAttribute('data-user-paused')) {
+            video.play().catch(() => {})
+          } else {
+            video.pause()
+          }
+        }
+      },
+      { threshold: 0.25 },
+    )
+
+    for (const video of videos) observer.observe(video)
+  }
+</script>
